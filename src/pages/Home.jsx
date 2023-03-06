@@ -120,7 +120,7 @@ const Line = styled.svg`
   fill: none;
 `;
 
-const Home = () => {
+export const Home = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -161,4 +161,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+
