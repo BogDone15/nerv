@@ -2,6 +2,7 @@
   "name": "nerv",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bogdone15.github.io/nerv",
   "dependencies": {
     "@fontsource/fira-code": "^4.5.13",
     "@reduxjs/toolkit": "^1.9.2",
