@@ -10,11 +10,9 @@ import { HashRouter as Router } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <ThemeProvider theme={theme}>
+  
       <Router>
         <App />
       </Router>
-    </ThemeProvider>
   </React.StrictMode>
 );
