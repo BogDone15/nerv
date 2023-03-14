@@ -10,10 +10,13 @@ const GlobalStyles = createGlobalStyle`
 }
 
 html {
-  font-size: 10px;
+  font-size: 14px;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  @media screen and (max-width: 1920px) {
+    font-size: 10px;
+  }
   @media screen and (max-width: 1700px) {
     font-size: 9px;
   }
