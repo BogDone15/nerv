@@ -1,17 +1,8 @@
 import React from 'react';
-import bgImg from '../assets/main-bg.png';
-import charackters from '../assets/charackters.png';
+import bgImg from '../../assets/main-bg.png';
+import charackters from '../../assets/charackters.png';
 import styled from 'styled-components';
-import { Socials } from './Socials';
-import { Status } from './Status';
-
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  height: calc(100% - 11.2rem);
-`;
+import { Status } from '../Status';
 
 const TopCorner = styled.div`
   position: absolute;
@@ -76,8 +67,6 @@ const Info = styled.div`
   writing-mode: vertical-lr;
 `;
 
-const Cover = styled.div``;
-
 const Corner = styled.div`
   width: 7.5rem;
   position: absolute;
@@ -99,6 +88,7 @@ const BottomCorner = styled.div`
   left: 3rem;
   bottom: 0;
 `;
+
 const BottomCornerWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -137,7 +127,7 @@ const BorderBlock = styled.div`
 
 export const Main = () => {
   return (
-    <Wrapper>
+    <>
       <TopCorner>
         <div>/ dev</div>
         <div>/ start</div>
@@ -166,7 +156,6 @@ export const Main = () => {
         </Corner>
         <Info>[ VIGILANTE ]</Info>
       </EXxpansion>
-      <Socials />
-    </Wrapper>
+    </>
   );
 };

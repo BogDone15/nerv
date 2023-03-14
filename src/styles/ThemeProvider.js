@@ -6,5 +6,6 @@ export const theme = {
 
   colorMain: '#191919',
   colorGray: '#878787',
+  colorBlack: '#000000',
   colorBorder: 'rgba(0,0,0,.2)',
 };

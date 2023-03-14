@@ -7,7 +7,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 10rem;
+  max-width: 10rem;
+  width: 100%;
   height: 100%;
   padding-right: 0.4rem;
   border-left: 1px solid ${(props) => props.theme.colorBorder};

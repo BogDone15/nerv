@@ -1,12 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import jacket from '../assets/jacket.svg';
+import jacket from '../../assets/jacket.svg';
 
 const GearWrapper = styled.div`
+  position: relative;
   border-left: 1px solid ${(props) => props.theme.colorBorder};
-  width: 40.9rem;
+  max-width: 40.9rem;
+  width: 100%;
   height: 100%;
+  &:after {
+    position: absolute;
+    content: '';
+    right: 0.8rem;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: ${(props) => props.theme.colorBorder};
+  }
 `;
 
 const GearTop = styled.div`
@@ -36,20 +46,25 @@ const GearMainView = styled.span`
 const GearMain = styled.div`
   display: flex;
   flex-flow: column;
-  padding: 1.7rem 2.5rem 1rem;
+  padding: 1.7rem 0.2rem 1rem 1.5rem;
   height: calc(100% - 7.8rem);
 `;
 
 const GearBlock = styled.div`
   display: flex;
   align-items: flex-start;
-  /* justify-content: space-between;
-  align-items: center; */
   flex-wrap: wrap;
   gap: 1.8rem;
-  padding-top: 1rem;
+  padding: 1rem 1.7rem 0 0;
   overflow-y: auto;
   height: 74rem;
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: ${(props) => props.theme.colorBlack};
+  }
 `;
 
 const GearCover = styled.div`
@@ -104,7 +119,7 @@ const GearAside = styled.div`
 
 const GearLine = styled.div`
   position: absolute;
-  right: -0.15rem;
+  right: -0.1rem;
   bottom: 1.2rem;
   height: 2.1rem;
   width: 0.4rem;

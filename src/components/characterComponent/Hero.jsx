@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import itemThird from '../assets/items/item3.svg';
-import itemFourth from '../assets/items/item4.svg';
-import itemFifth from '../assets/items/item5.svg';
-import itemSixth from '../assets/items/item6.svg';
-import itemSeventh from '../assets/items/item7.svg';
-import itemEights from '../assets/items/item8.svg';
-import heroBg from '../assets/hero-bg.png';
+import itemThird from '../../assets/items/item3.svg';
+import itemFourth from '../../assets/items/item4.svg';
+import itemFifth from '../../assets/items/item5.svg';
+import itemSixth from '../../assets/items/item6.svg';
+import itemSeventh from '../../assets/items/item7.svg';
+import itemEights from '../../assets/items/item8.svg';
+import heroBg from '../../assets/hero-bg.png';
 import { motion } from 'framer-motion';
 
 const HeroWrapper = styled.div`
   border-left: 1px solid ${(props) => props.theme.colorBorder};
-  width: 8.5rem;
+  max-width: 8.5rem;
+  width: 100%;
   height: 100%;
 `;
 

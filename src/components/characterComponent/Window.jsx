@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import jacketPreview from '../assets/jacket-preview.svg';
-import previewBg from '../assets/preview-bg.svg';
-import video from '../assets/video/video.mp4';
+import jacketPreview from '../../assets/jacket-preview.svg';
+import previewBg from '../../assets/preview-bg.svg';
+// import video from '../../assets/video/video.mp4';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,6 +29,9 @@ const WrapperTop = styled.div`
 const WrapperMain = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
   gap: 1.6rem;
   padding: 2rem 1.5rem 2rem 4.3rem;
 `;
@@ -39,9 +43,21 @@ const WrapperContent = styled.div`
   width: 100%;
 `;
 const WrapperMainTop = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
+  &:after {
+    position: absolute;
+    left: -0.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    content: '';
+    width: 0.4rem;
+    height: 30rem;
+    background: ${(props) => props.theme.colorMain};
+    clip-path: polygon(0 1%, 100% 0, 100% 100%, 0 99%);
+  }
 `;
 
 const WrapperMainCover = styled.div`
@@ -74,15 +90,50 @@ const WrapperMainMiddle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 51.7rem;
   width: 100%;
-  /* padding: 1rem; */
+  padding: 4rem 1rem;
 `;
 
 const WrapperMainBlock = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  & > a {
+    position: relative;
+    padding: 1.4rem 0;
+    background: ${(props) => props.theme.colorMain};
+    cursor: pointer;
+  }
+`;
+
+const LinkGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 5.7rem;
+  padding-left: 1.6rem;
+
+  & > span {
+    font-weight: 450;
+    font-size: ${(props) => props.theme.fontsm};
+    line-height: 1.8rem;
+    color: #adadad;
+    text-transform: uppercase;
+  }
+`;
+
+const Button = styled.button`
+  position: relative;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  & > span {
+    font-weight: 450;
+    font-size: ${(props) => props.theme.fontsm};
+    line-height: 1.8rem;
+    color: #adadad;
+    text-transform: uppercase;
+  }
 `;
 
 const Scan = styled.p`
@@ -166,34 +217,45 @@ const Text = styled.p`
   margin: auto;
 `;
 
-const Button = styled.button`
-  position: relative;
-  padding: 1.4rem 0;
-  cursor: pointer;
-  & > span {
-    font-weight: 450;
-    font-size: ${(props) => props.theme.fontsm};
-    line-height: 1.8rem;
-    color: #adadad;
-    text-transform: uppercase;
-  }
-`;
-
 const Input = styled.input`
   border: 1px solid ${(props) => props.theme.colorBorder};
   background: transparent;
   outline: none;
   width: 100%;
   height: 4.3rem;
-  padding: 0.5rem;
-  margin: 1.6rem 0;
+  padding-left: 1rem;
+  /* &:focus {
+    & + span {
+      left: 2rem;
+      top: -0.8rem;
+      transform: unset;
+    }
+  } */
 `;
 
-const Video = styled.video`
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+const InputWrapper = styled.div`
+  position: relative;
+  margin: 1.6rem 0;
 `;
+const InputPlaceHolder = styled.span`
+  position: absolute;
+  background: #cecece;
+  padding: 0 0.8rem;
+  left: 2rem;
+  top: -0.8rem;
+  font-weight: 300;
+  font-size: 1.3rem;
+  line-height: 1.7rem;
+  color: #000000;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+`;
+
+// const Video = styled.video`
+//   width: 100%;
+//   height: 100%;
+//   pointer-events: none;
+// `;
 
 export const Window = () => {
   return (
@@ -209,15 +271,15 @@ export const Window = () => {
               <WrapperMainCover>
                 <WrapperMainMiddle>
                   <Scan>Scn</Scan>
-                  {/* <Image src={jacketPreview} alt="Nerv" /> */}
-                  <Video
+                  <Image src={jacketPreview} alt="Nerv" />
+                  {/* <Video
                     autoPlay
                     muted
                     playsInline
                     controls
                     loop
                     src={video}
-                  ></Video>
+                  ></Video> */}
                 </WrapperMainMiddle>
                 <WrapperMainRight>
                   <Lock viewBox="0 0 8.56 12.11">
@@ -227,8 +289,11 @@ export const Window = () => {
                 </WrapperMainRight>
               </WrapperMainCover>
             </WrapperMainTop>
-            <Button>
-              <span>Preorder</span>
+            <Link to="/item">
+              <LinkGroup>
+                <span>A31 JACKET DETAILS</span>
+                <span>200.00 EUR</span>
+              </LinkGroup>
               <IconArrow viewBox="0 0 12 21">
                 <path d="M3.5 0.75H0.689941V3.56H3.5V0.75Z" />
                 <path d="M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z" />
@@ -238,7 +303,7 @@ export const Window = () => {
                 <path d="M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z" />
                 <path d="M3.5 17.63H0.689941V20.44H3.5V17.63Z" />
               </IconArrow>
-            </Button>
+            </Link>
           </WrapperMainBlock>
         </WrapperContent>
         <WrapperMainBottom>
@@ -250,7 +315,10 @@ export const Window = () => {
               ATHINA WILL SEND YOU NOTIFICATION WHEN THIS PRODUCT BECOME
               ALAILIBLE
             </Text>
-            <Input type="email" placeholder="Email" />
+            <InputWrapper>
+              <Input type="email" />
+              <InputPlaceHolder>Email</InputPlaceHolder>
+            </InputWrapper>
             <Button>
               <span>I AGREE</span>
             </Button>

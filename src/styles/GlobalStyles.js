@@ -14,6 +14,12 @@ html {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  @media screen and (max-width: 1700px) {
+    font-size: 9px;
+  }
+  @media screen and (max-width: 1500px) {
+    font-size: 8px;
+  }
 }
 
 body {

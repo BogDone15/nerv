@@ -3,13 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Socials } from '../components/Socials';
-import { AugmentationsMenu } from '../components/characterComponent/AugmentationsMenu';
-import { Hero } from '../components/characterComponent/Hero';
-import { Gear } from '../components/characterComponent/Gear';
-import { Appearance } from '../components/characterComponent/Appearance';
-import { Window } from '../components/characterComponent/Window';
 import { Nav } from '../components/Nav';
+import { SingleProduct } from '../components/productComponent/SingleProduct';
+import { Socials } from '../components/Socials';
 
 const Wrapper = styled.div`
   height: calc(100vh - 6vh);
@@ -35,30 +31,6 @@ const Aside = styled.div`
   border-right: 1px solid ${(props) => props.theme.colorBorder};
 `;
 
-const AsideText = styled.div`
-  font-weight: 300;
-  font-size: 1.3rem;
-  color: ${(props) => props.theme.colorGray};
-  transform: rotate(-180deg);
-  writing-mode: vertical-lr;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:last-child {
-    position: relative;
-    &::after {
-      position: absolute;
-      left: 0;
-      bottom: -4.5rem;
-      content: '';
-      background: ${(props) => props.theme.colorGray};
-      width: 100%;
-      height: 1px;
-    }
-  }
-`;
-
 const AsideTop = styled.div`
   height: 6.6rem;
   width: 100%;
@@ -68,11 +40,10 @@ const AsideTop = styled.div`
 `;
 
 const AsideMiddle = styled.div`
-  height: 7.8rem;
+  height: calc(100% - 9.7rem);
   width: 100%;
-  border-top: 1px solid ${(props) => props.theme.colorBorder};
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: ${(props) => props.theme.fontsm};
   line-height: 1.8rem;
   color: #878787;
   transform: rotate(-180deg);
@@ -80,16 +51,6 @@ const AsideMiddle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const AsideBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: calc(100% - 18rem);
-  padding: 3.3rem 0;
 `;
 
 const Right = styled.div`
@@ -100,25 +61,21 @@ const Right = styled.div`
 `;
 
 const Group = styled.div`
+  position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   height: 100%;
   overflow-y: hidden;
 `;
 
-export const Character = () => {
+export const Product = () => {
   return (
     <Wrapper>
       <Block>
         <Aside>
           <AsideTop />
-          <AsideMiddle>HEAD</AsideMiddle>
-          <AsideBottom>
-            <AsideText>TXT</AsideText>
-            <AsideText>FILTER / MENU</AsideText>
-            <AsideText>FIRST EXPANSION</AsideText>
-          </AsideBottom>
+          <AsideMiddle>PRODUCT DETAILS</AsideMiddle>
         </Aside>
         <Right>
           <Header />
@@ -126,13 +83,11 @@ export const Character = () => {
             <Link to="/">Main</Link>
             <span>&gt;</span>
             <Link to="/character">CHARACTER INTERFACE</Link>
+            <span>&gt;</span>
+            <Link to="/character">A31 JACKET</Link>
           </Nav>
           <Group>
-            <AugmentationsMenu />
-            <Hero />
-            <Gear />
-            <Appearance />
-            <Window />
+            <SingleProduct />
             <Socials />
           </Group>
         </Right>

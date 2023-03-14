@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Loader } from '../components/Loader';
-import { Main } from '../components/Main';
+import { Main } from '../components/homeComponent/Main';
+import { Nav } from '../components/Nav';
+import { Socials } from '../components/Socials';
 
 const Wrapper = styled.div`
   height: calc(100vh - 6vh);
@@ -120,6 +122,14 @@ const Line = styled.svg`
   fill: none;
 `;
 
+const Group = styled.div`
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - 11.2rem);
+`;
+
 export const Home = () => {
   const [loaded, setLoaded] = useState(false);
 
@@ -152,7 +162,11 @@ export const Home = () => {
           </ChooseBtn>
           <Right>
             <Header />
-            <Main />
+            <Nav />
+            <Group>
+              <Main />
+              <Socials />
+            </Group>
           </Right>
         </Block>
         <Footer />
@@ -160,5 +174,3 @@ export const Home = () => {
     </>
   );
 };
-
-

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import itemFirst from '../assets/items/item1.svg';
-import itemSecond from '../assets/items/item2.svg';
-import augmenBgFirst from '../assets/augmen-bg1.png';
-import augmenBgSecond from '../assets/augmen-bg2.png';
-import augmenBgThird from '../assets/augmen-bg3.png';
+import itemFirst from '../../assets/items/item1.svg';
+import itemSecond from '../../assets/items/item2.svg';
+import augmenBgFirst from '../../assets/augmen-bg1.png';
+import augmenBgSecond from '../../assets/augmen-bg2.png';
+import augmenBgThird from '../../assets/augmen-bg3.png';
 
 const Menu = styled.div`
   display: flex;
