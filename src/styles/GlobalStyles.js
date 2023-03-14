@@ -15,7 +15,7 @@ html {
   max-width: 100%;
   overflow-x: hidden;
   @media screen and (max-width: 1930px) {
-    font-size: 10px;
+    font-size: 9.8px;
   }
   @media screen and (max-width: 1700px) {
     font-size: 9px;
