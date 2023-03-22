@@ -59,7 +59,7 @@ const Input = styled.input`
   outline: none;
   width: 100%;
   height: 4.3rem;
-  padding-left: 1rem;
+  font-size: 1.8rem;
 `;
 
 const InputPlaceHolder = styled.span`
@@ -274,8 +274,8 @@ export const ContactInfo = () => {
             {hideInfoBlock && (
               <>
                 <InputWrapper>
-                  <Input type="email" name="email" />
-                  <InputPlaceHolder>Email</InputPlaceHolder>
+                  <Input type="text" name="country" />
+                  <InputPlaceHolder>Country</InputPlaceHolder>
                 </InputWrapper>
                 <InputWrapper>
                   <Input type="text" name="state" />

@@ -4,9 +4,9 @@ import planet from '../../assets/planet.png';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const Wrapper = styled(Tabs)`
+  padding: 0 1.5rem 1.9rem;
   width: 100%;
   height: 100%;
-  padding: 0 1.5rem 1.9rem;
 `;
 
 const WrapperNav = styled(TabList)`
@@ -51,7 +51,7 @@ const WrapperNavItem = styled(Tab)`
       background: ${(props) => props.theme.colorMain};
       color: #b2b2b2;
       &:last-child {
-       padding-right: 20rem;
+        padding-right: 20rem;
       }
     }
   }
@@ -127,6 +127,18 @@ const MainMiddle = styled(TabPanel)`
   width: 100%;
   height: 100%;
   border: 1px solid ${(props) => props.theme.colorBorder};
+  padding-right: 0.3rem;
+  overflow: hidden;
+  &:after {
+    position: absolute;
+    content: '';
+    right: 1rem;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: ${(props) => props.theme.colorBorder};
+  }
+
   &.is-selected {
     display: block;
   }
@@ -154,6 +166,15 @@ const MainMiddleTitle = styled.div`
 
 const MainMiddleText = styled.div`
   padding: 0 4.2rem;
+  height: 100%;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: ${(props) => props.theme.colorBlack};
+  }
   & > p {
     font-weight: 450;
     font-size: ${(props) => props.theme.fontsm};
@@ -168,8 +189,8 @@ const MainMiddleText = styled.div`
 
 const Directors = styled.div`
   position: absolute;
-  right: 6.5rem;
-  bottom: 6rem;
+  right: 2.5rem;
+  top: 1rem;
   font-weight: 450;
   font-size: 1.3rem;
   line-height: 1.7rem;
@@ -286,6 +307,74 @@ export const CorporationDetail = () => {
           </MainMiddleTitle>
           <MainMiddleLine />
           <MainMiddleText>
+            <p>
+              Prior to the host uprising of Season 2, guests were allowed to use
+              a host in any way they choose — including committing violent
+              actions that resulted in a host's injury or death. Delos marketing
+              states that guests are guaranteed privacy in their interactions
+              with hosts, although Season 2 Episode 1 revealed that at least
+              some hosts are programmed to record the full extent of a guest's
+              experiences with them, including the guest's DNA (likely obtained
+              through the exchange of bodily fluids during sexual activity).
+            </p>
+            <p>
+              Maeve remembers her old storyline in which she protects her
+              daughter
+            </p>
+            <p>PR - </p>
+            <p>COLLABORATION - </p>
+            <p>SUUPORT CARE - </p>
+            <p>
+              Prior to the host uprising of Season 2, guests were allowed to use
+              a host in any way they choose — including committing violent
+              actions that resulted in a host's injury or death. Delos marketing
+              states that guests are guaranteed privacy in their interactions
+              with hosts, although Season 2 Episode 1 revealed that at least
+              some hosts are programmed to record the full extent of a guest's
+              experiences with them, including the guest's DNA (likely obtained
+              through the exchange of bodily fluids during sexual activity).
+            </p>
+            <p>
+              Maeve remembers her old storyline in which she protects her
+              daughter
+            </p>
+            <p>PR - </p>
+            <p>COLLABORATION - </p>
+            <p>SUUPORT CARE - </p>{' '}
+            <p>
+              Prior to the host uprising of Season 2, guests were allowed to use
+              a host in any way they choose — including committing violent
+              actions that resulted in a host's injury or death. Delos marketing
+              states that guests are guaranteed privacy in their interactions
+              with hosts, although Season 2 Episode 1 revealed that at least
+              some hosts are programmed to record the full extent of a guest's
+              experiences with them, including the guest's DNA (likely obtained
+              through the exchange of bodily fluids during sexual activity).
+            </p>
+            <p>
+              Maeve remembers her old storyline in which she protects her
+              daughter
+            </p>
+            <p>PR - </p>
+            <p>COLLABORATION - </p>
+            <p>SUUPORT CARE - </p>{' '}
+            <p>
+              Prior to the host uprising of Season 2, guests were allowed to use
+              a host in any way they choose — including committing violent
+              actions that resulted in a host's injury or death. Delos marketing
+              states that guests are guaranteed privacy in their interactions
+              with hosts, although Season 2 Episode 1 revealed that at least
+              some hosts are programmed to record the full extent of a guest's
+              experiences with them, including the guest's DNA (likely obtained
+              through the exchange of bodily fluids during sexual activity).
+            </p>
+            <p>
+              Maeve remembers her old storyline in which she protects her
+              daughter
+            </p>
+            <p>PR - </p>
+            <p>COLLABORATION - </p>
+            <p>SUUPORT CARE - </p>{' '}
             <p>
               Prior to the host uprising of Season 2, guests were allowed to use
               a host in any way they choose — including committing violent
