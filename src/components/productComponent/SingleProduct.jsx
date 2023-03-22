@@ -104,18 +104,18 @@ const Title = styled.h2`
 	text-transform: uppercase;
 `;
 
-const Content = styled.div`
-	& > div {
-		&:nth-child(2) {
-			& > p {
-				margin-bottom: 1.7rem;
-				&:last-child {
-					margin-bottom: 0;
-				}
-			}
-		}
-	}
-`;
+// const Content = styled.div`
+// 	& > div {
+// 		&:nth-child(2) {
+// 			& > p {
+// 				margin-bottom: 1.7rem;
+// 				&:last-child {
+// 					margin-bottom: 0;
+// 				}
+// 			}
+// 		}
+// 	}
+// `;
 
 const Text = styled.p`
 	font-weight: 400;
