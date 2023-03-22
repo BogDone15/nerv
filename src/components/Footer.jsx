@@ -33,10 +33,8 @@ const Right = styled.div`
 	margin-bottom: 0rem;
 	max-width: 24.5rem;
 	width: 100%;
-	@media screen and (max-width: 1100px) {
-		& > img {
-			max-width: 2.3rem;
-		}
+	& > img {
+		max-width: 2.3rem;
 	}
 
 	& > span {
