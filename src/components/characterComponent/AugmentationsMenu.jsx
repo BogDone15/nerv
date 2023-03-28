@@ -12,13 +12,16 @@ const Menu = styled.div`
 	max-width: 14.8rem;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const MenuTop = styled.div`
 	height: 7.8rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	display: flex;
 	align-items: center;
@@ -34,7 +37,7 @@ const MenuMain = styled.div`
 
 const MenuMainView = styled.div`
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-align: center;
 	margin-bottom: 2rem;

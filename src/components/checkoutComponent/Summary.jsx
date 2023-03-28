@@ -19,7 +19,7 @@ const WrapperTitle = styled.div`
 	padding-bottom: 0.7rem;
 	& > h2 {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}
@@ -30,7 +30,7 @@ const WrapperTop = styled.div`
 	display: flex;
 	align-items: flex-end;
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorBlack};
 	height: 4.6rem;
@@ -164,7 +164,7 @@ const ItemInfo = styled.div`
 	}
 	& > div {
 		font-weight: 300;
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		line-height: 1.7rem;
 		color: ${props => props.theme.colorBlack};
 		margin-top: 0.9rem;
@@ -181,7 +181,7 @@ const ItemPrice = styled.div`
 	padding: 1rem;
 	& > span {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}
@@ -211,7 +211,7 @@ const WrapperBottomItem = styled.div`
 	}
 	& > div {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 		&:last-child {
@@ -231,6 +231,7 @@ export const Summary = () => {
 			setArrSize('');
 		}
 	}, [cart.products.length]);
+
 	return (
 		<Wrapper>
 			<WrapperBottom>
@@ -265,18 +266,18 @@ export const Summary = () => {
 						<Item key={item.id}>
 							<ItemImage>
 								<ItemImageCover>
-									<Image src={item.imgMain} alt='Nerv' />
+									<Image src={item.imgMain} alt={item.name} />
 								</ItemImageCover>
 							</ItemImage>
 							<ItemInfo>
 								<p>{item.name}</p>
 								<p>{item.desc}</p>
 								<div>
-									{item.model} / {item.color} / {item.size.full}
+									{item.model} / {item.size.color} / {item.size.sizeFull}
 								</div>
 							</ItemInfo>
 							<ItemPrice>
-								<span>EUR {item.price}</span>
+								<span>EUR {item.price}.00</span>
 							</ItemPrice>
 						</Item>
 					))}

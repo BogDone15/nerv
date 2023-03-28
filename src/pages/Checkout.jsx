@@ -45,7 +45,7 @@ const AsideMiddle = styled.div`
 	height: calc(100% - 9.7rem);
 	width: 100%;
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: #878787;
 	transform: rotate(-180deg);
@@ -93,7 +93,7 @@ export const Checkout = () => {
 					<AsideTop />
 					<AsideMiddle>CHECKOUT</AsideMiddle>
 				</Aside>
-				<GearPreview>{/* <AsideTop /> */}</GearPreview>
+				<GearPreview />
 				<Right>
 					<Header />
 					<Nav>

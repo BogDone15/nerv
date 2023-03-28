@@ -9,11 +9,19 @@ const HeroWrapper = styled.div`
 	max-width: 8.5rem;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		margin-left: 4rem;
+		max-width: 100%;
+		width: 15%;
+	}
 `;
 
 const HeroTop = styled.div`
 	height: 7.8rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const HeroBlock = styled.div`
@@ -26,11 +34,14 @@ const HeroBlock = styled.div`
 const HeroMain = styled.div`
 	height: calc(100% - 7.8rem);
 	padding: 1.7rem 0.5rem 1rem;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+	}
 `;
 
 const HeromainView = styled.div`
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-align: center;
 	margin-bottom: 2rem;

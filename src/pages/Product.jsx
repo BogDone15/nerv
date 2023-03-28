@@ -1,6 +1,8 @@
-import React from 'react';
+import { AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { ModalProdAdd } from '../components/characterComponent/ModalProdAdd';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Nav } from '../components/Nav';
@@ -43,7 +45,7 @@ const AsideMiddle = styled.div`
 	height: calc(100% - 10.3rem);
 	width: 100%;
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: #878787;
 	transform: rotate(-180deg);
@@ -70,6 +72,7 @@ const Group = styled.div`
 `;
 
 export const Product = () => {
+	const [showModal, setShowModal] = useState(false);
 	const location = useLocation();
 	const path = location.pathname;
 	const productName = path.split('/')[2].replace(/-/gi, ' ');
@@ -91,7 +94,17 @@ export const Product = () => {
 						<Link to={path}>{productName}</Link>
 					</Nav>
 					<Group>
-						<SingleProduct />
+						<AnimatePresence>
+							{showModal && (
+								<ModalProdAdd
+									key='modal'
+									setShowModal={setShowModal}
+									showModal={showModal}
+								/>
+							)}
+						</AnimatePresence>
+
+						<SingleProduct setShowModal={setShowModal} />
 						<Socials />
 					</Group>
 				</Right>

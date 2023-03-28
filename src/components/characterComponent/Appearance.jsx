@@ -18,12 +18,19 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 1rem 3rem;
+	@media screen and (max-width: 1100px) {
+		width: 55%;
+		max-width: 100%;
+	}
 `;
 
 const WrapperAside = styled.div`
 	width: 1rem;
 	height: 100%;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Image = styled.img`
@@ -38,7 +45,7 @@ const Text = styled.p`
 	left: 3.4rem;
 	top: 2.8rem;
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 18px;
 	color: ${props => props.theme.colorMain};
 `;

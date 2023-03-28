@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 	border-top-right-radius: 3rem;
 	@media screen and (max-width: 1100px) {
+		position: relative;
 		margin-top: 1.3rem;
 	}
 `;
@@ -42,6 +43,7 @@ const Right = styled.div`
 	justify-content: space-between;
 	gap: 3.5rem;
 	height: 5rem;
+	padding-top: 0.2rem;
 	padding-left: 4.6rem;
 	padding-right: ${props => props.paddingRight};
 	border-top-right-radius: 3rem;
@@ -49,6 +51,7 @@ const Right = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 55%;
 		height: 6rem;
+		justify-content: flex-end;
 	}
 `;
 
@@ -101,6 +104,17 @@ const RightNav = styled.div`
 		color: ${props => props.theme.colorGray};
 		text-transform: uppercase;
 		margin: 0 1rem;
+	}
+
+	@media screen and (max-width: 1100px) {
+		position: absolute;
+		left: 5.4rem;
+		top: 7.2rem;
+		z-index: 5;
+		& > a {
+			font-size: ${props => props.theme.fontsm};
+			color: ${props => props.theme.colorBlack};
+		}
 	}
 `;
 

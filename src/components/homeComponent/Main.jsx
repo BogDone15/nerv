@@ -12,7 +12,7 @@ const TopCorner = styled.div`
 
 	& > div {
 		font-weight: 400;
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		line-height: 1.5rem;
 		color: #adadad;
 	}
@@ -52,7 +52,7 @@ const Block = styled.div`
 const Image = styled.img`
 	max-width: 100%;
 	width: auto;
-	max-height: 73vh;
+	max-height: 80vh;
 	margin: 0 auto;
 	@media screen and (max-width: 1100px) {
 		max-height: 100%;
@@ -78,7 +78,7 @@ const Expansion = styled.div`
 const Info = styled.div`
 	transform: rotate(-180deg);
 	font-weight: 300;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorMain};
 	writing-mode: vertical-lr;
@@ -92,7 +92,7 @@ const Corner = styled.div`
 	transform: rotate(-180deg);
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		width: 100%;
 		color: ${props => props.theme.colorGray};

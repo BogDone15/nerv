@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Mousewheel } from 'swiper';
+import 'swiper/css/mousewheel';
 
 const Wrapper = styled.div`
 	position: absolute;
@@ -145,6 +147,7 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
 	const [currentSlide, setCurrentSlide] = useState('01');
+	const time = new Date().getTime();
 
 	useEffect(() => {
 		curProd.imgSliderZoom?.length <= 9
@@ -160,9 +163,6 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 		const swiper = useSwiper();
 		const handleClickPrev = () => {
 			swiper.slidePrev();
-			setCurrentSlide(prev =>
-				prev <= 10 ? '0' + (Number(prev) - 1) : Number(prev) - 1
-			);
 		};
 
 		return (
@@ -187,9 +187,6 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 
 		const handleClickNext = () => {
 			swiper.slideNext();
-			setCurrentSlide(prev =>
-				prev < 9 ? '0' + (Number(prev) + 1) : Number(prev) + 1
-			);
 		};
 
 		return (
@@ -228,6 +225,9 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 				</GroupBlock>
 			</Group>
 			<Swiper
+				modules={[Mousewheel]}
+				mousewheel={{ releaseOnEdges: true }}
+				direction={'horizontal'}
 				spaceBetween={50}
 				slidesPerView={1}
 				scrollbar={{ draggable: true }}
@@ -237,13 +237,23 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 						: setLastSlide(false);
 					swiper.activeIndex === 0 ? setFirstSlide(true) : setFirstSlide(false);
 				}}
+				onSlidePrevTransitionStart={() => {
+					setCurrentSlide(prev =>
+						prev <= 10 ? '0' + (Number(prev) - 1) : Number(prev) - 1
+					);
+				}}
+				onSlideNextTransitionStart={() => {
+					setCurrentSlide(prev =>
+						prev < 9 ? '0' + (Number(prev) + 1) : Number(prev) + 1
+					);
+				}}
 			>
 				<Position>
 					{currentSlide}/{slides}
 				</Position>
 				{curProd.imgSliderZoom?.map(item => (
 					<SwiperSlide>
-						<Image key={curProd.id} src={item} alt='Nerv' />
+						<Image key={curProd.id * time} src={item} alt='Nerv' />
 					</SwiperSlide>
 				))}
 				<SwiperButtonPrev />

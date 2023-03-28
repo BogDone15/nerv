@@ -45,7 +45,7 @@ const Aside = styled.div`
 
 const AsideText = styled.div`
 	font-weight: 300;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	color: #878787;
 	color: ${props => props.theme.colorGray};
 	transform: rotate(-180deg);
@@ -84,7 +84,7 @@ const ChooseBtn = styled.div`
 	a {
 		position: relative;
 		font-weight: 450;
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		color: ${props => props.theme.colorMain};
 		transform: rotate(-180deg) translateY(-4.4rem);
 		writing-mode: vertical-lr;
@@ -94,27 +94,10 @@ const ChooseBtn = styled.div`
 			font-size: 1.2rem;
 			transform: rotate(-180deg) translate(-0.2rem, -3.1rem);
 		}
-		&:before {
-			content: '';
-			position: absolute;
-			z-index: 1;
-			left: 0;
-			bottom: 0;
-			width: 1px;
-			height: 100%;
-			background: ${props => props.theme.colorMain};
-			transform: translateY(-101%);
-			backface-visibility: hidden;
-			transform-origin: left;
-			transition: all 0.2s ease;
-		}
 	}
 	&:hover {
 		a {
 			opacity: 0.7;
-			&:before {
-				transform: translateY(101%);
-			}
 		}
 	}
 	@media screen and (max-width: 1100px) {

@@ -24,7 +24,7 @@ const WrapperTop = styled.div`
 
 	& > span {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}

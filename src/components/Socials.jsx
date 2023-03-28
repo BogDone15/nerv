@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 		right: 7.1rem;
 		top: 4.2rem;
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		width: 100%;
 		color: ${props => props.theme.colorGray};

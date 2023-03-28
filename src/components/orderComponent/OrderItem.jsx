@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { deleteProduct } from '../../redux/cartRedux';
+import {
+	deleteProduct,
+	incrementQuantity,
+	decrementQuantity,
+} from '../../redux/cartRedux';
 
 const WrapperTop = styled.div`
 	display: flex;
@@ -12,7 +16,7 @@ const WrapperTop = styled.div`
 
 	& > span {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}
@@ -30,7 +34,7 @@ const ContentTop = styled.ul`
 
 const ContentTopItem = styled.li`
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
@@ -113,7 +117,7 @@ const ContentMainItemBlock = styled.div`
 	& > h3,
 	& > p {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorMain};
 		transition: all 0.2s ease;
@@ -148,7 +152,7 @@ const ContentMainItemColor = styled.div`
 	width: 9%;
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorMain};
 		text-transform: uppercase;
@@ -161,14 +165,13 @@ const ContentMainItemSize = styled.div`
 	& > div {
 		width: 4.7rem;
 		height: 4.7rem;
-		border: 1px solid ${props => props.theme.colorBlack};
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		transition: all 0.2s ease;
 		& > span {
 			font-weight: 300;
-			font-size: ${props => props.theme.fontsm};
+			font-size: 1.2rem;
 			line-height: 1.8rem;
 			color: ${props => props.theme.colorBlack};
 			text-transform: uppercase;
@@ -178,22 +181,40 @@ const ContentMainItemSize = styled.div`
 `;
 
 const ContentMainItemAmt = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
 	width: 12%;
 	& > div {
-		width: 4.7rem;
-		height: 4.7rem;
-		border: 1px solid ${props => props.theme.colorBlack};
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all 0.2s ease;
-		& > span {
-			font-weight: 300;
-			font-size: ${props => props.theme.fontsm};
-			line-height: 1.8rem;
-			color: ${props => props.theme.colorBlack};
-			text-transform: uppercase;
+		&:first-child {
+			width: 4.7rem;
+			height: 4.7rem;
+			border: 1px solid ${props => props.theme.colorBlack};
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			transition: all 0.2s ease;
+			& > span {
+				font-weight: 300;
+				font-size: 1.2rem;
+				line-height: 1.8rem;
+				color: ${props => props.theme.colorBlack};
+				text-transform: uppercase;
+				transition: all 0.2s ease;
+			}
+		}
+		&:last-child {
+			display: flex;
+			flex-direction: column;
+			gap: 0.1rem;
+			transform: translateY(0.2rem);
+			& > span {
+				color: ${props => props.theme.colorBlack};
+				font-size: ${props => props.theme.fontmd};
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: all 0.2s ease;
+			}
 		}
 	}
 `;
@@ -202,7 +223,7 @@ const ContentMainItemPrice = styled.div`
 	width: 11%;
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorMain};
 		text-transform: uppercase;
@@ -245,7 +266,6 @@ const ContentMainItem = styled.div`
 
 		${ContentMainItemSize} {
 			& > div {
-				border: 1px solid ${props => props.theme.colorGray};
 				& > span {
 					color: ${props => props.theme.colorGray};
 				}
@@ -253,8 +273,13 @@ const ContentMainItem = styled.div`
 		}
 
 		${ContentMainItemAmt} {
-			& > div {
+			& > div:first-child {
 				border: 1px solid ${props => props.theme.colorGray};
+				& > span {
+					color: ${props => props.theme.colorGray};
+				}
+			}
+			& > div:last-child {
 				& > span {
 					color: ${props => props.theme.colorGray};
 				}
@@ -278,7 +303,7 @@ const ContentPriceItem = styled.div`
 	}
 	& > div {
 		font-weight: 400;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorMain};
 		margin-bottom: 0.2rem;
@@ -302,17 +327,18 @@ const ContentBottom = styled.div`
 		width: calc(50% - 0.4rem);
 		text-align: center;
 		font-weight: 450;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: #adadad;
 		background: ${props => props.theme.colorMain};
-		padding: 1.3rem 0;
+		padding: 1.3rem 0 1.1rem;
 	}
 `;
 
 export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 	const cart = useSelector(state => state.cart);
 	const [arrSize, setArrSize] = useState('');
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (cart.products.length >= 3) {
@@ -322,7 +348,6 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 		}
 	}, [cart.products.length]);
 
-	const dispatch = useDispatch();
 	const handleDelete = (id, quantity, price) => {
 		dispatch(deleteProduct({ id, quantity, price }));
 		setShowFirstItem('showFirstItem');
@@ -332,7 +357,20 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 		setActiveImage(id);
 		setShowFirstItem('');
 	};
-	console.log(cart);
+
+	const handleQuantity = (type, id) => {
+		const currentItem = cart.products.find(item => item.id === id);
+		if (type === 'dec') {
+			if (currentItem.quantity > 1) {
+				dispatch(decrementQuantity({ id }));
+			}
+		} else {
+			if (currentItem.quantity < currentItem.size.inStock) {
+				dispatch(incrementQuantity({ id }));
+			}
+		}
+	};
+
 	return (
 		<>
 			<WrapperTop>
@@ -375,24 +413,30 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 								<p>{item.model}</p>
 							</ContentMainItemBlock>
 							<ContentMainItemBlock>
-								<p>ONLY {item.inStock} ITEM LEFT</p>
+								<p>ONLY {item.size.inStock} ITEM LEFT</p>
 							</ContentMainItemBlock>
 						</ContentMainItemInfo>
 						<ContentMainItemColor>
-							<span>{item.color}</span>
+							<span>{item.size.color}</span>
 						</ContentMainItemColor>
 						<ContentMainItemSize>
 							<div>
-								<span>{item.size.short}</span>
+								<span>{item.size.sizeShort}</span>
 							</div>
 						</ContentMainItemSize>
 						<ContentMainItemAmt>
 							<div>
-								<span>01</span>
+								<span>
+									{item.quantity <= 9 ? '0' + item.quantity : item.quantity}
+								</span>
+							</div>
+							<div>
+								<span onClick={() => handleQuantity('inc', item.id)}>+</span>
+								<span onClick={() => handleQuantity('dec', item.id)}>-</span>
 							</div>
 						</ContentMainItemAmt>
 						<ContentMainItemPrice>
-							<span>EUR {item.price}</span>
+							<span>EUR {item.price}.00</span>
 						</ContentMainItemPrice>
 					</ContentMainItem>
 				))}

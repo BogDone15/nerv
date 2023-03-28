@@ -15,7 +15,7 @@ const TopLeft = styled.div`
 	padding-left: 5rem;
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 	}
 	@media screen and (max-width: 1100px) {
@@ -30,7 +30,7 @@ const TopRight = styled.div`
 	padding-right: 3rem;
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 	}
 	@media screen and (max-width: 1100px) {

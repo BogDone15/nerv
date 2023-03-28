@@ -16,6 +16,15 @@ const GearWrapper = styled.div`
 		width: 1px;
 		height: 100%;
 		background: ${props => props.theme.colorBorder};
+		@media screen and (max-width: 1100px) {
+			display: none;
+		}
+	}
+	@media screen and (max-width: 1100px) {
+		order: 4;
+		max-width: 100%;
+		width: 30%;
+		border-left: unset;
 	}
 `;
 
@@ -23,18 +32,21 @@ const GearTop = styled.div`
 	height: 7.8rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	display: flex;
 	align-items: center;
 	text-transform: uppercase;
 	padding-left: 2rem;
 	color: #000000;
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const GearMainView = styled.span`
 	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-transform: uppercase;
 	margin-bottom: 1rem;
@@ -49,6 +61,9 @@ const GearMain = styled.div`
 	flex-direction: column;
 	padding: 1.7rem 0 1rem 0;
 	height: calc(100% - 7.8rem);
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+	}
 `;
 
 const GearBlock = styled.div`
@@ -64,6 +79,8 @@ const GearBlock = styled.div`
 	&::-webkit-scrollbar-thumb {
 		border-radius: 12px;
 		background-color: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
 	}
 `;
 

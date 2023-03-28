@@ -18,6 +18,9 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-top: 1rem;
+	@media screen and (max-width: 1100px) {
+		height: auto;
+	}
 `;
 
 const Block = styled.div`
@@ -33,11 +36,20 @@ const Aside = styled.div`
 	width: 4.5rem;
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: calc(100% - 22.8rem);
+		width: 4rem;
+		margin-top: 14.7rem;
+		border-right: none;
+	}
 `;
 
 const AsideText = styled.div`
 	font-weight: 300;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	color: ${props => props.theme.colorGray};
 	transform: rotate(-180deg);
 	writing-mode: vertical-lr;
@@ -57,6 +69,13 @@ const AsideText = styled.div`
 			height: 1px;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+		&:first-child,
+		&:last-child {
+			display: none;
+		}
+	}
 `;
 
 const AsideTop = styled.div`
@@ -65,6 +84,9 @@ const AsideTop = styled.div`
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	margin-top: 3.7rem;
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const AsideMiddle = styled.div`
@@ -72,7 +94,7 @@ const AsideMiddle = styled.div`
 	width: 100%;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	font-weight: 400;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: #878787;
 	transform: rotate(-180deg);
@@ -80,6 +102,9 @@ const AsideMiddle = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const AsideBottom = styled.div`
@@ -90,6 +115,10 @@ const AsideBottom = styled.div`
 	width: 100%;
 	height: calc(100% - 18rem);
 	padding: 3.3rem 0;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+		padding: 0;
+	}
 `;
 
 const Right = styled.div`
@@ -97,6 +126,10 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		height: 110rem;
+	}
 `;
 
 const Group = styled.div`
@@ -105,6 +138,10 @@ const Group = styled.div`
 	width: 100%;
 	height: 100%;
 	overflow-y: hidden;
+	@media screen and (max-width: 1100px) {
+		margin-top: 4.4rem;
+		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
 `;
 
 export const Character = () => {

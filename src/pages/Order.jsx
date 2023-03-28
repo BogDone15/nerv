@@ -102,7 +102,7 @@ const AsideMain = styled.div`
 		transform: rotate(-180deg);
 		writing-mode: vertical-lr;
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorGray};
 		padding-top: 8rem;
@@ -116,7 +116,7 @@ const AsideMain = styled.div`
 		content: 'PREODER INTERFACE';
 		text-transform: uppercase;
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		color: ${props => props.theme.colorGray};
 	}
 `;

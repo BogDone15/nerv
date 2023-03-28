@@ -6,6 +6,9 @@ import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { dataItems } from '../../data';
 import { addProduct } from '../../redux/cartRedux';
 import { ZoomImage } from '../productComponent/ZoomImage';
+import { Mousewheel } from 'swiper';
+import 'swiper/css/mousewheel';
+import { Options } from './Options';
 
 const MainWrapper = styled.div`
 	padding: 2rem;
@@ -28,7 +31,8 @@ const MainLeftTop = styled.div`
 	position: relative;
 	border: 1px solid ${props => props.theme.colorBlack};
 	border-top-right-radius: 3rem;
-	padding-top: 3.7rem;
+	padding-top: 2.7rem;
+	height: 100%;
 `;
 const Angle = styled.div`
 	position: absolute;
@@ -83,8 +87,12 @@ const ModelPrice = styled.div`
 	color: ${props => props.theme.colorBlack};
 `;
 const Item = styled.div`
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	position: relative;
-	padding: 1.5rem 3.5rem 1.5rem;
+	padding: 1.5rem 3.5rem;
 	border-bottom: 1px solid ${props => props.theme.colorBlack};
 
 	&:last-child {
@@ -105,16 +113,9 @@ const Title = styled.h2`
 `;
 
 const Content = styled.div`
-	/* & > div {
-		&:nth-child(2) {
-			& > p {
-				margin-bottom: 1.7rem;
-				&:last-child {
-					margin-bottom: 0;
-				}
-			}
-		}
-	} */
+	height: calc(100% - 9.7rem);
+	display: flex;
+	flex-direction: column;
 `;
 
 const Text = styled.p`
@@ -123,129 +124,6 @@ const Text = styled.p`
 	line-height: 1.5rem;
 	color: ${props => props.theme.colorBlack};
 	margin-bottom: 0.1rem;
-`;
-
-const MainLeftBottom = styled.div``;
-
-const MainLeftBottomContent = styled.div`
-	display: flex;
-	align-items: flex-start;
-	border: 1px solid ${props => props.theme.colorBlack};
-	margin-top: 2.5rem;
-`;
-
-const Cover = styled.div`
-	position: relative;
-	width: 50%;
-	padding: 1.6rem 2.8rem 0.8rem 3rem;
-
-	&:first-child {
-		border-right: 1px solid ${props => props.theme.colorBlack};
-	}
-`;
-
-const CoverTitle = styled.h2`
-	position: absolute;
-	left: 2.5rem;
-	top: -0.9rem;
-	background: #cecece;
-	padding: 0 1.3rem;
-	font-weight: 700;
-	font-size: ${props => props.theme.fontsm};
-	line-height: 1.8rem;
-	color: ${props => props.theme.colorBlack};
-	text-transform: uppercase;
-`;
-const CoverSizes = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 0.8rem;
-`;
-const CoverItem = styled.div`
-	position: relative;
-	width: 4.1rem;
-	height: 4.1rem;
-	border: 1px solid ${props => props.theme.colorBlack};
-	cursor: pointer;
-
-	& > span {
-		position: absolute;
-		right: 0.5rem;
-		bottom: 0.2rem;
-		font-weight: 400;
-		font-size: ${props => props.theme.fontxsm};
-		color: ${props => props.theme.colorBlack};
-		text-transform: uppercase;
-	}
-`;
-
-const CoverColors = styled.div`
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	gap: 2rem;
-	margin-top: 3rem;
-`;
-
-const ColorBlock = styled.div`
-	display: flex;
-	align-items: flex-start;
-	gap: 0.9rem;
-`;
-
-const ColorItem = styled.div`
-	width: 4rem;
-	height: 4rem;
-	background: ${props => props.color};
-	cursor: pointer;
-`;
-const ColorName = styled.p`
-	font-weight: 400;
-	font-size: 1.3rem;
-	color: ${props => props.theme.colorBlack};
-	text-transform: uppercase;
-`;
-
-const CoverQuantity = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 0.5rem;
-`;
-
-const CoverContent = styled.div``;
-
-const CoverInStock = styled.div`
-	font-weight: 400;
-	line-height: 1.7rem;
-	font-size: 1.3rem;
-	color: ${props => props.theme.colorBlack};
-	margin-bottom: 0.3rem;
-	&:last-child {
-		margin-bottom: 0;
-	}
-`;
-
-const CoverChart = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 0.8rem;
-	margin-top: 5.5rem;
-
-	& > div {
-		border-radius: 50%;
-		background: ${props => props.theme.colorBlack};
-		width: 1.2rem;
-		height: 1.2rem;
-	}
-
-	& > span {
-		font-weight: 400;
-		line-height: 1.7rem;
-		font-size: 1.3rem;
-		color: ${props => props.theme.colorBlack};
-	}
 `;
 
 const Decoration = styled.div`
@@ -316,9 +194,9 @@ const Square = styled.div`
 `;
 
 const Button = styled.div`
-	padding: 1.5rem 0;
+	padding: 1.5rem 0 1.3rem;
 	width: 100%;
-	background: ${props => props.theme.colorBlack};
+	background: ${props => props.theme.colorMain};
 	margin: 0.9rem 0;
 	text-align: center;
 	cursor: pointer;
@@ -351,7 +229,7 @@ const MainRightAside = styled.div`
 	padding: 3.1rem 1.1rem;
 	& > span {
 		font-weight: 300;
-		font-size: ${props => props.theme.fontsm};
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorGray};
 		transform: rotate(-180deg);
@@ -375,25 +253,29 @@ const MainRightContent = styled.div`
 		}
 	}
 `;
+
 const Position = styled.div`
 	position: absolute;
 	right: 4rem;
 	top: 2.6rem;
 	font-weight: 400;
-	font-size: ${props => props.theme.fontmd};
+	font-size: 1.2rem;
 	line-height: 1.7rem;
 	color: ${props => props.theme.colorBlack};
 `;
+
 const Image = styled.img`
 	max-width: 100%;
 	height: 100%;
 `;
+
 const Corner = styled.div`
 	position: absolute;
 	z-index: 5;
 	right: 3.6rem;
 	bottom: 3.6rem;
 `;
+
 const CornerTop = styled.div`
 	margin-bottom: 2rem;
 	text-align: right;
@@ -405,6 +287,7 @@ const CornerTop = styled.div`
 		text-transform: uppercase;
 	}
 `;
+
 const CornerBottom = styled.div`
 	display: flex;
 	align-items: center;
@@ -417,6 +300,7 @@ const CornerBottom = styled.div`
 		text-transform: uppercase;
 	}
 `;
+
 const Plus = styled.svg`
 	width: 3.8rem;
 	height: 3.8rem;
@@ -478,7 +362,7 @@ const ArrowNext = styled.svg`
 	}
 `;
 
-export const SingleProduct = () => {
+export const SingleProduct = ({ setShowModal }) => {
 	const [slides, setSlides] = useState([]);
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
@@ -487,19 +371,25 @@ export const SingleProduct = () => {
 	const [curProd, setCurProd] = useState({});
 	const [selectedProd, setSelectedProd] = useState([]);
 	const [quantity, setQuantity] = useState(1);
+	const [inStock, setInStock] = useState();
 	const [color, setColor] = useState('');
-	const [size, setSize] = useState('');
+	const [size, setSize] = useState({});
 	const [currentSlide, setCurrentSlide] = useState('01');
 	const location = useLocation();
 	const productName = location.pathname.split('/')[2].replace(/-/gi, ' ');
+
+	const time = new Date().getTime();
 
 	useEffect(() => {
 		const result = dataItems.find(
 			item => item.name.toLowerCase() === productName
 		);
 		setCurProd(result);
-		setColor(result.color[0].name);
-		setSize(result.size[0]);
+		setColor(result.options[0].color[0].name);
+		setSize({
+			sizeShort: result.options[0].sizeShort,
+			sizeFull: result.options[0].sizeFull,
+		});
 
 		curProd.imgSlider?.length <= 9
 			? setSlides('0' + curProd.imgSlider.length)
@@ -507,11 +397,23 @@ export const SingleProduct = () => {
 	}, [productName, curProd.imgSlider?.length]);
 
 	const handleClickBtn = id => {
+		setShowModal(true);
 		setSelectedProd(id);
+
+		// setTimeout(() => {
+		// 	setShowModal(false);
+		// }, 3000);
+
 		if (id === selectedProd) {
 			return null;
 		} else {
-			dispatch(addProduct({ ...curProd, quantity, color, size }));
+			dispatch(
+				addProduct({
+					...curProd,
+					quantity,
+					size: { ...size, color: color, inStock },
+				})
+			);
 		}
 	};
 
@@ -523,9 +425,6 @@ export const SingleProduct = () => {
 		const swiper = useSwiper();
 		const handleClickPrev = () => {
 			swiper.slidePrev();
-			setCurrentSlide(prev =>
-				prev <= 10 ? '0' + (Number(prev) - 1) : Number(prev) - 1
-			);
 		};
 
 		return (
@@ -550,9 +449,6 @@ export const SingleProduct = () => {
 
 		const handleClickNext = () => {
 			swiper.slideNext();
-			setCurrentSlide(prev =>
-				prev < 9 ? '0' + (Number(prev) + 1) : Number(prev) + 1
-			);
 		};
 
 		return (
@@ -591,7 +487,7 @@ export const SingleProduct = () => {
 								<ModelBlockType>MODEL TYPE</ModelBlockType>
 								<ModelBlockTypeName>[ {curProd.model} ]</ModelBlockTypeName>
 							</ModelBlock>
-							<ModelPrice>{curProd.price} USD</ModelPrice>
+							<ModelPrice>{curProd.price}.00 USD</ModelPrice>
 						</Model>
 						<Content>
 							<Item>
@@ -641,50 +537,18 @@ export const SingleProduct = () => {
 							</Item>
 						</Content>
 					</MainLeftTop>
-					<MainLeftBottom>
-						<MainLeftBottomContent>
-							<Cover>
-								<CoverTitle>OPTIONS</CoverTitle>
-								<CoverSizes>
-									{curProd.size?.map(item => (
-										<CoverItem key={curProd.id} onClick={() => setSize(item)}>
-											<span>{item.short}</span>
-										</CoverItem>
-									))}
-								</CoverSizes>
-								<CoverColors>
-									<ColorBlock>
-										{curProd.color?.map(item => (
-											<ColorItem
-												key={curProd.id}
-												color={item.hex}
-												onClick={() => setColor(item.name)}
-											></ColorItem>
-										))}
-									</ColorBlock>
-									<ColorName>{color}</ColorName>
-								</CoverColors>
-							</Cover>
-							<Cover>
-								<CoverTitle>QUANTITY</CoverTitle>
-								<CoverQuantity>
-									<CoverItem>
-										<span>01</span>
-									</CoverItem>
-									<CoverContent>
-										<CoverInStock>
-											LIMITED EDITION - {curProd.limitedEdition}
-										</CoverInStock>
-										<CoverInStock>LEFT {curProd.inStock} IN STOCK</CoverInStock>
-									</CoverContent>
-								</CoverQuantity>
-								<CoverChart>
-									<div></div>
-									<span>SIZE CHART</span>
-								</CoverChart>
-							</Cover>
-						</MainLeftBottomContent>
-					</MainLeftBottom>
+					<Options
+						curProd={curProd}
+						setCurProd={setCurProd}
+						setColor={setColor}
+						setSize={setSize}
+						size={size}
+						color={color}
+						setInStock={setInStock}
+						inStock={inStock}
+						setQuantity={setQuantity}
+						quantity={quantity}
+					/>
 					<Button onClick={() => handleClickBtn(curProd.id)}>
 						<span>ADD TO EQUIP</span>
 					</Button>
@@ -710,6 +574,9 @@ export const SingleProduct = () => {
 							{currentSlide}/{slides}
 						</Position>
 						<Swiper
+							modules={[Mousewheel]}
+							mousewheel={{ releaseOnEdges: true }}
+							direction={'horizontal'}
 							spaceBetween={50}
 							slidesPerView={1}
 							scrollbar={{ draggable: true }}
@@ -721,13 +588,22 @@ export const SingleProduct = () => {
 									? setFirstSlide(true)
 									: setFirstSlide(false);
 							}}
+							onSlidePrevTransitionStart={() => {
+								setCurrentSlide(prev =>
+									prev <= 10 ? '0' + (Number(prev) - 1) : Number(prev) - 1
+								);
+							}}
+							onSlideNextTransitionStart={() => {
+								setCurrentSlide(prev =>
+									prev < 9 ? '0' + (Number(prev) + 1) : Number(prev) + 1
+								);
+							}}
 						>
 							{curProd.imgSlider?.map(item => (
 								<SwiperSlide>
-									<Image key={curProd.id} src={item} alt='Nerv' />
+									<Image key={`${curProd.id}${time}`} src={item} alt='Nerv' />
 								</SwiperSlide>
 							))}
-
 							<SwiperButtonPrev />
 							<SwiperButtonNext />
 						</Swiper>

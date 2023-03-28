@@ -62,75 +62,93 @@ export const dataItems = [
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
 		imgMain: jacket,
-		imgSliderZoom: [
-			charackterZoom,
-			beltZoom,
-			charackterZoom,
-			beltZoom,
-			charackterZoom,
-			beltZoom,
-			charackterZoom,
-			beltZoom,
-			charackterZoom,
-			beltZoom,
-			charackterZoom,
-			beltZoom,
-		],
-		imgSlider: [
-			charackter,
-			belt,
-			charackter,
-			belt,
-			charackter,
-			belt,
-			charackter,
-			belt,
-			charackter,
-			belt,
-			charackter,
-			belt,
-		],
+		imgSliderZoom: [charackterZoom, beltZoom, charackterZoom, beltZoom],
+		imgSlider: [charackter, belt, charackter, belt, charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg, slidesImg, slidesImg],
 		model: 'armor',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 5,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'M',
+				sizeFull: 'medium',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 11,
+					},
+					{
+						name: 'gray',
+						hex: 'gray',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'gray',
-				hex: 'gray',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
+			},
+			{
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 300,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 2,
@@ -148,24 +166,84 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'armor',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 5,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'M',
+				sizeFull: 'medium',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 11,
+					},
+					{
+						name: 'gray',
+						hex: 'gray',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
+			},
+			{
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		sizes: ['medium'],
-		sizesShort: ['M', 'L', 'XL'],
-		price: '300.00',
-		inStock: 1,
+		price: 300,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: '01/02/23',
 		technicalInformation: '',
 		specification: '',
@@ -188,45 +266,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'armor',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '1000.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: '',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 4,
@@ -244,45 +350,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'armor',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: '100',
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 5,
@@ -300,40 +434,68 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'cranium',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '1000.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
 		technicalInformation: '',
 		specification: '',
@@ -356,45 +518,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'cranium',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 7,
@@ -412,45 +602,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'limbs',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '1000.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 8,
@@ -468,45 +686,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'limbs',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 9,
@@ -524,45 +770,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'armor',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '1000.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 10,
@@ -580,45 +854,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'skin',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 300,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 11,
@@ -636,45 +938,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: '2nd skin',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: 'S',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: 'L',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: 'XL',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 300,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
 		id: 12,
@@ -692,45 +1022,73 @@ export const dataItems = [
 		imgSlider: [charackter, belt],
 		imgAppearance: [slidesImg, slidesImg, slidesImg],
 		model: 'spec armr',
-		color: [
+		options: [
 			{
-				name: 'green',
-				hex: '#24391d',
+				sizeShort: '',
+				sizeFull: 'small',
+				color: [
+					{
+						name: 'pink',
+						hex: 'pink',
+						inStock: 5,
+					},
+					{
+						name: 'yellow',
+						hex: 'yellow',
+						inStock: 3,
+					},
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 3,
+					},
+				],
 			},
 			{
-				name: 'black',
-				hex: '#000000',
+				sizeShort: '',
+				sizeFull: 'large',
+				color: [
+					{
+						name: 'green',
+						hex: '#24391d',
+						inStock: 3,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+					{
+						name: 'blue',
+						hex: 'blue',
+						inStock: 7,
+					},
+				],
 			},
 			{
-				name: 'red',
-				hex: 'red',
+				sizeShort: '',
+				sizeFull: 'extra large',
+				color: [
+					{
+						name: 'red',
+						hex: 'red',
+						inStock: 2,
+					},
+					{
+						name: 'black',
+						hex: '#000000',
+						inStock: 3,
+					},
+				],
 			},
 		],
-		size: [
-			{
-				short: 'S',
-				full: 'small',
-			},
-			{
-				short: 'M',
-				full: 'medium',
-			},
-			{
-				short: 'L',
-				full: 'large',
-			},
-			{
-				short: 'XL',
-				full: 'extra large',
-			},
-		],
-		price: '200.00',
-		inStock: 1,
+		price: 200,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
 		technicalInformation: '',
 		specification: '',
 		careSpecification: '',
-		limitedEdition: '1/100',
+		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 ];
 
@@ -743,7 +1101,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '200.00',
+		price: 200,
 	},
 	{
 		id: 2,
@@ -753,7 +1111,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '100.00',
+		price: '100',
 	},
 	{
 		id: 3,
@@ -763,7 +1121,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '3000.00',
+		price: '3000',
 	},
 	{
 		id: 4,
@@ -773,7 +1131,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '400.00',
+		price: '400',
 	},
 	{
 		id: 5,
@@ -783,7 +1141,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '200.00',
+		price: 200,
 	},
 	{
 		id: 6,
@@ -793,7 +1151,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '100.00',
+		price: '100',
 	},
 	{
 		id: 7,
@@ -803,7 +1161,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '3000.00',
+		price: '3000',
 	},
 	{
 		id: 8,
@@ -813,7 +1171,7 @@ export const dataCheckout = [
 		size: 'small',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '400.00',
+		price: '400',
 	},
 ];
 
@@ -826,8 +1184,9 @@ export const dataOrder = [
 		sizeShort: 'S',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '200.00',
-		inStock: 1,
+		price: 200,
+		// inStock: 5,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 	},
 	{
 		id: 2,
@@ -837,8 +1196,9 @@ export const dataOrder = [
 		sizeShort: 'M',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '100.00',
-		inStock: 1,
+		price: '100',
+		// inStock: 5,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 	},
 	{
 		id: 3,
@@ -848,7 +1208,8 @@ export const dataOrder = [
 		sizeShort: 'XL',
 		name: 'A31 jacket',
 		desc: 'Windstopper® PrimaLoft® Modular Liner Vest',
-		price: '3000.00',
-		inStock: 1,
+		price: '3000',
+		// inStock: 5,
+		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 	},
 ];
