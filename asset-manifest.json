@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nerv/static/css/main.e1c30d5b.css",
-    "main.js": "/nerv/static/js/main.d73925e2.js",
+    "main.js": "/nerv/static/js/main.68b7861b.js",
     "static/media/charackter.svg": "/nerv/static/media/charackter.5fbb6d9a746d126cf03714f6f3b72f09.svg",
     "static/media/error-bg.jpg": "/nerv/static/media/error-bg.ce1c18fe69000746fe83.jpg",
     "static/media/jacket-preview.svg": "/nerv/static/media/jacket-preview.582ae0c38a373abb4723d8d3f7ceff6a.svg",
@@ -34,16 +34,16 @@
     "static/media/item6.svg": "/nerv/static/media/item6.cdb0f853ba5d260ce466c23f63396e16.svg",
     "static/media/item7.svg": "/nerv/static/media/item7.6babe0aa329efffb2c1800e2fb5d6316.svg",
     "static/media/item3.svg": "/nerv/static/media/item3.4ea9d88b90c2a36d84923e15111878ba.svg",
-    "static/media/item5.svg": "/nerv/static/media/item5.19f6ca0a89c6265d9c657b38f207dd09.svg",
     "index.html": "/nerv/index.html",
+    "static/media/item5.svg": "/nerv/static/media/item5.19f6ca0a89c6265d9c657b38f207dd09.svg",
     "static/media/augmen-bg1.svg": "/nerv/static/media/augmen-bg1.5d6834deed06be63cf194b4db7463a28.svg",
     "static/media/augmen-bg2.svg": "/nerv/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
     "static/media/hero-bg.svg": "/nerv/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
     "main.e1c30d5b.css.map": "/nerv/static/css/main.e1c30d5b.css.map",
-    "main.d73925e2.js.map": "/nerv/static/js/main.d73925e2.js.map"
+    "main.68b7861b.js.map": "/nerv/static/js/main.68b7861b.js.map"
   },
   "entrypoints": [
     "static/css/main.e1c30d5b.css",
-    "static/js/main.d73925e2.js"
+    "static/js/main.68b7861b.js"
   ]
 }
