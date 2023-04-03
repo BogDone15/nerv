@@ -55,6 +55,16 @@ body {
  color: #191919;
 }
 
+canvas,
+#presentation1-container-obj-ovvvport {
+  background-color: transparent !important;
+}
+
+#presentation1-container-obj-nosize {
+  height: 43rem !important;
+  padding-bottom: 0 !important;
+}
+
 img {
   width: 100%;
   height: auto;

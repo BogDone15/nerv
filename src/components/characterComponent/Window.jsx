@@ -470,7 +470,34 @@ export const Window = ({ activeItem }) => {
 		const result = dataItems.find(item => item.id === activeItem);
 		setCurrentItem(result);
 		setPath(result.name.replace(/ /gi, '-').toLowerCase());
+
+		const jquery = document.createElement('script');
+		jquery.src = 'https://code.jquery.com/jquery-3.6.4.min.js';
+		jquery.async = true;
+		const script = document.createElement('script');
+		script.src =
+			'https://samples.yaknekruty.com.ua/orbitvu/orbitvu12/orbitvu.js';
+		script.async = true;
+		const scriptSecond = document.createElement('script');
+		scriptSecond.src = 'test.js';
+		scriptSecond.async = true;
+		// document.body.appendChild(jquery);
+		// document.body.appendChild(script);
+		// document.body.appendChild(scriptSecond);
 	}, [activeItem, currentItem.name]);
+
+	const RotatePhoto = () => {
+		// $(function () {
+		// 	inject_orbitvu('presentation1-container', 'public/files/', '', {
+		// 		ovus_folder: 'public/files/',
+		// 		content2: 'yes',
+		// 		width: '100%',
+		// 		height: '100%',
+		// 	});
+		// });
+
+		return <div id='presentation1-container'></div>;
+	};
 
 	return (
 		<Wrapper>
@@ -484,7 +511,8 @@ export const Window = ({ activeItem }) => {
 							<WrapperMainCover>
 								<WrapperMainMiddle>
 									<Scan>Scn</Scan>
-									<Image src={currentItem.imgMain} alt='Nerv' />
+									<RotatePhoto />
+									{/* <Image src={currentItem.imgMain} alt='Nerv' /> */}
 									{/* <Video
                     autoPlay
                     muted
