@@ -55,6 +55,15 @@ body {
  color: #191919;
 }
 
+.ov-control-panel div {
+  display: flex;
+  gap: 1rem;
+}
+
+.ovviosbutton span {
+  display: none;
+}
+
 canvas,
 #presentation1-container-obj-ovvvport {
   background-color: transparent !important;
