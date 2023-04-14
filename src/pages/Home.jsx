@@ -21,7 +21,9 @@ const Wrapper = styled.div`
 		min-height: 100vh;
 	}
 	@media screen and (max-width: 567px) {
-		height: 100vh;
+		/* height: 100vh; */
+		position: relative;
+		padding-bottom: 35rem;
 	}
 `;
 
