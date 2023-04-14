@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -59,6 +59,7 @@ const Item = styled.li`
 		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorMain};
+		text-transform: uppercase;
 		transition: all 0.2s ease;
 		overflow: hidden;
 		&:before {
@@ -89,6 +90,39 @@ const Item = styled.li`
 `;
 
 export const Header = () => {
+	const links = [
+		{
+			id: 1,
+			name: 'TERMS OF CONDITION',
+			href: '/terms',
+		},
+		{
+			id: 2,
+			name: 'PRIVATE POLICY',
+			href: '/terms',
+		},
+		{
+			id: 3,
+			name: 'SHIPPING',
+			href: '/terms',
+		},
+		{
+			id: 4,
+			name: 'return',
+			href: '/terms',
+		},
+		{
+			id: 5,
+			name: 'CORPORATION',
+			href: '/corporation',
+		},
+		{
+			id: 6,
+			name: 'CONTACTS',
+			href: '/corporation',
+		},
+	];
+
 	return (
 		<>
 			<Top>
@@ -101,24 +135,11 @@ export const Header = () => {
 				</TopRight>
 			</Top>
 			<Middle>
-				<Item>
-					<Link to='/terms'>TERMS OF CONDITION</Link>
-				</Item>
-				<Item>
-					<Link to='/terms'>PRIVATE POLICY </Link>
-				</Item>
-				<Item>
-					<Link to='/terms'>SHIPPING</Link>
-				</Item>
-				<Item>
-					<Link to='/terms'>RETURN</Link>
-				</Item>
-				<Item>
-					<Link to='/corporation'>CORPORATION</Link>
-				</Item>
-				<Item>
-					<Link to='/corporation'>CONTACTS</Link>
-				</Item>
+				{links.map(link => (
+					<Item key={link.id}>
+						<Link to={link.href}>{link.name}</Link>
+					</Item>
+				))}
 			</Middle>
 		</>
 	);

@@ -14,6 +14,13 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-top: 1rem;
+	@media screen and (max-width: 1100px) {
+		height: auto;
+	}
+	@media screen and (max-width: 567px) {
+		padding-bottom: 35rem;
+		position: relative;
+	}
 `;
 
 const Block = styled.div`
@@ -30,6 +37,9 @@ const Aside = styled.div`
 	width: 4.5rem;
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const AsideTop = styled.div`
@@ -59,6 +69,9 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
 
 const GearPreview = styled.div`
@@ -76,6 +89,9 @@ const GearPreview = styled.div`
 		border-top: none;
 		border-bottom: none;
 	}
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Group = styled.div`
@@ -85,6 +101,9 @@ const Group = styled.div`
 	height: 100%;
 	overflow-y: hidden;
 	padding-left: 4.5rem;
+	@media screen and (max-width: 1100px) {
+		padding-left: 0;
+	}
 `;
 
 export const Terms = () => {

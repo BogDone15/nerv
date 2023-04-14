@@ -102,6 +102,11 @@ const Button = styled.button`
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			font-size: 1.7rem;
+		}
+	}
 `;
 
 const InputWrapper = styled.div`
@@ -134,6 +139,12 @@ const InputPlaceHolder = styled.span`
 	color: #000000;
 	text-transform: uppercase;
 	transition: all 0.2s ease;
+	@media screen and (max-width: 1100px) {
+		top: -0.6rem;
+	}
+	@media screen and (max-width: 567px) {
+		top: -0.4rem;
+	}
 `;
 
 export const Modal = ({ closeModal, setCloseModal }) => {

@@ -20,6 +20,27 @@ const Wrapper = styled(Tabs)`
 			height: calc(100% - 24rem);
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		display: flex;
+		align-items: flex-start;
+		gap: 4.4rem;
+		margin-top: 4.5rem;
+		padding-top: 3.7rem;
+		border-top: 1px solid ${props => props.theme.colorBorder};
+		& > div {
+			padding-right: 4rem;
+			padding-bottom: 2rem;
+			&:not(.is-selected) {
+				display: none;
+			}
+			&.is-selected {
+				height: 100%;
+			}
+		}
+		&:after {
+			display: none;
+		}
+	}
 `;
 
 const WrapperNav = styled(TabList)`
@@ -29,6 +50,13 @@ const WrapperNav = styled(TabList)`
 	padding-left: 6.2rem;
 	padding-top: 4.8rem;
 	margin-bottom: 4.8rem;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding-left: 3.5rem;
+		padding-top: 0;
+		margin-bottom: 0;
+	}
 `;
 
 WrapperNav.tabsRole = 'TabList';
@@ -68,6 +96,23 @@ const WrapperNavItem = styled(Tab)`
 			}
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		align-items: flex-start;
+		writing-mode: vertical-lr;
+		& > div {
+			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
+			&:last-child {
+				padding-bottom: 1.8rem;
+			}
+		}
+		&.is-selected {
+			& > div {
+				&:last-child {
+					padding: 0.3rem 0.2rem 3.8rem 0.2rem;
+				}
+			}
+		}
+	}
 `;
 
 WrapperNavItem.tabsRole = 'Tab';
@@ -95,6 +140,17 @@ const WrapperText = styled.div`
 			margin-bottom: 0;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		overflow-y: visible;
+		padding-left: 0;
+		padding-right: 0;
+		margin-right: 0;
+		width: 100%;
+		& > p {
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+		}
+	}
 `;
 
 const WrapperGroup = styled(TabPanel)``;
@@ -109,6 +165,9 @@ const WrapperTitle = styled.div`
 		font-size: 3.1rem;
 		color: ${props => props.theme.colorBlack};
 	}
+	@media screen and (max-width: 1100px) {
+		padding-left: 0;
+	}
 `;
 
 const WrapperDirectors = styled.div`
@@ -120,6 +179,13 @@ const WrapperDirectors = styled.div`
 	margin: 1.2rem 0 3.4rem 4.4rem;
 	text-align: right;
 	padding-right: 1rem;
+	@media screen and (max-width: 1100px) {
+		width: 95%;
+		padding-right: 0;
+		padding-left: 1rem;
+		text-align: left;
+		font-size: ${props => props.theme.fontnm};
+	}
 `;
 
 export const TermsDetails = () => {

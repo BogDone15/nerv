@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { dataCheckout } from '../../data';
 
 const Wrapper = styled.div`
 	position: relative;
 	width: 35%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		display: flex;
+		flex-direction: column-reverse;
+	}
 `;
 
 const WrapperTitle = styled.div`
@@ -23,6 +27,9 @@ const WrapperTitle = styled.div`
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const WrapperTop = styled.div`
@@ -37,6 +44,9 @@ const WrapperTop = styled.div`
 	width: 100%;
 	padding-right: 1.2rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const WrapperTopItem = styled.div`
@@ -79,6 +89,9 @@ const WrapperCover = styled.div`
 		width: 1px;
 		height: 100%;
 		background: ${props => props.theme.colorBorder};
+		@media screen and (max-width: 1100px) {
+			display: none;
+		}
 	}
 `;
 
@@ -93,6 +106,15 @@ const WrapperBottom = styled.div`
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	width: calc(100% - 1.1rem);
 	background: #cecece;
+	@media screen and (max-width: 1100px) {
+		position: static;
+		border-top: unset;
+		border-bottom: 1px solid ${props => props.theme.colorBorder};
+		border-right: unset;
+		width: 100%;
+		height: auto;
+		padding: 2.5rem 5rem;
+	}
 `;
 
 const WrapperMain = styled.div`
@@ -112,6 +134,12 @@ const WrapperMain = styled.div`
 		border-radius: 12px;
 		background-color: ${props => props.theme.colorBlack};
 	}
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		border-top: 1px solid ${props => props.theme.colorBorder};
+		border-bottom: 1px solid ${props => props.theme.colorBorder};
+		padding-right: 0;
+	}
 `;
 
 const Item = styled.div`
@@ -120,6 +148,12 @@ const Item = styled.div`
 	height: 11rem;
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		height: auto;
+		&:last-child {
+			border-bottom: none;
+		}
+	}
 `;
 
 const ItemImage = styled.div`
@@ -127,6 +161,10 @@ const ItemImage = styled.div`
 	height: 11rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	padding: 0.7rem;
+	@media screen and (max-width: 1100px) {
+		width: 40%;
+		height: 100%;
+	}
 `;
 
 const ItemImageCover = styled.div`
@@ -136,12 +174,16 @@ const ItemImageCover = styled.div`
 	background: ${props => props.theme.colorBorder};
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		padding: 1rem;
+	}
 `;
 
 const Image = styled.img`
-	/* max-height: 6.5vh; */
-	/* width: auto; */
 	max-width: 80%;
+	@media screen and (max-width: 1100px) {
+		max-width: 70%;
+	}
 `;
 
 const ItemInfo = styled.div`
@@ -170,6 +212,22 @@ const ItemInfo = styled.div`
 		margin-top: 0.9rem;
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 1100px) {
+		border-right: none;
+		width: 60%;
+		& > p {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+			&:first-child {
+				font-size: 2.5rem;
+				margin-bottom: 0.5rem;
+			}
+		}
+		& > div {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+		}
+	}
 `;
 
 const ItemPrice = styled.div`
@@ -184,6 +242,20 @@ const ItemPrice = styled.div`
 		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
+`;
+
+const ItemPriceMob = styled.div`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: block;
+		& > span {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+		}
 	}
 `;
 
@@ -216,6 +288,28 @@ const WrapperBottomItem = styled.div`
 		color: ${props => props.theme.colorBlack};
 		&:last-child {
 			font-weight: 600;
+		}
+	}
+	@media screen and (max-width: 1100px) {
+		& > div {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+			margin-bottom: 1.5rem;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		border-right: none;
+		&:last-child {
+			width: 50%;
+			padding-right: 0;
+		}
+		&:first-child {
+			display: none;
+		}
+		&:nth-child(2) {
+			padding-left: 0;
 		}
 	}
 `;
@@ -275,6 +369,9 @@ export const Summary = () => {
 								<div>
 									{item.model} / {item.size.color} / {item.size.sizeFull}
 								</div>
+								<ItemPriceMob>
+									<span>EUR {item.price}.00</span>
+								</ItemPriceMob>
 							</ItemInfo>
 							<ItemPrice>
 								<span>EUR {item.price}.00</span>

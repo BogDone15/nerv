@@ -8,7 +8,6 @@ import 'swiper/css';
 
 const Wrapper = styled.div`
 	position: relative;
-	/* max-width: 67rem; */
 	max-width: calc(100% - 120.1rem);
 	width: 100%;
 	height: 100%;
@@ -21,6 +20,9 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 55%;
 		max-width: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		display: none;
 	}
 `;
 
@@ -99,15 +101,15 @@ const ArrowNext = styled.svg`
 	}
 `;
 
-export const Appearance = ({ activeItem }) => {
+export const Appearance = ({ activeitem }) => {
 	const [slides, setSlides] = useState([]);
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
 
 	useEffect(() => {
-		const result = dataItems.find(item => item.id === activeItem);
+		const result = dataItems.find(item => item.id === activeitem);
 		setSlides(result);
-	}, [activeItem]);
+	}, [activeitem]);
 
 	const SwiperButtonPrev = () => {
 		const swiper = useSwiper();

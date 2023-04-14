@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import jacketPreview from '../../assets/jacket-preview.svg';
 import previewBg from '../../assets/preview-order-bg.svg';
 import { OrderItem } from './OrderItem';
 
@@ -9,11 +8,18 @@ const Wrapper = styled.div`
 	display: flex;
 	width: calc(100% - 10rem);
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
+
 const WrapperLeft = styled.div`
 	width: 28%;
 	height: 100%;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const WrapperTop = styled.div`
@@ -84,6 +90,12 @@ const WrapperRight = styled.div`
 		content: '';
 		background: ${props => props.theme.colorBorder};
 	}
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		&::after {
+			display: none;
+		}
+	}
 `;
 
 export const OrderDetails = ({
@@ -100,31 +112,35 @@ export const OrderDetails = ({
 	}, [activeImage, cart.products, setActiveImage]);
 
 	return (
-		<Wrapper>
-			<WrapperLeft>
-				<WrapperTop>
-					<span>360 PREVIEW IMG</span>
-				</WrapperTop>
-				<WrapperFake />
-				<WrapperPreview>
-					{cart.products.length >= 1 ? (
-						<Image
-							src={currentItem ? currentItem.imgMain : cart.products[0].imgMain}
-							alt='nerv'
-						/>
-					) : null}
-				</WrapperPreview>
-				<WrapperBottom>
-					<span></span>
-					<span></span>
-				</WrapperBottom>
-			</WrapperLeft>
-			<WrapperRight>
-				<OrderItem
-					setActiveImage={setActiveImage}
-					setShowFirstItem={setShowFirstItem}
-				/>
-			</WrapperRight>
-		</Wrapper>
+		<>
+			<Wrapper>
+				<WrapperLeft>
+					<WrapperTop>
+						<span>360 PREVIEW IMG</span>
+					</WrapperTop>
+					<WrapperFake />
+					<WrapperPreview>
+						{cart.products.length >= 1 ? (
+							<Image
+								src={
+									currentItem ? currentItem.imgMain : cart.products[0].imgMain
+								}
+								alt='nerv'
+							/>
+						) : null}
+					</WrapperPreview>
+					<WrapperBottom>
+						<span></span>
+						<span></span>
+					</WrapperBottom>
+				</WrapperLeft>
+				<WrapperRight>
+					<OrderItem
+						setActiveImage={setActiveImage}
+						setShowFirstItem={setShowFirstItem}
+					/>
+				</WrapperRight>
+			</Wrapper>
+		</>
 	);
 };

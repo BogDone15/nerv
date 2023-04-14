@@ -83,6 +83,14 @@ const WrapperMob = styled.div`
 		padding: 8rem 4rem 4rem;
 		background: ${props => props.theme.colorMain};
 	}
+	@media screen and (max-width: 567px) {
+		padding: 8rem 2.5rem 4rem;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		margin-top: 0;
+	}
 `;
 
 const WrapperMobLeft = styled.div`
@@ -188,6 +196,10 @@ const Arrow = styled.svg`
 	fill: none;
 	& > path {
 		fill: #adadad;
+	}
+	@media screen and (max-width: 567px) {
+		width: 4rem;
+		height: 2.4rem;
 	}
 `;
 

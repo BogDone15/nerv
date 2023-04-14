@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { shippingData } from '../../data';
+import Select from 'react-select';
 const Wrapper = styled.div`
 	width: 65%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
 
 const WrapperTitle = styled.div`
@@ -20,6 +24,9 @@ const WrapperTitle = styled.div`
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 	}
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const WrapperTop = styled.div`
@@ -33,6 +40,10 @@ const WrapperTop = styled.div`
 	padding-left: 1.8rem;
 	border-left: 1px solid ${props => props.theme.colorBorder};
 	border-bottom: 1px solid ${props => props.theme.colorBlack};
+	@media screen and (max-width: 1100px) {
+		display: none;
+		border: none;
+	}
 `;
 
 const WrapperMain = styled.div`
@@ -41,6 +52,9 @@ const WrapperMain = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
 	border-top: none;
 	padding: 2rem 2.5rem;
+	@media screen and (max-width: 1100px) {
+		border: none;
+	}
 `;
 
 const Form = styled.form`
@@ -60,6 +74,10 @@ const Input = styled.input`
 	width: 100%;
 	height: 4.3rem;
 	font-size: 1.8rem;
+	@media screen and (max-width: 1100px) {
+		height: 6.2rem;
+		font-size: 2.1rem;
+	}
 `;
 
 const InputPlaceHolder = styled.span`
@@ -74,6 +92,15 @@ const InputPlaceHolder = styled.span`
 	color: #000000;
 	text-transform: uppercase;
 	transition: all 0.2s ease;
+	@media screen and (max-width: 1100px) {
+		font-size: ${props => props.theme.fontmd};
+		line-height: 2.2rem;
+		top: -1rem;
+	}
+
+	@media screen and (max-width: 1100px) {
+		top: -0.9rem;
+	}
 `;
 
 const InputBlock = styled.div`
@@ -82,6 +109,13 @@ const InputBlock = styled.div`
 	gap: 1rem;
 	& > div {
 		width: 50%;
+	}
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+		gap: 0;
+		& > div {
+			width: 100%;
+		}
 	}
 `;
 
@@ -99,6 +133,12 @@ const PaymentBlockTitle = styled.div`
 		text-transform: uppercase;
 		text-align: center;
 	}
+	@media screen and (max-width: 1100px) {
+		& > h2 {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+		}
+	}
 `;
 
 const InfoBlockTitle = styled.div`
@@ -115,6 +155,12 @@ const InfoBlockTitle = styled.div`
 		text-transform: uppercase;
 		text-align: center;
 	}
+	@media screen and (max-width: 1100px) {
+		& > h2 {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+		}
+	}
 `;
 
 const Button = styled.button`
@@ -125,6 +171,14 @@ const Button = styled.button`
 		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: #adadad;
+	}
+	@media screen and (max-width: 1100px) {
+		padding: 2rem 0;
+
+		& > span {
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+		}
 	}
 `;
 
@@ -141,6 +195,12 @@ const ContactBlockTitle = styled.div`
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
 		text-align: center;
+	}
+	@media screen and (max-width: 1100px) {
+		& > h2 {
+			font-size: ${props => props.theme.fontmd};
+			line-height: 2.2rem;
+		}
 	}
 `;
 
@@ -189,6 +249,147 @@ const Edit = styled.div`
 			transform: translateX(101%);
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		font-size: ${props => props.theme.fontmd};
+		line-height: 2.2rem;
+	}
+`;
+
+const WrapperMainTitle = styled.h2`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: block;
+		font-weight: 500;
+		font-size: ${props => props.theme.fontmd};
+		line-height: 2.2rem;
+		color: ${props => props.theme.colorBlack};
+		text-align: center;
+		text-transform: uppercase;
+		border-bottom: 1px solid ${props => props.theme.colorBorder};
+		padding: 2.2rem 0;
+	}
+`;
+
+const StyledSelectWrapper = styled.div`
+	position: relative;
+	width: 100%;
+	height: 4.3rem;
+	margin-bottom: 1.7rem;
+	/* & > span {
+		position: absolute;
+		background: #cecece;
+		padding: 0 0.8rem;
+		left: 2rem;
+		top: -0.8rem;
+		font-weight: 300;
+		font-size: 1.2rem;
+		line-height: 1.7rem;
+		color: #000000;
+		text-transform: uppercase;
+		transition: all 0.2s ease;
+		color: ${props => props.theme.colorBlack};
+	} */
+
+	& > div {
+		width: 100%;
+		height: 100%;
+	}
+
+	@media screen and (max-width: 1100px) {
+		height: 6.2rem;
+		font-size: 2.1rem;
+	}
+	@media screen and (max-width: 567px) {
+		margin-bottom: 2.6rem;
+	}
+`;
+
+const StyledSelect = styled(Select)`
+	.Select__control {
+		border: 1px solid ${props => props.theme.colorBorder};
+		background: transparent;
+		outline: none;
+		width: 100%;
+		height: 100%;
+		font-size: 1.8rem;
+		border-radius: 0;
+		cursor: pointer;
+		&:hover {
+			border-color: unset;
+		}
+		@media screen and (max-width: 567px) {
+			font-size: 2.1rem;
+		}
+	}
+	.Select__value-container {
+		overflow: unset;
+		padding-left: 1rem;
+	}
+	.Select__dropdown-indicator {
+		color: ${props => props.theme.colorBorder};
+	}
+
+	.Select__single-value {
+		margin-left: 0;
+	}
+
+	.Select__control:hover {
+		border-color: #a1a1a1;
+	}
+
+	.Select__control--is-focused {
+		box-shadow: unset;
+		outline: none;
+	}
+
+	.Select__indicator-separator {
+		display: none;
+	}
+
+	.Select__menu {
+		color: #3c3d3e;
+		background: hsl(0, 0%, 70%);
+		border: 1px solid ${props => props.theme.colorBorder};
+	}
+
+	.Select__placeholder {
+		position: absolute;
+		background: #cecece;
+		padding: 0 0.8rem;
+		left: 0.6rem;
+		top: -1.4rem;
+		font-weight: 300;
+		font-size: 1.2rem;
+		line-height: 1.7rem;
+		color: #000000;
+		text-transform: uppercase;
+		transition: all 0.2s ease;
+		color: ${props => props.theme.colorBlack};
+		@media screen and (max-width: 1100px) {
+			top: -2.6rem;
+			font-size: 1.7rem;
+			line-height: 2.2rem;
+		}
+		@media screen and (max-width: 1100px) {
+			top: -2.4rem;
+		}
+	}
+
+	.Select__option {
+		font-size: 1.8rem;
+		color: ${props => props.theme.colorBlack};
+		background: transparent;
+		cursor: pointer;
+		&:hover {
+			color: #fff;
+		}
+		@media screen and (max-width: 567px) {
+			font-size: 2.1rem;
+		}
+	}
+	.Select__option--is-selected {
+		color: #fff;
+	}
 `;
 
 export const ContactInfo = () => {
@@ -227,6 +428,12 @@ export const ContactInfo = () => {
 		}
 	};
 
+	const options = [
+		{ value: 'Ukraine', label: 'Ukraine' },
+		{ value: 'Canada', label: 'Canada' },
+		{ value: 'USA', label: 'USA' },
+	];
+
 	return (
 		<Wrapper>
 			<WrapperTitle>
@@ -239,11 +446,12 @@ export const ContactInfo = () => {
 				) : null}{' '}
 				{hidePaymentBlock && <>/ PAYMENT</>}
 			</WrapperTop>
+			<WrapperMainTitle>Checkout</WrapperMainTitle>
 			<WrapperMain>
 				<Form>
 					<ContactBlock>
 						<ContactBlockTitle hideContactBlock={hideContactBlock}>
-							<h2>01 CONTACT</h2>
+							<h2>01 CONTACT INFO</h2>
 							{editContact && (
 								<Edit onClick={() => handleEdit('contact')}>[EDIT]</Edit>
 							)}
@@ -279,40 +487,20 @@ export const ContactInfo = () => {
 						</InfoBlockTitle>
 						{hideInfoBlock && (
 							<>
-								<InputWrapper>
-									<Input type='text' name='country' />
-									<InputPlaceHolder>Country</InputPlaceHolder>
-								</InputWrapper>
-								<InputWrapper>
-									<Input type='text' name='state' />
-									<InputPlaceHolder>State</InputPlaceHolder>
-								</InputWrapper>
-								<InputBlock>
-									<InputWrapper>
-										<Input type='text' name='code' />
-										<InputPlaceHolder>ZIP CODE</InputPlaceHolder>
+								<StyledSelectWrapper>
+									{/* <span>Country</span> */}
+									<StyledSelect
+										classNamePrefix='Select'
+										options={options}
+										placeholder='Country'
+									/>
+								</StyledSelectWrapper>
+								{shippingData.map(item => (
+									<InputWrapper key={item.id}>
+										<Input type={item.type} name={item.name} />
+										<InputPlaceHolder>{item.placeholder}</InputPlaceHolder>
 									</InputWrapper>
-									<InputWrapper>
-										<Input type='text' name='location' />
-										<InputPlaceHolder>CITY / TOWN</InputPlaceHolder>
-									</InputWrapper>
-								</InputBlock>
-								<InputWrapper>
-									<Input type='text' name='adress' />
-									<InputPlaceHolder>
-										ADRESS / STREET / BUILDING
-									</InputPlaceHolder>
-								</InputWrapper>
-								<InputWrapper>
-									<Input type='text' name='appartment' />
-									<InputPlaceHolder>
-										APPARTMENT / SUIT ( OPTIONAL)
-									</InputPlaceHolder>
-								</InputWrapper>
-								<InputWrapper>
-									<Input type='tel' name='phone' />
-									<InputPlaceHolder>CELL PHONE NUMBER</InputPlaceHolder>
-								</InputWrapper>
+								))}
 								<Button type='button' onClick={() => handleClick('info')}>
 									<span>CONTINUE</span>
 								</Button>

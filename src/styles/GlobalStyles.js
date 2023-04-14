@@ -44,6 +44,25 @@ html {
   @media screen and (max-width: 1100px) {
     font-size: 10px;
   }
+  @media screen and (max-width: 700px) {
+    font-size: 9px;
+  }
+  @media screen and (max-width: 650px) {
+    font-size: 8.5px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 7px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 6.5px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 6px;
+  }
+
+  @media screen and (max-width: 380px) {
+    font-size: 5.5px;
+  }
 }
 
 body {
@@ -53,15 +72,6 @@ body {
  overflow-x: hidden;
  background: #CECECE;
  color: #191919;
-}
-
-.ov-control-panel div {
-  display: flex;
-  gap: 1rem;
-}
-
-.ovviosbutton span {
-  display: none;
 }
 
 canvas,

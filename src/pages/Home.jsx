@@ -20,6 +20,9 @@ const Wrapper = styled.div`
 		height: auto;
 		min-height: 100vh;
 	}
+	@media screen and (max-width: 567px) {
+		height: 100vh;
+	}
 `;
 
 const Block = styled.div`
@@ -27,6 +30,9 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 567px) {
+		height: auto;
+	}
 `;
 
 const Aside = styled.div`
@@ -143,6 +149,9 @@ const Group = styled.div`
 		height: 100%;
 		margin-left: 0;
 	}
+	@media screen and (max-width: 567px) {
+		height: calc(100vh - 46rem);
+	}
 `;
 
 export const Home = () => {
@@ -165,7 +174,6 @@ export const Home = () => {
 					</Aside>
 					<ChooseBtn>
 						<CHooseBtnGroup>
-							{/* <ChooseBtnTop /> */}
 							<Link to='/character'>CHOOSE YOUR APPEARANCE</Link>
 							<Line viewBox='0 0 20 990'>
 								<path

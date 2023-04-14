@@ -32,6 +32,14 @@ const Left = styled.div`
 		width: 45%;
 		height: 6rem;
 	}
+	@media screen and (max-width: 567px) {
+		height: 7.5rem;
+		width: 48%;
+		padding-left: 5rem;
+		& > a {
+			max-width: 24rem;
+		}
+	}
 `;
 
 const Image = styled.img``;
@@ -52,6 +60,10 @@ const Right = styled.div`
 		width: 55%;
 		height: 6rem;
 		justify-content: flex-end;
+	}
+	@media screen and (max-width: 567px) {
+		height: 7.5rem;
+		width: 52%;
 	}
 `;
 
@@ -116,6 +128,13 @@ const RightNav = styled.div`
 			color: ${props => props.theme.colorBlack};
 		}
 	}
+	@media screen and (max-width: 567px) {
+		top: 8.6rem;
+
+		& > a {
+			font-size: 1.7rem;
+		}
+	}
 `;
 
 const RightLinks = styled.div`
@@ -160,6 +179,9 @@ const RightLinks = styled.div`
 		}
 		@media screen and (max-width: 1100px) {
 			font-size: 2.1rem;
+		}
+		@media screen and (max-width: 567px) {
+			font-size: 2.3rem;
 		}
 	}
 `;

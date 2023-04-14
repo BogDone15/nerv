@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
+
 const Content = styled.div`
 	width: 93%;
 	height: 90%;
@@ -29,12 +30,13 @@ const Cover = styled.div`
 `;
 
 const Image = styled(motion.img)`
-	width: 115px;
-	height: 115px;
+	width: 11.5rem;
+	height: 11.5rem;
 `;
 
 const ImageText = styled.img`
-	max-width: 352px;
+	max-width: 35.2rem;
+	width: 100%;
 `;
 
 const Block = styled.div`
@@ -44,28 +46,31 @@ const Block = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		margin-top: 34.3rem;
+	}
 `;
 
 const Bottom = styled.div`
 	position: relative;
 	border: 1px solid ${props => props.theme.colorMain};
-	width: 625px;
+	width: 62.5rem;
 
 	&::before {
 		position: absolute;
-		left: 21px;
+		left: 2.1rem;
 		bottom: 0;
 		content: '';
-		height: 11px;
+		height: 1.1rem;
 		width: 1px;
 		background: ${props => props.theme.colorMain};
 	}
 	&::after {
 		position: absolute;
-		right: 21px;
+		right: 2.1rem;
 		bottom: 0;
 		content: '';
-		height: 11px;
+		height: 1.1rem;
 		width: 1px;
 		background: ${props => props.theme.colorMain};
 	}
@@ -73,7 +78,7 @@ const Bottom = styled.div`
 
 const BottomTop = styled.div`
 	background: ${props => props.theme.colorMain};
-	height: 10px;
+	height: 1rem;
 	width: 100%;
 `;
 

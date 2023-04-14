@@ -4,6 +4,8 @@ import itemFifth from './assets/items/item5.svg';
 import itemSixth from './assets/items/item6.svg';
 import itemSeventh from './assets/items/item7.svg';
 import itemEights from './assets/items/item8.svg';
+import itemNinth from './assets/items/item2.svg';
+import itemTenth from './assets/items/item1.svg';
 
 import beltZoom from './assets/belt-zoom.png';
 import belt from './assets/belt.png';
@@ -53,6 +55,20 @@ export const dataHero = [
 		img: itemEights,
 		type: 'attach',
 		lock: true,
+	},
+	{
+		id: 7,
+		img: itemNinth,
+		type: 'spec armr',
+		lock: false,
+		mobile: true,
+	},
+	{
+		id: 8,
+		img: itemTenth,
+		type: 'items',
+		lock: true,
+		mobile: true,
 	},
 ];
 
@@ -1089,6 +1105,57 @@ export const dataItems = [
 		specification: '',
 		careSpecification: '',
 		limitedEdition: 'LIMITED EDITION - 1/100',
+	},
+];
+
+export const shippingData = [
+	// {
+	// 	id: 1,
+	// 	type: 'text',
+	// 	name: 'country',
+	// 	placeholder: 'Country',
+	// },
+	{
+		id: 2,
+		type: 'text',
+		name: 'state',
+		placeholder: 'State',
+	},
+	{
+		id: 3,
+		type: 'text',
+		name: 'lastname',
+		placeholder: 'LAST NAME',
+	},
+	{
+		id: 4,
+		type: 'text',
+		name: 'code',
+		placeholder: 'ZIP CODEail',
+	},
+	{
+		id: 5,
+		type: 'text',
+		name: 'location',
+		placeholder: 'CITY / TOWN',
+	},
+	{
+		id: 6,
+		type: 'text',
+		name: 'adress',
+		placeholder: 'ADRESS / STREET / BUILDING',
+	},
+	{
+		id: 7,
+		type: 'text',
+		name: 'appartment',
+		placeholder: 'APPARTMENT / SUIT ( OPTIONAL)',
+	},
+	{
+		id: 8,
+		type: 'tel',
+		name: 'phone',
+		placeholder: 'CELL PHONE NUMBER',
 	},
 ];
 

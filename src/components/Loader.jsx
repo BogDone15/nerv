@@ -1,6 +1,6 @@
-import { motion } from "framer-motion"
-import React from "react"
-import styled from "styled-components"
+import { motion } from 'framer-motion';
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled(motion.div)`
 	position: absolute;
@@ -18,13 +18,14 @@ const Wrapper = styled(motion.div)`
 	height: 100vh;
 	z-index: 6;
 	background: #cecece;
-`
+`;
 
 const Block = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-`
+	width: 100%;
+`;
 
 const Bottom = styled.div`
 	position: relative;
@@ -35,18 +36,21 @@ const Bottom = styled.div`
 		position: absolute;
 		left: 21px;
 		bottom: 0;
-		content: "";
+		content: '';
 		height: 11px;
 		width: 1px;
 		background: ${props => props.theme.colorMain};
 	}
-`
+	@media screen and (max-width: 1100px) {
+		width: 90%;
+	}
+`;
 
 const BottomTop = styled.div`
 	background: ${props => props.theme.colorMain};
 	height: 10px;
 	width: 100%;
-`
+`;
 
 const BottomMain = styled(motion.div)`
 	display: flex;
@@ -60,20 +64,20 @@ const BottomMain = styled(motion.div)`
 		text-transform: uppercase;
 		color: ${props => props.theme.colorMain};
 	}
-`
+`;
 
 const Group = styled(motion.div)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 1px;
-`
+`;
 
 const Dot = styled(motion.span)`
 	text-transform: uppercase;
 	font-size: 11px;
 	color: ${props => props.theme.colorMain};
-`
+`;
 
 const ContainerVariants = {
 	initial: {
@@ -86,7 +90,7 @@ const ContainerVariants = {
 			staggerChildren: 0.2,
 		},
 	},
-}
+};
 
 const DotVariants = {
 	initial: {
@@ -95,19 +99,19 @@ const DotVariants = {
 	animate: {
 		opacity: 0,
 	},
-}
+};
 
 const DotTransition = {
 	duration: 0.5,
 	repeat: Infinity,
 	repeatDelay: 1,
-	ease: "easeInOut",
-}
+	ease: 'easeInOut',
+};
 
 const ImageWrapper = styled(motion.div)`
 	width: 115px;
 	height: 115px;
-`
+`;
 
 const Icon = styled.svg`
 	width: 100%;
@@ -116,13 +120,13 @@ const Icon = styled.svg`
 	& > path {
 		fill: ${props => props.theme.colorMain};
 	}
-`
+`;
 
 export const Loader = () => {
 	return (
 		<Wrapper
 			initial={{ y: 0, opacity: 1 }}
-			exit={{ y: "100%", opacity: 0 }}
+			exit={{ y: '100%', opacity: 0 }}
 			transition={{ duration: 2 }}
 		>
 			<Block>
@@ -134,7 +138,7 @@ export const Loader = () => {
 					transition={{
 						delay: 0.5,
 						duration: 2,
-						ease: "easeInOut",
+						ease: 'easeInOut',
 						times: [0, 0.2, 0.5, 0.8, 1],
 					}}
 				>
@@ -166,5 +170,5 @@ export const Loader = () => {
 				</Bottom>
 			</Block>
 		</Wrapper>
-	)
-}
+	);
+};

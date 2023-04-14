@@ -21,6 +21,11 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
+	@media screen and (max-width: 567px) {
+		padding-bottom: 35rem;
+		position: relative;
+		min-height: 100vh;
+	}
 `;
 
 const Block = styled.div`
@@ -75,6 +80,9 @@ const AsideText = styled.div`
 		&:last-child {
 			display: none;
 		}
+	}
+	@media screen and (max-width: 567px) {
+		height: calc(100% - 23rem);
 	}
 `;
 
@@ -145,8 +153,8 @@ const Group = styled.div`
 `;
 
 export const Character = () => {
-	const [activeType, setActiveType] = useState(2);
-	const [activeItem, setActiveItem] = useState(1);
+	const [activeelement, setActiveelement] = useState(2);
+	const [activeitem, setActiveitem] = useState(1);
 	const [itemType, setItemType] = useState('armor');
 
 	return (
@@ -171,21 +179,21 @@ export const Character = () => {
 					<Group>
 						<AugmentationsMenu
 							setItemType={setItemType}
-							activeType={activeType}
-							setActiveType={setActiveType}
+							activeelement={activeelement}
+							setActiveelement={setActiveelement}
 						/>
 						<Hero
 							setItemType={setItemType}
-							activeType={activeType}
-							setActiveType={setActiveType}
+							activeelement={activeelement}
+							setActiveelement={setActiveelement}
 						/>
 						<Gear
 							itemType={itemType}
-							activeItem={activeItem}
-							setActiveItem={setActiveItem}
+							activeitem={activeitem}
+							setActiveitem={setActiveitem}
 						/>
-						<Appearance activeItem={activeItem} />
-						<Window activeItem={activeItem} />
+						<Appearance activeitem={activeitem} />
+						<Window activeitem={activeitem} />
 						<Socials />
 					</Group>
 				</Right>

@@ -14,6 +14,14 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-top: 1rem;
+	@media screen and (max-width: 1100px) {
+		height: auto;
+	}
+	@media screen and (max-width: 567px) {
+		padding-bottom: 35rem;
+		position: relative;
+		min-height: 100vh;
+	}
 `;
 
 const Block = styled.div`
@@ -29,6 +37,9 @@ const Aside = styled.div`
 	width: 4.5rem;
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const AsideTop = styled.div`
@@ -58,6 +69,22 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		& > div {
+			&:nth-child(3) {
+				& > div {
+					&:last-child {
+						& > div {
+							&:first-child {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 `;
 
 const GearPreview = styled.div`
@@ -67,6 +94,9 @@ const GearPreview = styled.div`
 	width: 4.5rem;
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Group = styled.div`
@@ -75,6 +105,9 @@ const Group = styled.div`
 	width: 100%;
 	height: 100%;
 	overflow-y: hidden;
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 20.8rem;
+	}
 `;
 
 export const OrderGranted = () => {

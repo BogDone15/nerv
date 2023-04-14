@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import augmenBgFirst from '../../assets/augmen-bg1.svg';
 import augmenBgSecond from '../../assets/augmen-bg2.svg';
 import augmenBgThird from '../../assets/augmen-bg3.png';
 import itemFirst from '../../assets/items/item1.svg';
-import itemSecond from '../../assets/items/item2.svg';
+
+import { dataHero } from '../../data';
 
 const Menu = styled.div`
 	display: flex;
@@ -49,7 +51,7 @@ const MenuItem = styled.div`
 	display: flex;
 	align-items: flex-start;
 	transition: all 0.2s ease;
-	opacity: ${props => (props.activeType === 0 ? '1' : '0.5')};
+	opacity: ${props => (props.activeelement === 0 ? '1' : '0.5')};
 `;
 
 const MenuItemsAside = styled.div`
@@ -59,7 +61,7 @@ const MenuItemsAside = styled.div`
 	gap: 0.3rem;
 	margin-right: 0.2rem;
 	transform: ${props =>
-		props.activeType === 0 ? 'translateX(-0.4rem)' : 'unset'};
+		props.activeelement === 0 ? 'translateX(-0.4rem)' : 'unset'};
 	transition: all 0.2s ease;
 
 	& > span {
@@ -133,7 +135,7 @@ const MenuAsideLine = styled.div`
 	height: 100%;
 	background: ${props => props.theme.colorMain};
 	transition: all 0.2s ease;
-	opacity: ${props => (props.activeType === 0 ? '1' : '0')};
+	opacity: ${props => (props.activeelement === 0 ? '1' : '0')};
 `;
 
 const GearLine = styled.div`
@@ -144,7 +146,7 @@ const GearLine = styled.div`
 	height: 3px;
 	max-width: 2.8rem;
 	width: 100%;
-	opacity: ${props => (props.activeType === 0 ? '0' : '1')};
+	opacity: ${props => (props.activeelement === 0 ? '0' : '1')};
 	transition: all 0.2s ease;
 `;
 
@@ -204,11 +206,18 @@ const Text = styled.p`
 
 export const AugmentationsMenu = ({
 	setItemType,
-	activeType,
-	setActiveType,
+	activeelement,
+	setActiveelement,
 }) => {
+	const [product, setProduct] = useState([]);
+
+	useEffect(() => {
+		const result = dataHero.find(item => item.type === 'spec armr');
+		setProduct(result);
+	}, []);
+
 	const handleClick = () => {
-		setActiveType(0);
+		setActiveelement(0);
 		setItemType('spec armr');
 	};
 
@@ -246,11 +255,11 @@ export const AugmentationsMenu = ({
 					<MenuCoverLeft>
 						<MenuGroup>
 							<MenuItem
-								activeType={activeType === 0 ? activeType : null}
+								activeelement={activeelement === 0 ? activeelement : null}
 								onClick={() => handleClick()}
 							>
 								<MenuItemsAside
-									activeType={activeType === 0 ? activeType : null}
+									activeelement={activeelement === 0 ? activeelement : null}
 								>
 									<Icon viewBox='0 0 3 4'>
 										<path
@@ -258,14 +267,16 @@ export const AugmentationsMenu = ({
 											fill='#191919'
 										/>
 									</Icon>
-									<span>spec armr</span>
+									<span>{product.type}</span>
 								</MenuItemsAside>
 								<MenuItemsContentSecond>
 									<MenuAsideLine
-										activeType={activeType === 0 ? activeType : null}
+										activeelement={activeelement === 0 ? activeelement : null}
 									/>
-									<GearLine activeType={activeType === 0 ? activeType : null} />
-									<Image src={itemSecond} alt='nerv' />
+									<GearLine
+										activeelement={activeelement === 0 ? activeelement : null}
+									/>
+									<Image src={product.img} alt='nerv' />
 								</MenuItemsContentSecond>
 							</MenuItem>
 						</MenuGroup>

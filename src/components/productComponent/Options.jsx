@@ -7,6 +7,11 @@ const MainLeftBottomContent = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
 	margin-top: 2.5rem;
 	min-height: 13rem;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+		border-left: none;
+		border-right: none;
+	}
 `;
 
 const Cover = styled.div`
@@ -20,6 +25,17 @@ const Cover = styled.div`
 
 	&:first-child {
 		border-right: 1px solid ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		padding-top: 2.8rem;
+		padding-bottom: 3.1rem;
+		&:first-child {
+			border-right: none;
+		}
+		&:last-child {
+			border-top: 1px solid ${props => props.theme.colorBlack};
+		}
 	}
 `;
 
@@ -50,6 +66,13 @@ const CoverItem = styled.div`
 			color: #adadad;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		width: 6.1rem;
+		height: 6.1rem;
+		& > span {
+			font-size: 1.9rem;
+		}
+	}
 `;
 
 const CoverTitle = styled.h2`
@@ -63,7 +86,13 @@ const CoverTitle = styled.h2`
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+		top: -1.2rem;
+	}
 `;
+
 const CoverSizes = styled.div`
 	display: flex;
 	align-items: center;
@@ -108,6 +137,10 @@ const ColorItem = styled.div`
 			opacity: 1;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		width: 6rem;
+		height: 6rem;
+	}
 `;
 
 const ColorName = styled.p`
@@ -115,6 +148,10 @@ const ColorName = styled.p`
 	font-size: 1.3rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: ${props => props.theme.fontnm};
+		line-height: 2.1rem;
+	}
 `;
 
 const CoverQuantity = styled.div`
@@ -133,7 +170,11 @@ const CoverQuantity = styled.div`
 	}
 `;
 
-const CoverContent = styled.div``;
+const CoverContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
 
 const CoverInStock = styled.div`
 	font-weight: 400;
@@ -143,6 +184,12 @@ const CoverInStock = styled.div`
 	margin-bottom: 0.3rem;
 	&:last-child {
 		margin-bottom: 0;
+	}
+	@media screen and (max-width: 1100px) {
+		font-size: ${props => props.theme.fontnm};
+		line-height: 2.1rem;
+		text-align: right;
+		margin-bottom: 0.8rem;
 	}
 `;
 
@@ -164,6 +211,9 @@ const CoverChart = styled.div`
 		line-height: 1.7rem;
 		font-size: 1.3rem;
 		color: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		display: none;
 	}
 `;
 
@@ -188,13 +238,63 @@ const CoverSign = styled.div`
 			color: ${props => props.theme.colorGray};
 		}
 	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			font-size: 2.3rem;
+		}
+	}
 `;
+
 const ColorBlockText = styled.p`
 	text-transform: uppercase;
 	font-weight: 400;
 	font-size: ${props => props.theme.fontsm};
 	line-height: 1.7rem;
 	color: #000000;
+`;
+
+const ColorTitle = styled.h3`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: block;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: ${props => props.theme.fontmd};
+		line-height: 2.2rem;
+		color: ${props => props.theme.colorBlack};
+		margin: 3.7rem 0 2.6rem;
+	}
+`;
+
+const CvoerGroup = styled.div`
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+`;
+
+const CoverChartTab = styled.div`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.8rem;
+		cursor: pointer;
+		& > div {
+			border-radius: 50%;
+			background: ${props => props.theme.colorBlack};
+			width: 1.2rem;
+			height: 1.2rem;
+		}
+		& > span {
+			font-weight: 400;
+			line-height: 2.1rem;
+			font-size: ${props => props.theme.fontmd};
+			color: ${props => props.theme.colorBlack};
+			text-transform: uppercase;
+		}
+	}
 `;
 
 export const Options = ({
@@ -250,26 +350,34 @@ export const Options = ({
 		<MainLeftBottomContent>
 			<Cover>
 				<CoverTitle>OPTIONS</CoverTitle>
-				<CoverSizes>
-					{noSizes ? (
-						<ColorBlockText>{curProd.ifNoSize}</ColorBlockText>
-					) : (
-						curProd.options?.map((item, index) => (
-							<CoverItem
-								key={item}
-								activeitem={index + 1 === activeitem ? true : false}
-								onClick={() => handleSize(item, index + 1)}
-							>
-								<span>{item.sizeShort}</span>
-							</CoverItem>
-						))
+				<CvoerGroup>
+					<CoverSizes>
+						{noSizes ? (
+							<ColorBlockText>{curProd.ifNoSize}</ColorBlockText>
+						) : (
+							curProd.options?.map((item, index) => (
+								<CoverItem
+									key={item.id}
+									activeitem={index + 1 === activeitem ? true : false}
+									onClick={() => handleSize(item, index + 1)}
+								>
+									<span>{item.sizeShort}</span>
+								</CoverItem>
+							))
+						)}
+					</CoverSizes>
+					{!noSizes && (
+						<CoverChartTab>
+							<div></div> <span> SIZE CHART</span>
+						</CoverChartTab>
 					)}
-				</CoverSizes>
+				</CvoerGroup>
+				<ColorTitle>COLOR</ColorTitle>
 				<CoverColors>
 					<ColorBlock>
 						{filterProd.color?.map((item, index) => (
 							<ColorItem
-								key={item}
+								key={item.id}
 								color={item.hex}
 								activeitemcolor={index + 1 === activeitemcolor ? true : false}
 								onClick={() => handleColor(item, index + 1)}

@@ -462,12 +462,12 @@ const Unlock = styled.svg`
 	}
 `;
 
-export const Window = ({ activeItem }) => {
+export const Window = ({ activeitem }) => {
 	const [currentItem, setCurrentItem] = useState([]);
 	const [path, setPath] = useState('');
 
 	useEffect(() => {
-		const result = dataItems.find(item => item.id === activeItem);
+		const result = dataItems.find(item => item.id === activeitem);
 		setCurrentItem(result);
 		setPath(result.name.replace(/ /gi, '-').toLowerCase());
 
@@ -484,7 +484,7 @@ export const Window = ({ activeItem }) => {
 		// document.body.appendChild(jquery);
 		// document.body.appendChild(script);
 		// document.body.appendChild(scriptSecond);
-	}, [activeItem, currentItem.name]);
+	}, [activeitem, currentItem.name]);
 
 	const RotatePhoto = () => {
 		// $(function () {

@@ -17,6 +17,12 @@ const MainWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 2.2rem;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column-reverse;
+		width: 100%;
+		padding: 0;
+		gap: 0;
+	}
 `;
 
 const MainLeft = styled.div`
@@ -25,6 +31,9 @@ const MainLeft = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
 
 const MainLeftTop = styled.div`
@@ -33,6 +42,10 @@ const MainLeftTop = styled.div`
 	border-top-right-radius: 3rem;
 	padding-top: 2.7rem;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		border-left: none;
+		border-right: none;
+	}
 `;
 const Angle = styled.div`
 	position: absolute;
@@ -48,14 +61,25 @@ const Angle = styled.div`
 		color: #adadad;
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 1100px) {
+		& > span {
+			font-size: 1.7rem;
+			line-height: 2.2rem;
+		}
+	}
 `;
+
 const Model = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
 	padding: 0 3.5rem 1.5rem;
 	border-bottom: 1px solid ${props => props.theme.colorBlack};
+	@media screen and (max-width: 1100px) {
+		padding-bottom: 3rem;
+	}
 `;
+
 const ModelBlock = styled.div``;
 
 const ModelBlockName = styled.h3`
@@ -64,7 +88,12 @@ const ModelBlockName = styled.h3`
 	line-height: 3.9rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 4.2rem;
+		line-height: 5.6rem;
+	}
 `;
+
 const ModelBlockType = styled.h4`
 	font-weight: 450;
 	font-size: ${props => props.theme.fontsm};
@@ -72,20 +101,35 @@ const ModelBlockType = styled.h4`
 	color: ${props => props.theme.colorBlack};
 	margin-bottom: 0.7rem;
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 2rem;
+		line-height: 2.7rem;
+	}
 `;
+
 const ModelBlockTypeName = styled.p`
 	font-weight: 450;
 	font-size: ${props => props.theme.fontsm};
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.6rem;
+		line-height: 2.1rem;
+	}
 `;
+
 const ModelPrice = styled.div`
 	font-weight: 700;
 	font-size: 1.5rem;
 	line-height: 2rem;
 	color: ${props => props.theme.colorBlack};
+	@media screen and (max-width: 1100px) {
+		font-size: 2.5rem;
+		line-height: 3.3rem;
+	}
 `;
+
 const Item = styled.div`
 	height: 100%;
 	display: flex;
@@ -97,6 +141,9 @@ const Item = styled.div`
 
 	&:last-child {
 		border-bottom: 0;
+	}
+	@media screen and (max-width: 1100px) {
+		padding: 2rem 3.5rem;
 	}
 `;
 const Title = styled.h2`
@@ -110,6 +157,11 @@ const Title = styled.h2`
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+		top: -1.2rem;
+	}
 `;
 
 const Content = styled.div`
@@ -124,6 +176,10 @@ const Text = styled.p`
 	line-height: 1.5rem;
 	color: ${props => props.theme.colorBlack};
 	margin-bottom: 0.1rem;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+	}
 `;
 
 const Decoration = styled.div`
@@ -141,6 +197,9 @@ const Decoration = styled.div`
 		width: 1px;
 		height: 100%;
 		background: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		border-right: none;
 	}
 `;
 const DecorationLeft = styled.div`
@@ -208,6 +267,16 @@ const Button = styled.div`
 		text-align: center;
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 1100px) {
+		width: 95%;
+		margin: 0.9rem auto;
+	}
+	@media screen and (max-width: 567px) {
+		padding: 2.5rem 0 2.2rem;
+		& > span {
+			font-size: 1.9rem;
+		}
+	}
 `;
 
 const MainRight = styled.div`
@@ -216,6 +285,10 @@ const MainRight = styled.div`
 	height: 100%;
 	width: 58%;
 	border: 1px solid ${props => props.theme.colorBlack};
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+		border: unset;
+	}
 `;
 
 const MainRightAside = styled.div`
@@ -235,6 +308,9 @@ const MainRightAside = styled.div`
 		transform: rotate(-180deg);
 		writing-mode: vertical-lr;
 	}
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 const MainRightContent = styled.div`
 	position: relative;
@@ -252,6 +328,9 @@ const MainRightContent = styled.div`
 			}
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
 
 const Position = styled.div`
@@ -262,6 +341,10 @@ const Position = styled.div`
 	font-size: 1.2rem;
 	line-height: 1.7rem;
 	color: ${props => props.theme.colorBlack};
+	@media screen and (max-width: 567px) {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
 `;
 
 const Image = styled.img`
@@ -286,6 +369,9 @@ const CornerTop = styled.div`
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 0;
+	}
 `;
 
 const CornerBottom = styled.div`
@@ -298,6 +384,9 @@ const CornerBottom = styled.div`
 		line-height: 1.7rem;
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
+	}
+	@media screen and (max-width: 1100px) {
+		display: none;
 	}
 `;
 

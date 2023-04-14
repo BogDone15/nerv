@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import heroBg from '../../assets/hero-bg.svg';
 import { dataHero } from '../../data';
+import { useEffect } from 'react';
 
 const HeroWrapper = styled.div`
 	border-left: 1px solid ${props => props.theme.colorBorder};
@@ -13,6 +14,10 @@ const HeroWrapper = styled.div`
 		margin-left: 4rem;
 		max-width: 100%;
 		width: 15%;
+	}
+	@media screen and (max-width: 567px) {
+		width: 25%;
+		border-right: 1px solid ${props => props.theme.colorBorder};
 	}
 `;
 
@@ -28,7 +33,10 @@ const HeroBlock = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 5px;
+	gap: 0.6rem;
+	@media screen and (max-width: 1100px) {
+		gap: 1rem;
+	}
 `;
 
 const HeroMain = styled.div`
@@ -46,6 +54,10 @@ const HeromainView = styled.div`
 	text-align: center;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
+
+	@media screen and (max-width: 567px) {
+		font-size: 2rem;
+	}
 `;
 
 const Image = styled.img`
@@ -63,7 +75,7 @@ const GearLine = styled.div`
 	max-width: 2rem;
 	width: 100%;
 	transition: all 0.2s ease;
-	opacity: ${props => (props.activeType ? '0' : '1')};
+	opacity: ${props => (props.activeelement ? '0' : '1')};
 `;
 
 const HeroItemsAside = styled.div`
@@ -73,7 +85,8 @@ const HeroItemsAside = styled.div`
 	gap: 0.3rem;
 	margin-right: 0.2rem;
 	transition: all 0.2s ease;
-	transform: ${props => (props.activeType ? 'translateX(-0.4rem)' : 'unset')};
+	transform: ${props =>
+		props.activeelement ? 'translateX(-0.4rem)' : 'unset'};
 
 	& > span {
 		transform: rotate(-180deg);
@@ -81,6 +94,12 @@ const HeroItemsAside = styled.div`
 		color: ${props => props.theme.colorMain};
 		font-size: 6px;
 		text-transform: uppercase;
+		@media screen and (max-width: 1100px) {
+			font-size: 8px;
+		}
+		@media screen and (max-width: 567px) {
+			font-size: 6px;
+		}
 	}
 `;
 
@@ -93,7 +112,7 @@ const HeroAsideLine = styled.div`
 	height: 100%;
 	background: ${props => props.theme.colorMain};
 	transition: all 0.2s ease;
-	opacity: ${props => (props.activeType ? '1' : '0')};
+	opacity: ${props => (props.activeelement ? '1' : '0')};
 `;
 
 const HeroItems = styled(motion.div)`
@@ -102,7 +121,7 @@ const HeroItems = styled(motion.div)`
 	align-items: flex-start;
 	justify-content: center;
 	transition: all 0.2s ease;
-	opacity: ${props => (props.activeType ? '1' : '0.5')};
+	opacity: ${props => (props.activeelement ? '1' : '0.5')};
 `;
 
 const Lock = styled.svg`
@@ -158,12 +177,153 @@ const HeroItemsContent = styled.div`
 	justify-content: center;
 	width: 5.1rem;
 	height: 5.1rem;
+	@media screen and (max-width: 1100px) {
+		width: 6.1rem;
+		height: 6.1rem;
+	}
+	@media screen and (max-width: 567px) {
+		width: 7.5rem;
+		height: 7.5rem;
+	}
 `;
 
-export const Hero = ({ setItemType, activeType, setActiveType }) => {
+export const Hero = ({ setItemType, activeelement, setActiveelement }) => {
 	const handleClick = (id, type) => {
-		setActiveType(id);
+		setActiveelement(id);
 		setItemType(type);
+	};
+
+	const useViewport = () => {
+		const [width, setWidth] = useState(window.innerWidth);
+
+		useEffect(() => {
+			const handleWindowResize = () => {
+				setWidth(window.innerWidth);
+			};
+
+			window.addEventListener('resize', handleWindowResize);
+			return () => window.removeEventListener('resize', handleWindowResize);
+		}, []);
+
+		return { width };
+	};
+
+	const DesktopComponent = () => {
+		const [filterProduct, setFilterProduct] = useState([]);
+
+		useEffect(() => {
+			const result = dataHero.filter(item => !item.mobile);
+			setFilterProduct(result);
+		}, []);
+
+		return (
+			<HeroBlock>
+				{filterProduct.map(item => (
+					<HeroGroup
+						key={item.id}
+						lock={item.lock}
+						onClick={() => handleClick(item.id, item.type)}
+					>
+						{item.lock && (
+							<Lock viewBox='0 0 8.56 12.11'>
+								<rect />
+								<polygon points='8.56 3.74 6.69 3.74 6.69 1.84 1.87 1.84 1.87 3.74 0 3.74 0 0 8.56 0 8.56 3.74' />
+							</Lock>
+						)}
+						<HeroItems
+							activeelement={item.id === activeelement ? activeelement : null}
+						>
+							<HeroItemsAside
+								activeelement={item.id === activeelement ? activeelement : null}
+							>
+								<Icon viewBox='0 0 3 4'>
+									<path
+										d='M1.71001 3.22H0V0.440002H2.78999V2.17999L1.71001 3.22Z'
+										fill='#191919'
+									/>
+								</Icon>
+								<span>{item.type}</span>
+							</HeroItemsAside>
+							<HeroItemsContent>
+								<HeroAsideLine
+									activeelement={
+										item.id === activeelement ? activeelement : null
+									}
+								/>
+								<GearLine
+									activeelement={
+										item.id === activeelement ? activeelement : null
+									}
+								/>
+								<Image src={item.img} alt='nerv' />
+							</HeroItemsContent>
+						</HeroItems>
+					</HeroGroup>
+				))}
+			</HeroBlock>
+		);
+	};
+
+	const MobileComponent = () => {
+		const [filterProduct, setFilterProduct] = useState([]);
+
+		useEffect(() => {
+			setFilterProduct(dataHero);
+		}, []);
+
+		return (
+			<HeroBlock>
+				{filterProduct.map(item => (
+					<HeroGroup
+						key={item.id}
+						lock={item.lock}
+						onClick={() => handleClick(item.id, item.type)}
+					>
+						{item.lock && (
+							<Lock viewBox='0 0 8.56 12.11'>
+								<rect />
+								<polygon points='8.56 3.74 6.69 3.74 6.69 1.84 1.87 1.84 1.87 3.74 0 3.74 0 0 8.56 0 8.56 3.74' />
+							</Lock>
+						)}
+						<HeroItems
+							activeelement={item.id === activeelement ? activeelement : null}
+						>
+							<HeroItemsAside
+								activeelement={item.id === activeelement ? activeelement : null}
+							>
+								<Icon viewBox='0 0 3 4'>
+									<path
+										d='M1.71001 3.22H0V0.440002H2.78999V2.17999L1.71001 3.22Z'
+										fill='#191919'
+									/>
+								</Icon>
+								<span>{item.type}</span>
+							</HeroItemsAside>
+							<HeroItemsContent>
+								<HeroAsideLine
+									activeelement={
+										item.id === activeelement ? activeelement : null
+									}
+								/>
+								<GearLine
+									activeelement={
+										item.id === activeelement ? activeelement : null
+									}
+								/>
+								<Image src={item.img} alt='nerv' />
+							</HeroItemsContent>
+						</HeroItems>
+					</HeroGroup>
+				))}
+			</HeroBlock>
+		);
+	};
+
+	const MyComponent = () => {
+		const { width } = useViewport();
+		const breakpoint = 1100;
+
+		return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
 	};
 
 	return (
@@ -171,46 +331,7 @@ export const Hero = ({ setItemType, activeType, setActiveType }) => {
 			<HeroTop />
 			<HeroMain>
 				<HeromainView>Hero</HeromainView>
-				<HeroBlock>
-					{dataHero.map(item => (
-						<HeroGroup
-							key={item.id}
-							lock={item.lock}
-							onClick={() => handleClick(item.id, item.type)}
-						>
-							{item.lock && (
-								<Lock viewBox='0 0 8.56 12.11'>
-									<rect />
-									<polygon points='8.56 3.74 6.69 3.74 6.69 1.84 1.87 1.84 1.87 3.74 0 3.74 0 0 8.56 0 8.56 3.74' />
-								</Lock>
-							)}
-							<HeroItems
-								activeType={item.id === activeType ? activeType : null}
-							>
-								<HeroItemsAside
-									activeType={item.id === activeType ? activeType : null}
-								>
-									<Icon viewBox='0 0 3 4'>
-										<path
-											d='M1.71001 3.22H0V0.440002H2.78999V2.17999L1.71001 3.22Z'
-											fill='#191919'
-										/>
-									</Icon>
-									<span>{item.type}</span>
-								</HeroItemsAside>
-								<HeroItemsContent>
-									<HeroAsideLine
-										activeType={item.id === activeType ? activeType : null}
-									/>
-									<GearLine
-										activeType={item.id === activeType ? activeType : null}
-									/>
-									<Image src={item.img} alt='nerv' />
-								</HeroItemsContent>
-							</HeroItems>
-						</HeroGroup>
-					))}
-				</HeroBlock>
+				<MyComponent />
 			</HeroMain>
 		</HeroWrapper>
 	);

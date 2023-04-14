@@ -123,7 +123,6 @@ export const ModalProdAdd = ({ showModal, setShowModal }) => {
 	useEffect(() => {
 		cart && setCurrentProduct(cart.products[cart.products.length - 1]);
 	}, [cart]);
-	console.log(currentProduct);
 
 	return (
 		<Wrapper

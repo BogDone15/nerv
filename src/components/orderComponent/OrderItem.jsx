@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import previewBg from '../../assets/preview-order-bg.svg';
 import {
 	deleteProduct,
 	incrementQuantity,
@@ -95,6 +96,11 @@ const ContentMain = styled.div`
 	&::-webkit-scrollbar-thumb {
 		border-radius: 12px;
 		background-color: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+		width: 100%;
+		padding-right: 0;
 	}
 `;
 
@@ -335,6 +341,147 @@ const ContentBottom = styled.div`
 	}
 `;
 
+const Desktop = styled.div`
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
+`;
+
+const Tablet = styled.div`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: block;
+		margin: 4.5rem 0 5rem;
+		width: 100%;
+		height: 100%;
+	}
+`;
+
+const TabletTop = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2rem;
+	padding-top: 2rem;
+	width: 100%;
+	border-top: 1px solid ${props => props.theme.colorBorder};
+	& > a {
+		width: 95%;
+		margin: auto;
+		text-align: center;
+		font-weight: 450;
+		font-size: 1.8rem;
+		line-height: 2.4rem;
+		color: #adadad;
+		background: ${props => props.theme.colorMain};
+		padding: 2.3rem 0 2.1rem;
+	}
+`;
+
+const TabletBottom = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 1.8rem;
+`;
+
+const TabletBottomItem = styled.div`
+	position: relative;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	&:first-child {
+		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
+	&::after {
+		position: absolute;
+		left: 32.5%;
+		top: 0;
+		width: 1px;
+		height: 100%;
+		content: '';
+		background: ${props => props.theme.colorBorder};
+	}
+`;
+
+const TabletBottomLeft = styled.div`
+	background: url(${previewBg}) 50% 50% no-repeat;
+	background-size: 75%;
+	width: 35%;
+	padding: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media screen and (max-width: 567px) {
+		padding: 1rem;
+	}
+`;
+
+const TabletBottomRight = styled.div`
+	padding: 1rem 4rem;
+	@media screen and (max-width: 567px) {
+		padding: 2rem 3rem;
+	}
+`;
+
+const ImageProduct = styled.img``;
+
+const TabletName = styled.div`
+	font-size: 2.6rem;
+	line-height: 3.3rem;
+	color: ${props => props.theme.colorMain};
+`;
+const TabletDesc = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+`;
+const TabletType = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+	margin: 3.6rem 0 3.2rem;
+	@media screen and (max-width: 567px) {
+		margin: 2rem 0 1.6rem;
+	}
+`;
+const TabletInStock = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 0.6rem;
+	}
+`;
+const TabletColor = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 0.6rem;
+	}
+`;
+const TabletSize = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 0.6rem;
+	}
+`;
+const TabletQuantity = styled.div`
+	font-size: ${props => props.theme.fontmd};
+	line-height: 2.2rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+`;
+
 export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 	const cart = useSelector(state => state.cart);
 	const [arrSize, setArrSize] = useState('');
@@ -373,96 +520,126 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 
 	return (
 		<>
-			<WrapperTop>
-				<span>ORDER DETAILS</span>
-			</WrapperTop>
-			<ContentTop>
-				<ContentTopItem>TYPE</ContentTopItem>
-				<ContentTopItem>INFO</ContentTopItem>
-				<ContentTopItem>COLOR</ContentTopItem>
-				<ContentTopItem>SIZE</ContentTopItem>
-				<ContentTopItem>AMT</ContentTopItem>
-				<ContentTopItem>PRICE</ContentTopItem>
-			</ContentTop>
-			<ContentMain arrSize={arrSize}>
-				{cart.products?.map(item => (
-					<ContentMainItem key={item.id} onClick={() => handleClick(item.id)}>
-						<ContentMainItemRemove
-							onClick={() => handleDelete(item.id, item.quantity, item.price)}
-						>
-							<span></span>
-							<span></span>
-						</ContentMainItemRemove>
-						<ContentMainItemType>
-							<ContentMainItemBlock>
-								<h3>MODEL #</h3>
-							</ContentMainItemBlock>
-							<ContentMainItemBlock>
-								<h3>APPLICATION</h3>
-							</ContentMainItemBlock>
-							<ContentMainItemBlock>
-								<h3>IN STOCK</h3>
-							</ContentMainItemBlock>
-						</ContentMainItemType>
-						<ContentMainItemInfo>
-							<ContentMainItemBlock>
-								<p>{item.name}</p>
-								<p>{item.desc}</p>
-							</ContentMainItemBlock>
-							<ContentMainItemBlock>
-								<p>{item.model}</p>
-							</ContentMainItemBlock>
-							<ContentMainItemBlock>
-								<p>ONLY {item.size.inStock} ITEM LEFT</p>
-							</ContentMainItemBlock>
-						</ContentMainItemInfo>
-						<ContentMainItemColor>
-							<span>{item.size.color}</span>
-						</ContentMainItemColor>
-						<ContentMainItemSize>
-							<div>
-								<span>{item.size.sizeShort}</span>
-							</div>
-						</ContentMainItemSize>
-						<ContentMainItemAmt>
-							<div>
-								<span>
-									{item.quantity <= 9 ? '0' + item.quantity : item.quantity}
-								</span>
-							</div>
-							<div>
-								<span onClick={() => handleQuantity('inc', item.id)}>+</span>
-								<span onClick={() => handleQuantity('dec', item.id)}>-</span>
-							</div>
-						</ContentMainItemAmt>
-						<ContentMainItemPrice>
-							<span>EUR {item.price}.00</span>
-						</ContentMainItemPrice>
-					</ContentMainItem>
-				))}
-			</ContentMain>
-			<ContentPrice>
-				<ContentPriceItem>
-					<div>SUBTOTAL</div>
-					<div>SHIPPING</div>
-					<div>TAX INCLUDED</div>
-					<div>TOTAL</div>
-				</ContentPriceItem>
-				<ContentPriceItem>
-					<div>USD {cart.total}.00</div>
-					<div>0.00</div>
-					<div>0.00</div>
-					<div>USD {cart.total}.00</div>
-				</ContentPriceItem>
-			</ContentPrice>
-			<ContentBottom>
-				<Link to='/'>
-					<span>COMPLETE THE SET</span>
-				</Link>
-				<Link to='/checkout'>
-					<span>CHECKOUT</span>
-				</Link>
-			</ContentBottom>
+			<Tablet>
+				<TabletTop>
+					<Link to='/'>
+						<span>COMPLETE THE SET</span>
+					</Link>
+					<Link to='/checkout'>
+						<span>CHECKOUT</span>
+					</Link>
+				</TabletTop>
+				<TabletBottom>
+					{cart.products?.map(item => (
+						<TabletBottomItem>
+							<TabletBottomLeft>
+								<ImageProduct src={item.imgMain} alt={item.name} />
+							</TabletBottomLeft>
+							<TabletBottomRight>
+								<TabletName>{item.name}</TabletName>
+								<TabletDesc>{item.desc}</TabletDesc>
+								<TabletType>[ {item.model} ]</TabletType>
+								<TabletInStock>ONLY {item.quantity} ITEM LEFT</TabletInStock>
+								<TabletColor>COLOR: {item.size.color}</TabletColor>
+								<TabletSize>SIZE: {item.size.sizeFull} </TabletSize>
+								<TabletQuantity>QUANTITY: {item.quantity}</TabletQuantity>
+							</TabletBottomRight>
+						</TabletBottomItem>
+					))}
+				</TabletBottom>
+			</Tablet>
+			<Desktop>
+				<WrapperTop>
+					<span>ORDER DETAILS</span>
+				</WrapperTop>
+				<ContentTop>
+					<ContentTopItem>TYPE</ContentTopItem>
+					<ContentTopItem>INFO</ContentTopItem>
+					<ContentTopItem>COLOR</ContentTopItem>
+					<ContentTopItem>SIZE</ContentTopItem>
+					<ContentTopItem>AMT</ContentTopItem>
+					<ContentTopItem>PRICE</ContentTopItem>
+				</ContentTop>
+				<ContentMain arrSize={arrSize}>
+					{cart.products?.map(item => (
+						<ContentMainItem key={item.id} onClick={() => handleClick(item.id)}>
+							<ContentMainItemRemove
+								onClick={() => handleDelete(item.id, item.quantity, item.price)}
+							>
+								<span></span>
+								<span></span>
+							</ContentMainItemRemove>
+							<ContentMainItemType>
+								<ContentMainItemBlock>
+									<h3>MODEL #</h3>
+								</ContentMainItemBlock>
+								<ContentMainItemBlock>
+									<h3>APPLICATION</h3>
+								</ContentMainItemBlock>
+								<ContentMainItemBlock>
+									<h3>IN STOCK</h3>
+								</ContentMainItemBlock>
+							</ContentMainItemType>
+							<ContentMainItemInfo>
+								<ContentMainItemBlock>
+									<p>{item.name}</p>
+									<p>{item.desc}</p>
+								</ContentMainItemBlock>
+								<ContentMainItemBlock>
+									<p>{item.model}</p>
+								</ContentMainItemBlock>
+								<ContentMainItemBlock>
+									<p>ONLY {item.size.inStock} ITEM LEFT</p>
+								</ContentMainItemBlock>
+							</ContentMainItemInfo>
+							<ContentMainItemColor>
+								<span>{item.size.color}</span>
+							</ContentMainItemColor>
+							<ContentMainItemSize>
+								<div>
+									<span>{item.size.sizeShort}</span>
+								</div>
+							</ContentMainItemSize>
+							<ContentMainItemAmt>
+								<div>
+									<span>
+										{item.quantity <= 9 ? '0' + item.quantity : item.quantity}
+									</span>
+								</div>
+								<div>
+									<span onClick={() => handleQuantity('inc', item.id)}>+</span>
+									<span onClick={() => handleQuantity('dec', item.id)}>-</span>
+								</div>
+							</ContentMainItemAmt>
+							<ContentMainItemPrice>
+								<span>EUR {item.price}.00</span>
+							</ContentMainItemPrice>
+						</ContentMainItem>
+					))}
+				</ContentMain>
+				<ContentPrice>
+					<ContentPriceItem>
+						<div>SUBTOTAL</div>
+						<div>SHIPPING</div>
+						<div>TAX INCLUDED</div>
+						<div>TOTAL</div>
+					</ContentPriceItem>
+					<ContentPriceItem>
+						<div>USD {cart.total}.00</div>
+						<div>0.00</div>
+						<div>0.00</div>
+						<div>USD {cart.total}.00</div>
+					</ContentPriceItem>
+				</ContentPrice>
+				<ContentBottom>
+					<Link to='/'>
+						<span>COMPLETE THE SET</span>
+					</Link>
+					<Link to='/checkout'>
+						<span>CHECKOUT</span>
+					</Link>
+				</ContentBottom>
+			</Desktop>
 		</>
 	);
 };

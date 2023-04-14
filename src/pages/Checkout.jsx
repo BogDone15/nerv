@@ -15,6 +15,13 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-top: 1rem;
+	@media screen and (max-width: 1100px) {
+		height: auto;
+	}
+	@media screen and (max-width: 567px) {
+		padding-bottom: 31rem;
+		position: relative;
+	}
 `;
 
 const Block = styled.div`
@@ -22,6 +29,9 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		border-bottom: unset;
+	}
 `;
 
 const Aside = styled.div`
@@ -31,6 +41,9 @@ const Aside = styled.div`
 	width: 4.5rem;
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const AsideTop = styled.div`
@@ -60,6 +73,9 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 `;
 
 const GearPreview = styled.div`
@@ -73,6 +89,9 @@ const GearPreview = styled.div`
 	height: calc(100% - 0.9rem);
 	margin-top: 0.9rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Group = styled.div`
@@ -81,8 +100,13 @@ const Group = styled.div`
 	height: 100%;
 	width: 100%;
 	overflow-y: hidden;
-	/* width: calc(100% - 4.5rem); */
 	padding-left: 4.5rem;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column-reverse;
+		padding-left: 0;
+		margin: 4.5rem 0 6rem;
+		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
 `;
 
 export const Checkout = () => {

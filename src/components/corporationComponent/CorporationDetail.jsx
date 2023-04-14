@@ -7,6 +7,16 @@ const Wrapper = styled(Tabs)`
 	padding: 0 1.5rem 1.9rem 2rem;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		display: flex;
+		align-items: flex-start;
+		gap: 4.1rem;
+		border-top: 1px solid ${props => props.theme.colorBorder};
+		margin-top: 9rem;
+		padding-top: 4.6rem;
+		padding-left: 0;
+		padding-right: 4.3rem;
+	}
 `;
 
 const WrapperNav = styled(TabList)`
@@ -16,6 +26,13 @@ const WrapperNav = styled(TabList)`
 	padding-left: 4.2rem;
 	padding-top: 4.8rem;
 	margin-bottom: 4.8rem;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding-left: 3.5rem;
+		padding-top: 0;
+		margin-bottom: 0;
+	}
 `;
 
 WrapperNav.tabsRole = 'TabList';
@@ -55,6 +72,23 @@ const WrapperNavItem = styled(Tab)`
 			}
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		align-items: flex-start;
+		writing-mode: vertical-lr;
+		& > div {
+			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
+			&:last-child {
+				padding-bottom: 1.8rem;
+			}
+		}
+		&.is-selected {
+			& > div {
+				&:last-child {
+					padding: 0.3rem 0.2rem 3.8rem 0.2rem;
+				}
+			}
+		}
+	}
 `;
 
 WrapperNavItem.tabsRole = 'Tab';
@@ -65,6 +99,10 @@ const Main = styled.div`
 	gap: 1rem;
 	width: 100%;
 	height: calc(100% - 12.1rem);
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+		height: 100%;
+	}
 `;
 
 const MainLeft = styled.div`
@@ -74,6 +112,11 @@ const MainLeft = styled.div`
 	max-width: 29rem;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		max-width: 100%;
+		height: auto;
+		gap: 0;
+	}
 `;
 
 const MainLeftTop = styled.div`
@@ -84,17 +127,27 @@ const MainLeftTop = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	height: 29rem;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+		padding: 3.7rem 5rem;
+	}
 `;
 
 const Image = styled.img`
 	max-width: 24.9rem;
 	width: 100%;
 	margin: auto;
+	@media screen and (max-width: 1100px) {
+		max-width: 49rem;
+	}
 `;
 
 const MainLeftBottom = styled.div`
 	border: 1px solid ${props => props.theme.colorBorder};
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Decoration = styled.div`
@@ -142,6 +195,13 @@ const MainMiddle = styled(TabPanel)`
 	&.is-selected {
 		display: block;
 	}
+	@media screen and (max-width: 1100px) {
+		max-width: 100%;
+		border: none;
+		&:after {
+			display: none;
+		}
+	}
 `;
 
 MainMiddle.tabsRole = 'TabPanel';
@@ -151,6 +211,10 @@ const MainMiddleLine = styled.div`
 	width: 70%;
 	background: ${props => props.theme.colorBlack};
 	margin: 2rem 0 4.2rem;
+	@media screen and (max-width: 1100px) {
+		width: 90%;
+		margin-left: 4rem;
+	}
 `;
 
 const MainMiddleTitle = styled.div`
@@ -161,6 +225,9 @@ const MainMiddleTitle = styled.div`
 		font-size: 3.2rem;
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
+	}
+	@media screen and (max-width: 1100px) {
+		padding-left: 0;
 	}
 `;
 
@@ -185,6 +252,14 @@ const MainMiddleText = styled.div`
 			margin-bottom: 0;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		overflow-y: visible;
+		padding: 0;
+		& > p {
+			font-size: 1.8rem;
+			line-height: 2.4rem;
+		}
+	}
 `;
 
 const Directors = styled.div`
@@ -202,6 +277,9 @@ const MainRight = styled.div`
 	width: 100%;
 	height: 100%;
 	border: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const MainRightTop = styled.div`
