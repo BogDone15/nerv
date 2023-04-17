@@ -5,7 +5,7 @@ import itemSixth from './assets/items/item6.svg';
 import itemSeventh from './assets/items/item7.svg';
 import itemEights from './assets/items/item8.svg';
 import itemNinth from './assets/items/item2.svg';
-import itemTenth from './assets/items/item1.svg';
+import itemTenthMob from './assets/items/item1-mob.svg';
 
 import beltZoom from './assets/belt-zoom.png';
 import belt from './assets/belt.png';
@@ -65,7 +65,7 @@ export const dataHero = [
 	},
 	{
 		id: 8,
-		img: itemTenth,
+		img: itemTenthMob,
 		type: 'items',
 		lock: true,
 		mobile: true,
@@ -452,8 +452,8 @@ export const dataItems = [
 		model: 'cranium',
 		options: [
 			{
-				sizeShort: 'S',
-				sizeFull: 'small',
+				sizeShort: '',
+				sizeFull: '',
 				color: [
 					{
 						name: 'pink',
@@ -473,8 +473,8 @@ export const dataItems = [
 				],
 			},
 			{
-				sizeShort: 'L',
-				sizeFull: 'large',
+				sizeShort: '',
+				sizeFull: '',
 				color: [
 					{
 						name: 'green',
@@ -494,8 +494,8 @@ export const dataItems = [
 				],
 			},
 			{
-				sizeShort: 'XL',
-				sizeFull: 'extra large',
+				sizeShort: '',
+				sizeFull: '',
 				color: [
 					{
 						name: 'red',
@@ -1109,12 +1109,6 @@ export const dataItems = [
 ];
 
 export const shippingData = [
-	// {
-	// 	id: 1,
-	// 	type: 'text',
-	// 	name: 'country',
-	// 	placeholder: 'Country',
-	// },
 	{
 		id: 2,
 		type: 'text',
@@ -1122,16 +1116,10 @@ export const shippingData = [
 		placeholder: 'State',
 	},
 	{
-		id: 3,
-		type: 'text',
-		name: 'lastname',
-		placeholder: 'LAST NAME',
-	},
-	{
 		id: 4,
 		type: 'text',
 		name: 'code',
-		placeholder: 'ZIP CODEail',
+		placeholder: 'ZIP CODE',
 	},
 	{
 		id: 5,

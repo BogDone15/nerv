@@ -119,6 +119,7 @@ const InputWrapper = styled.div`
 
 const Input = styled.input`
 	border: 1px solid ${props => props.theme.colorBorder};
+	border-radius: 0;
 	background: transparent;
 	outline: none;
 	width: 100%;
@@ -132,11 +133,11 @@ const InputPlaceHolder = styled.span`
 	background: #bcbbbb;
 	padding: 0 0.6rem;
 	left: 2rem;
-	top: -0.8rem;
+	top: -0.5rem;
 	font-weight: 300;
 	font-size: 1rem;
 	line-height: 1.3rem;
-	color: #000000;
+	color: ${props => props.theme.colorBlack};
 	text-transform: uppercase;
 	transition: all 0.2s ease;
 	@media screen and (max-width: 1100px) {

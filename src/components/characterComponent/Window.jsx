@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import jacketPreview from '../../assets/jacket-preview.svg';
 import previewBg from '../../assets/preview-bg.svg';
 // import video from '../../assets/video/video.mp4';
@@ -87,120 +87,6 @@ const WrapperMainMiddle = styled.div`
 	padding: 4rem 1rem;
 `;
 
-const glitchAfter = keyframes`
-  0% {
-    clip: rect(104px, 450px, 106px, 0)
-  }
-  5.88235% {
-    clip: rect(48px, 450px, 59px, 0)
-  }
-  11.76471% {
-    clip: rect(79px, 450px, 62px, 0)
-  }
-  17.64706% {
-    clip: rect(93px, 450px, 40px, 0)
-  }
-  23.52941% {
-    clip: rect(78px, 450px, 35px, 0)
-  }
-  29.41176% {
-    clip: rect(23px, 450px, 68px, 0)
-  }
-  35.29412% {
-    clip: rect(45px, 450px, 38px, 0)
-  }
-  41.17647% {
-    clip: rect(45px, 450px, 14px, 0)
-  }
-  47.05882% {
-    clip: rect(92px, 450px, 104px, 0)
-  }
-  52.94118% {
-    clip: rect(3px, 450px, 45px, 0)
-  }
-  58.82353% {
-    clip: rect(84px, 450px, 24px, 0)
-  }
-  64.70588% {
-    clip: rect(112px, 450px, 6px, 0)
-  }
-  70.58824% {
-    clip: rect(49px, 450px, 94px, 0)
-  }
-  76.47059% {
-    clip: rect(30px, 450px, 39px, 0)
-  }
-  82.35294% {
-    clip: rect(55px, 450px, 92px, 0)
-  }
-  88.23529% {
-    clip: rect(105px, 450px, 112px, 0)
-  }
-  94.11765% {
-    clip: rect(58px, 450px, 98px, 0)
-  }
-  100% {
-    clip: rect(68px, 450px, 103px, 0)
-  }
-`;
-
-const glitchBefore = keyframes`
-0% {
-    clip: rect(86px, 450px, 73px, 0)
-  }
-  5.88235% {
-    clip: rect(25px, 450px, 3px, 0)
-  }
-  11.76471% {
-    clip: rect(56px, 450px, 38px, 0)
-  }
-  17.64706% {
-    clip: rect(86px, 450px, 48px, 0)
-  }
-  23.52941% {
-    clip: rect(19px, 450px, 16px, 0)
-  }
-  29.41176% {
-    clip: rect(88px, 450px, 3px, 0)
-  }
-  35.29412% {
-    clip: rect(45px, 450px, 71px, 0)
-  }
-  41.17647% {
-    clip: rect(84px, 450px, 61px, 0)
-  }
-  47.05882% {
-    clip: rect(114px, 450px, 27px, 0)
-  }
-  52.94118% {
-    clip: rect(15px, 450px, 114px, 0)
-  }
-  58.82353% {
-    clip: rect(26px, 450px, 72px, 0)
-  }
-  64.70588% {
-    clip: rect(54px, 450px, 28px, 0)
-  }
-  70.58824% {
-    clip: rect(89px, 450px, 107px, 0)
-  }
-  76.47059% {
-    clip: rect(95px, 450px, 81px, 0)
-  }
-  82.35294% {
-    clip: rect(109px, 450px, 31px, 0)
-  }
-  88.23529% {
-    clip: rect(82px, 450px, 16px, 0)
-  }
-  94.11765% {
-    clip: rect(83px, 450px, 3px, 0)
-  }
-  100% {
-    clip: rect(49px, 450px, 52px, 0)
-  }
-`;
-
 const WrapperMainBlock = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -208,39 +94,10 @@ const WrapperMainBlock = styled.div`
 
 	& > a {
 		position: relative;
-		padding: 1.4rem 0 1.2rem;
+		padding: 1.5rem 0 1.2rem;
 		height: 4.6rem;
 		background: ${props => props.theme.colorMain};
 		cursor: pointer;
-		&::before,
-		&::after {
-			content: attr(data-text);
-			position: absolute;
-			top: 0px;
-			width: 100%;
-			height: 100%;
-			clip: rect(0, 0, 0, 0);
-			background: #000;
-			color: #cecece;
-		}
-		&::after {
-			left: 2px;
-			text-shadow: -1px 0 #cecece;
-			box-shadow: -1px 0 #cecece;
-		}
-		&::before {
-			left: -2px;
-			text-shadow: 2px 0 #cecece;
-			box-shadow: 2px 0 #cecece;
-		}
-		&:hover {
-			&::after {
-				animation: ${glitchAfter} 2s infinite linear alternate-reverse;
-			}
-			&:before {
-				animation: ${glitchBefore} 3s infinite linear alternate-reverse;
-			}
-		}
 	}
 `;
 
@@ -286,36 +143,6 @@ const Button = styled.button`
 		line-height: 1.8rem;
 		color: #adadad;
 		text-transform: uppercase;
-	}
-
-	&::before,
-	&::after {
-		content: attr(data-text);
-		position: absolute;
-		top: 0px;
-		width: 100%;
-		height: 100%;
-		clip: rect(0, 0, 0, 0);
-		background: #000;
-		color: #cecece;
-	}
-	&::after {
-		left: 2px;
-		text-shadow: -1px 0 #cecece;
-		box-shadow: -1px 0 #cecece;
-	}
-	&::before {
-		left: -2px;
-		text-shadow: 2px 0 #cecece;
-		box-shadow: 2px 0 #cecece;
-	}
-	&:hover {
-		&::after {
-			animation: ${glitchAfter} 2s infinite linear alternate-reverse;
-		}
-		&:before {
-			animation: ${glitchBefore} 3s infinite linear alternate-reverse;
-		}
 	}
 `;
 
@@ -422,7 +249,7 @@ const InputPlaceHolder = styled.span`
 	left: 2rem;
 	top: -0.8rem;
 	font-weight: 300;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	line-height: 1.7rem;
 	color: #000000;
 	text-transform: uppercase;

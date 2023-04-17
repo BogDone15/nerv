@@ -16,12 +16,12 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
+		position: relative;
 		height: auto;
 	}
 	@media screen and (max-width: 567px) {
-		padding-bottom: 31rem;
 		position: relative;
-		min-height: 100vh;
+		min-height: auto;
 	}
 `;
 

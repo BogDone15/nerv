@@ -44,7 +44,7 @@ html {
   @media screen and (max-width: 1100px) {
     font-size: 10px;
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 750px) {
     font-size: 9px;
   }
   @media screen and (max-width: 650px) {
@@ -59,9 +59,11 @@ html {
   @media screen and (max-width: 500px) {
     font-size: 6px;
   }
-
   @media screen and (max-width: 380px) {
     font-size: 5.5px;
+  }
+  @media screen and (max-width: 330px) {
+    font-size: 5px;
   }
 }
 

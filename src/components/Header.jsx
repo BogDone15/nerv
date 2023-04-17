@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -21,6 +21,9 @@ const TopLeft = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 46%;
 	}
+	@media screen and (max-width: 567px) {
+		font-size: 9px;
+	}
 `;
 
 const TopRight = styled.div`
@@ -36,6 +39,11 @@ const TopRight = styled.div`
 	@media screen and (max-width: 1100px) {
 		padding-right: 4.3rem;
 		width: 54%;
+	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			font-size: 9px;
+		}
 	}
 `;
 

@@ -84,7 +84,7 @@ const MenuItemsContent = styled.div`
 	background-image: url(${augmenBgFirst});
 	background-size: 11.1rem 4.7rem;
 	background-repeat: no-repeat;
-	padding: 0.2rem;
+	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -97,7 +97,7 @@ const MenuItemsContentSecond = styled.div`
 	background-image: url(${augmenBgSecond});
 	background-size: 4.8rem 9.8rem;
 	background-repeat: no-repeat;
-	padding: 0.2rem;
+	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -110,7 +110,7 @@ const MenuItemsContentLast = styled.div`
 	background-image: url(${augmenBgThird});
 	background-size: 5.5rem 4.7rem;
 	background-repeat: no-repeat;
-	padding: 0.2rem;
+	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -122,8 +122,9 @@ const MenuItemsContentLast = styled.div`
 
 const Image = styled.img`
 	max-width: 100%;
-	/* max-height: 4vh; */
-	/* width: auto; */
+	object-fit: contain;
+	object-position: center;
+	height: 100%;
 `;
 
 const MenuAsideLine = styled.div`

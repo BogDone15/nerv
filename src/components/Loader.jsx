@@ -16,8 +16,11 @@ const Wrapper = styled(motion.div)`
 	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
-	z-index: 6;
+	z-index: 11;
 	background: #cecece;
+	@media screen and (max-width: 567px) {
+		padding-bottom: 20rem;
+	}
 `;
 
 const Block = styled.div`
@@ -44,12 +47,30 @@ const Bottom = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 90%;
 	}
+	@media screen and (max-width: 567px) {
+		width: 55%;
+		&:after {
+			height: 6px;
+		}
+		&::before {
+			position: absolute;
+			right: 21px;
+			bottom: 0;
+			content: '';
+			height: 6px;
+			width: 1px;
+			background: ${props => props.theme.colorMain};
+		}
+	}
 `;
 
 const BottomTop = styled.div`
 	background: ${props => props.theme.colorMain};
 	height: 10px;
 	width: 100%;
+	@media screen and (max-width: 567px) {
+		height: 7px;
+	}
 `;
 
 const BottomMain = styled(motion.div)`
@@ -64,6 +85,11 @@ const BottomMain = styled(motion.div)`
 		text-transform: uppercase;
 		color: ${props => props.theme.colorMain};
 	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			font-size: 5px;
+		}
+	}
 `;
 
 const Group = styled(motion.div)`
@@ -77,6 +103,9 @@ const Dot = styled(motion.span)`
 	text-transform: uppercase;
 	font-size: 11px;
 	color: ${props => props.theme.colorMain};
+	@media screen and (max-width: 567px) {
+		font-size: 5px;
+	}
 `;
 
 const ContainerVariants = {
@@ -111,6 +140,10 @@ const DotTransition = {
 const ImageWrapper = styled(motion.div)`
 	width: 115px;
 	height: 115px;
+	@media screen and (max-width: 567px) {
+		width: 75px;
+		height: 75px;
+	}
 `;
 
 const Icon = styled.svg`
@@ -126,7 +159,7 @@ export const Loader = () => {
 	return (
 		<Wrapper
 			initial={{ y: 0, opacity: 1 }}
-			exit={{ y: '100%', opacity: 0 }}
+			exit={{ opacity: 0 }}
 			transition={{ duration: 2 }}
 		>
 			<Block>

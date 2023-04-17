@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import loader from '../../assets/loader.svg';
-import failureBg from '../../assets/error-bg.jpg';
+import failureBg from '../../assets/error-bg.png';
+import failureBgTab from '../../assets/error-bg-tab.png';
+import failureBgMob from '../../assets/error-bg-mob.png';
 import loaderText from '../../assets/loader-text.svg';
 import { Status } from '../Status';
 
@@ -21,7 +23,15 @@ const Content = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: url(${failureBg}) 50% 0 no-repeat;
+	background: url(${failureBg}) 50% 50% no-repeat;
+	@media screen and (max-width: 1100px) {
+		background: url(${failureBgTab}) 50% 50% no-repeat;
+		width: 100%;
+		height: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		background: url(${failureBgMob}) 50% 50% no-repeat;
+	}
 `;
 
 const Cover = styled.div`
@@ -46,9 +56,6 @@ const Block = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	@media screen and (max-width: 1100px) {
-		margin-top: 34.3rem;
-	}
 `;
 
 const Bottom = styled.div`

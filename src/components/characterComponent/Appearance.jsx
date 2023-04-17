@@ -20,6 +20,11 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 55%;
 		max-width: 100%;
+		& > div {
+			&:nth-of-type(1) {
+				display: none;
+			}
+		}
 	}
 	@media screen and (max-width: 567px) {
 		display: none;
@@ -42,6 +47,27 @@ const Image = styled.img`
 	max-width: 100%;
 `;
 
+const TebletViewGear = styled.div`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 3rem;
+		border-bottom: 1px solid ${props => props.theme.colorBorder};
+		padding-left: 1.7rem;
+		padding-top: 0.6rem;
+		& > span {
+			font-weight: 500;
+			font-size: 1.3rem;
+			line-height: 1.7rem;
+			color: ${props => props.theme.colorMain};
+		}
+	}
+`;
+
 const Text = styled.p`
 	position: absolute;
 	left: 3.4rem;
@@ -50,6 +76,9 @@ const Text = styled.p`
 	font-size: 1.2rem;
 	line-height: 18px;
 	color: ${props => props.theme.colorMain};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
 `;
 
 const Cover = styled.div`
@@ -154,6 +183,9 @@ export const Appearance = ({ activeitem }) => {
 			<Wrapper>
 				<Text>APPEARANCE</Text>
 				<Status status='online' color='#00c70a' />
+				<TebletViewGear>
+					<span>VIEW ALL GEAR</span>
+				</TebletViewGear>
 				<Cover>
 					<Swiper
 						spaceBetween={50}

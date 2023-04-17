@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import heroBg from '../../assets/hero-bg.svg';
+import augmenBgFirst from '../../assets/augmen-bg2.svg';
 import { dataHero } from '../../data';
 import { useEffect } from 'react';
 
@@ -29,21 +30,80 @@ const HeroTop = styled.div`
 	}
 `;
 
+const Image = styled.img`
+	max-width: 100%;
+	object-fit: contain;
+	object-position: center;
+	height: 100%;
+`;
+
+const HeroItemsContent = styled.div`
+	position: relative;
+	background-image: url(${heroBg});
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 5.1rem;
+	height: 5.1rem;
+	@media screen and (max-width: 1100px) {
+		width: 6.1rem;
+		height: 6.1rem;
+	}
+	@media screen and (max-width: 567px) {
+		width: 7.5rem;
+		height: 7.5rem;
+	}
+`;
+
 const HeroBlock = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	gap: 0.6rem;
+	@media screen and (max-width: 1700px) {
+		gap: 1.2rem;
+	}
 	@media screen and (max-width: 1100px) {
 		gap: 1rem;
+
+		& > div {
+			&:last-child {
+				${Image} {
+					max-width: 1.2rem;
+				}
+				${HeroItemsContent} {
+					background-image: url(${augmenBgFirst});
+					height: 12.5rem;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 567px) {
+		gap: 1.5rem;
+		& > div {
+			&:last-child {
+				${Image} {
+					max-width: 1.5rem;
+				}
+				${HeroItemsContent} {
+					height: 16.5rem;
+				}
+			}
+		}
 	}
 `;
 
 const HeroMain = styled.div`
 	height: calc(100% - 7.8rem);
-	padding: 1.7rem 0.5rem 1rem;
+	padding: 1.7rem 0rem 1rem;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
+		padding-top: 0.6rem;
+	}
+	@media screen and (max-width: 567px) {
+		padding-top: 0;
 	}
 `;
 
@@ -54,16 +114,16 @@ const HeromainView = styled.div`
 	text-align: center;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.3rem;
+	}
 
 	@media screen and (max-width: 567px) {
-		font-size: 2rem;
+		font-size: 1.4rem;
+		text-align: left;
+		padding-top: 0.9rem;
+		padding-left: 3.2rem;
 	}
-`;
-
-const Image = styled.img`
-	max-width: 100%;
-	/* max-height: 4vh; */
-	/* width: auto; */
 `;
 
 const GearLine = styled.div`
@@ -140,6 +200,14 @@ const Lock = styled.svg`
 	& + ${HeroItems} {
 		opacity: 0.15;
 	}
+	@media screen and (max-width: 567px) {
+		width: 2rem;
+		height: 2.5rem;
+		& > rect {
+			width: 1.5rem;
+			height: 1.3rem;
+		}
+	}
 `;
 
 const HeroGroup = styled.div`
@@ -164,27 +232,6 @@ const Icon = styled.svg`
 	width: 6px;
 	height: 7px;
 	fill: none;
-`;
-
-const HeroItemsContent = styled.div`
-	position: relative;
-	background-image: url(${heroBg});
-	background-size: contain;
-	background-repeat: no-repeat;
-	padding: 0.2rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 5.1rem;
-	height: 5.1rem;
-	@media screen and (max-width: 1100px) {
-		width: 6.1rem;
-		height: 6.1rem;
-	}
-	@media screen and (max-width: 567px) {
-		width: 7.5rem;
-		height: 7.5rem;
-	}
 `;
 
 export const Hero = ({ setItemType, activeelement, setActiveelement }) => {

@@ -50,7 +50,7 @@ const MainLeftTop = styled.div`
 const Angle = styled.div`
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: -1px;
 	background: ${props => props.theme.colorMain};
 	border-top-right-radius: 2.6rem;
 	padding: 0.7rem 3.6rem 0.7rem 8rem;
@@ -287,7 +287,11 @@ const MainRight = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
 	@media screen and (max-width: 1100px) {
 		width: 100%;
+		height: 70vh;
 		border: unset;
+	}
+	@media screen and (max-width: 567px) {
+		height: 63vh;
 	}
 `;
 
@@ -350,6 +354,8 @@ const Position = styled.div`
 const Image = styled.img`
 	max-width: 100%;
 	height: 100%;
+	object-position: center;
+	object-fit: contain;
 `;
 
 const Corner = styled.div`
@@ -399,12 +405,6 @@ const Plus = styled.svg`
 		fill: black;
 		transition: all 0.2s ease;
 	}
-
-	/* &:hover {
-    path {
-      fill: ${props => props.theme.colorBorder};
-    }
-  } */
 `;
 
 const ArrowPrev = styled.svg`
@@ -451,7 +451,7 @@ const ArrowNext = styled.svg`
 	}
 `;
 
-export const SingleProduct = ({ setShowModal }) => {
+export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
 	const [slides, setSlides] = useState([]);
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
@@ -486,12 +486,9 @@ export const SingleProduct = ({ setShowModal }) => {
 	}, [productName, curProd.imgSlider?.length]);
 
 	const handleClickBtn = id => {
-		setShowModal(true);
+		setShowmodalSize(false);
+		setShowmodal(true);
 		setSelectedProd(id);
-
-		// setTimeout(() => {
-		// 	setShowModal(false);
-		// }, 3000);
 
 		if (id === selectedProd) {
 			return null;
@@ -627,6 +624,8 @@ export const SingleProduct = ({ setShowModal }) => {
 						</Content>
 					</MainLeftTop>
 					<Options
+						setShowmodal={setShowmodal}
+						setShowmodalSize={setShowmodalSize}
 						curProd={curProd}
 						setCurProd={setCurProd}
 						setColor={setColor}

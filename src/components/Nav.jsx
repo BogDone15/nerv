@@ -20,7 +20,7 @@ const Left = styled.div`
 	height: 5rem;
 	display: flex;
 	align-items: center;
-	padding: 0.8rem 1rem 0 6rem;
+	padding: 0rem 1rem 0 6rem;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	& > a {
@@ -33,7 +33,7 @@ const Left = styled.div`
 		height: 6rem;
 	}
 	@media screen and (max-width: 567px) {
-		height: 7.5rem;
+		height: 6.2rem;
 		width: 48%;
 		padding-left: 5rem;
 		& > a {
@@ -62,7 +62,7 @@ const Right = styled.div`
 		justify-content: flex-end;
 	}
 	@media screen and (max-width: 567px) {
-		height: 7.5rem;
+		height: 6.2rem;
 		width: 52%;
 	}
 `;
@@ -129,7 +129,7 @@ const RightNav = styled.div`
 		}
 	}
 	@media screen and (max-width: 567px) {
-		top: 8.6rem;
+		top: 8.5rem;
 
 		& > a {
 			font-size: 1.7rem;

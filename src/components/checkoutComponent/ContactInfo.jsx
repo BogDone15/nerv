@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 const WrapperTitle = styled.div`
 	display: flex;
 	align-items: flex-end;
-	height: 6.8rem;
+	height: 3.8rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	border-left: 1px solid ${props => props.theme.colorBorder};
 	padding-left: 1.8rem;
@@ -48,7 +48,7 @@ const WrapperTop = styled.div`
 
 const WrapperMain = styled.div`
 	width: 100%;
-	height: calc(100% - 11.4rem);
+	height: calc(100% - 8.4rem);
 	border: 1px solid ${props => props.theme.colorBlack};
 	border-top: none;
 	padding: 2rem 2.5rem;
@@ -69,10 +69,11 @@ const InputWrapper = styled.div`
 
 const Input = styled.input`
 	border: 1px solid ${props => props.theme.colorBorder};
+	border-radius: 0;
 	background: transparent;
 	outline: none;
 	width: 100%;
-	height: 4.3rem;
+	height: 4rem;
 	font-size: 1.8rem;
 	@media screen and (max-width: 1100px) {
 		height: 6.2rem;
@@ -190,7 +191,7 @@ const ContactBlockTitle = styled.div`
 	padding: ${props => (props.hideContactBlock ? '0' : '1.4rem 0')};
 	& > h2 {
 		font-weight: 450;
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		line-height: 1.8rem;
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
@@ -273,22 +274,8 @@ const WrapperMainTitle = styled.h2`
 const StyledSelectWrapper = styled.div`
 	position: relative;
 	width: 100%;
-	height: 4.3rem;
+	height: 4rem;
 	margin-bottom: 1.7rem;
-	/* & > span {
-		position: absolute;
-		background: #cecece;
-		padding: 0 0.8rem;
-		left: 2rem;
-		top: -0.8rem;
-		font-weight: 300;
-		font-size: 1.2rem;
-		line-height: 1.7rem;
-		color: #000000;
-		text-transform: uppercase;
-		transition: all 0.2s ease;
-		color: ${props => props.theme.colorBlack};
-	} */
 
 	& > div {
 		width: 100%;
@@ -350,6 +337,7 @@ const StyledSelect = styled(Select)`
 		color: #3c3d3e;
 		background: hsl(0, 0%, 70%);
 		border: 1px solid ${props => props.theme.colorBorder};
+		border-radius: 0;
 	}
 
 	.Select__placeholder {

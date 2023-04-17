@@ -9,9 +9,9 @@ const Wrapper = styled(motion.div)`
 	right: 0;
 	top: 0;
 	z-index: 10;
-
-	/* opacity: ${props => (props.showModal ? '1' : '0')};
-	pointer-events: ${props => (props.showModal ? 'auto' : 'none')}; */
+	@media screen and (max-width: 1100px) {
+		position: fixed;
+	}
 `;
 
 const WrapperTop = styled.div`
@@ -43,6 +43,11 @@ const Close = styled.div`
 		transform: translateX(0.8rem) rotate(-45deg);
 		&:last-child {
 			transform: translateX(-0.7rem) rotate(45deg);
+		}
+	}
+	&:hover {
+		& > span {
+			background: #fff;
 		}
 	}
 `;
@@ -116,7 +121,7 @@ const WrapperBottom = styled.div`
 	}
 `;
 
-export const ModalProdAdd = ({ showModal, setShowModal }) => {
+export const ModalProdAdd = ({ showmodal, setShowmodal }) => {
 	const [currentProduct, setCurrentProduct] = useState({});
 	const cart = useSelector(state => state.cart);
 
@@ -126,10 +131,10 @@ export const ModalProdAdd = ({ showModal, setShowModal }) => {
 
 	return (
 		<Wrapper
-			showModal={showModal}
+			showmodal={showmodal ? 1 : 0}
 			initial={{ x: 450 }}
 			animate={{ x: 0 }}
-			transition={{ delay: 0.1, type: 'spring', stiffness: 90 }}
+			transition={{ delay: 0.1, ease: 'easeOut' }}
 			exit={{ x: 450 }}
 		>
 			{currentProduct && (
@@ -139,7 +144,7 @@ export const ModalProdAdd = ({ showModal, setShowModal }) => {
 							/add item {currentProduct.quantity}/{currentProduct.size?.inStock}{' '}
 							of set
 						</Info>
-						<Close onClick={() => setShowModal(false)}>
+						<Close onClick={() => setShowmodal(false)}>
 							<span></span>
 							<span></span>
 						</Close>
@@ -161,7 +166,7 @@ export const ModalProdAdd = ({ showModal, setShowModal }) => {
 				</>
 			)}
 			<WrapperBottom>
-				<Link to='/character'>EXPLORE MORE</Link>
+				<Link to='/order'>EXPLORE MORE</Link>
 				<Link to='/checkout'>CHECKOUT</Link>
 			</WrapperBottom>
 		</Wrapper>

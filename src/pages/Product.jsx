@@ -2,12 +2,13 @@ import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { ModalProdAdd } from '../components/characterComponent/ModalProdAdd';
+import { ModalProdAdd } from '../components/productComponent/ModalProdAdd';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Nav } from '../components/Nav';
 import { SingleProduct } from '../components/productComponent/SingleProduct';
 import { Socials } from '../components/Socials';
+import { SizeChart } from '../components/productComponent/SizeChart';
 
 const Wrapper = styled.div`
 	height: calc(100vh - 4rem);
@@ -18,10 +19,6 @@ const Wrapper = styled.div`
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
 		height: auto;
-	}
-	@media screen and (max-width: 567px) {
-		padding-bottom: 31rem;
-		position: relative;
 	}
 `;
 
@@ -87,13 +84,17 @@ const Group = styled.div`
 	overflow-y: hidden;
 	@media screen and (max-width: 1100px) {
 		margin-top: 4.4rem;
-		margin-bottom: 4rem;
+		margin-bottom: 7rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
+	@media screen and (max-width: 567px) {
+		margin-top: 6.6rem;
 	}
 `;
 
 export const Product = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showmodal, setShowmodal] = useState(false);
+	const [showmodalsize, setShowmodalSize] = useState(false);
 	const location = useLocation();
 	const path = location.pathname;
 	const productName = path.split('/')[2].replace(/-/gi, ' ');
@@ -116,15 +117,25 @@ export const Product = () => {
 					</Nav>
 					<Group>
 						<AnimatePresence>
-							{showModal && (
+							{showmodalsize && (
+								<SizeChart
+									key='modalsize'
+									setShowmodalSize={setShowmodalSize}
+									showmodalsize={showmodalsize}
+								/>
+							)}
+							{showmodal && (
 								<ModalProdAdd
 									key='modal'
-									setShowModal={setShowModal}
-									showModal={showModal}
+									setShowmodal={setShowmodal}
+									showmodal={showmodal}
 								/>
 							)}
 						</AnimatePresence>
-						<SingleProduct setShowModal={setShowModal} />
+						<SingleProduct
+							setShowmodal={setShowmodal}
+							setShowmodalSize={setShowmodalSize}
+						/>
 						<Socials />
 					</Group>
 				</Right>

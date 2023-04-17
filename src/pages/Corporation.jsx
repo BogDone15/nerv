@@ -17,10 +17,6 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
-	@media screen and (max-width: 567px) {
-		padding-bottom: 35rem;
-		position: relative;
-	}
 `;
 
 const Block = styled.div`
@@ -28,6 +24,7 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	margin-bottom: 7rem;
 `;
 
 const Aside = styled.div`

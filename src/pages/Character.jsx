@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 		height: auto;
 	}
 	@media screen and (max-width: 567px) {
-		padding-bottom: 35rem;
 		position: relative;
 		min-height: 100vh;
 	}
@@ -32,6 +31,9 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		height: calc(100vh - 7rem);
+	}
 `;
 
 const Aside = styled.div`
@@ -45,23 +47,29 @@ const Aside = styled.div`
 		position: absolute;
 		left: 0;
 		top: 0;
-		height: calc(100% - 22.8rem);
+		height: calc(100% - 20.8rem);
 		width: 4rem;
 		margin-top: 14.7rem;
 		border-right: none;
 	}
+	@media screen and (max-width: 567px) {
+		margin-top: 17.1rem;
+		height: calc(100% - 23.3rem);
+	}
 `;
 
 const AsideText = styled.div`
-	font-weight: 300;
-	font-size: 1.2rem;
-	color: ${props => props.theme.colorGray};
-	transform: rotate(-180deg);
-	writing-mode: vertical-lr;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	& > span {
+		font-weight: 300;
+		font-size: 1.2rem;
+		color: ${props => props.theme.colorGray};
+		transform: rotate(-180deg);
+		writing-mode: vertical-lr;
+	}
 	&:last-child {
 		position: relative;
 		&::after {
@@ -82,7 +90,8 @@ const AsideText = styled.div`
 		}
 	}
 	@media screen and (max-width: 567px) {
-		height: calc(100% - 23rem);
+		height: 100%;
+		font-size: 9px;
 	}
 `;
 
@@ -121,7 +130,7 @@ const AsideBottom = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	height: calc(100% - 18rem);
+	height: calc(100% - 16.5rem);
 	padding: 3.3rem 0;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
@@ -136,7 +145,7 @@ const Right = styled.div`
 	height: 100%;
 	@media screen and (max-width: 1100px) {
 		width: 100%;
-		height: 110rem;
+		height: 100%;
 	}
 `;
 
@@ -149,6 +158,9 @@ const Group = styled.div`
 	@media screen and (max-width: 1100px) {
 		margin-top: 4.4rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
+	@media screen and (max-width: 567px) {
+		margin-top: 6.3rem;
 	}
 `;
 
@@ -164,9 +176,15 @@ export const Character = () => {
 					<AsideTop />
 					<AsideMiddle>HEAD</AsideMiddle>
 					<AsideBottom>
-						<AsideText>TXT</AsideText>
-						<AsideText>FILTER / MENU</AsideText>
-						<AsideText>FIRST EXPANSION</AsideText>
+						<AsideText>
+							<span>TXT</span>
+						</AsideText>
+						<AsideText>
+							<span>FILTER / MENU</span>
+						</AsideText>
+						<AsideText>
+							<span>FIRST EXPANSION</span>
+						</AsideText>
 					</AsideBottom>
 				</Aside>
 				<Right>

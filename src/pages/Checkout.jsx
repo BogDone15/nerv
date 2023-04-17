@@ -18,10 +18,6 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
-	@media screen and (max-width: 567px) {
-		padding-bottom: 31rem;
-		position: relative;
-	}
 `;
 
 const Block = styled.div`
@@ -104,8 +100,11 @@ const Group = styled.div`
 	@media screen and (max-width: 1100px) {
 		flex-direction: column-reverse;
 		padding-left: 0;
-		margin: 4.5rem 0 6rem;
+		margin: 4.5rem 0 7rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
+	}
+	@media screen and (max-width: 567px) {
+		margin-top: 6.3rem;
 	}
 `;
 

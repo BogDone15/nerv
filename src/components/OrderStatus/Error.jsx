@@ -18,6 +18,9 @@ const Item = styled.div`
 	@media screen and (max-width: 1100px) {
 		margin-top: 19.6rem;
 	}
+	@media screen and (max-width: 567px) {
+		width: 90%;
+	}
 `;
 
 const Top = styled.div`
@@ -97,6 +100,10 @@ const Main = styled.div`
 				line-height: 1.8rem;
 			}
 		}
+	}
+	@media screen and (max-width: 567px) {
+		padding-left: 5rem;
+		padding-right: 5rem;
 	}
 `;
 

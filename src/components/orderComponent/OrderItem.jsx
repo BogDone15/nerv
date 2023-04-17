@@ -64,18 +64,16 @@ const ContentMainItemRemove = styled.div`
 	right: 1.8rem;
 	top: 1.4rem;
 	z-index: 13;
-	width: 1.8rem;
-	height: 1.8rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	cursor: pointer;
-	& > span {
-		display: inline-block;
-		background: ${props => props.theme.colorBlack};
+	& > svg {
 		width: 100%;
-		height: 2px;
-		transform: rotate(45deg);
-		transition: all 0.2s ease;
-		&:last-child {
-			transform: translateY(-1.3rem) rotate(-45deg);
+		height: 100%;
+		fill: none;
+		& > path {
+			stroke: ${props => props.theme.colorMain};
+			transition: all 0.2s ease;
 		}
 	}
 `;
@@ -249,8 +247,8 @@ const ContentMainItem = styled.div`
 	&:hover {
 		background: ${props => props.theme.colorMain};
 		${ContentMainItemRemove} {
-			& > span {
-				background: ${props => props.theme.colorGray};
+			& > svg path {
+				stroke: ${props => props.theme.colorGray};
 			}
 		}
 		${ContentMainItemPrice} {
@@ -342,6 +340,7 @@ const ContentBottom = styled.div`
 `;
 
 const Desktop = styled.div`
+	height: 100%;
 	@media screen and (max-width: 1100px) {
 		display: none;
 	}
@@ -351,9 +350,12 @@ const Tablet = styled.div`
 	display: none;
 	@media screen and (max-width: 1100px) {
 		display: block;
-		margin: 4.5rem 0 5rem;
+		margin: 4.5rem 0 7rem;
 		width: 100%;
 		height: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		margin: 6.3rem 0 5rem;
 	}
 `;
 
@@ -382,24 +384,25 @@ const TabletBottom = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 1.8rem;
+	border-top: 1px solid ${props => props.theme.colorBorder};
 `;
 
 const TabletBottomItem = styled.div`
 	position: relative;
 	display: flex;
-	align-items: center;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
-	&:first-child {
-		border-top: 1px solid ${props => props.theme.colorBorder};
+	height: 33rem;
+	@media screen and (max-width: 567px) {
+		height: 27rem;
 	}
-	&::after {
-		position: absolute;
-		left: 32.5%;
-		top: 0;
-		width: 1px;
-		height: 100%;
-		content: '';
-		background: ${props => props.theme.colorBorder};
+	${ContentMainItemRemove} {
+		top: 2.1rem;
+		right: 5.1rem;
+		@media screen and (max-width: 567px) {
+			right: 3.1rem;
+			width: 2rem;
+			height: 2rem;
+		}
 	}
 `;
 
@@ -411,15 +414,22 @@ const TabletBottomLeft = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	@media screen and (max-width: 567px) {
-		padding: 1rem;
+	& > img {
+		max-width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
 	}
 `;
 
 const TabletBottomRight = styled.div`
-	padding: 1rem 4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-left: 1px solid ${props => props.theme.colorBorder};
+	padding: 1rem 2rem 1rem 4rem;
 	@media screen and (max-width: 567px) {
-		padding: 2rem 3rem;
+		padding: 1rem 2rem 1rem 2rem;
 	}
 `;
 
@@ -434,6 +444,10 @@ const TabletDesc = styled.div`
 	font-size: ${props => props.theme.fontmd};
 	line-height: 2.2rem;
 	color: ${props => props.theme.colorMain};
+	@media screen and (max-width: 567px) {
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+	}
 `;
 const TabletType = styled.div`
 	font-size: ${props => props.theme.fontmd};
@@ -443,6 +457,8 @@ const TabletType = styled.div`
 	margin: 3.6rem 0 3.2rem;
 	@media screen and (max-width: 567px) {
 		margin: 2rem 0 1.6rem;
+		font-size: 1.4rem;
+		line-height: 1.8rem;
 	}
 `;
 const TabletInStock = styled.div`
@@ -454,6 +470,10 @@ const TabletInStock = styled.div`
 	@media screen and (max-width: 1100px) {
 		margin-bottom: 0.6rem;
 	}
+	@media screen and (max-width: 567px) {
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+	}
 `;
 const TabletColor = styled.div`
 	font-size: ${props => props.theme.fontmd};
@@ -463,6 +483,10 @@ const TabletColor = styled.div`
 	margin-bottom: 1rem;
 	@media screen and (max-width: 1100px) {
 		margin-bottom: 0.6rem;
+	}
+	@media screen and (max-width: 567px) {
+		font-size: 1.4rem;
+		line-height: 1.8rem;
 	}
 `;
 const TabletSize = styled.div`
@@ -474,12 +498,85 @@ const TabletSize = styled.div`
 	@media screen and (max-width: 1100px) {
 		margin-bottom: 0.6rem;
 	}
+	@media screen and (max-width: 567px) {
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+	}
 `;
 const TabletQuantity = styled.div`
 	font-size: ${props => props.theme.fontmd};
 	line-height: 2.2rem;
 	color: ${props => props.theme.colorMain};
 	text-transform: uppercase;
+	@media screen and (max-width: 567px) {
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+	}
+`;
+
+const TabletCover = styled.div`
+	display: flex;
+	border-top: 1px solid ${props => props.theme.colorBorder};
+`;
+
+const TabletCoverLeft = styled.div`
+	position: relative;
+	width: 35%;
+	padding-left: 4.8rem;
+	border-right: 1px solid ${props => props.theme.colorBorder};
+	padding-top: 3.6rem;
+	padding-bottom: 0.7rem;
+
+	& > span {
+		font-weight: 400;
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+		color: ${props => props.theme.colorBlack};
+		text-transform: uppercase;
+	}
+`;
+
+const TabletCoverRight = styled.div`
+	width: 65%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3.6rem 5.2rem 0.7rem 2rem;
+	& > span {
+		font-weight: 400;
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+		color: ${props => props.theme.colorBlack};
+		text-transform: uppercase;
+	}
+`;
+
+const TabletPrice = styled.div`
+	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	& > div {
+		width: 100%;
+		border-top: unset;
+		@media screen and (max-width: 567px) {
+			padding: 2.3rem 4rem;
+		}
+	}
+	${ContentPriceItem} {
+		& > div {
+			font-size: 1.7rem;
+			line-height: 2.2rem;
+			margin-bottom: 1.6rem;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		@media screen and (max-width: 567px) {
+			& > div {
+				font-size: 1.5rem;
+				line-height: 1.8rem;
+				margin-bottom: 1.4rem;
+			}
+		}
+	}
 `;
 
 export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
@@ -518,9 +615,45 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 		}
 	};
 
+	const contentTopItem = [
+		{
+			id: 1,
+			name: 'TYPE',
+		},
+		{
+			id: 2,
+			name: 'INFO',
+		},
+		{
+			id: 3,
+			name: 'COLOR',
+		},
+		{
+			id: 4,
+			name: 'SIZE',
+		},
+		{
+			id: 5,
+			name: 'AMT',
+		},
+		{
+			id: 6,
+			name: 'PRICE',
+		},
+	];
+
 	return (
 		<>
 			<Tablet>
+				<TabletCover>
+					<TabletCoverLeft>
+						<span>PREVIEW</span>
+					</TabletCoverLeft>
+					<TabletCoverRight>
+						<span>INFO</span>
+						<span>DEL</span>
+					</TabletCoverRight>
+				</TabletCover>
 				<TabletTop>
 					<Link to='/'>
 						<span>COMPLETE THE SET</span>
@@ -532,6 +665,13 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 				<TabletBottom>
 					{cart.products?.map(item => (
 						<TabletBottomItem>
+							<ContentMainItemRemove
+								onClick={() => handleDelete(item.id, item.quantity, item.price)}
+							>
+								<svg viewBox='0 0 15 15'>
+									<path d='M1 1L14 14M14 1L1 14' stroke-width='2' />
+								</svg>
+							</ContentMainItemRemove>
 							<TabletBottomLeft>
 								<ImageProduct src={item.imgMain} alt={item.name} />
 							</TabletBottomLeft>
@@ -547,27 +687,44 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 						</TabletBottomItem>
 					))}
 				</TabletBottom>
+				<TabletPrice>
+					<ContentPrice>
+						<ContentPriceItem>
+							<div>SUBTOTAL</div>
+							<div>SHIPPING</div>
+							<div>TAX INCLUDED</div>
+							<div>TOTAL</div>
+						</ContentPriceItem>
+						<ContentPriceItem>
+							<div>USD {cart.total}.00</div>
+							<div>0.00</div>
+							<div>0.00</div>
+							<div>USD {cart.total}.00</div>
+						</ContentPriceItem>
+					</ContentPrice>
+				</TabletPrice>
 			</Tablet>
 			<Desktop>
 				<WrapperTop>
 					<span>ORDER DETAILS</span>
 				</WrapperTop>
 				<ContentTop>
-					<ContentTopItem>TYPE</ContentTopItem>
-					<ContentTopItem>INFO</ContentTopItem>
-					<ContentTopItem>COLOR</ContentTopItem>
-					<ContentTopItem>SIZE</ContentTopItem>
-					<ContentTopItem>AMT</ContentTopItem>
-					<ContentTopItem>PRICE</ContentTopItem>
+					{contentTopItem.map(item => (
+						<ContentTopItem key={item.id}>{item.name}</ContentTopItem>
+					))}
 				</ContentTop>
 				<ContentMain arrSize={arrSize}>
 					{cart.products?.map(item => (
-						<ContentMainItem key={item.id} onClick={() => handleClick(item.id)}>
+						<ContentMainItem
+							key={item.id * 10}
+							onClick={() => handleClick(item.id)}
+						>
 							<ContentMainItemRemove
 								onClick={() => handleDelete(item.id, item.quantity, item.price)}
 							>
-								<span></span>
-								<span></span>
+								<svg viewBox='0 0 15 15'>
+									<path d='M1 1L14 14M14 1L1 14' stroke-width='2' />
+								</svg>
 							</ContentMainItemRemove>
 							<ContentMainItemType>
 								<ContentMainItemBlock>

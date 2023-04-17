@@ -17,13 +17,8 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
-		height: auto;
-		min-height: 100vh;
-	}
-	@media screen and (max-width: 567px) {
-		/* height: 100vh; */
-		position: relative;
-		padding-bottom: 35rem;
+		height: calc(100vh - 23rem);
+		/* height: 100%; */
 	}
 `;
 
@@ -32,19 +27,16 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
-	@media screen and (max-width: 567px) {
-		height: auto;
-	}
 `;
 
 const Aside = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-between;
 	width: 4.5rem;
-	margin-top: 0.9rem;
-	padding-bottom: 3rem;
+	height: calc(100% - 1rem);
+	/* margin-top: 1rem; */
+	transform: translateY(1rem);
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -52,20 +44,29 @@ const Aside = styled.div`
 `;
 
 const AsideText = styled.div`
-	font-weight: 300;
-	font-size: 1.2rem;
-	color: #878787;
-	color: ${props => props.theme.colorGray};
-	transform: rotate(-180deg);
-	writing-mode: vertical-lr;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	width: 100%;
+	height: calc(100% - 8.9rem);
+	padding-bottom: 3rem;
+
+	& > span {
+		font-weight: 300;
+		font-size: 1.2rem;
+		color: #878787;
+		color: ${props => props.theme.colorGray};
+		transform: rotate(-180deg);
+		writing-mode: vertical-lr;
+	}
 `;
 
 const Top = styled.div`
-	height: calc(4.4rem + 0.6rem);
+	height: 5rem;
 	width: 100%;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
-	margin-top: calc(1rem + 2.7rem);
+	margin-top: 3.6rem;
 `;
 
 const Right = styled.div`
@@ -91,16 +92,29 @@ const ChooseBtn = styled.div`
 
 	a {
 		position: relative;
-		font-weight: 450;
-		font-size: 1.2rem;
-		color: ${props => props.theme.colorMain};
-		transform: rotate(-180deg) translateY(-4.4rem);
-		writing-mode: vertical-lr;
-		overflow: hidden;
+		z-index: 3;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		height: 100%;
+		width: 1.6rem;
+		/* width: 100%; */
+		/* overflow: hidden; */
 		transition: all 0.2s ease;
-		@media screen and (max-width: 1100px) {
+		& > span {
+			font-weight: 500;
 			font-size: 1.2rem;
-			transform: rotate(-180deg) translate(-0.2rem, -3.1rem);
+			color: ${props => props.theme.colorMain};
+			transform: rotate(-180deg) translateY(-4.4rem);
+			writing-mode: vertical-lr;
+			width: 100%;
+		}
+		@media screen and (max-width: 1100px) {
+			& > span {
+				font-size: 1.2rem;
+				transform: rotate(-180deg) translate(-0.2rem, -4.1rem);
+			}
 		}
 	}
 	&:hover {
@@ -112,7 +126,12 @@ const ChooseBtn = styled.div`
 		top: unset;
 		bottom: 0;
 		left: 0;
-		height: calc(100% - 9.1rem);
+		/* height: calc(100% - 9.1rem); */
+		height: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		/* height: calc(100% - 9.7rem); */
+		height: 100%;
 	}
 `;
 
@@ -151,9 +170,9 @@ const Group = styled.div`
 		height: 100%;
 		margin-left: 0;
 	}
-	@media screen and (max-width: 567px) {
-		height: calc(100vh - 46rem);
-	}
+	/* @media screen and (max-width: 567px) {
+		height: calc(100vh - 17rem);
+	} */
 `;
 
 export const Home = () => {
@@ -172,11 +191,15 @@ export const Home = () => {
 				<Block>
 					<Aside>
 						<Top />
-						<AsideText>FIRST EXPANSION</AsideText>
+						<AsideText>
+							<span>FIRST EXPANSION</span>
+						</AsideText>
 					</Aside>
 					<ChooseBtn>
 						<CHooseBtnGroup>
-							<Link to='/character'>CHOOSE YOUR APPEARANCE</Link>
+							<Link to='/character'>
+								<span>CHOOSE YOUR APPEARANCE</span>
+							</Link>
 							<Line viewBox='0 0 20 990'>
 								<path
 									opacity='0.2'

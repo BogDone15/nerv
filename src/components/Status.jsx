@@ -40,7 +40,7 @@ const Circle = styled.div`
 const StatusText = styled.p`
 	font-weight: 300;
 	text-transform: uppercase;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	color: ${props => props.theme.colorGray};
 	text-transform: uppercase;
 `;

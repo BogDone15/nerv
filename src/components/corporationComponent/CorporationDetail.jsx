@@ -12,10 +12,13 @@ const Wrapper = styled(Tabs)`
 		align-items: flex-start;
 		gap: 4.1rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
-		margin-top: 9rem;
+		margin-top: 4.5rem;
 		padding-top: 4.6rem;
 		padding-left: 0;
 		padding-right: 4.3rem;
+		@media screen and (max-width: 567px) {
+			margin-top: 6.3rem;
+		}
 	}
 `;
 
@@ -32,6 +35,9 @@ const WrapperNav = styled(TabList)`
 		padding-left: 3.5rem;
 		padding-top: 0;
 		margin-bottom: 0;
+	}
+	@media screen and (max-width: 567px) {
+		padding-left: 2.3rem;
 	}
 `;
 
@@ -89,6 +95,28 @@ const WrapperNavItem = styled(Tab)`
 			}
 		}
 	}
+	@media screen and (max-width: 567px) {
+		& > div {
+			font-size: 1.7rem;
+			&:first-child {
+				padding: 0.6rem 0.7rem 0.5rem 0.4rem;
+			}
+			&:last-child {
+				padding: 0.6rem 0.7rem 4.1rem 0.4rem;
+			}
+		}
+		&.is-selected {
+			& > div {
+				border: 1px solid transparent;
+				&:first-child {
+					padding: 0.6rem 0.7rem 0.5rem 0.4rem;
+				}
+				&:last-child {
+					padding: 0.6rem 0.7rem 4.1rem 0.4rem;
+				}
+			}
+		}
+	}
 `;
 
 WrapperNavItem.tabsRole = 'Tab';
@@ -128,18 +156,16 @@ const MainLeftTop = styled.div`
 	width: 100%;
 	height: 29rem;
 	@media screen and (max-width: 1100px) {
-		height: 100%;
+		height: 64.3rem;
 		padding: 3.7rem 5rem;
 	}
 `;
 
 const Image = styled.img`
-	max-width: 24.9rem;
-	width: 100%;
-	margin: auto;
-	@media screen and (max-width: 1100px) {
-		max-width: 49rem;
-	}
+	max-width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
 `;
 
 const MainLeftBottom = styled.div`

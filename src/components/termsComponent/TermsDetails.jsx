@@ -41,6 +41,9 @@ const Wrapper = styled(Tabs)`
 			display: none;
 		}
 	}
+	@media screen and (max-width: 567px) {
+		margin-top: 6.3rem;
+	}
 `;
 
 const WrapperNav = styled(TabList)`
@@ -56,6 +59,9 @@ const WrapperNav = styled(TabList)`
 		padding-left: 3.5rem;
 		padding-top: 0;
 		margin-bottom: 0;
+	}
+	@media screen and (max-width: 567px) {
+		padding-left: 2.3rem;
 	}
 `;
 
@@ -89,6 +95,7 @@ const WrapperNavItem = styled(Tab)`
 
 	&.is-selected {
 		& > div {
+			border: 1px solid transparent;
 			background: ${props => props.theme.colorMain};
 			color: #b2b2b2;
 			&:last-child {
@@ -109,6 +116,28 @@ const WrapperNavItem = styled(Tab)`
 			& > div {
 				&:last-child {
 					padding: 0.3rem 0.2rem 3.8rem 0.2rem;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 567px) {
+		& > div {
+			font-size: 1.7rem;
+			&:first-child {
+				padding: 0.6rem 0.7rem 0.5rem 0.4rem;
+			}
+			&:last-child {
+				padding: 0.6rem 0.7rem 4.1rem 0.4rem;
+			}
+		}
+		&.is-selected {
+			& > div {
+				border: 1px solid transparent;
+				&:first-child {
+					padding: 0.6rem 0.7rem 0.5rem 0.4rem;
+				}
+				&:last-child {
+					padding: 0.6rem 0.7rem 4.1rem 0.4rem;
 				}
 			}
 		}

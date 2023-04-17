@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const WrapperTitle = styled.div`
 	display: flex;
 	align-items: flex-end;
-	height: 6.8rem;
+	height: 3.8rem;
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	padding-left: 0.7rem;
@@ -79,7 +79,7 @@ const WrapperTopItem = styled.div`
 const WrapperCover = styled.div`
 	position: relative;
 	width: 100%;
-	height: calc(100% - 23.7rem);
+	height: calc(100% - 20.7rem);
 
 	&::after {
 		position: absolute;
@@ -137,7 +137,6 @@ const WrapperMain = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 		border-top: 1px solid ${props => props.theme.colorBorder};
-		border-bottom: 1px solid ${props => props.theme.colorBorder};
 		padding-right: 0;
 	}
 `;
@@ -149,10 +148,10 @@ const Item = styled.div`
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
-		height: auto;
-		&:last-child {
-			border-bottom: none;
-		}
+		height: 33rem;
+	}
+	@media screen and (max-width: 567px) {
+		height: 27rem;
 	}
 `;
 

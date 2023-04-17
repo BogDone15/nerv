@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import bgImg from '../../assets/main-bg.png';
+import bgImgMob from '../../assets/main-bg-mob.png';
 import charackters from '../../assets/charackters.png';
 import styled from 'styled-components';
 import { Status } from '../Status';
@@ -18,6 +19,9 @@ const TopCorner = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		left: 6.5rem;
+	}
+	@media screen and (max-width: 567px) {
+		margin-bottom: 0.2rem;
 	}
 `;
 
@@ -45,19 +49,27 @@ const Block = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 		background: unset;
-		padding: 7rem 4rem 3rem;
+	}
+	@media screen and (max-width: 567px) {
+		background-image: url(${bgImgMob});
+		background-size: 13%;
+		background-repeat: no-repeat;
+		background-position: 68% 50%;
+	}
+	@media screen and (max-width: 380px) {
+		background-size: 10%;
+	}
+	@media screen and (max-width: 325px) {
+		background-size: 9%;
 	}
 `;
 
 const Image = styled.img`
+	object-fit: contain;
 	max-width: 100%;
-	width: auto;
-	max-height: 80vh;
-	margin: 0 auto;
+	height: 100%;
+	object-position: center;
 	@media screen and (max-width: 1100px) {
-		max-height: 100%;
-		width: 100%;
-		max-width: 85%;
 		transform: translateX(2rem);
 	}
 `;
@@ -148,6 +160,47 @@ const BorderBlock = styled.div`
 	}
 `;
 
+const Desktop = styled.div`
+	@media screen and (max-width: 567px) {
+		display: none;
+	}
+`;
+
+const Mob = styled.div`
+	display: none;
+	@media screen and (max-width: 567px) {
+		display: block;
+		margin-top: 4rem;
+		& > div {
+			font-weight: 400;
+			font-size: 1.2rem;
+			line-height: 1.5rem;
+			color: #adadad;
+			margin-bottom: 0.2rem;
+			&:last-child {
+				color: ${props => props.theme.colorMain} !important;
+				margin-bottom: 0;
+			}
+		}
+	}
+`;
+
+const BottomCornerMob = styled.div`
+	display: none;
+	@media screen and (max-width: 567px) {
+		display: block;
+		position: absolute;
+		right: 2rem;
+		bottom: 7rem;
+		& > div {
+			font-weight: 400;
+			font-size: 1.2rem;
+			line-height: 1.5rem;
+			color: #adadad;
+		}
+	}
+`;
+
 export const Main = () => {
 	const [closeModal, setCloseModal] = useState(false);
 	return (
@@ -155,7 +208,23 @@ export const Main = () => {
 			<TopCorner>
 				<div>/ dev</div>
 				<div>/ start</div>
-				<Banner>/img [ BANNER ]</Banner>
+				<Desktop>
+					<Banner>/img [ BANNER ]</Banner>
+					<TopCornerMargin>/add</TopCornerMargin>
+					<TopCornerMargin>[transformation]</TopCornerMargin>
+					<TopCornerMargin>/ main hero </TopCornerMargin>
+					<div>UTRA BOOST</div>
+					<div>YOUR SYSTEM</div>
+					<div>IN COMPLETE</div>
+					<div>FULL SET</div>
+				</Desktop>
+				<Mob>
+					<div>/ text </div>
+					<div>LATEST EXSPANTION</div>
+					<div>[ VIGILANTE ]</div>
+				</Mob>
+			</TopCorner>
+			<BottomCornerMob>
 				<TopCornerMargin>/add</TopCornerMargin>
 				<TopCornerMargin>[transformation]</TopCornerMargin>
 				<TopCornerMargin>/ main hero </TopCornerMargin>
@@ -163,7 +232,7 @@ export const Main = () => {
 				<div>YOUR SYSTEM</div>
 				<div>IN COMPLETE</div>
 				<div>FULL SET</div>
-			</TopCorner>
+			</BottomCornerMob>
 			<BottomCorner>
 				<BottomCornerWrapper>
 					<Circle />

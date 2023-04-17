@@ -198,12 +198,22 @@ const CoverChart = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	gap: 0.8rem;
+	max-width: 10rem;
+	width: 100%;
+	margin-left: auto;
 	cursor: pointer;
 	& > div {
 		border-radius: 50%;
 		background: ${props => props.theme.colorBlack};
 		width: 1.2rem;
 		height: 1.2rem;
+		transition: all 0.2s ease;
+	}
+	&:hover {
+		& > div {
+			border: 1px solid ${props => props.theme.colorBlack};
+			background: transparent;
+		}
 	}
 
 	& > span {
@@ -306,6 +316,8 @@ export const Options = ({
 	setInStock,
 	quantity,
 	setQuantity,
+	setShowmodal,
+	setShowmodalSize,
 }) => {
 	const [filterProd, setFilterProd] = useState({});
 	const [activeitem, setActiveitem] = useState(1);
@@ -346,6 +358,11 @@ export const Options = ({
 		}
 	};
 
+	const handleSizeChart = () => {
+		setShowmodal(false);
+		setShowmodalSize(true);
+	};
+
 	return (
 		<MainLeftBottomContent>
 			<Cover>
@@ -367,7 +384,7 @@ export const Options = ({
 						)}
 					</CoverSizes>
 					{!noSizes && (
-						<CoverChartTab>
+						<CoverChartTab onClick={() => handleSizeChart()}>
 							<div></div> <span> SIZE CHART</span>
 						</CoverChartTab>
 					)}
@@ -405,7 +422,7 @@ export const Options = ({
 					</CoverContent>
 				</CoverQuantity>
 				{!noSizes && (
-					<CoverChart>
+					<CoverChart onClick={() => handleSizeChart()}>
 						<div></div> <span> SIZE CHART</span>
 					</CoverChart>
 				)}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { Link } from 'react-router-dom';
 
@@ -48,6 +48,13 @@ const GearTop = styled.div`
 	}
 `;
 
+const GearMainViewApp = styled.span`
+	display: none;
+	@media screen and (max-width: 1100px) {
+		display: inline;
+	}
+`;
+
 const GearMainView = styled.span`
 	font-weight: 400;
 	font-size: 1.2rem;
@@ -58,8 +65,33 @@ const GearMainView = styled.span`
 	& > span {
 		color: ${props => props.theme.colorGray};
 	}
+	@media screen and (max-width: 1100px) {
+		border-bottom: 1px solid ${props => props.theme.colorBorder};
+		font-size: 1.3rem;
+		padding-bottom: 0.5rem;
+		& > span {
+			&:first-child {
+				display: none;
+			}
+		}
+	}
 	@media screen and (max-width: 567px) {
-		font-size: 1.9rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		font-size: 1.4rem;
+		padding: 0.9rem 2.5rem 0.6rem 2rem;
+	}
+`;
+const GearMainViewType = styled.span`
+	color: ${props => props.theme.colorBlack} !important;
+`;
+const GearMainViewMob = styled.span`
+	display: none;
+	@media screen and (max-width: 567px) {
+		display: inline;
+		color: ${props => props.theme.colorBlack} !important;
 	}
 `;
 
@@ -70,6 +102,10 @@ const GearMain = styled.div`
 	height: calc(100% - 7.8rem);
 	@media screen and (max-width: 1100px) {
 		height: 100%;
+		padding-top: 0.6rem;
+	}
+	@media screen and (max-width: 567px) {
+		padding-top: 0;
 	}
 `;
 
@@ -89,7 +125,7 @@ const GearBlock = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		gap: 2rem;
-		padding: 1rem 1.5rem 0 2.1rem;
+		padding: 1rem 1.5rem 0;
 	}
 	@media screen and (max-width: 567px) {
 		padding-top: 3rem;
@@ -101,7 +137,7 @@ const GearCover = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem 1.5rem 1.5rem;
+	padding: 1.2rem 0.5rem 0.7rem;
 	opacity: ${props => (props.activeitem ? '1' : ' 0.5')};
 	width: 100%;
 	height: 100%;
@@ -113,14 +149,20 @@ const GearCover = styled.div`
 		margin: auto;
 	}
 	@media screen and (max-width: 567px) {
-		height: auto;
+		height: 46rem;
 		max-width: 42rem;
+		padding: 2.5rem 0.5rem 1.7rem;
 	}
 `;
 
 const Image = styled.img`
-	max-width: 95%;
-	padding-left: 0.6rem;
+	/* max-width: 95%;
+	padding-left: 0.6rem; */
+
+	object-fit: contain;
+	object-position: center;
+	max-width: 100%;
+	height: 100%;
 `;
 
 const GearStatus = styled.div`
@@ -130,16 +172,22 @@ const GearStatus = styled.div`
 	height: 1.4rem;
 	width: 6.7rem;
 	background: ${props => props.theme.colorMain};
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	text-align: center;
 	& > span {
 		font-weight: 450;
 		font-size: 1rem;
-		line-height: 1.3rem;
+		line-height: 1.4rem;
 		color: #adadad;
 		text-transform: uppercase;
+	}
+	@media screen and (max-width: 1700px) {
+		padding-top: 0.07rem;
+	}
+	@media screen and (max-width: 1100px) {
+		padding-top: 0;
+		& > span {
+			line-height: 1.4rem;
+		}
 	}
 	@media screen and (max-width: 567px) {
 		top: -1.65rem;
@@ -147,6 +195,7 @@ const GearStatus = styled.div`
 		width: 17.7rem;
 		& > span {
 			font-size: 2rem;
+			line-height: 3.4rem;
 		}
 	}
 `;
@@ -162,124 +211,11 @@ const GearAside = styled.div`
 	transition: all 0.2s ease;
 	@media screen and (max-width: 1100px) {
 		height: 17.9rem;
+		display: none;
 	}
 	@media screen and (max-width: 567px) {
 		display: none;
 	}
-`;
-
-const glitchAfter = keyframes`
-  0% {
-    clip: rect(104px, 450px, 106px, 0)
-  }
-  5.88235% {
-    clip: rect(48px, 450px, 59px, 0)
-  }
-  11.76471% {
-    clip: rect(79px, 450px, 62px, 0)
-  }
-  17.64706% {
-    clip: rect(93px, 450px, 40px, 0)
-  }
-  23.52941% {
-    clip: rect(78px, 450px, 35px, 0)
-  }
-  29.41176% {
-    clip: rect(23px, 450px, 68px, 0)
-  }
-  35.29412% {
-    clip: rect(45px, 450px, 38px, 0)
-  }
-  41.17647% {
-    clip: rect(45px, 450px, 14px, 0)
-  }
-  47.05882% {
-    clip: rect(92px, 450px, 104px, 0)
-  }
-  52.94118% {
-    clip: rect(3px, 450px, 45px, 0)
-  }
-  58.82353% {
-    clip: rect(84px, 450px, 24px, 0)
-  }
-  64.70588% {
-    clip: rect(112px, 450px, 6px, 0)
-  }
-  70.58824% {
-    clip: rect(49px, 450px, 94px, 0)
-  }
-  76.47059% {
-    clip: rect(30px, 450px, 39px, 0)
-  }
-  82.35294% {
-    clip: rect(55px, 450px, 92px, 0)
-  }
-  88.23529% {
-    clip: rect(105px, 450px, 112px, 0)
-  }
-  94.11765% {
-    clip: rect(58px, 450px, 98px, 0)
-  }
-  100% {
-    clip: rect(68px, 450px, 103px, 0)
-  }
-`;
-
-const glitchBefore = keyframes`
-0% {
-    clip: rect(86px, 450px, 73px, 0)
-  }
-  5.88235% {
-    clip: rect(25px, 450px, 3px, 0)
-  }
-  11.76471% {
-    clip: rect(56px, 450px, 38px, 0)
-  }
-  17.64706% {
-    clip: rect(86px, 450px, 48px, 0)
-  }
-  23.52941% {
-    clip: rect(19px, 450px, 16px, 0)
-  }
-  29.41176% {
-    clip: rect(88px, 450px, 3px, 0)
-  }
-  35.29412% {
-    clip: rect(45px, 450px, 71px, 0)
-  }
-  41.17647% {
-    clip: rect(84px, 450px, 61px, 0)
-  }
-  47.05882% {
-    clip: rect(114px, 450px, 27px, 0)
-  }
-  52.94118% {
-    clip: rect(15px, 450px, 114px, 0)
-  }
-  58.82353% {
-    clip: rect(26px, 450px, 72px, 0)
-  }
-  64.70588% {
-    clip: rect(54px, 450px, 28px, 0)
-  }
-  70.58824% {
-    clip: rect(89px, 450px, 107px, 0)
-  }
-  76.47059% {
-    clip: rect(95px, 450px, 81px, 0)
-  }
-  82.35294% {
-    clip: rect(109px, 450px, 31px, 0)
-  }
-  88.23529% {
-    clip: rect(82px, 450px, 16px, 0)
-  }
-  94.11765% {
-    clip: rect(83px, 450px, 3px, 0)
-  }
-  100% {
-    clip: rect(49px, 450px, 52px, 0)
-  }
 `;
 
 const GearItem = styled.div`
@@ -310,7 +246,7 @@ const GearItem = styled.div`
 		height: auto;
 		& > a {
 			position: relative;
-			padding: 0.5rem 2.2rem 0.5rem 1rem;
+			padding: 0.7rem 2.2rem 0.7rem 1rem;
 			background: ${props => props.theme.colorMain};
 			cursor: pointer;
 			display: flex;
@@ -322,47 +258,18 @@ const GearItem = styled.div`
 				width: 50%;
 				font-weight: 450;
 				font-size: 1rem;
-				line-height: 1.8rem;
+				line-height: 1.4rem;
 				color: #adadad;
 				text-transform: uppercase;
 				&:nth-child(2) {
 					text-align: right;
 				}
 			}
-			&::before,
-			&::after {
-				content: attr(data-text);
-				position: absolute;
-				top: 0px;
-				width: 100%;
-				height: 100%;
-				clip: rect(0, 0, 0, 0);
-				background: #000;
-				color: #cecece;
-			}
-			&::after {
-				left: 2px;
-				text-shadow: -1px 0 #cecece;
-				box-shadow: -1px 0 #cecece;
-			}
-			&::before {
-				left: -2px;
-				text-shadow: 2px 0 #cecece;
-				box-shadow: 2px 0 #cecece;
-			}
-			&:hover {
-				&::after {
-					animation: ${glitchAfter} 2s infinite linear alternate-reverse;
-				}
-				&:before {
-					animation: ${glitchBefore} 3s infinite linear alternate-reverse;
-				}
-			}
 		}
 	}
 	@media screen and (max-width: 567px) {
 		& > a {
-			padding: 2rem 5.6rem 2rem 2rem;
+			padding: 2rem 6.6rem 2rem 4rem;
 			& > span {
 				font-size: 2rem;
 				line-height: 2.2rem;
@@ -408,7 +315,11 @@ export const Gear = ({ itemType, activeitem, setActiveitem }) => {
 			<GearTop>GEAR ENGINEERING</GearTop>
 			<GearMain>
 				<GearMainView>
-					<span>MODEL LINE</span> [ {itemType} ]
+					<span>MODEL LINE</span>{' '}
+					<GearMainViewMob>VIEW ALL GEAR</GearMainViewMob>{' '}
+					<GearMainViewApp>
+						APPLICATION <GearMainViewType>[ {itemType} ]</GearMainViewType>{' '}
+					</GearMainViewApp>
 				</GearMainView>
 				<GearBlock>
 					{filterItems.map(item => (
