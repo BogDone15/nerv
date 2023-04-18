@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nerv/static/css/main.e1c30d5b.css",
-    "main.js": "/nerv/static/js/main.989b560d.js",
+    "main.js": "/nerv/static/js/main.87f9451f.js",
     "static/media/charackter.svg": "/nerv/static/media/charackter.5fbb6d9a746d126cf03714f6f3b72f09.svg",
     "static/media/man.png": "/nerv/static/media/man.610d23c13f6e4bc6ead0.png",
     "static/media/jacket-preview.svg": "/nerv/static/media/jacket-preview.582ae0c38a373abb4723d8d3f7ceff6a.svg",
@@ -44,10 +44,10 @@
     "static/media/augmen-bg2.svg": "/nerv/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
     "static/media/hero-bg.svg": "/nerv/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
     "main.e1c30d5b.css.map": "/nerv/static/css/main.e1c30d5b.css.map",
-    "main.989b560d.js.map": "/nerv/static/js/main.989b560d.js.map"
+    "main.87f9451f.js.map": "/nerv/static/js/main.87f9451f.js.map"
   },
   "entrypoints": [
     "static/css/main.e1c30d5b.css",
-    "static/js/main.989b560d.js"
+    "static/js/main.87f9451f.js"
   ]
 }
