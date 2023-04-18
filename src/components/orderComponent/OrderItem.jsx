@@ -299,6 +299,10 @@ const ContentPrice = styled.div`
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	padding: 3rem 3.3rem;
 	width: calc(100% - 1.1rem);
+	height: 13.9rem;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+	}
 `;
 
 const ContentPriceItem = styled.div`
@@ -324,9 +328,10 @@ const ContentBottom = styled.div`
 	justify-content: space-between;
 	gap: 0.4rem;
 	padding: 0 1.1rem;
-	height: calc(100% - 72.8rem);
+	height: calc(100% - 72.4rem);
 	width: calc(100% - 1.1rem);
 	border-top: 1px solid ${props => props.theme.colorBorder};
+
 	& > a {
 		width: calc(50% - 0.4rem);
 		text-align: center;
@@ -341,6 +346,7 @@ const ContentBottom = styled.div`
 
 const Desktop = styled.div`
 	height: 100%;
+
 	@media screen and (max-width: 1100px) {
 		display: none;
 	}

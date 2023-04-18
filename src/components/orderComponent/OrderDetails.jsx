@@ -82,10 +82,11 @@ const Image = styled.img`
 `;
 
 const WrapperBottom = styled.div`
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: calc(100% - 72.8rem);
+	height: calc(100% - 72.4rem);
 	width: 100%;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	& > span {
@@ -95,6 +96,15 @@ const WrapperBottom = styled.div`
 		&:last-child {
 			transform: translateX(-2.8rem) rotate(90deg);
 		}
+	}
+	&:before {
+		position: absolute;
+		content: '';
+		left: -4.6rem;
+		top: -1px;
+		background: ${props => props.theme.colorBorder};
+		height: 1px;
+		width: 4.4rem;
 	}
 `;
 

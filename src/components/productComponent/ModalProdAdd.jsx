@@ -68,7 +68,13 @@ const WrapperLeft = styled.div`
 	padding: 0.7rem 2.3rem;
 	background: rgba(130, 130, 130, 0.2);
 `;
-const Image = styled.img``;
+const Image = styled.img`
+	max-width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+`;
+
 const WrapperRight = styled.div`
 	display: flex;
 	flex-direction: column;

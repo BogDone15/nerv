@@ -104,8 +104,6 @@ const AsideTopSecond = styled.div`
 
 const AsideTopThird = styled.div`
 	height: 4rem;
-	/* border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	width: 100%;
 `;
 
@@ -140,9 +138,8 @@ const AsideMain = styled.div`
 `;
 
 const AsideBottom = styled.div`
-	height: calc(100% - 83rem);
+	height: calc(100% - 81rem);
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
 `;
 
 const Group = styled.div`
