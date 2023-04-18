@@ -55,6 +55,8 @@ const GearMainViewApp = styled.span`
 	}
 `;
 
+const GearMainViewDesk = styled.span``;
+
 const GearMainView = styled.span`
 	font-weight: 400;
 	font-size: 1.2rem;
@@ -65,6 +67,7 @@ const GearMainView = styled.span`
 	& > span {
 		color: ${props => props.theme.colorGray};
 	}
+
 	@media screen and (max-width: 1100px) {
 		border-bottom: 1px solid ${props => props.theme.colorBorder};
 		font-size: 1.3rem;
@@ -315,7 +318,10 @@ export const Gear = ({ itemType, activeitem, setActiveitem }) => {
 			<GearTop>GEAR ENGINEERING</GearTop>
 			<GearMain>
 				<GearMainView>
-					<span>MODEL LINE</span>{' '}
+					<GearMainViewDesk>
+						<span>APPLICATION</span>{' '}
+						<GearMainViewType>[ {itemType} ]</GearMainViewType>
+					</GearMainViewDesk>
 					<GearMainViewMob>VIEW ALL GEAR</GearMainViewMob>{' '}
 					<GearMainViewApp>
 						APPLICATION <GearMainViewType>[ {itemType} ]</GearMainViewType>{' '}

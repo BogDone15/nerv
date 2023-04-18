@@ -84,7 +84,6 @@ const MenuItemsContent = styled.div`
 	background-image: url(${augmenBgFirst});
 	background-size: 11.1rem 4.7rem;
 	background-repeat: no-repeat;
-	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -95,14 +94,13 @@ const MenuItemsContent = styled.div`
 const MenuItemsContentSecond = styled.div`
 	position: relative;
 	background-image: url(${augmenBgSecond});
-	background-size: 4.8rem 9.8rem;
+	background-size: 4.8rem 9.7rem;
 	background-repeat: no-repeat;
-	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 4.8rem;
-	height: 9.8rem;
+	height: 9.7rem;
 `;
 
 const MenuItemsContentLast = styled.div`
@@ -110,7 +108,6 @@ const MenuItemsContentLast = styled.div`
 	background-image: url(${augmenBgThird});
 	background-size: 5.5rem 4.7rem;
 	background-repeat: no-repeat;
-	/* padding: 0.2rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -199,7 +196,9 @@ const MenuCoverRight = styled.div``;
 
 const Text = styled.p`
 	font-weight: 700;
-	font-size: 0.5rem;
+	font-size: 0.4rem;
+	width: 100%;
+	text-align: center;
 	letter-spacing: 0.18px;
 	color: ${props => props.theme.colorMain};
 	text-transform: uppercase;

@@ -50,8 +50,6 @@ const Aside = styled.div`
 const AsideTop = styled.div`
 	height: 5rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	margin-top: 3.7rem;
 `;
 
@@ -106,8 +104,8 @@ const AsideTopSecond = styled.div`
 
 const AsideTopThird = styled.div`
 	height: 4rem;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	/* border-top: 1px solid ${props => props.theme.colorBorder};
+	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	width: 100%;
 `;
 
@@ -154,6 +152,7 @@ const Group = styled.div`
 	height: 100%;
 	overflow-y: hidden;
 	padding-left: 4.5rem;
+
 	@media screen and (max-width: 1100px) {
 		padding-left: 0;
 	}

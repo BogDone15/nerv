@@ -166,8 +166,8 @@ export const ModalProdAdd = ({ showmodal, setShowmodal }) => {
 				</>
 			)}
 			<WrapperBottom>
-				<Link to='/order'>EXPLORE MORE</Link>
-				<Link to='/checkout'>CHECKOUT</Link>
+				<Link to='/character'>EXPLORE MORE</Link>
+				<Link to='/order'>CHECKOUT</Link>
 			</WrapperBottom>
 		</Wrapper>
 	);

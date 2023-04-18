@@ -64,8 +64,8 @@ const AsideText = styled.div`
 const Top = styled.div`
 	height: 5rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	/* border-top: 1px solid ${props => props.theme.colorBorder};
+	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	margin-top: 3.6rem;
 `;
 

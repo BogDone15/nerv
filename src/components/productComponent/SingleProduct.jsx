@@ -53,7 +53,7 @@ const Angle = styled.div`
 	top: -1px;
 	background: ${props => props.theme.colorMain};
 	border-top-right-radius: 2.6rem;
-	padding: 0.7rem 3.6rem 0.7rem 8rem;
+	padding: 1rem 3.6rem 0.7rem 8rem;
 	& > span {
 		font-weight: 450;
 		font-size: 1.3rem;

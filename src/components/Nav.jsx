@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
+	position: relative;
 	width: 30%;
 	height: 5rem;
 	display: flex;
@@ -23,6 +24,27 @@ const Left = styled.div`
 	padding: 0rem 1rem 0 6rem;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+
+	&:before {
+		position: absolute;
+		left: calc(-4.3rem - 2px);
+		top: -1px;
+		content: '';
+		background: ${props => props.theme.colorBorder};
+		height: 1px;
+		width: 4.5rem;
+	}
+
+	&:after {
+		position: absolute;
+		left: calc(-4.3rem - 2px);
+		bottom: -1px;
+		content: '';
+		background: ${props => props.theme.colorBorder};
+		height: 1px;
+		width: 4.5rem;
+	}
+
 	& > a {
 		display: block;
 		max-width: 22rem;

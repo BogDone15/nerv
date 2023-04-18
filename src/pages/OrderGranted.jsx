@@ -40,8 +40,6 @@ const Aside = styled.div`
 const AsideTop = styled.div`
 	height: 5rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	margin-top: 3.7rem;
 `;
 
@@ -84,18 +82,6 @@ const Right = styled.div`
 	}
 `;
 
-const GearPreview = styled.div`
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	width: 4.5rem;
-	margin-top: 0.9rem;
-	border-right: 1px solid ${props => props.theme.colorBorder};
-	@media screen and (max-width: 1100px) {
-		display: none;
-	}
-`;
-
 const Group = styled.div`
 	display: flex;
 	align-items: center;
@@ -117,9 +103,6 @@ export const OrderGranted = () => {
 						<span>CORPORATION</span>
 					</AsideMiddle>
 				</Aside>
-				<GearPreview>
-					<AsideTop />
-				</GearPreview>
 				<Right>
 					<Header />
 					<Nav>

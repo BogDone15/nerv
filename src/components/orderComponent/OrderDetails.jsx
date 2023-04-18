@@ -37,10 +37,30 @@ const WrapperTop = styled.div`
 `;
 
 const WrapperFake = styled.div`
+	position: relative;
 	height: 4rem;
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	border-top: 1px solid ${props => props.theme.colorBorder};
+	&:before {
+		position: absolute;
+		left: calc(-4.3rem - 2px);
+		top: -1px;
+		content: '';
+		background: ${props => props.theme.colorBorder};
+		height: 1px;
+		width: 4.5rem;
+	}
+
+	&:after {
+		position: absolute;
+		left: calc(-4.3rem - 2px);
+		bottom: -1px;
+		content: '';
+		background: ${props => props.theme.colorBorder};
+		height: 1px;
+		width: 4.5rem;
+	}
 `;
 
 const WrapperPreview = styled.div`
@@ -51,13 +71,14 @@ const WrapperPreview = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 1rem;
+	padding: 3rem;
 `;
 
 const Image = styled.img`
-	/* max-height: 50vh;
-  width: auto; */
 	max-width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
 `;
 
 const WrapperBottom = styled.div`

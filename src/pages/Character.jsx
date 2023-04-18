@@ -75,7 +75,7 @@ const AsideText = styled.div`
 		&::after {
 			position: absolute;
 			left: 0;
-			bottom: -4.5rem;
+			top: -4.5rem;
 			content: '';
 			background: ${props => props.theme.colorGray};
 			width: 100%;
@@ -98,8 +98,8 @@ const AsideText = styled.div`
 const AsideTop = styled.div`
 	height: 5rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	/* border-top: 1px solid ${props => props.theme.colorBorder};
+	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	margin-top: 3.7rem;
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -109,16 +109,18 @@ const AsideTop = styled.div`
 const AsideMiddle = styled.div`
 	height: 7.8rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	font-weight: 400;
-	font-size: 1.2rem;
-	line-height: 1.8rem;
-	color: #878787;
-	transform: rotate(-180deg);
-	writing-mode: vertical-lr;
+	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	& > span {
+		font-weight: 400;
+		font-size: 1.2rem;
+		line-height: 1.8rem;
+		color: #878787;
+		transform: rotate(-180deg);
+		writing-mode: vertical-lr;
+	}
 	@media screen and (max-width: 1100px) {
 		display: none;
 	}
@@ -130,7 +132,7 @@ const AsideBottom = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	height: calc(100% - 16.5rem);
+	height: calc(100% - 16.3rem);
 	padding: 3.3rem 0;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
@@ -174,7 +176,9 @@ export const Character = () => {
 			<Block>
 				<Aside>
 					<AsideTop />
-					<AsideMiddle>HEAD</AsideMiddle>
+					<AsideMiddle>
+						<span>HEAD</span>
+					</AsideMiddle>
 					<AsideBottom>
 						<AsideText>
 							<span>TXT</span>

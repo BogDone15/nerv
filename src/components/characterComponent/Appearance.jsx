@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		width: 55%;
 		max-width: 100%;
+		padding-top: 3rem;
 		& > div {
 			&:nth-of-type(1) {
 				display: none;
@@ -41,10 +42,10 @@ const WrapperAside = styled.div`
 `;
 
 const Image = styled.img`
-	max-height: 76vh;
-	width: auto;
-	margin: auto;
 	max-width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
 `;
 
 const TebletViewGear = styled.div`
@@ -84,6 +85,10 @@ const Text = styled.p`
 const Cover = styled.div`
 	position: relative;
 	width: 100%;
+	height: 100%;
+	& > div {
+		height: 100%;
+	}
 `;
 
 const ArrowPrev = styled.svg`

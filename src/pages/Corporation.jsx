@@ -42,23 +42,23 @@ const Aside = styled.div`
 const AsideTop = styled.div`
 	height: 5rem;
 	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	margin-top: 3.7rem;
 `;
 
 const AsideMiddle = styled.div`
 	height: calc(100% - 10.3rem);
 	width: 100%;
-	font-weight: 400;
-	font-size: 1.2rem;
-	line-height: 1.8rem;
-	color: #878787;
-	transform: rotate(-180deg);
-	writing-mode: vertical-lr;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	& > span {
+		font-weight: 400;
+		font-size: 1.2rem;
+		line-height: 1.8rem;
+		color: #878787;
+		transform: rotate(-180deg);
+		writing-mode: vertical-lr;
+	}
 `;
 
 const Right = styled.div`
@@ -109,7 +109,9 @@ export const Corporation = () => {
 			<Block>
 				<Aside>
 					<AsideTop />
-					<AsideMiddle>CORPORATION</AsideMiddle>
+					<AsideMiddle>
+						<span>CORPORATION</span>
+					</AsideMiddle>
 				</Aside>
 				<GearPreview>
 					<AsideTop />
