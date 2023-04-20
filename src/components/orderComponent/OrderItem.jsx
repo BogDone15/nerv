@@ -585,6 +585,33 @@ const TabletPrice = styled.div`
 	}
 `;
 
+const contentTopItem = [
+	{
+		id: 1,
+		name: 'TYPE',
+	},
+	{
+		id: 2,
+		name: 'INFO',
+	},
+	{
+		id: 3,
+		name: 'COLOR',
+	},
+	{
+		id: 4,
+		name: 'SIZE',
+	},
+	{
+		id: 5,
+		name: 'AMT',
+	},
+	{
+		id: 6,
+		name: 'PRICE',
+	},
+];
+
 export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 	const cart = useSelector(state => state.cart);
 	const [arrSize, setArrSize] = useState('');
@@ -621,33 +648,6 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 		}
 	};
 
-	const contentTopItem = [
-		{
-			id: 1,
-			name: 'TYPE',
-		},
-		{
-			id: 2,
-			name: 'INFO',
-		},
-		{
-			id: 3,
-			name: 'COLOR',
-		},
-		{
-			id: 4,
-			name: 'SIZE',
-		},
-		{
-			id: 5,
-			name: 'AMT',
-		},
-		{
-			id: 6,
-			name: 'PRICE',
-		},
-	];
-
 	return (
 		<>
 			<Tablet>
@@ -675,7 +675,7 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 								onClick={() => handleDelete(item.id, item.quantity, item.price)}
 							>
 								<svg viewBox='0 0 15 15'>
-									<path d='M1 1L14 14M14 1L1 14' stroke-width='2' />
+									<path d='M1 1L14 14M14 1L1 14' strokeWidth='2' />
 								</svg>
 							</ContentMainItemRemove>
 							<TabletBottomLeft>

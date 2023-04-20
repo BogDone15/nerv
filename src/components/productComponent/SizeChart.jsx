@@ -3,12 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled(motion.div)`
-	position: absolute;
+	position: fixed;
 	right: 0;
-	top: 0;
+	top: 10.4rem;
 	z-index: 10;
 	@media screen and (max-width: 1100px) {
-		position: fixed;
+		top: 0;
 	}
 `;
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
@@ -466,6 +466,7 @@ export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
 	const [currentSlide, setCurrentSlide] = useState('01');
 	const location = useLocation();
 	const productName = location.pathname.split('/')[2].replace(/-/gi, ' ');
+	const cart = useSelector(state => state.cart);
 
 	const time = new Date().getTime();
 
@@ -485,14 +486,58 @@ export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
 			: setSlides(curProd.imgSlider?.length);
 	}, [productName, curProd.imgSlider?.length]);
 
+	// const handleClickBtn = id => {
+	// 	setShowmodalSize(false);
+	// 	setSelectedProd(id);
+
+	// 	if (cart.products.length === 0) {
+	// 		console.log(1);
+	// 		// return null;
+	// 	} else {
+	// 		const selectedInCartItem = cart.products.find(
+	// 			item => item.id === curProd.id
+	// 		);
+	// 		const selectedItemSize =
+	// 			curProd.options.find(
+	// 				item => item.sizeShort === selectedInCartItem.size.sizeShort
+	// 			) ;
+
+	// 		const selectedItemColor = selectedInCartItem.size.color === color;
+
+	// 		if (selectedItemColor) {
+	// 			console.log('Same color');
+	// 		}
+
+	// 		console.log(selectedInCartItem);
+	// 		console.log(selectedItemSize);
+	// 		console.log(selectedItemColor);
+	// 	}
+
+	// 	// console.log(selectedCartItem.size.color && selectedCartItem.size.sizeShort);
+
+	// 	if (id === selectedProd) {
+	// 		return null;
+	// 	} else {
+	// 		setShowmodal(true);
+	// 		dispatch(
+	// 			addProduct({
+	// 				...curProd,
+	// 				quantity,
+	// 				size: { ...size, color: color, inStock },
+	// 			})
+	// 		);
+	// 	}
+	// };
+
 	const handleClickBtn = id => {
 		setShowmodalSize(false);
-		setShowmodal(true);
 		setSelectedProd(id);
+		console.log(id, selectedProd);
 
 		if (id === selectedProd) {
 			return null;
 		} else {
+			setShowmodal(true);
 			dispatch(
 				addProduct({
 					...curProd,

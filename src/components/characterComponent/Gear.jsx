@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { Link } from 'react-router-dom';
+import { FetchingLoader } from '../FetchingLoader';
 
 const GearWrapper = styled.div`
 	position: relative;
@@ -328,36 +329,44 @@ export const Gear = ({ itemType, activeitem, setActiveitem }) => {
 					</GearMainViewApp>
 				</GearMainView>
 				<GearBlock>
-					{filterItems.map(item => (
-						<GearItem
-							key={item.id}
-							absent={item.availability === 'soon' ? true : false}
-							onClick={() => handleClick(item.id)}
-						>
-							<GearStatus>
-								<span>{item.availability}</span>
-							</GearStatus>
-							<GearCover activeitem={item.id === activeitem ? true : false}>
-								<GearAside activeitem={item.id === activeitem ? true : false} />
-								<Image src={item.imgMain} alt='Nerv' />
-							</GearCover>
-							<Link
-								to={`/character/${item.name.replace(/ /gi, '-').toLowerCase()}`}
+					{filterItems ? (
+						filterItems.map(item => (
+							<GearItem
+								key={item.id}
+								absent={item.availability === 'soon' ? true : false}
+								onClick={() => handleClick(item.id)}
 							>
-								<span>{item.name}</span>
-								<span>{item.price}.00 EUR</span>
-								<IconArrow viewBox='0 0 12 21'>
-									<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
-									<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
-									<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
-									<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
-									<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
-									<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
-									<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
-								</IconArrow>
-							</Link>
-						</GearItem>
-					))}
+								<GearStatus>
+									<span>{item.availability}</span>
+								</GearStatus>
+								<GearCover activeitem={item.id === activeitem ? true : false}>
+									<GearAside
+										activeitem={item.id === activeitem ? true : false}
+									/>
+									<Image src={item.imgMain} alt='Nerv' />
+								</GearCover>
+								<Link
+									to={`/character/${item.name
+										.replace(/ /gi, '-')
+										.toLowerCase()}`}
+								>
+									<span>{item.name}</span>
+									<span>{item.price}.00 EUR</span>
+									<IconArrow viewBox='0 0 12 21'>
+										<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+										<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+										<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+										<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+										<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+										<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+										<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+									</IconArrow>
+								</Link>
+							</GearItem>
+						))
+					) : (
+						<FetchingLoader />
+					)}
 				</GearBlock>
 			</GearMain>
 		</GearWrapper>

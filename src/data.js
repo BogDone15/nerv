@@ -1108,44 +1108,44 @@ export const dataItems = [
 	},
 ];
 
-export const shippingData = [
-	{
-		id: 2,
-		type: 'text',
-		name: 'state',
-		placeholder: 'State',
-	},
-	{
-		id: 4,
-		type: 'text',
-		name: 'code',
-		placeholder: 'ZIP CODE',
-	},
-	{
-		id: 5,
-		type: 'text',
-		name: 'location',
-		placeholder: 'CITY / TOWN',
-	},
-	{
-		id: 6,
-		type: 'text',
-		name: 'adress',
-		placeholder: 'ADRESS / STREET / BUILDING',
-	},
-	{
-		id: 7,
-		type: 'text',
-		name: 'appartment',
-		placeholder: 'APPARTMENT / SUIT ( OPTIONAL)',
-	},
-	{
-		id: 8,
-		type: 'tel',
-		name: 'phone',
-		placeholder: 'CELL PHONE NUMBER',
-	},
-];
+// export const shippingData = [
+// 	{
+// 		id: 2,
+// 		type: 'text',
+// 		name: 'state',
+// 		placeholder: 'State',
+// 	},
+// 	{
+// 		id: 4,
+// 		type: 'text',
+// 		name: 'code',
+// 		placeholder: 'ZIP CODE',
+// 	},
+// 	{
+// 		id: 5,
+// 		type: 'text',
+// 		name: 'location',
+// 		placeholder: 'CITY / TOWN',
+// 	},
+// 	{
+// 		id: 6,
+// 		type: 'text',
+// 		name: 'adress',
+// 		placeholder: 'ADRESS / STREET / BUILDING',
+// 	},
+// 	{
+// 		id: 7,
+// 		type: 'text',
+// 		name: 'appartment',
+// 		placeholder: 'APPARTMENT / SUIT ( OPTIONAL)',
+// 	},
+// 	{
+// 		id: 8,
+// 		type: 'tel',
+// 		name: 'phone',
+// 		placeholder: 'CELL PHONE NUMBER',
+// 	},
+// ];
 
 export const dataCheckout = [
 	{

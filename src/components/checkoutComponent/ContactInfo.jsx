@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { shippingData } from '../../data';
 import Select from 'react-select';
+import { useForm, Controller } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 const Wrapper = styled.div`
 	width: 65%;
 	height: 100%;
@@ -77,7 +80,8 @@ const Input = styled.input`
 	font-size: 1.8rem;
 	@media screen and (max-width: 1100px) {
 		height: 6.2rem;
-		font-size: 2.1rem;
+		/* font-size: 2.1rem; */
+		font-size: 16px;
 	}
 `;
 
@@ -90,7 +94,9 @@ const InputPlaceHolder = styled.span`
 	font-weight: 300;
 	font-size: 1.2rem;
 	line-height: 1.7rem;
-	color: #000000;
+	/* color: #000000; */
+	color: ${props => (props.error ? '#ff0000' : '#000000')};
+	/* color: ${({ error }) => (error ? '#ff0000' : '#000000')}; */
 	text-transform: uppercase;
 	transition: all 0.2s ease;
 	@media screen and (max-width: 1100px) {
@@ -296,6 +302,7 @@ const StyledSelect = styled(Select)`
 		border: 1px solid ${props => props.theme.colorBorder};
 		background: transparent;
 		outline: none;
+		min-height: 4rem;
 		width: 100%;
 		height: 100%;
 		font-size: 1.8rem;
@@ -305,8 +312,13 @@ const StyledSelect = styled(Select)`
 			border-color: unset;
 		}
 		@media screen and (max-width: 567px) {
-			font-size: 2.1rem;
+			/* font-size: 2.1rem; */
+			font-size: 16px;
 		}
+	}
+
+	.Select__indicator {
+		padding: 0 8px 0;
 	}
 	.Select__value-container {
 		overflow: unset;
@@ -322,6 +334,11 @@ const StyledSelect = styled(Select)`
 
 	.Select__control:hover {
 		border-color: #a1a1a1;
+	}
+
+	.Select__input-container {
+		margin: 0;
+		padding-bottom: 0;
 	}
 
 	.Select__control--is-focused {
@@ -387,16 +404,53 @@ export const ContactInfo = () => {
 	const [editContact, setEditContact] = useState(false);
 	const [editInfo, setEditInfo] = useState(false);
 
-	const handleClick = type => {
-		if (type === 'contact') {
-			setHideContactBlock(false);
-			setHideInfoBlock(true);
-			setEditContact(true);
-			setEditInfo(false);
-		} else if (type === 'info') {
-			setHideInfoBlock(false);
-			setHidePaymentBlock(true);
-			setEditInfo(true);
+	const navigate = useNavigate();
+
+	const {
+		register,
+		handleSubmit,
+		trigger,
+		formState: { errors },
+		control,
+		reset,
+	} = useForm({
+		mode: 'onChange',
+	});
+
+	const onSubmit = data => {
+		console.log(data);
+		reset();
+
+		alert(`
+		Email:	${data.email} 
+		First Name:	${data.firstName} 
+		Last Name:	${data.lastName} 
+		Country:	${data.country} 
+		State:	${data.state} 
+		Zip Code:	${data.zipCode} 
+		City / Town:	${data.city} 
+		Adress / Street / Building:	${data.adress} 
+		Appartment / Suite:	${data.appartment} 
+		Phone:	${data.phone} 
+		`);
+
+		navigate('/order-granted');
+	};
+
+	const handleClick = (result, type) => {
+		if (!result) {
+			return null;
+		} else {
+			if (type === 'contact') {
+				setHideContactBlock(false);
+				setHideInfoBlock(true);
+				setEditContact(true);
+				setEditInfo(false);
+			} else if (type === 'info') {
+				setHideInfoBlock(false);
+				setHidePaymentBlock(true);
+				setEditInfo(true);
+			}
 		}
 	};
 
@@ -422,6 +476,9 @@ export const ContactInfo = () => {
 		{ value: 'USA', label: 'USA' },
 	];
 
+	const getValue = value =>
+		value ? options.find(option => option.value === value) : '';
+
 	return (
 		<Wrapper>
 			<WrapperTitle>
@@ -436,7 +493,7 @@ export const ContactInfo = () => {
 			</WrapperTop>
 			<WrapperMainTitle>Checkout</WrapperMainTitle>
 			<WrapperMain>
-				<Form>
+				<Form onSubmit={handleSubmit(onSubmit)}>
 					<ContactBlock>
 						<ContactBlockTitle hideContactBlock={hideContactBlock}>
 							<h2>01 CONTACT INFO</h2>
@@ -447,20 +504,60 @@ export const ContactInfo = () => {
 						{hideContactBlock && (
 							<>
 								<InputWrapper>
-									<Input type='email' name='email' />
-									<InputPlaceHolder>Email</InputPlaceHolder>
+									<Input
+										{...register('email', {
+											required: 'Email Address is required',
+											pattern: {
+												value:
+													/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+												message: 'Entered value does not match email format',
+											},
+										})}
+									/>
+									<InputPlaceHolder error={errors.email?.message}>
+										Email
+									</InputPlaceHolder>
+									<div style={{ color: 'red' }}>{errors.email?.message}</div>
 								</InputWrapper>
 								<InputBlock>
 									<InputWrapper>
-										<Input type='text' name='name' />
-										<InputPlaceHolder>FIRST NAME</InputPlaceHolder>
+										<Input
+											{...register('firstName', {
+												required: 'firstName is required field',
+												minLength: 2,
+												maxLength: 15,
+											})}
+										/>
+										<InputPlaceHolder error={errors.firstName?.message}>
+											FIRST NAME
+										</InputPlaceHolder>
+										<p style={{ color: 'red' }}>{errors.firstName?.message}</p>
 									</InputWrapper>
 									<InputWrapper>
-										<Input type='text' name='lastname' />
-										<InputPlaceHolder>LAST NAME</InputPlaceHolder>
+										<Input
+											{...register('lastName', {
+												required: 'lastName is required field',
+												minLength: 2,
+												maxLength: 15,
+											})}
+										/>
+										<InputPlaceHolder error={errors.lastName?.message}>
+											LAST NAME
+										</InputPlaceHolder>
+										<p style={{ color: 'red' }}>{errors.lastName?.message}</p>
 									</InputWrapper>
 								</InputBlock>
-								<Button type='button' onClick={() => handleClick('contact')}>
+								<Button
+									type='button'
+									onClick={async () => {
+										const result = await trigger([
+											'email',
+											'firstName',
+											'lastName',
+										]);
+										handleClick(result, 'contact');
+									}}
+								>
 									<span>CONTINUE</span>
 								</Button>
 							</>
@@ -475,21 +572,91 @@ export const ContactInfo = () => {
 						</InfoBlockTitle>
 						{hideInfoBlock && (
 							<>
-								<StyledSelectWrapper>
-									{/* <span>Country</span> */}
-									<StyledSelect
-										classNamePrefix='Select'
-										options={options}
-										placeholder='Country'
+								<Controller
+									name='country'
+									control={control}
+									rules={{ required: 'Country is required' }}
+									render={({ field: { onChange, value } }) => (
+										<StyledSelectWrapper>
+											<StyledSelect
+												classNamePrefix='Select'
+												options={options}
+												placeholder='Country'
+												value={getValue(value)}
+												onChange={newValue => onChange(newValue.value)}
+											/>
+											<p style={{ color: 'red' }}>{errors.country?.message}</p>
+										</StyledSelectWrapper>
+									)}
+								/>
+								<InputWrapper>
+									<Input
+										{...register('state', { required: true })}
+										type='text'
 									/>
-								</StyledSelectWrapper>
-								{shippingData.map(item => (
-									<InputWrapper key={item.id}>
-										<Input type={item.type} name={item.name} />
-										<InputPlaceHolder>{item.placeholder}</InputPlaceHolder>
-									</InputWrapper>
-								))}
-								<Button type='button' onClick={() => handleClick('info')}>
+									<InputPlaceHolder error={errors.state?.message}>
+										State
+									</InputPlaceHolder>
+								</InputWrapper>
+								<InputWrapper>
+									<Input
+										{...register('zipCode', {
+											required: 'lastName is required field',
+										})}
+										type='text'
+									/>
+									<InputPlaceHolder error={errors.zipCode?.message}>
+										ZIP CODE
+									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.zipCode?.message}</p>
+								</InputWrapper>
+								<InputWrapper>
+									<Input
+										{...register('city', { required: true })}
+										type='text'
+									/>
+									<InputPlaceHolder error={errors.city?.message}>
+										CITY / TOWN
+									</InputPlaceHolder>
+								</InputWrapper>
+								<InputWrapper>
+									<Input
+										{...register('adress', { required: true })}
+										type='text'
+									/>
+									<InputPlaceHolder error={errors.adress?.message}>
+										ADRESS / STREET / BUILDING
+									</InputPlaceHolder>
+								</InputWrapper>
+								<InputWrapper>
+									<Input {...register('appartment')} type='text' />
+									<InputPlaceHolder>
+										APPARTMENT / SUIT ( OPTIONAL)
+									</InputPlaceHolder>
+								</InputWrapper>
+								<InputWrapper>
+									<Input
+										{...register('phoneNumber', { required: true })}
+										type='tel'
+									/>
+									<InputPlaceHolder error={errors.phoneNumber?.message}>
+										CELL PHONE NUMBER
+									</InputPlaceHolder>
+								</InputWrapper>
+								<Button
+									type='button'
+									onClick={async () => {
+										const result = await trigger([
+											'country',
+											'state',
+											'zipCode',
+											'city',
+											'adress',
+											'phoneNumber',
+										]);
+										handleClick(result, 'info');
+									}}
+								>
 									<span>CONTINUE</span>
 								</Button>
 							</>
@@ -500,7 +667,7 @@ export const ContactInfo = () => {
 					</PaymentBlockTitle>
 					{hidePaymentBlock && (
 						<PaymentGroup>
-							<Button type='button'>
+							<Button type='submit'>
 								<span>PAY WIA FONDY </span>
 							</Button>
 						</PaymentGroup>
