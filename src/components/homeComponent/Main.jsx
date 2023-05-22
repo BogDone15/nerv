@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import bgImg from '../../assets/main-bg.png';
 import bgImgMob from '../../assets/main-bg-mob.png';
 import charackters from '../../assets/charackters.png';
+import charackterMob from '../../assets/charackter.svg';
 import styled from 'styled-components';
 import { Status } from '../Status';
 import { Modal } from './Modal';
@@ -71,6 +72,20 @@ const Image = styled.img`
 	object-position: center;
 	@media screen and (max-width: 1100px) {
 		transform: translateX(2rem);
+	}
+	@media screen and (max-width: 567px) {
+		display: none;
+	}
+`;
+
+const ImageMob = styled.img`
+	object-fit: contain;
+	max-width: 100%;
+	height: 100%;
+	object-position: center;
+	display: none;
+	@media screen and (max-width: 567px) {
+		display: block;
 	}
 `;
 
@@ -242,6 +257,7 @@ export const Main = () => {
 			<Block>
 				<Status status='online' color='#00c70a' />
 				<Image src={charackters} alt='Nerv' />
+				<ImageMob src={charackterMob} alt='Nerv' />
 				<Modal closeModal={closeModal} setCloseModal={setCloseModal} />
 			</Block>
 			<Expansion>

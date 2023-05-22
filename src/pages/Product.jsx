@@ -83,7 +83,7 @@ const Group = styled.div`
 	height: 100%;
 	overflow-y: hidden;
 	@media screen and (max-width: 1100px) {
-		margin-top: 4.4rem;
+		margin-top: 6rem;
 		margin-bottom: 7rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
 	}
@@ -93,7 +93,7 @@ const Group = styled.div`
 `;
 
 export const Product = () => {
-	const [showmodal, setShowmodal] = useState(false);
+	const [showmodalProduct, setShowmodalProduct] = useState(false);
 	const [showmodalsize, setShowmodalSize] = useState(false);
 	const location = useLocation();
 	const path = location.pathname;
@@ -126,16 +126,16 @@ export const Product = () => {
 									showmodalsize={showmodalsize}
 								/>
 							)}
-							{showmodal && (
+							{showmodalProduct && (
 								<ModalProdAdd
 									key='modal'
-									setShowmodal={setShowmodal}
-									showmodal={showmodal}
+									setShowmodalProduct={setShowmodalProduct}
+									showmodalProduct={showmodalProduct}
 								/>
 							)}
 						</AnimatePresence>
 						<SingleProduct
-							setShowmodal={setShowmodal}
+							setShowmodalProduct={setShowmodalProduct}
 							setShowmodalSize={setShowmodalSize}
 						/>
 						<Socials />

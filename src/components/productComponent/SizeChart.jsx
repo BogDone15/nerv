@@ -7,8 +7,11 @@ const Wrapper = styled(motion.div)`
 	right: 0;
 	top: 10.4rem;
 	z-index: 10;
+	width: 100%;
+	max-width: 54rem;
 	@media screen and (max-width: 1100px) {
 		top: 0;
+		max-width: 100%;
 	}
 `;
 
@@ -29,6 +32,12 @@ const Info = styled.div`
 		line-height: 2.5rem;
 		color: #9b9b9b;
 	}
+	@media screen and (max-width: 1100px) {
+		padding: 2rem 0 1.7rem 3.8rem;
+		& > span {
+			font-size: 2.1rem;
+		}
+	}
 `;
 
 const WrapperTop = styled.div`
@@ -42,12 +51,18 @@ const Item = styled.div`
 	& > span {
 		text-transform: uppercase;
 		font-weight: 300;
-		font-size: 1.7rem;
-		line-height: 2.3rem;
+		font-size: ${props => props.theme.fontsm};
+		line-height: 1.8rem;
 		color: #282828;
 		margin-bottom: 0.3rem;
 		&:last-child {
 			margin-bottom: 0;
+		}
+	}
+	@media screen and (max-width: 1100px) {
+		& > span {
+			font-size: 2.1rem;
+			margin-bottom: 1rem;
 		}
 	}
 `;
@@ -55,7 +70,7 @@ const Item = styled.div`
 const Close = styled.div`
 	position: absolute;
 	right: 1rem;
-	top: 0.3rem;
+	top: 0.8rem;
 	width: 3rem;
 	height: 3rem;
 	display: flex;
@@ -63,7 +78,7 @@ const Close = styled.div`
 	cursor: pointer;
 	& > span {
 		width: 100%;
-		height: 1px;
+		height: 2px;
 		background: ${props => props.theme.colorGray};
 		transform: translateX(0.8rem) rotate(-45deg);
 		transition: all 0.2s ease;
@@ -76,13 +91,32 @@ const Close = styled.div`
 			background: #fff;
 		}
 	}
+	@media screen and (max-width: 1100px) {
+		width: 4rem;
+		height: 4rem;
+		top: 1.2rem;
+		& > span {
+			transform: translateX(1.2rem) rotate(-45deg);
+		}
+	}
 `;
 
 const WrapperMain = styled.div`
 	background: #c5c3c3;
 	width: 100%;
 	height: 100%;
-	padding: 3.2rem 6rem 5.2rem;
+`;
+
+const WrapperBlock = styled.div`
+	max-width: 42.5rem;
+	width: 100%;
+	height: 100%;
+	padding: 3.2rem 0 5.2rem;
+	margin: auto;
+	@media screen and (max-width: 1100px) {
+		padding: 2.2rem 0 3.2rem;
+		max-width: 55.5rem;
+	}
 `;
 
 const Parameters = styled.div`
@@ -93,6 +127,11 @@ const Parameters = styled.div`
 		font-size: 1.7rem;
 		line-height: 2.3rem;
 		color: #282828;
+	}
+	@media screen and (max-width: 1100px) {
+		& > span {
+			font-size: 2.3rem;
+		}
 	}
 `;
 
@@ -121,51 +160,53 @@ export const SizeChart = ({ showmodalsize, setShowmodalSize }) => {
 				</Close>
 			</WrapperTop>
 			<WrapperMain>
-				<Parameters>
-					<span>/parameters</span>
-				</Parameters>
-				<BLock>
-					<Item>
-						<span>[size]</span>
-						<span>XS</span>
-						<span>S</span>
-						<span>M</span>
-						<span>L</span>
-						<span>XL</span>
-					</Item>
-					<Item>
-						<span>[bust]</span>
-						<span>80</span>
-						<span>83</span>
-						<span>86</span>
-						<span>90</span>
-						<span>94</span>
-					</Item>
-					<Item>
-						<span>[waist]</span>
-						<span>62</span>
-						<span>65</span>
-						<span>68</span>
-						<span>72</span>
-						<span>76</span>
-					</Item>
-					<Item>
-						<span>[hips]</span>
-						<span>86</span>
-						<span>89</span>
-						<span>92</span>
-						<span>96</span>
-						<span>100</span>
-					</Item>
-					<Item>
-						<span>[hips]</span>
-						<span>9</span>
-						<span>02</span>
-						<span>2</span>
-						<span>0</span>
-						<span>2</span>
-					</Item>
-				</BLock>
+				<WrapperBlock>
+					<Parameters>
+						<span>/parameters</span>
+					</Parameters>
+					<BLock>
+						<Item>
+							<span>[size]</span>
+							<span>XS</span>
+							<span>S</span>
+							<span>M</span>
+							<span>L</span>
+							<span>XL</span>
+						</Item>
+						<Item>
+							<span>[bust]</span>
+							<span>80</span>
+							<span>83</span>
+							<span>86</span>
+							<span>90</span>
+							<span>94</span>
+						</Item>
+						<Item>
+							<span>[waist]</span>
+							<span>62</span>
+							<span>65</span>
+							<span>68</span>
+							<span>72</span>
+							<span>76</span>
+						</Item>
+						<Item>
+							<span>[hips]</span>
+							<span>86</span>
+							<span>89</span>
+							<span>92</span>
+							<span>96</span>
+							<span>100</span>
+						</Item>
+						<Item>
+							<span>[hips]</span>
+							<span>9</span>
+							<span>02</span>
+							<span>2</span>
+							<span>0</span>
+							<span>2</span>
+						</Item>
+					</BLock>
+				</WrapperBlock>
 			</WrapperMain>
 		</Wrapper>
 	);

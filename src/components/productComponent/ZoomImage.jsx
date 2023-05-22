@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Mousewheel } from 'swiper';
 import 'swiper/css/mousewheel';
+import shortid from 'shortid';
 
 const Wrapper = styled.div`
 	position: absolute;
@@ -93,12 +94,6 @@ const Group = styled.div`
 	z-index: 11;
 	width: 4rem;
 	height: 100%;
-	/* @media screen and (max-width: 2300px) {
-		width: 3rem;
-	}
-	@media screen and (max-width: 1920px) {
-		width: 2rem;
-	} */
 `;
 
 const GroupBlock = styled.div`
@@ -120,7 +115,7 @@ const Close = styled.div`
 	& > span {
 		background: ${props => props.theme.colorBorder};
 		width: 100%;
-		height: 1px;
+		height: 2px;
 		transform: translateX(0.6rem) rotate(45deg);
 		transition: all 0.2s ease;
 		&:last-child {
@@ -149,7 +144,10 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
 	const [currentSlide, setCurrentSlide] = useState('01');
-	const time = new Date().getTime();
+
+	const generateKey = pre => {
+		return `${pre}_${new Date().getTime()}`;
+	};
 
 	useEffect(() => {
 		curProd.imgSliderZoom?.length <= 9
@@ -255,7 +253,7 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 				</Position>
 				{curProd.imgSliderZoom?.map(item => (
 					<SwiperSlide>
-						<Image key={curProd.id * time} src={item} alt='Nerv' />
+						<Image key={generateKey(item)} src={item} alt='Nerv' />
 					</SwiperSlide>
 				))}
 				<SwiperButtonPrev />

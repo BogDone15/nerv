@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { shippingData } from '../../data';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +53,7 @@ const WrapperMain = styled.div`
 	height: calc(100% - 8.4rem);
 	border: 1px solid ${props => props.theme.colorBlack};
 	border-top: none;
-	padding: 2rem 2.5rem;
+	padding: 2rem 0 2rem 2.5rem;
 	@media screen and (max-width: 1100px) {
 		border: none;
 	}
@@ -63,11 +62,23 @@ const WrapperMain = styled.div`
 const Form = styled.form`
 	width: 100%;
 	height: 100%;
+	overflow: auto;
 `;
 
 const InputWrapper = styled.div`
 	position: relative;
 	margin-bottom: 1.7rem;
+	@media screen and (max-width: 1100px) {
+		margin-bottom: 2.5rem;
+		& > p {
+			font-size: 1.2rem;
+		}
+	}
+	@media screen and (max-width: 567px) {
+		& > p {
+			font-size: 1.4rem;
+		}
+	}
 `;
 
 const Input = styled.input`
@@ -78,9 +89,14 @@ const Input = styled.input`
 	width: 100%;
 	height: 4rem;
 	font-size: 1.8rem;
+	transition: all 0.2s linear;
+	&:hover,
+	&:focus {
+		border: 1px solid #0f0f0f;
+	}
+
 	@media screen and (max-width: 1100px) {
 		height: 6.2rem;
-		/* font-size: 2.1rem; */
 		font-size: 16px;
 	}
 `;
@@ -94,11 +110,8 @@ const InputPlaceHolder = styled.span`
 	font-weight: 300;
 	font-size: 1.2rem;
 	line-height: 1.7rem;
-	/* color: #000000; */
 	color: ${props => (props.error ? '#ff0000' : '#000000')};
-	/* color: ${({ error }) => (error ? '#ff0000' : '#000000')}; */
 	text-transform: uppercase;
-	transition: all 0.2s ease;
 	@media screen and (max-width: 1100px) {
 		font-size: ${props => props.theme.fontmd};
 		line-height: 2.2rem;
@@ -128,10 +141,16 @@ const InputBlock = styled.div`
 
 const PaymentBlockTitle = styled.div`
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: ${props => (props.hidePaymentBlock ? 'auto' : '4.6rem')};
 	margin-bottom: 1.7rem;
+	margin-right: 2.5rem;
+
 	border: ${props =>
 		props.hidePaymentBlock ? 'none' : `1px solid ${props.theme.colorBorder}`};
-	padding: ${props => (props.hidePaymentBlock ? '0' : '1.4rem 0')};
+
 	& > h2 {
 		font-weight: 450;
 		font-size: 1.2rem;
@@ -141,6 +160,7 @@ const PaymentBlockTitle = styled.div`
 		text-align: center;
 	}
 	@media screen and (max-width: 1100px) {
+		height: ${props => (props.hidePaymentBlock ? 'auto' : '6rem')};
 		& > h2 {
 			font-size: ${props => props.theme.fontmd};
 			line-height: 2.2rem;
@@ -150,10 +170,14 @@ const PaymentBlockTitle = styled.div`
 
 const InfoBlockTitle = styled.div`
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: ${props => (props.hideInfoBlock ? 'auto' : '4.6rem')};
 	margin-bottom: 1.7rem;
 	border: ${props =>
 		props.hideInfoBlock ? 'none' : `1px solid ${props.theme.colorBorder}`};
-	padding: ${props => (props.hideInfoBlock ? '0' : '1.4rem 0')};
+
 	& > h2 {
 		font-weight: 450;
 		font-size: 1.2rem;
@@ -163,6 +187,7 @@ const InfoBlockTitle = styled.div`
 		text-align: center;
 	}
 	@media screen and (max-width: 1100px) {
+		height: ${props => (props.hideInfoBlock ? 'auto' : '6.2rem')};
 		& > h2 {
 			font-size: ${props => props.theme.fontmd};
 			line-height: 2.2rem;
@@ -171,17 +196,20 @@ const InfoBlockTitle = styled.div`
 `;
 
 const Button = styled.button`
-	padding: 1.4rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 4.6rem;
+
 	cursor: pointer;
 	& > span {
 		font-weight: 450;
-		font-size: 1.2rem;
+		font-size: ${props => props.theme.fontsm};
 		line-height: 1.8rem;
 		color: #adadad;
 	}
 	@media screen and (max-width: 1100px) {
-		padding: 2rem 0;
-
+		height: 6rem;
 		& > span {
 			font-size: 1.8rem;
 			line-height: 2.2rem;
@@ -191,10 +219,13 @@ const Button = styled.button`
 
 const ContactBlockTitle = styled.div`
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: ${props => (props.hideContactBlock ? 'auto' : '4.6rem')};
 	margin-bottom: 1.7rem;
 	border: ${props =>
 		props.hideContactBlock ? 'none' : `1px solid ${props.theme.colorBorder}`};
-	padding: ${props => (props.hideContactBlock ? '0' : '1.4rem 0')};
 	& > h2 {
 		font-weight: 450;
 		font-size: 1.2rem;
@@ -204,6 +235,8 @@ const ContactBlockTitle = styled.div`
 		text-align: center;
 	}
 	@media screen and (max-width: 1100px) {
+		height: ${props => (props.hideContactBlock ? 'auto' : '6.2rem')};
+
 		& > h2 {
 			font-size: ${props => props.theme.fontmd};
 			line-height: 2.2rem;
@@ -213,13 +246,16 @@ const ContactBlockTitle = styled.div`
 
 const ContactBlock = styled.div`
 	margin-bottom: 1.7rem;
+	margin-right: 2.5rem;
 `;
 
 const InfoBlock = styled.div`
 	margin-bottom: 1.7rem;
+	margin-right: 2.5rem;
 `;
 
 const PaymentGroup = styled.div`
+	margin-right: 2.5rem;
 	display: ${props => (props.hidePaymentBlock ? 'none' : 'block')};
 `;
 
@@ -280,20 +316,26 @@ const WrapperMainTitle = styled.h2`
 const StyledSelectWrapper = styled.div`
 	position: relative;
 	width: 100%;
-	height: 4rem;
 	margin-bottom: 1.7rem;
-
 	& > div {
 		width: 100%;
-		height: 100%;
+		height: 4rem;
 	}
 
 	@media screen and (max-width: 1100px) {
-		height: 6.2rem;
+		& > div {
+			height: 6rem;
+		}
+		& > p {
+			font-size: 1.2rem;
+		}
 		font-size: 2.1rem;
 	}
 	@media screen and (max-width: 567px) {
 		margin-bottom: 2.6rem;
+		& > p {
+			font-size: 1.4rem;
+		}
 	}
 `;
 
@@ -506,7 +548,7 @@ export const ContactInfo = () => {
 								<InputWrapper>
 									<Input
 										{...register('email', {
-											required: 'Email Address is required',
+											required: 'email address is required',
 											pattern: {
 												value:
 													/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -517,7 +559,7 @@ export const ContactInfo = () => {
 									<InputPlaceHolder error={errors.email?.message}>
 										Email
 									</InputPlaceHolder>
-									<div style={{ color: 'red' }}>{errors.email?.message}</div>
+									<p style={{ color: 'red' }}>{errors.email?.message}</p>
 								</InputWrapper>
 								<InputBlock>
 									<InputWrapper>
@@ -575,7 +617,7 @@ export const ContactInfo = () => {
 								<Controller
 									name='country'
 									control={control}
-									rules={{ required: 'Country is required' }}
+									rules={{ required: 'country is required' }}
 									render={({ field: { onChange, value } }) => (
 										<StyledSelectWrapper>
 											<StyledSelect
@@ -591,17 +633,20 @@ export const ContactInfo = () => {
 								/>
 								<InputWrapper>
 									<Input
-										{...register('state', { required: true })}
+										{...register('state', {
+											required: 'state is required field',
+										})}
 										type='text'
 									/>
 									<InputPlaceHolder error={errors.state?.message}>
 										State
 									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.state?.message}</p>
 								</InputWrapper>
 								<InputWrapper>
 									<Input
 										{...register('zipCode', {
-											required: 'lastName is required field',
+											required: 'zipcode is required field',
 										})}
 										type='text'
 									/>
@@ -612,36 +657,50 @@ export const ContactInfo = () => {
 								</InputWrapper>
 								<InputWrapper>
 									<Input
-										{...register('city', { required: true })}
+										{...register('city', {
+											required: 'city / town is required field',
+										})}
 										type='text'
 									/>
 									<InputPlaceHolder error={errors.city?.message}>
 										CITY / TOWN
 									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.city?.message}</p>
 								</InputWrapper>
 								<InputWrapper>
 									<Input
-										{...register('adress', { required: true })}
+										{...register('adress', {
+											required: 'adress / street / building is required field',
+										})}
 										type='text'
 									/>
 									<InputPlaceHolder error={errors.adress?.message}>
 										ADRESS / STREET / BUILDING
 									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.adress?.message}</p>
 								</InputWrapper>
 								<InputWrapper>
 									<Input {...register('appartment')} type='text' />
 									<InputPlaceHolder>
 										APPARTMENT / SUIT ( OPTIONAL)
 									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.appartment?.message}</p>
 								</InputWrapper>
 								<InputWrapper>
 									<Input
-										{...register('phoneNumber', { required: true })}
+										{...register('phoneNumber', {
+											required: 'phone is required field',
+											pattern: {
+												value: /^[0-9+\(\)-]+$/,
+												message: 'entered only numbers, +, -',
+											},
+										})}
 										type='tel'
 									/>
 									<InputPlaceHolder error={errors.phoneNumber?.message}>
 										CELL PHONE NUMBER
 									</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.phoneNumber?.message}</p>
 								</InputWrapper>
 								<Button
 									type='button'

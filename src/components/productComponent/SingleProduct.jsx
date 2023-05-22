@@ -16,7 +16,7 @@ const MainWrapper = styled.div`
 	height: 100%;
 	display: flex;
 	align-items: center;
-	gap: 2.2rem;
+	gap: 0.6rem;
 	@media screen and (max-width: 1100px) {
 		flex-direction: column-reverse;
 		width: 100%;
@@ -31,6 +31,15 @@ const MainLeft = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 0.4rem;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 12px;
+		background-color: ${props => props.theme.colorBlack};
+	}
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 	}
@@ -41,10 +50,12 @@ const MainLeftTop = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
 	border-top-right-radius: 3rem;
 	padding-top: 2.7rem;
+	margin-right: 0.6rem;
 	height: 100%;
 	@media screen and (max-width: 1100px) {
 		border-left: none;
 		border-right: none;
+		margin-right: 0;
 	}
 `;
 const Angle = styled.div`
@@ -168,6 +179,9 @@ const Content = styled.div`
 	height: calc(100% - 9.7rem);
 	display: flex;
 	flex-direction: column;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+	}
 `;
 
 const Text = styled.p`
@@ -188,6 +202,7 @@ const Decoration = styled.div`
 	border-bottom-left-radius: 3rem;
 	display: flex;
 	align-items: center;
+	margin-right: 0.6rem;
 	&::after {
 		position: absolute;
 		right: 50%;
@@ -200,6 +215,7 @@ const Decoration = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		border-right: none;
+		margin-right: 0;
 	}
 `;
 const DecorationLeft = styled.div`
@@ -253,8 +269,12 @@ const Square = styled.div`
 `;
 
 const Button = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 1.5rem 0 1.3rem;
-	width: 100%;
+	height: 4.6rem;
+	width: calc(100% - 0.6rem);
 	background: ${props => props.theme.colorMain};
 	margin: 0.9rem 0;
 	text-align: center;
@@ -268,14 +288,16 @@ const Button = styled.div`
 		text-transform: uppercase;
 	}
 	@media screen and (max-width: 1100px) {
+		height: 6.2rem;
 		width: 95%;
 		margin: 0.9rem auto;
+		& > span {
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+		}
 	}
 	@media screen and (max-width: 567px) {
-		padding: 2.5rem 0 2.2rem;
-		& > span {
-			font-size: 1.9rem;
-		}
+		height: 6rem;
 	}
 `;
 
@@ -451,14 +473,13 @@ const ArrowNext = styled.svg`
 	}
 `;
 
-export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
+export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 	const [slides, setSlides] = useState([]);
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
 	const [showZoomImage, setShowZoomImage] = useState(false);
 	const dispatch = useDispatch();
 	const [curProd, setCurProd] = useState({});
-	const [selectedProd, setSelectedProd] = useState([]);
 	const [quantity, setQuantity] = useState(1);
 	const [inStock, setInStock] = useState();
 	const [color, setColor] = useState('');
@@ -486,63 +507,23 @@ export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
 			: setSlides(curProd.imgSlider?.length);
 	}, [productName, curProd.imgSlider?.length]);
 
-	// const handleClickBtn = id => {
-	// 	setShowmodalSize(false);
-	// 	setSelectedProd(id);
-
-	// 	if (cart.products.length === 0) {
-	// 		console.log(1);
-	// 		// return null;
-	// 	} else {
-	// 		const selectedInCartItem = cart.products.find(
-	// 			item => item.id === curProd.id
-	// 		);
-	// 		const selectedItemSize =
-	// 			curProd.options.find(
-	// 				item => item.sizeShort === selectedInCartItem.size.sizeShort
-	// 			) ;
-
-	// 		const selectedItemColor = selectedInCartItem.size.color === color;
-
-	// 		if (selectedItemColor) {
-	// 			console.log('Same color');
-	// 		}
-
-	// 		console.log(selectedInCartItem);
-	// 		console.log(selectedItemSize);
-	// 		console.log(selectedItemColor);
-	// 	}
-
-	// 	// console.log(selectedCartItem.size.color && selectedCartItem.size.sizeShort);
-
-	// 	if (id === selectedProd) {
-	// 		return null;
-	// 	} else {
-	// 		setShowmodal(true);
-	// 		dispatch(
-	// 			addProduct({
-	// 				...curProd,
-	// 				quantity,
-	// 				size: { ...size, color: color, inStock },
-	// 			})
-	// 		);
-	// 	}
-	// };
-
 	const handleClickBtn = id => {
 		setShowmodalSize(false);
-		setSelectedProd(id);
-		console.log(id, selectedProd);
 
-		if (id === selectedProd) {
-			return null;
-		} else {
-			setShowmodal(true);
+		const selectedItemInCart = cart.products.find(
+			item =>
+				item.id === id && item.specificId === `${id}/${color}/${size.sizeShort}`
+		);
+
+		if (!selectedItemInCart) {
+			setShowmodalProduct(true);
+
 			dispatch(
 				addProduct({
 					...curProd,
 					quantity,
-					size: { ...size, color: color, inStock },
+					description: { ...size, color, inStock },
+					specificId: `${id}/${color}/${size.sizeShort}`,
 				})
 			);
 		}
@@ -669,7 +650,7 @@ export const SingleProduct = ({ setShowmodal, setShowmodalSize }) => {
 						</Content>
 					</MainLeftTop>
 					<Options
-						setShowmodal={setShowmodal}
+						setShowmodal={setShowmodalProduct}
 						setShowmodalSize={setShowmodalSize}
 						curProd={curProd}
 						setCurProd={setCurProd}

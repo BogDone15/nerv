@@ -17,8 +17,8 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
-		height: calc(100vh - 23rem);
-		/* height: 100%; */
+		height: calc(100vh - 7rem);
+		margin-bottom: 7rem;
 	}
 `;
 
@@ -35,7 +35,6 @@ const Aside = styled.div`
 	flex-direction: column;
 	width: 4.5rem;
 	height: calc(100% - 1rem);
-	/* margin-top: 1rem; */
 	transform: translateY(1rem);
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
@@ -64,8 +63,6 @@ const AsideText = styled.div`
 const Top = styled.div`
 	height: 5rem;
 	width: 100%;
-	/* border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	margin-top: 3.6rem;
 `;
 
@@ -99,8 +96,6 @@ const ChooseBtn = styled.div`
 		text-align: center;
 		height: 100%;
 		width: 1.6rem;
-		/* width: 100%; */
-		/* overflow: hidden; */
 		transition: all 0.2s ease;
 		& > span {
 			font-weight: 500;
@@ -126,11 +121,9 @@ const ChooseBtn = styled.div`
 		top: unset;
 		bottom: 0;
 		left: 0;
-		/* height: calc(100% - 9.1rem); */
 		height: 100%;
 	}
 	@media screen and (max-width: 567px) {
-		/* height: calc(100% - 9.7rem); */
 		height: 100%;
 	}
 `;
@@ -167,12 +160,16 @@ const Group = styled.div`
 	margin-left: 5rem;
 	@media screen and (max-width: 1100px) {
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 9.2rem);
 		margin-left: 0;
 	}
-	/* @media screen and (max-width: 567px) {
-		height: calc(100vh - 17rem);
-	} */
+	@media screen and (max-width: 850px) {
+		height: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		height: calc(100% - 9.6rem);
+		/* height: 100%; */
+	}
 `;
 
 export const Home = () => {

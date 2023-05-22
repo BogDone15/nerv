@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import previewBg from '../../assets/preview-order-bg.svg';
+import previewBgTab from '../../assets/preview-order-bg-tab.svg';
 import {
 	deleteProduct,
 	incrementQuantity,
 	decrementQuantity,
 } from '../../redux/cartRedux';
+import { useIsOverflow } from '../hooks/IfOverflow';
+import { contentTopItem } from '../../data';
 
 const WrapperTop = styled.div`
 	display: flex;
@@ -59,34 +62,15 @@ const ContentTopItem = styled.li`
 	}
 `;
 
-const ContentMainItemRemove = styled.div`
-	position: absolute;
-	right: 1.8rem;
-	top: 1.4rem;
-	z-index: 13;
-	width: 1.5rem;
-	height: 1.5rem;
-	cursor: pointer;
-	& > svg {
-		width: 100%;
-		height: 100%;
-		fill: none;
-		& > path {
-			stroke: ${props => props.theme.colorMain};
-			transition: all 0.2s ease;
-		}
-	}
-`;
-
 const ContentMain = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	width: calc(100% - 0.3rem);
-	height: 50rem;
+	height: calc(100% - 29.1rem);
 	overflow-y: auto;
 	padding-right: ${props =>
-		props.arrSize === 'showScroll' ? '0.4rem' : '0.8rem'};
+		props.scroll === 'showScroll' ? '0.4rem' : '0.8rem'};
 
 	&::-webkit-scrollbar {
 		width: 0.4rem;
@@ -167,8 +151,8 @@ const ContentMainItemColor = styled.div`
 const ContentMainItemSize = styled.div`
 	width: 9%;
 	& > div {
-		width: 4.7rem;
-		height: 4.7rem;
+		width: 4.6rem;
+		height: 4.6rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -218,6 +202,9 @@ const ContentMainItemAmt = styled.div`
 				text-transform: uppercase;
 				cursor: pointer;
 				transition: all 0.2s ease;
+				&:hover {
+					color: #fff !important;
+				}
 			}
 		}
 	}
@@ -234,6 +221,30 @@ const ContentMainItemPrice = styled.div`
 		transition: all 0.2s ease;
 	}
 `;
+const ContentMainItemRemove = styled.div`
+	position: absolute;
+	right: 1.8rem;
+	top: 1.4rem;
+	z-index: 13;
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+	& > svg {
+		width: 100%;
+		height: 100%;
+		fill: none;
+		& > path {
+			stroke: ${props => props.theme.colorMain};
+			transition: all 0.2s ease;
+		}
+	}
+
+	&:hover {
+		path {
+			stroke: #fff !important;
+		}
+	}
+`;
 
 const ContentMainItem = styled.div`
 	position: relative;
@@ -243,6 +254,12 @@ const ContentMainItem = styled.div`
 	padding: 2.6rem 1rem 2.6rem 3.3rem;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
 	transition: all 0.2s ease;
+	&:last-child {
+		border-bottom: ${props =>
+			props.scroll === 'showScroll'
+				? 'unset'
+				: `1px solid ${props => props.theme.colorBorder}`};
+	}
 
 	&:hover {
 		background: ${props => props.theme.colorMain};
@@ -292,13 +309,21 @@ const ContentMainItem = styled.div`
 	}
 `;
 
+const ContentGroup = styled.div`
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: calc(100% - 1.1rem);
+`;
+
 const ContentPrice = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	padding: 3rem 3.3rem;
-	width: calc(100% - 1.1rem);
+	width: 100%;
+	/* width: calc(100% - 1.1rem); */
 	height: 13.9rem;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
@@ -328,19 +353,23 @@ const ContentBottom = styled.div`
 	justify-content: space-between;
 	gap: 0.4rem;
 	padding: 0 1.1rem;
-	height: calc(100% - 72.4rem);
-	width: calc(100% - 1.1rem);
+	width: 100%;
+	height: 7rem;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 
 	& > a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: calc(50% - 0.4rem);
 		text-align: center;
 		font-weight: 450;
-		font-size: 1.2rem;
+		font-size: ${props => props.theme.fontnm};
 		line-height: 1.8rem;
 		color: #adadad;
 		background: ${props => props.theme.colorMain};
-		padding: 1.3rem 0 1.1rem;
+		padding: 0.2rem 0;
+		height: 4.6rem;
 	}
 `;
 
@@ -356,7 +385,7 @@ const Tablet = styled.div`
 	display: none;
 	@media screen and (max-width: 1100px) {
 		display: block;
-		margin: 4.5rem 0 7rem;
+		margin: 6rem 0 7rem;
 		width: 100%;
 		height: 100%;
 	}
@@ -374,15 +403,30 @@ const TabletTop = styled.div`
 	width: 100%;
 	border-top: 1px solid ${props => props.theme.colorBorder};
 	& > a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 95%;
 		margin: auto;
 		text-align: center;
-		font-weight: 450;
-		font-size: 1.8rem;
-		line-height: 2.4rem;
-		color: #adadad;
 		background: ${props => props.theme.colorMain};
-		padding: 2.3rem 0 2.1rem;
+		padding-top: 0.1rem;
+		height: 4.6rem;
+		& > span {
+			font-weight: 450;
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+			color: #adadad;
+		}
+		@media screen and (max-width: 1100px) {
+			height: 6rem;
+		}
+		@media screen and (max-width: 567px) {
+			& > span {
+				font-size: 1.8rem;
+				line-height: 2.2rem;
+			}
+		}
 	}
 `;
 
@@ -425,6 +469,11 @@ const TabletBottomLeft = styled.div`
 		height: 100%;
 		object-fit: contain;
 		object-position: center;
+	}
+	@media screen and (max-width: 1110px) {
+		background: url(${previewBgTab}) 50% 50% no-repeat;
+		background-size: 94%;
+		padding: 3rem;
 	}
 `;
 
@@ -530,7 +579,7 @@ const TabletCoverLeft = styled.div`
 	width: 35%;
 	padding-left: 4.8rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
-	padding-top: 3.6rem;
+	padding-top: 3rem;
 	padding-bottom: 0.7rem;
 
 	& > span {
@@ -540,6 +589,9 @@ const TabletCoverLeft = styled.div`
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
 	}
+	@media screen and (max-width: 567px) {
+		padding-top: 3.3rem;
+	}
 `;
 
 const TabletCoverRight = styled.div`
@@ -547,13 +599,16 @@ const TabletCoverRight = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 3.6rem 5.2rem 0.7rem 2rem;
+	padding: 3rem 5.2rem 0.7rem 2rem;
 	& > span {
 		font-weight: 400;
 		font-size: 1.7rem;
 		line-height: 2.2rem;
 		color: ${props => props.theme.colorBlack};
 		text-transform: uppercase;
+	}
+	@media screen and (max-width: 567px) {
+		padding: 3.3rem 5.2rem 0.7rem 2rem;
 	}
 `;
 
@@ -585,48 +640,18 @@ const TabletPrice = styled.div`
 	}
 `;
 
-const contentTopItem = [
-	{
-		id: 1,
-		name: 'TYPE',
-	},
-	{
-		id: 2,
-		name: 'INFO',
-	},
-	{
-		id: 3,
-		name: 'COLOR',
-	},
-	{
-		id: 4,
-		name: 'SIZE',
-	},
-	{
-		id: 5,
-		name: 'AMT',
-	},
-	{
-		id: 6,
-		name: 'PRICE',
-	},
-];
-
 export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 	const cart = useSelector(state => state.cart);
-	const [arrSize, setArrSize] = useState('');
+	const [scroll, setScroll] = useState('');
 	const dispatch = useDispatch();
+	const ref = useRef();
 
-	useEffect(() => {
-		if (cart.products.length >= 3) {
-			setArrSize('showScroll');
-		} else {
-			setArrSize('');
-		}
-	}, [cart.products.length]);
+	useIsOverflow(ref, isOverflowFromCallback => {
+		isOverflowFromCallback ? setScroll('showScroll') : setScroll('');
+	});
 
-	const handleDelete = (id, quantity, price) => {
-		dispatch(deleteProduct({ id, quantity, price }));
+	const handleDelete = (specificId, quantity, price) => {
+		dispatch(deleteProduct({ specificId, quantity, price }));
 		setShowFirstItem('showFirstItem');
 	};
 
@@ -635,15 +660,17 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 		setShowFirstItem('');
 	};
 
-	const handleQuantity = (type, id) => {
-		const currentItem = cart.products.find(item => item.id === id);
+	const handleQuantity = (type, specificId) => {
+		const currentItem = cart.products.find(
+			item => item.specificId === specificId
+		);
 		if (type === 'dec') {
 			if (currentItem.quantity > 1) {
-				dispatch(decrementQuantity({ id }));
+				dispatch(decrementQuantity({ specificId }));
 			}
 		} else {
-			if (currentItem.quantity < currentItem.size.inStock) {
-				dispatch(incrementQuantity({ id }));
+			if (currentItem.quantity < currentItem.description.inStock) {
+				dispatch(incrementQuantity({ specificId }));
 			}
 		}
 	};
@@ -672,7 +699,9 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 					{cart.products?.map(item => (
 						<TabletBottomItem>
 							<ContentMainItemRemove
-								onClick={() => handleDelete(item.id, item.quantity, item.price)}
+								onClick={() =>
+									handleDelete(item.specificId, item.quantity, item.price)
+								}
 							>
 								<svg viewBox='0 0 15 15'>
 									<path d='M1 1L14 14M14 1L1 14' strokeWidth='2' />
@@ -686,8 +715,8 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 								<TabletDesc>{item.desc}</TabletDesc>
 								<TabletType>[ {item.model} ]</TabletType>
 								<TabletInStock>ONLY {item.quantity} ITEM LEFT</TabletInStock>
-								<TabletColor>COLOR: {item.size.color}</TabletColor>
-								<TabletSize>SIZE: {item.size.sizeFull} </TabletSize>
+								<TabletColor>COLOR: {item.description.color}</TabletColor>
+								<TabletSize>SIZE: {item.description.sizeFull} </TabletSize>
 								<TabletQuantity>QUANTITY: {item.quantity}</TabletQuantity>
 							</TabletBottomRight>
 						</TabletBottomItem>
@@ -716,20 +745,23 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 				</WrapperTop>
 				<ContentTop>
 					{contentTopItem.map(item => (
-						<ContentTopItem key={item.id}>{item.name}</ContentTopItem>
+						<ContentTopItem key={item.specificId}>{item.name}</ContentTopItem>
 					))}
 				</ContentTop>
-				<ContentMain arrSize={arrSize}>
+				<ContentMain scroll={scroll} ref={ref}>
 					{cart.products?.map(item => (
 						<ContentMainItem
-							key={item.id * 10}
+							scroll={scroll}
+							key={item.specificId}
 							onClick={() => handleClick(item.id)}
 						>
 							<ContentMainItemRemove
-								onClick={() => handleDelete(item.id, item.quantity, item.price)}
+								onClick={() =>
+									handleDelete(item.specificId, item.quantity, item.price)
+								}
 							>
 								<svg viewBox='0 0 15 15'>
-									<path d='M1 1L14 14M14 1L1 14' stroke-width='2' />
+									<path d='M1 1L14 14M14 1L1 14' strokeWidth='2' />
 								</svg>
 							</ContentMainItemRemove>
 							<ContentMainItemType>
@@ -752,15 +784,15 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 									<p>{item.model}</p>
 								</ContentMainItemBlock>
 								<ContentMainItemBlock>
-									<p>ONLY {item.size.inStock} ITEM LEFT</p>
+									<p>ONLY {item.description.inStock} ITEM LEFT</p>
 								</ContentMainItemBlock>
 							</ContentMainItemInfo>
 							<ContentMainItemColor>
-								<span>{item.size.color}</span>
+								<span>{item.description.color}</span>
 							</ContentMainItemColor>
 							<ContentMainItemSize>
 								<div>
-									<span>{item.size.sizeShort}</span>
+									<span>{item.description.sizeShort}</span>
 								</div>
 							</ContentMainItemSize>
 							<ContentMainItemAmt>
@@ -770,8 +802,28 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 									</span>
 								</div>
 								<div>
-									<span onClick={() => handleQuantity('inc', item.id)}>+</span>
-									<span onClick={() => handleQuantity('dec', item.id)}>-</span>
+									<span
+										onClick={() =>
+											handleQuantity(
+												'inc',
+												item.specificId,
+												item.description.color
+											)
+										}
+									>
+										+
+									</span>
+									<span
+										onClick={() =>
+											handleQuantity(
+												'dec',
+												item.specificId,
+												item.description.color
+											)
+										}
+									>
+										-
+									</span>
 								</div>
 							</ContentMainItemAmt>
 							<ContentMainItemPrice>
@@ -780,28 +832,30 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 						</ContentMainItem>
 					))}
 				</ContentMain>
-				<ContentPrice>
-					<ContentPriceItem>
-						<div>SUBTOTAL</div>
-						<div>SHIPPING</div>
-						<div>TAX INCLUDED</div>
-						<div>TOTAL</div>
-					</ContentPriceItem>
-					<ContentPriceItem>
-						<div>USD {cart.total}.00</div>
-						<div>0.00</div>
-						<div>0.00</div>
-						<div>USD {cart.total}.00</div>
-					</ContentPriceItem>
-				</ContentPrice>
-				<ContentBottom>
-					<Link to='/'>
-						<span>COMPLETE THE SET</span>
-					</Link>
-					<Link to='/checkout'>
-						<span>CHECKOUT</span>
-					</Link>
-				</ContentBottom>
+				<ContentGroup>
+					<ContentPrice>
+						<ContentPriceItem>
+							<div>SUBTOTAL</div>
+							<div>SHIPPING</div>
+							<div>TAX INCLUDED</div>
+							<div>TOTAL</div>
+						</ContentPriceItem>
+						<ContentPriceItem>
+							<div>USD {cart.total}.00</div>
+							<div>0.00</div>
+							<div>0.00</div>
+							<div>USD {cart.total}.00</div>
+						</ContentPriceItem>
+					</ContentPrice>
+					<ContentBottom>
+						<Link to='/'>
+							<span>COMPLETE THE SET</span>
+						</Link>
+						<Link to='/checkout'>
+							<span>CHECKOUT</span>
+						</Link>
+					</ContentBottom>
+				</ContentGroup>
 			</Desktop>
 		</>
 	);

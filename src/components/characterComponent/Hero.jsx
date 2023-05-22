@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import heroBg from '../../assets/hero-bg.svg';
+import heroBgTab from '../../assets/hero-bg-tab.svg';
 import augmenBgFirst from '../../assets/augmen-bg2.svg';
 import { dataHero } from '../../data';
 import { useEffect } from 'react';
@@ -14,11 +15,13 @@ const HeroWrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		margin-left: 4rem;
 		max-width: 100%;
-		width: 15%;
+		width: 13%;
+		border-left: unset;
 	}
 	@media screen and (max-width: 567px) {
 		width: 25%;
 		border-right: 1px solid ${props => props.theme.colorBorder};
+		height: auto;
 	}
 `;
 
@@ -48,8 +51,11 @@ const HeroItemsContent = styled.div`
 	width: 5.1rem;
 	height: 5.1rem;
 	@media screen and (max-width: 1100px) {
-		width: 6.1rem;
-		height: 6.1rem;
+		background-image: url(${heroBgTab});
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 6rem;
+		height: 6rem;
 	}
 	@media screen and (max-width: 567px) {
 		width: 7.5rem;
@@ -59,9 +65,19 @@ const HeroItemsContent = styled.div`
 
 const HeroBlock = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: center;
+	overflow-y: auto;
+	padding: 2.1rem 0 0;
 	gap: 0.6rem;
+	margin: 0 0.2rem;
+	&::-webkit-scrollbar {
+		width: 0.3rem;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 12px;
+		background-color: ${props => props.theme.colorBlack};
+	}
 	@media screen and (max-width: 1700px) {
 		gap: 1.2rem;
 	}
@@ -96,6 +112,8 @@ const HeroBlock = styled.div`
 `;
 
 const HeroMain = styled.div`
+	display: flex;
+	flex-direction: column;
 	height: calc(100% - 7.8rem);
 	padding: 1.7rem 0rem 1rem;
 	@media screen and (max-width: 1100px) {
@@ -112,7 +130,6 @@ const HeromainView = styled.div`
 	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-align: center;
-	margin-bottom: 2rem;
 	text-transform: uppercase;
 	@media screen and (max-width: 1100px) {
 		font-size: 1.3rem;
@@ -188,7 +205,7 @@ const Lock = styled.svg`
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(calc(-50% + 0.8rem), -50%);
+	transform: translate(calc(-50% + 0.6rem), -50%);
 	width: 1.2rem;
 	height: 1.7rem;
 	z-index: 3;
@@ -199,6 +216,9 @@ const Lock = styled.svg`
 	}
 	& + ${HeroItems} {
 		opacity: 0.15;
+	}
+	@media screen and (max-width: 1100px) {
+		transform: translate(calc(-50% + 0.6rem), -50%);
 	}
 	@media screen and (max-width: 567px) {
 		width: 2rem;
@@ -234,10 +254,16 @@ const Icon = styled.svg`
 	fill: none;
 `;
 
-export const Hero = ({ setItemType, activeelement, setActiveelement }) => {
+export const Hero = ({
+	setItemType,
+	activeelement,
+	setActiveelement,
+	setShowAllGear,
+}) => {
 	const handleClick = (id, type) => {
 		setActiveelement(id);
 		setItemType(type);
+		setShowAllGear(false);
 	};
 
 	const useViewport = () => {

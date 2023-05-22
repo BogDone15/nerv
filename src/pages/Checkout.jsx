@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ContactInfo } from '../components/checkoutComponent/ContactInfo';
@@ -100,7 +100,7 @@ const Group = styled.div`
 	@media screen and (max-width: 1100px) {
 		flex-direction: column-reverse;
 		padding-left: 0;
-		margin: 4.5rem 0 7rem;
+		margin: 6rem 0 7rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
 	}
 	@media screen and (max-width: 567px) {
@@ -109,8 +109,14 @@ const Group = styled.div`
 `;
 
 export const Checkout = () => {
+	const divRef = useRef(null);
+
+	useEffect(() => {
+		divRef.current.scrollIntoView({ behavior: 'smooth' });
+	}, []);
+
 	return (
-		<Wrapper>
+		<Wrapper ref={divRef}>
 			<Block>
 				<Aside>
 					<AsideTop />

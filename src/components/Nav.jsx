@@ -143,7 +143,7 @@ const RightNav = styled.div`
 	@media screen and (max-width: 1100px) {
 		position: absolute;
 		left: 5.4rem;
-		top: 7.2rem;
+		top: 8rem;
 		z-index: 5;
 		& > a {
 			font-size: ${props => props.theme.fontsm};
@@ -151,7 +151,7 @@ const RightNav = styled.div`
 		}
 	}
 	@media screen and (max-width: 567px) {
-		top: 8.5rem;
+		top: 8.4rem;
 
 		& > a {
 			font-size: 1.7rem;

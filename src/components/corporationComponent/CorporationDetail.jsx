@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import planet from '../../assets/planet.png';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { contactTerms } from '../../data';
 
 const Wrapper = styled(Tabs)`
 	padding: 0 1.5rem 1.9rem 2rem;
@@ -12,13 +13,11 @@ const Wrapper = styled(Tabs)`
 		align-items: flex-start;
 		gap: 4.1rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
-		margin-top: 4.5rem;
+		margin-top: rem;
 		padding-top: 4.6rem;
 		padding-left: 0;
 		padding-right: 4.3rem;
-		@media screen and (max-width: 567px) {
-			margin-top: 6.3rem;
-		}
+		margin-top: 6.3rem;
 	}
 `;
 
@@ -56,6 +55,7 @@ const WrapperNavItem = styled(Tab)`
 		color: ${props => props.theme.colorMain};
 		border: 1px solid #898989;
 		padding: 0.3rem 8rem 0.2rem 1.3rem;
+		text-transform: uppercase;
 		transition: all 0.2s ease;
 		&:first-child {
 			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
@@ -82,7 +82,10 @@ const WrapperNavItem = styled(Tab)`
 		align-items: flex-start;
 		writing-mode: vertical-lr;
 		& > div {
-			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
+			padding: 0.5rem 0.4rem 4rem 0.4rem;
+			&:first-child {
+				padding: 0.5rem 0.4rem;
+			}
 			&:last-child {
 				padding-bottom: 1.8rem;
 			}
@@ -90,7 +93,7 @@ const WrapperNavItem = styled(Tab)`
 		&.is-selected {
 			& > div {
 				&:last-child {
-					padding: 0.3rem 0.2rem 3.8rem 0.2rem;
+					padding: 0.5rem 0.4rem 4rem 0.4rem;
 				}
 			}
 		}
@@ -259,7 +262,7 @@ const MainMiddleTitle = styled.div`
 
 const MainMiddleText = styled.div`
 	padding: 0 4.2rem;
-	height: 100%;
+	height: calc(100% - 13.5rem);
 	overflow-y: auto;
 	&::-webkit-scrollbar {
 		width: 0.4rem;
@@ -281,6 +284,7 @@ const MainMiddleText = styled.div`
 	@media screen and (max-width: 1100px) {
 		overflow-y: visible;
 		padding: 0;
+		height: 100%;
 		& > p {
 			font-size: 1.8rem;
 			line-height: 2.4rem;
@@ -296,6 +300,10 @@ const Directors = styled.div`
 	font-size: 1.2rem;
 	line-height: 1.7rem;
 	color: ${props => props.theme.colorBlack};
+	@media screen and (max-width: 1100px) {
+		right: 0;
+		top: 10rem;
+	}
 `;
 
 const MainRight = styled.div`
@@ -332,20 +340,24 @@ const MainRightBottom = styled.div`
 `;
 
 export const CorporationDetail = () => {
+	const [filteredLinks, setFilteredLinks] = useState([]);
+
+	useEffect(() => {
+		setFilteredLinks(contactTerms);
+	}, []);
+
 	return (
 		<Wrapper
 			selectedTabClassName='is-selected'
 			selectedTabPanelClassName='is-selected'
 		>
 			<WrapperNav>
-				<WrapperNavItem>
-					<div>[01]</div>
-					<div>NERV CORPORATION</div>
-				</WrapperNavItem>
-				<WrapperNavItem>
-					<div>[02]</div>
-					<div>CONTACTS</div>
-				</WrapperNavItem>
+				{filteredLinks.map((item, index) => (
+					<WrapperNavItem key={item.tab}>
+						<div>[0{index + 1}]</div>
+						<div>{item.tab}</div>
+					</WrapperNavItem>
+				))}
 			</WrapperNav>
 			<Main>
 				<MainLeft>
@@ -405,117 +417,20 @@ export const CorporationDetail = () => {
 						</MainLeftBottomContent>
 					</MainLeftBottom>
 				</MainLeft>
-				<MainMiddle>
-					<MainMiddleTitle>
-						<h2>NERV COPRORATION - RWORLD</h2>
-					</MainMiddleTitle>
-					<MainMiddleLine />
-					<MainMiddleText>
-						<p>
-							Prior to the host uprising of Season 2, guests were allowed to use
-							a host in any way they choose — including committing violent
-							actions that resulted in a host's injury or death. Delos marketing
-							states that guests are guaranteed privacy in their interactions
-							with hosts, although Season 2 Episode 1 revealed that at least
-							some hosts are programmed to record the full extent of a guest's
-							experiences with them, including the guest's DNA (likely obtained
-							through the exchange of bodily fluids during sexual activity).
-						</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>
-						<p>
-							Prior to the host uprising of Season 2, guests were allowed to use
-							a host in any way they choose — including committing violent
-							actions that resulted in a host's injury or death. Delos marketing
-							states that guests are guaranteed privacy in their interactions
-							with hosts, although Season 2 Episode 1 revealed that at least
-							some hosts are programmed to record the full extent of a guest's
-							experiences with them, including the guest's DNA (likely obtained
-							through the exchange of bodily fluids during sexual activity).
-						</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>{' '}
-						<p>
-							Prior to the host uprising of Season 2, guests were allowed to use
-							a host in any way they choose — including committing violent
-							actions that resulted in a host's injury or death. Delos marketing
-							states that guests are guaranteed privacy in their interactions
-							with hosts, although Season 2 Episode 1 revealed that at least
-							some hosts are programmed to record the full extent of a guest's
-							experiences with them, including the guest's DNA (likely obtained
-							through the exchange of bodily fluids during sexual activity).
-						</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>{' '}
-						<p>
-							Prior to the host uprising of Season 2, guests were allowed to use
-							a host in any way they choose — including committing violent
-							actions that resulted in a host's injury or death. Delos marketing
-							states that guests are guaranteed privacy in their interactions
-							with hosts, although Season 2 Episode 1 revealed that at least
-							some hosts are programmed to record the full extent of a guest's
-							experiences with them, including the guest's DNA (likely obtained
-							through the exchange of bodily fluids during sexual activity).
-						</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>{' '}
-						<p>
-							Prior to the host uprising of Season 2, guests were allowed to use
-							a host in any way they choose — including committing violent
-							actions that resulted in a host's injury or death. Delos marketing
-							states that guests are guaranteed privacy in their interactions
-							with hosts, although Season 2 Episode 1 revealed that at least
-							some hosts are programmed to record the full extent of a guest's
-							experiences with them, including the guest's DNA (likely obtained
-							through the exchange of bodily fluids during sexual activity).
-						</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>
-					</MainMiddleText>
-					<Directors>[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA</Directors>
-				</MainMiddle>
-				<MainMiddle>
-					<MainMiddleTitle>
-						<h2>CONTACTS</h2>
-					</MainMiddleTitle>
-					<MainMiddleLine />
-					<MainMiddleText>
-						<p>Contact</p>
-						<p>
-							Maeve remembers her old storyline in which she protects her
-							daughter
-						</p>
-						<p>PR - </p>
-						<p>COLLABORATION - </p>
-						<p>SUUPORT CARE - </p>
-					</MainMiddleText>
-					<Directors>[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA</Directors>
-				</MainMiddle>
+				{filteredLinks.map(item => (
+					<MainMiddle key={item.title}>
+						<MainMiddleTitle>
+							<h2>{item.title}</h2>
+						</MainMiddleTitle>
+						<MainMiddleLine />
+						<MainMiddleText>
+							{item.text.split('\n').map(item => (
+								<p>{item}</p>
+							))}
+						</MainMiddleText>
+						<Directors>[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA</Directors>
+					</MainMiddle>
+				))}
 				<MainRight>
 					<MainRightTop />
 					<MainRightBottom>

@@ -33,12 +33,14 @@ const WrapperContent = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	height: 100%;
 `;
 const WrapperMainTop = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	height: 100%;
 	&:after {
 		position: absolute;
 		left: -0.4rem;
@@ -46,7 +48,7 @@ const WrapperMainTop = styled.div`
 		transform: translateY(-50%);
 		content: '';
 		width: 0.4rem;
-		height: 30rem;
+		height: 47%;
 		background: ${props => props.theme.colorMain};
 		clip-path: polygon(0 1%, 100% 0, 100% 100%, 0 99%);
 	}
@@ -56,6 +58,7 @@ const WrapperMainCover = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
+	height: 100%;
 `;
 
 const WrapperMainLeft = styled.div`
@@ -77,13 +80,13 @@ const WrapperMainMiddle = styled.div`
 	position: relative;
 	border-top: 1px solid rgba(0, 0, 0, 0.3);
 	border-left: 1px solid rgba(0, 0, 0, 0.3);
-	background: url(${previewBg}) 50% 0 no-repeat;
+	background: url(${previewBg}) 50% 50% no-repeat;
 	background-size: contain;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	min-height: 51rem;
+	height: 100%;
 	padding: 4rem 1rem;
 `;
 
@@ -91,19 +94,30 @@ const WrapperMainBlock = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	height: 100%;
 
 	& > a {
 		position: relative;
-		padding: 1.5rem 0 1.2rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1.5rem 5.7rem 1.3rem 1.6rem;
 		height: 4.6rem;
 		background: ${props => props.theme.colorMain};
 		cursor: pointer;
+		& > span {
+			font-weight: 450;
+			font-size: ${props => props.theme.fontsm};
+			line-height: 1.8rem;
+			color: #adadad;
+			text-transform: uppercase;
+		}
 	}
 `;
 
 const EmptyButton = styled.div`
 	position: relative;
-	padding: 1.4rem 0;
+	padding: 1.4rem 0 1.3rem;
 	height: 4.6rem;
 	background: ${props => props.theme.colorMain};
 	text-align: center;
@@ -116,30 +130,18 @@ const EmptyButton = styled.div`
 	}
 `;
 
-const LinkGroup = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding-right: 5.7rem;
-	padding-left: 1.6rem;
-
-	& > span {
-		font-weight: 450;
-		font-size: ${props => props.theme.fontsm};
-		line-height: 1.8rem;
-		color: #adadad;
-		text-transform: uppercase;
-	}
-`;
-
 const Button = styled.button`
 	position: relative;
-	padding: 1.4rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.4rem 0 1.3rem;
+	height: 4.6rem;
 	cursor: pointer;
 	user-select: none;
 	& > span {
 		font-weight: 450;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		line-height: 1.8rem;
 		color: #adadad;
 		text-transform: uppercase;
@@ -196,7 +198,8 @@ const Lock = styled.svg`
 const WrapperMainBottom = styled.div`
 	position: relative;
 	border: 1px solid ${props => props.theme.colorMain};
-	padding: 1.8rem 1.5rem;
+	padding: 1.4rem 1.5rem;
+	min-height: 17rem;
 `;
 
 const WrapperMainBottomAside = styled.div`
@@ -215,7 +218,7 @@ const WrapperMainBottomAside = styled.div`
 `;
 
 const WrapperMainBottomBlock = styled.div`
-	height: 16.2rem;
+	height: 100%;
 `;
 
 const Text = styled.p`
@@ -295,19 +298,20 @@ export const Window = ({ activeitem }) => {
 
 	useEffect(() => {
 		const result = dataItems.find(item => item.id === activeitem);
-		setCurrentItem(result);
-		setPath(result.name.replace(/ /gi, '-').toLowerCase());
-
-		const jquery = document.createElement('script');
-		jquery.src = 'https://code.jquery.com/jquery-3.6.4.min.js';
-		jquery.async = true;
-		const script = document.createElement('script');
-		script.src =
-			'https://samples.yaknekruty.com.ua/orbitvu/orbitvu12/orbitvu.js';
-		script.async = true;
-		const scriptSecond = document.createElement('script');
-		scriptSecond.src = 'test.js';
-		scriptSecond.async = true;
+		if (result) {
+			setCurrentItem(result);
+			setPath(result.name.replace(/ /gi, '-').toLowerCase());
+		}
+		// const jquery = document.createElement('script');
+		// jquery.src = 'https://code.jquery.com/jquery-3.6.4.min.js';
+		// jquery.async = true;
+		// const script = document.createElement('script');
+		// script.src =
+		// 	'https://samples.yaknekruty.com.ua/orbitvu/orbitvu12/orbitvu.js';
+		// script.async = true;
+		// const scriptSecond = document.createElement('script');
+		// scriptSecond.src = 'test.js';
+		// scriptSecond.async = true;
 		// document.body.appendChild(jquery);
 		// document.body.appendChild(script);
 		// document.body.appendChild(scriptSecond);
@@ -368,10 +372,9 @@ export const Window = ({ activeitem }) => {
 						{currentItem.availability === 'new' ||
 						currentItem.availability === '' ? (
 							<Link to={`/character/${path}`}>
-								<LinkGroup>
-									<span>{currentItem.name}</span>
-									<span>{currentItem.price}.00 EUR</span>
-								</LinkGroup>
+								<span>{currentItem.name}</span>
+								<span>{currentItem.price}.00 EUR</span>
+
 								<IconArrow viewBox='0 0 12 21'>
 									<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
 									<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
@@ -406,10 +409,7 @@ export const Window = ({ activeitem }) => {
 							</Plus>
 						) : (
 							<>
-								<Text>
-									ATHINA WILL SEND YOU NOTIFICATION WHEN THIS PRODUCT BECOME
-									ALAILIBLE
-								</Text>
+								<Text>NOTIFY ME</Text>
 								<InputWrapper>
 									<Input type='email' />
 									<InputPlaceHolder>Email</InputPlaceHolder>

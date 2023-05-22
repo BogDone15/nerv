@@ -64,10 +64,10 @@ const WrapperFake = styled.div`
 `;
 
 const WrapperPreview = styled.div`
-	background: url(${previewBg}) 50% 0 no-repeat;
+	background: url(${previewBg}) 50% 50% no-repeat;
 	background-size: contain;
 	width: 100%;
-	height: 63.9rem;
+	height: calc(100% - 8.4rem);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -79,33 +79,6 @@ const Image = styled.img`
 	height: 100%;
 	object-fit: contain;
 	object-position: center;
-`;
-
-const WrapperBottom = styled.div`
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: calc(100% - 72.4rem);
-	width: 100%;
-	border-top: 1px solid ${props => props.theme.colorBorder};
-	& > span {
-		background: ${props => props.theme.colorMain};
-		width: 2.8rem;
-		height: 1px;
-		&:last-child {
-			transform: translateX(-2.8rem) rotate(90deg);
-		}
-	}
-	&:before {
-		position: absolute;
-		content: '';
-		left: -4.6rem;
-		top: -1px;
-		background: ${props => props.theme.colorBorder};
-		height: 1px;
-		width: 4.4rem;
-	}
 `;
 
 const WrapperRight = styled.div`
@@ -132,10 +105,13 @@ const WrapperRight = styled.div`
 export const OrderDetails = ({
 	activeImage,
 	setActiveImage,
+	showFirstItem,
 	setShowFirstItem,
 }) => {
 	const cart = useSelector(state => state.cart);
 	const [currentItem, setCurrentItem] = useState({});
+
+	console.log(showFirstItem);
 
 	useEffect(() => {
 		const result = cart.products.find(item => item.id === activeImage);
@@ -160,13 +136,10 @@ export const OrderDetails = ({
 							/>
 						) : null}
 					</WrapperPreview>
-					<WrapperBottom>
-						<span></span>
-						<span></span>
-					</WrapperBottom>
 				</WrapperLeft>
 				<WrapperRight>
 					<OrderItem
+						showFirstItem={showFirstItem}
 						setActiveImage={setActiveImage}
 						setShowFirstItem={setShowFirstItem}
 					/>

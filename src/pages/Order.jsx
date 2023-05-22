@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -164,6 +164,8 @@ export const Order = () => {
 	const [currentItemName, setCurrentItemName] = useState(defaultItemName);
 	const [currentItemPath, setCurrentItemPath] = useState(defaultItemPath);
 
+	const divRef = useRef(null);
+
 	useEffect(() => {
 		let result;
 		if (showFirstItem === 'showFirstItem') {
@@ -176,10 +178,12 @@ export const Order = () => {
 			setCurrentItemName(result.name);
 			setCurrentItemPath(currentItemName.replace(/ /gi, '-').toLowerCase());
 		}
+
+		divRef.current.scrollIntoView({ behavior: 'smooth' });
 	}, [activeImage, cart.products, currentItemName, showFirstItem]);
 
 	return (
-		<Wrapper>
+		<Wrapper ref={divRef}>
 			<Block>
 				<Aside>
 					<AsideTop />
@@ -216,6 +220,7 @@ export const Order = () => {
 						<OrderDetails
 							activeImage={activeImage}
 							setActiveImage={setActiveImage}
+							showFirstItem={showFirstItem}
 							setShowFirstItem={setShowFirstItem}
 						/>
 						<Socials />

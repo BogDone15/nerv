@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { dataItems } from '../../data';
 import { Status } from '../Status';
+import shortid from 'shortid';
 
 import 'swiper/css';
 
 const Wrapper = styled.div`
 	position: relative;
-	max-width: calc(100% - 120.1rem);
+	max-width: calc(100% - 120rem);
 	width: 100%;
 	height: 100%;
 	border-left: 1px solid ${props => props.theme.colorBorder};
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	padding: 1rem 3rem;
 	@media screen and (max-width: 1100px) {
-		width: 55%;
+		width: 48%;
 		max-width: 100%;
 		padding-top: 3rem;
 		& > div {
@@ -32,15 +33,6 @@ const Wrapper = styled.div`
 	}
 `;
 
-const WrapperAside = styled.div`
-	width: 1rem;
-	height: 100%;
-	border-right: 1px solid ${props => props.theme.colorBorder};
-	@media screen and (max-width: 1100px) {
-		display: none;
-	}
-`;
-
 const Image = styled.img`
 	max-width: 100%;
 	height: 100%;
@@ -48,7 +40,7 @@ const Image = styled.img`
 	object-position: center;
 `;
 
-const TebletViewGear = styled.div`
+const TabletViewGear = styled.div`
 	display: none;
 	@media screen and (max-width: 1100px) {
 		display: block;
@@ -60,11 +52,21 @@ const TebletViewGear = styled.div`
 		border-bottom: 1px solid ${props => props.theme.colorBorder};
 		padding-left: 1.7rem;
 		padding-top: 0.6rem;
+		cursor: pointer;
+
 		& > span {
-			font-weight: 500;
+			font-weight: ${props => (props.showAllGear ? '900' : '500')};
 			font-size: 1.3rem;
 			line-height: 1.7rem;
 			color: ${props => props.theme.colorMain};
+			text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
+		}
+
+		&:hover {
+			& > span {
+				text-decoration: underline;
+				font-weight: 900;
+			}
 		}
 	}
 `;
@@ -135,15 +137,25 @@ const ArrowNext = styled.svg`
 	}
 `;
 
-export const Appearance = ({ activeitem }) => {
-	const [slides, setSlides] = useState([]);
+export const Appearance = ({
+	activeitem,
+	setActiveelement,
+	setShowAllGear,
+	showAllGear,
+}) => {
+	const [productSlides, setProductSlides] = useState([]);
 	const [lastSlide, setLastSlide] = useState(false);
 	const [firstSlide, setFirstSlide] = useState(true);
 
 	useEffect(() => {
 		const result = dataItems.find(item => item.id === activeitem);
-		setSlides(result);
+		result && setProductSlides(result);
 	}, [activeitem]);
+
+	const viewAllGear = () => {
+		setShowAllGear(true);
+		setActiveelement();
+	};
 
 	const SwiperButtonPrev = () => {
 		const swiper = useSwiper();
@@ -188,9 +200,9 @@ export const Appearance = ({ activeitem }) => {
 			<Wrapper>
 				<Text>APPEARANCE</Text>
 				<Status status='online' color='#00c70a' />
-				<TebletViewGear>
+				<TabletViewGear onClick={() => viewAllGear()} showAllGear={showAllGear}>
 					<span>VIEW ALL GEAR</span>
-				</TebletViewGear>
+				</TabletViewGear>
 				<Cover>
 					<Swiper
 						spaceBetween={50}
@@ -205,9 +217,9 @@ export const Appearance = ({ activeitem }) => {
 								: setFirstSlide(false);
 						}}
 					>
-						{slides.imgAppearance?.map(item => (
+						{productSlides.imgAppearance?.map(item => (
 							<SwiperSlide>
-								<Image key={slides.id} src={item} alt='Nerv' />
+								<Image key={shortid.generate()} src={item} alt='Nerv' />
 							</SwiperSlide>
 						))}
 						<SwiperButtonPrev />
@@ -215,7 +227,6 @@ export const Appearance = ({ activeitem }) => {
 					</Swiper>
 				</Cover>
 			</Wrapper>
-			<WrapperAside />
 		</>
 	);
 };

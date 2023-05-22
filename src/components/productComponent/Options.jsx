@@ -7,10 +7,12 @@ const MainLeftBottomContent = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
 	margin-top: 2.5rem;
 	min-height: 13rem;
+	margin-right: 0.6rem;
 	@media screen and (max-width: 1100px) {
 		flex-direction: column;
 		border-left: none;
 		border-right: none;
+		margin-right: 0;
 	}
 `;
 
@@ -30,6 +32,7 @@ const Cover = styled.div`
 		width: 100%;
 		padding-top: 2.8rem;
 		padding-bottom: 3.1rem;
+		padding-left: 3.9rem;
 		&:first-child {
 			border-right: none;
 		}
@@ -196,7 +199,7 @@ const CoverInStock = styled.div`
 const CoverChart = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 	gap: 0.8rem;
 	max-width: 10rem;
 	width: 100%;
@@ -218,7 +221,6 @@ const CoverChart = styled.div`
 
 	& > span {
 		font-weight: 400;
-		line-height: 1.7rem;
 		font-size: 1.3rem;
 		color: ${props => props.theme.colorBlack};
 	}

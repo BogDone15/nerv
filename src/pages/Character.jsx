@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Appearance } from '../components/characterComponent/Appearance';
@@ -10,6 +10,8 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Nav } from '../components/Nav';
 import { Socials } from '../components/Socials';
+import { dataHero } from '../data';
+import { dataItems } from '../data';
 
 const Wrapper = styled.div`
 	height: calc(100vh - 4rem);
@@ -34,6 +36,11 @@ const Block = styled.div`
 	@media screen and (max-width: 1100px) {
 		height: calc(100vh - 7rem);
 	}
+	@media screen and (max-width: 567px) {
+		height: 100%;
+		min-height: calc(100vh - 7rem);
+		margin-bottom: 7rem;
+	}
 `;
 
 const Aside = styled.div`
@@ -47,14 +54,15 @@ const Aside = styled.div`
 		position: absolute;
 		left: 0;
 		top: 0;
-		height: calc(100% - 20.8rem);
+		height: calc(100% - 22.3rem);
 		width: 4rem;
-		margin-top: 14.7rem;
+		margin-top: 16.2rem;
 		border-right: none;
+		border-right: 1px solid ${props => props.theme.colorBorder};
 	}
 	@media screen and (max-width: 567px) {
 		margin-top: 17.1rem;
-		height: calc(100% - 23.3rem);
+		height: calc(100% - 24.3rem);
 	}
 `;
 
@@ -91,15 +99,19 @@ const AsideText = styled.div`
 	}
 	@media screen and (max-width: 567px) {
 		height: 100%;
-		font-size: 9px;
+		& > span {
+			font-size: 9px;
+			position: fixed;
+			left: 0.9rem;
+			top: 50%;
+			transform: rotate(-180deg) translateY(calc(-50% + 10rem));
+		}
 	}
 `;
 
 const AsideTop = styled.div`
 	height: 5rem;
 	width: 100%;
-	/* border-top: 1px solid ${props => props.theme.colorBorder};
-	border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	margin-top: 3.7rem;
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -132,7 +144,7 @@ const AsideBottom = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	height: calc(100% - 16.3rem);
+	height: calc(100% - 16.5rem);
 	padding: 3.3rem 0;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
@@ -149,6 +161,9 @@ const Right = styled.div`
 		width: 100%;
 		height: 100%;
 	}
+	@media screen and (max-width: 567px) {
+		height: auto;
+	}
 `;
 
 const Group = styled.div`
@@ -158,18 +173,27 @@ const Group = styled.div`
 	height: 100%;
 	overflow-y: hidden;
 	@media screen and (max-width: 1100px) {
-		margin-top: 4.4rem;
+		margin-top: 6rem;
 		border-top: 1px solid ${props => props.theme.colorBorder};
 	}
 	@media screen and (max-width: 567px) {
+		align-items: unset;
 		margin-top: 6.3rem;
 	}
 `;
 
 export const Character = () => {
-	const [activeelement, setActiveelement] = useState(2);
-	const [activeitem, setActiveitem] = useState(1);
+	const [activeelement, setActiveelement] = useState();
+	const [activeitem, setActiveitem] = useState();
 	const [itemType, setItemType] = useState('armor');
+	const [showAllGear, setShowAllGear] = useState(false);
+
+	useEffect(() => {
+		const prodcutTypeArmor = dataHero.find(item => item.type === 'armor');
+		prodcutTypeArmor && setActiveelement(prodcutTypeArmor.id);
+		const prodcutModelArmor = dataItems.find(item => item.model === 'armor');
+		prodcutModelArmor && setActiveitem(prodcutModelArmor.id);
+	}, []);
 
 	return (
 		<Wrapper>
@@ -203,18 +227,29 @@ export const Character = () => {
 							setItemType={setItemType}
 							activeelement={activeelement}
 							setActiveelement={setActiveelement}
+							showAllGear={showAllGear}
+							setShowAllGear={setShowAllGear}
 						/>
 						<Hero
 							setItemType={setItemType}
 							activeelement={activeelement}
 							setActiveelement={setActiveelement}
+							setShowAllGear={setShowAllGear}
 						/>
 						<Gear
+							setShowAllGear={setShowAllGear}
+							showAllGear={showAllGear}
 							itemType={itemType}
 							activeitem={activeitem}
 							setActiveitem={setActiveitem}
+							setActiveelement={setActiveelement}
 						/>
-						<Appearance activeitem={activeitem} />
+						<Appearance
+							activeitem={activeitem}
+							showAllGear={showAllGear}
+							setShowAllGear={setShowAllGear}
+							setActiveelement={setActiveelement}
+						/>
 						<Window activeitem={activeitem} />
 						<Socials />
 					</Group>

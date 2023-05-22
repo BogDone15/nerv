@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import augmenBgFirst from '../../assets/augmen-bg1.svg';
 import augmenBgSecond from '../../assets/augmen-bg2.svg';
 import augmenBgThird from '../../assets/augmen-bg3.png';
@@ -38,12 +39,18 @@ const MenuMain = styled.div`
 `;
 
 const MenuMainView = styled.div`
-	font-weight: 400;
+	font-weight: ${props => (props.showAllGear ? '900' : '400')};
 	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-align: center;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
+	text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+		font-weight: 900;
+	}
 `;
 
 const MenuItem = styled.div`
@@ -208,6 +215,8 @@ export const AugmentationsMenu = ({
 	setItemType,
 	activeelement,
 	setActiveelement,
+	showAllGear,
+	setShowAllGear,
 }) => {
 	const [product, setProduct] = useState([]);
 
@@ -221,6 +230,11 @@ export const AugmentationsMenu = ({
 		setItemType('spec armr');
 	};
 
+	const viewAllGear = () => {
+		setShowAllGear(true);
+		setActiveelement();
+	};
+
 	return (
 		<Menu>
 			<MenuTop>
@@ -228,7 +242,9 @@ export const AugmentationsMenu = ({
 				MENU
 			</MenuTop>
 			<MenuMain>
-				<MenuMainView>VIEW ALL GEAR</MenuMainView>
+				<MenuMainView onClick={() => viewAllGear()} showAllGear={showAllGear}>
+					VIEW ALL GEAR
+				</MenuMainView>
 				<MenuGroup lock='true'>
 					<Lock viewBox='0 0 8.56 12.11'>
 						<rect />

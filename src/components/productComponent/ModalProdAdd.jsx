@@ -11,6 +11,7 @@ const Wrapper = styled(motion.div)`
 	z-index: 10;
 	@media screen and (max-width: 1100px) {
 		top: 0;
+		width: 100%;
 	}
 `;
 
@@ -20,11 +21,19 @@ const WrapperTop = styled.div`
 
 const Info = styled.div`
 	background: ${props => props.theme.colorMain};
-	font-weight: 400;
-	font-size: ${props => props.theme.fontsm};
-	line-height: 1.8rem;
-	color: #9b9b9b;
 	padding: 1rem 0 0.8rem 2.5rem;
+	& > span {
+		font-weight: 400;
+		font-size: ${props => props.theme.fontsm};
+		line-height: 1.8rem;
+		color: #9b9b9b;
+	}
+	@media screen and (max-width: 1100px) {
+		padding: 2rem 0 1.7rem 3.8rem;
+		& > span {
+			font-size: 2.1rem;
+		}
+	}
 `;
 
 const Close = styled.div`
@@ -38,9 +47,10 @@ const Close = styled.div`
 	cursor: pointer;
 	& > span {
 		width: 100%;
-		height: 1px;
+		height: 2px;
 		background: ${props => props.theme.colorGray};
 		transform: translateX(0.8rem) rotate(-45deg);
+		transition: all 0.2s ease;
 		&:last-child {
 			transform: translateX(-0.7rem) rotate(45deg);
 		}
@@ -48,6 +58,14 @@ const Close = styled.div`
 	&:hover {
 		& > span {
 			background: #fff;
+		}
+	}
+	@media screen and (max-width: 1100px) {
+		width: 4rem;
+		height: 4rem;
+		top: 0.7rem;
+		& > span {
+			transform: translateX(1.2rem) rotate(-45deg);
 		}
 	}
 `;
@@ -67,7 +85,11 @@ const WrapperLeft = styled.div`
 	width: 100%;
 	padding: 0.7rem 2.3rem;
 	background: rgba(130, 130, 130, 0.2);
+	@media screen and (max-width: 1100px) {
+		max-width: 24rem;
+	}
 `;
+
 const Image = styled.img`
 	max-width: 100%;
 	height: 100%;
@@ -82,6 +104,9 @@ const WrapperRight = styled.div`
 	gap: 7rem;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 1100px) {
+		gap: 10rem;
+	}
 `;
 const Group = styled.div``;
 const Title = styled.div`
@@ -90,6 +115,10 @@ const Title = styled.div`
 	line-height: 1.7rem;
 	color: #282828;
 	margin-bottom: 1rem;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.1rem;
+	}
 `;
 const Text = styled.div`
 	font-weight: 300;
@@ -98,7 +127,13 @@ const Text = styled.div`
 	color: #282828;
 	max-width: 23rem;
 	width: 100%;
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.1rem;
+		max-width: 100%;
+	}
 `;
+
 const Price = styled.div`
 	align-self: flex-end;
 	& > span {
@@ -106,6 +141,11 @@ const Price = styled.div`
 		font-size: ${props => props.theme.fontsm};
 		line-height: 1.8rem;
 		color: #282828;
+		@media screen and (max-width: 1100px) {
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+			max-width: 100%;
+		}
 	}
 `;
 const WrapperBottom = styled.div`
@@ -124,10 +164,15 @@ const WrapperBottom = styled.div`
 		&:first-child {
 			border-right: 1px solid ${props => props.theme.colorMain};
 		}
+		@media screen and (max-width: 1100px) {
+			padding: 1.7rem 0 1.6rem;
+			font-size: 1.8rem;
+			line-height: 2.1rem;
+		}
 	}
 `;
 
-export const ModalProdAdd = ({ showmodal, setShowmodal }) => {
+export const ModalProdAdd = ({ showmodalProduct, setShowmodalProduct }) => {
 	const [currentProduct, setCurrentProduct] = useState({});
 	const cart = useSelector(state => state.cart);
 
@@ -137,7 +182,7 @@ export const ModalProdAdd = ({ showmodal, setShowmodal }) => {
 
 	return (
 		<Wrapper
-			showmodal={showmodal ? 1 : 0}
+			showmodal={showmodalProduct ? 1 : 0}
 			initial={{ x: 450 }}
 			animate={{ x: 0 }}
 			transition={{ delay: 0.1, ease: 'easeOut' }}
@@ -147,10 +192,13 @@ export const ModalProdAdd = ({ showmodal, setShowmodal }) => {
 				<>
 					<WrapperTop>
 						<Info>
-							/add item {currentProduct.quantity}/{currentProduct.size?.inStock}{' '}
-							of set
+							<span>
+								{' '}
+								/add item {currentProduct.quantity}/
+								{currentProduct.description?.inStock} of set
+							</span>
 						</Info>
-						<Close onClick={() => setShowmodal(false)}>
+						<Close onClick={() => setShowmodalProduct(false)}>
 							<span></span>
 							<span></span>
 						</Close>

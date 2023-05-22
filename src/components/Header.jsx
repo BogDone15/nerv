@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { linksTerms, contactTerms } from '../data';
+import { RandomReveal } from 'react-random-reveal';
 
 const Top = styled.div`
 	display: flex;
@@ -98,38 +100,12 @@ const Item = styled.li`
 `;
 
 export const Header = () => {
-	const links = [
-		{
-			id: 1,
-			name: 'TERMS OF CONDITION',
-			href: '/terms',
-		},
-		{
-			id: 2,
-			name: 'PRIVATE POLICY',
-			href: '/terms',
-		},
-		{
-			id: 3,
-			name: 'SHIPPING',
-			href: '/terms',
-		},
-		{
-			id: 4,
-			name: 'return',
-			href: '/terms',
-		},
-		{
-			id: 5,
-			name: 'CORPORATION',
-			href: '/corporation',
-		},
-		{
-			id: 6,
-			name: 'CONTACTS',
-			href: '/corporation',
-		},
-	];
+	const [links, setLinks] = useState([]);
+	// const [anim, setAnim] = useState(false);
+
+	useEffect(() => {
+		setLinks(linksTerms.concat(contactTerms));
+	}, []);
 
 	return (
 		<>
@@ -143,9 +119,29 @@ export const Header = () => {
 				</TopRight>
 			</Top>
 			<Middle>
+				{/* {links.map(link => (
+					<Item
+						key={link.id}
+						onMouseEnter={() => setAnim(true)}
+						onMouseLeave={() => setAnim(false)}
+					>
+						<Link user={link.name} to={link.href}>
+							<RandomReveal
+								isPlaying={anim}
+								duration={2}
+								revealDuration={0.6}
+								characters={link.name}
+								onComplete={() => ({ shouldRepeat: true })}
+							/>
+						</Link>
+					</Item>
+				))} */}
+
 				{links.map(link => (
 					<Item key={link.id}>
-						<Link to={link.href}>{link.name}</Link>
+						<Link user={link.name} to={link.href}>
+							{link.name}
+						</Link>
 					</Item>
 				))}
 			</Middle>

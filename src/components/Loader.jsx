@@ -18,9 +18,6 @@ const Wrapper = styled(motion.div)`
 	height: 100vh;
 	z-index: 11;
 	background: #cecece;
-	@media screen and (max-width: 567px) {
-		padding-bottom: 20rem;
-	}
 `;
 
 const Block = styled.div`
@@ -45,22 +42,7 @@ const Bottom = styled.div`
 		background: ${props => props.theme.colorMain};
 	}
 	@media screen and (max-width: 1100px) {
-		width: 90%;
-	}
-	@media screen and (max-width: 567px) {
-		width: 55%;
-		&:after {
-			height: 6px;
-		}
-		&::before {
-			position: absolute;
-			right: 21px;
-			bottom: 0;
-			content: '';
-			height: 6px;
-			width: 1px;
-			background: ${props => props.theme.colorMain};
-		}
+		width: 70%;
 	}
 `;
 
@@ -68,9 +50,6 @@ const BottomTop = styled.div`
 	background: ${props => props.theme.colorMain};
 	height: 10px;
 	width: 100%;
-	@media screen and (max-width: 567px) {
-		height: 7px;
-	}
 `;
 
 const BottomMain = styled(motion.div)`
@@ -86,8 +65,9 @@ const BottomMain = styled(motion.div)`
 		color: ${props => props.theme.colorMain};
 	}
 	@media screen and (max-width: 567px) {
+		padding: 1px 0 0;
 		& > span {
-			font-size: 5px;
+			font-size: 8px;
 		}
 	}
 `;
@@ -103,8 +83,23 @@ const Dot = styled(motion.span)`
 	text-transform: uppercase;
 	font-size: 11px;
 	color: ${props => props.theme.colorMain};
+`;
+
+const ImageWrapper = styled(motion.div)`
+	width: 115px;
+	height: 115px;
 	@media screen and (max-width: 567px) {
-		font-size: 5px;
+		width: 75px;
+		height: 75px;
+	}
+`;
+
+const Icon = styled.svg`
+	width: 100%;
+	height: 100%;
+	fill: none;
+	& > path {
+		fill: ${props => props.theme.colorMain};
 	}
 `;
 
@@ -137,24 +132,6 @@ const DotTransition = {
 	ease: 'easeInOut',
 };
 
-const ImageWrapper = styled(motion.div)`
-	width: 115px;
-	height: 115px;
-	@media screen and (max-width: 567px) {
-		width: 75px;
-		height: 75px;
-	}
-`;
-
-const Icon = styled.svg`
-	width: 100%;
-	height: 100%;
-	fill: none;
-	& > path {
-		fill: ${props => props.theme.colorMain};
-	}
-`;
-
 export const Loader = () => {
 	return (
 		<Wrapper
@@ -171,6 +148,7 @@ export const Loader = () => {
 					transition={{
 						delay: 0.5,
 						duration: 2,
+						repeat: Infinity,
 						ease: 'easeInOut',
 						times: [0, 0.2, 0.5, 0.8, 1],
 					}}

@@ -14,8 +14,10 @@ const Wrapper = styled.div`
 
 const Item = styled.div`
 	border: 1px solid ${props => props.theme.colorBlack};
+	margin-left: 10rem;
 	@media screen and (max-width: 1100px) {
 		margin-top: 19.6rem;
+		margin-left: 0;
 	}
 	@media screen and (max-width: 567px) {
 		width: 90%;

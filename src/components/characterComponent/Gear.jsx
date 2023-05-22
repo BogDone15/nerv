@@ -25,7 +25,7 @@ const GearWrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		order: 4;
 		max-width: 100%;
-		width: 30%;
+		width: 35%;
 		border-left: unset;
 	}
 	@media screen and (max-width: 567px) {
@@ -88,14 +88,23 @@ const GearMainView = styled.span`
 		padding: 0.9rem 2.5rem 0.6rem 2rem;
 	}
 `;
+
 const GearMainViewType = styled.span`
 	color: ${props => props.theme.colorBlack} !important;
 `;
+
 const GearMainViewMob = styled.span`
 	display: none;
 	@media screen and (max-width: 567px) {
 		display: inline;
 		color: ${props => props.theme.colorBlack} !important;
+		font-weight: ${props => (props.showAllGear ? '900' : '400')};
+		text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+			font-weight: 900;
+		}
 	}
 `;
 
@@ -104,9 +113,11 @@ const GearMain = styled.div`
 	flex-direction: column;
 	padding: 1.7rem 0 1rem 0;
 	height: calc(100% - 7.8rem);
+	margin-right: 0.2rem;
 	@media screen and (max-width: 1100px) {
 		height: 100%;
 		padding-top: 0.6rem;
+		margin-right: 0;
 	}
 	@media screen and (max-width: 567px) {
 		padding-top: 0;
@@ -129,7 +140,8 @@ const GearBlock = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		gap: 2rem;
-		padding: 1rem 1.5rem 0;
+		padding: 1rem 1rem 0;
+		margin: 0 0.5rem;
 	}
 	@media screen and (max-width: 567px) {
 		padding-top: 3rem;
@@ -149,7 +161,7 @@ const GearCover = styled.div`
 	@media screen and (max-width: 1100px) {
 		max-width: 17.9rem;
 		width: 100%;
-		height: 17.9rem;
+		height: 20.7rem;
 		margin: auto;
 	}
 	@media screen and (max-width: 567px) {
@@ -160,9 +172,6 @@ const GearCover = styled.div`
 `;
 
 const Image = styled.img`
-	/* max-width: 95%;
-	padding-left: 0.6rem; */
-
 	object-fit: contain;
 	object-position: center;
 	max-width: 100%;
@@ -250,7 +259,8 @@ const GearItem = styled.div`
 		height: auto;
 		& > a {
 			position: relative;
-			padding: 0.7rem 2.2rem 0.7rem 1rem;
+			height: 3.6rem;
+			padding: 0.1rem 2.4rem 0 1rem;
 			background: ${props => props.theme.colorMain};
 			cursor: pointer;
 			display: flex;
@@ -261,7 +271,7 @@ const GearItem = styled.div`
 			& > span {
 				width: 50%;
 				font-weight: 450;
-				font-size: 1rem;
+				font-size: 1.1rem;
 				line-height: 1.4rem;
 				color: #adadad;
 				text-transform: uppercase;
@@ -274,6 +284,7 @@ const GearItem = styled.div`
 	@media screen and (max-width: 567px) {
 		& > a {
 			padding: 2rem 6.6rem 2rem 4rem;
+			height: 6rem;
 			& > span {
 				font-size: 2rem;
 				line-height: 2.2rem;
@@ -293,8 +304,8 @@ const IconArrow = styled.svg`
 	right: 1rem;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 0.6rem;
-	height: 1.5rem;
+	width: 0.8rem;
+	height: 1.7rem;
 	fill: none;
 	& > path {
 		fill: #adadad;
@@ -302,16 +313,30 @@ const IconArrow = styled.svg`
 	}
 `;
 
-export const Gear = ({ itemType, activeitem, setActiveitem }) => {
-	const [filterItems, setFilterItems] = useState([]);
+export const Gear = ({
+	itemType,
+	activeitem,
+	setActiveitem,
+	setShowAllGear,
+	showAllGear,
+	setActiveelement,
+}) => {
+	const [filterProducts, setFilterProducts] = useState([]);
+	const [allProducts, setAllProducts] = useState([]);
 
 	useEffect(() => {
 		const result = dataItems.filter(item => item.model === itemType);
-		setFilterItems(result);
-	}, [itemType]);
+		setFilterProducts(result);
+		setAllProducts(dataItems);
+	}, [itemType, allProducts]);
 
 	const handleClick = id => {
 		setActiveitem(id);
+	};
+
+	const viewAllGear = () => {
+		setShowAllGear(true);
+		setActiveelement();
 	};
 
 	return (
@@ -320,53 +345,90 @@ export const Gear = ({ itemType, activeitem, setActiveitem }) => {
 			<GearMain>
 				<GearMainView>
 					<GearMainViewDesk>
-						<span>APPLICATION</span>{' '}
+						<span>MODEL LINE</span>{' '}
 						<GearMainViewType>[ {itemType} ]</GearMainViewType>
 					</GearMainViewDesk>
-					<GearMainViewMob>VIEW ALL GEAR</GearMainViewMob>{' '}
+					<GearMainViewMob
+						onClick={() => viewAllGear()}
+						showAllGear={showAllGear}
+					>
+						VIEW ALL GEAR
+					</GearMainViewMob>{' '}
 					<GearMainViewApp>
-						APPLICATION <GearMainViewType>[ {itemType} ]</GearMainViewType>{' '}
+						MODEL LINE <GearMainViewType>[ {itemType} ]</GearMainViewType>{' '}
 					</GearMainViewApp>
 				</GearMainView>
 				<GearBlock>
-					{filterItems ? (
-						filterItems.map(item => (
-							<GearItem
-								key={item.id}
-								absent={item.availability === 'soon' ? true : false}
-								onClick={() => handleClick(item.id)}
-							>
-								<GearStatus>
-									<span>{item.availability}</span>
-								</GearStatus>
-								<GearCover activeitem={item.id === activeitem ? true : false}>
-									<GearAside
-										activeitem={item.id === activeitem ? true : false}
-									/>
-									<Image src={item.imgMain} alt='Nerv' />
-								</GearCover>
-								<Link
-									to={`/character/${item.name
-										.replace(/ /gi, '-')
-										.toLowerCase()}`}
+					{showAllGear
+						? allProducts.map(item => (
+								<GearItem
+									key={item.id}
+									absent={item.availability === 'soon' ? true : false}
+									onClick={() => handleClick(item.id)}
 								>
-									<span>{item.name}</span>
-									<span>{item.price}.00 EUR</span>
-									<IconArrow viewBox='0 0 12 21'>
-										<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
-										<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
-										<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
-										<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
-										<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
-										<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
-										<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
-									</IconArrow>
-								</Link>
-							</GearItem>
-						))
-					) : (
-						<FetchingLoader />
-					)}
+									<GearStatus>
+										<span>{item.availability}</span>
+									</GearStatus>
+									<GearCover activeitem={item.id === activeitem ? true : false}>
+										<GearAside
+											activeitem={item.id === activeitem ? true : false}
+										/>
+										<Image src={item.imgMain} alt='Nerv' />
+									</GearCover>
+									<Link
+										to={`/character/${item.name
+											.replace(/ /gi, '-')
+											.toLowerCase()}`}
+									>
+										<span>{item.name}</span>
+										<span>{item.price}.00 EUR</span>
+										<IconArrow viewBox='0 0 12 21'>
+											<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+											<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+											<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+											<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+											<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+											<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+											<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+										</IconArrow>
+									</Link>
+								</GearItem>
+						  ))
+						: // <FetchingLoader />
+						  filterProducts.map(item => (
+								<GearItem
+									key={item.id}
+									absent={item.availability === 'soon' ? true : false}
+									onClick={() => handleClick(item.id)}
+								>
+									<GearStatus>
+										<span>{item.availability}</span>
+									</GearStatus>
+									<GearCover activeitem={item.id === activeitem ? true : false}>
+										<GearAside
+											activeitem={item.id === activeitem ? true : false}
+										/>
+										<Image src={item.imgMain} alt='Nerv' />
+									</GearCover>
+									<Link
+										to={`/character/${item.name
+											.replace(/ /gi, '-')
+											.toLowerCase()}`}
+									>
+										<span>{item.name}</span>
+										<span>{item.price}.00 EUR</span>
+										<IconArrow viewBox='0 0 12 21'>
+											<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+											<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+											<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+											<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+											<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+											<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+											<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+										</IconArrow>
+									</Link>
+								</GearItem>
+						  ))}
 				</GearBlock>
 			</GearMain>
 		</GearWrapper>

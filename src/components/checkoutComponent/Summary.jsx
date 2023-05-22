@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useIsOverflow } from '../hooks/IfOverflow';
 
 const Wrapper = styled.div`
 	position: relative;
@@ -125,7 +126,7 @@ const WrapperMain = styled.div`
 	overflow-y: auto;
 	width: calc(100% - 0.3rem);
 	padding-right: ${props =>
-		props.arrSize === 'showScroll' ? '0.5rem' : '0.9rem'};
+		props.scroll === 'showScroll' ? '0.5rem' : '0.9rem'};
 
 	&::-webkit-scrollbar {
 		width: 0.4rem;
@@ -147,6 +148,12 @@ const Item = styled.div`
 	height: 11rem;
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	&:last-child {
+		border-bottom: ${props =>
+			props.scroll === 'showScroll'
+				? 'unset'
+				: `1px solid ${props => props.theme.colorBorder}`};
+	}
 	@media screen and (max-width: 1100px) {
 		height: 33rem;
 	}
@@ -315,15 +322,12 @@ const WrapperBottomItem = styled.div`
 
 export const Summary = () => {
 	const cart = useSelector(state => state.cart);
-	const [arrSize, setArrSize] = useState('');
+	const [scroll, setScroll] = useState('');
+	const ref = useRef();
 
-	useEffect(() => {
-		if (cart.products.length >= 7) {
-			setArrSize('showScroll');
-		} else {
-			setArrSize('');
-		}
-	}, [cart.products.length]);
+	useIsOverflow(ref, isOverflowFromCallback => {
+		isOverflowFromCallback ? setScroll('showScroll') : setScroll('');
+	});
 
 	return (
 		<Wrapper>
@@ -354,9 +358,9 @@ export const Summary = () => {
 				<WrapperTopItem>PRICE</WrapperTopItem>
 			</WrapperTop>
 			<WrapperCover>
-				<WrapperMain arrSize={arrSize}>
-					{cart.products?.map(item => (
-						<Item key={item.id}>
+				<WrapperMain scroll={scroll} ref={ref}>
+					{cart.products?.map((item, index) => (
+						<Item key={`${index}_${item.id}`} scroll={scroll}>
 							<ItemImage>
 								<ItemImageCover>
 									<Image src={item.imgMain} alt={item.name} />
@@ -366,7 +370,8 @@ export const Summary = () => {
 								<p>{item.name}</p>
 								<p>{item.desc}</p>
 								<div>
-									{item.model} / {item.size.color} / {item.size.sizeFull}
+									{item.model} / {item.description.color} /{' '}
+									{item.description.sizeFull}
 								</div>
 								<ItemPriceMob>
 									<span>EUR {item.price}.00</span>

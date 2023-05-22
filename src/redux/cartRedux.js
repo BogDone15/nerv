@@ -10,33 +10,27 @@ const cartSlice = createSlice({
 
 	reducers: {
 		addProduct: (state, action) => {
-			const newProduct = action.payload;
-			const existingProduct = state.products.find(
-				product => product.id === newProduct.id
+			console.log(action.payload);
+			const newItem = action.payload;
+			const existingItem = state.products.find(
+				item => item.id === newItem.id && item.specificId === newItem.specificId
 			);
-			if (
-				!existingProduct ||
-				JSON.stringify(existingProduct) !== JSON.stringify(newProduct)
-			) {
-				state.products.push(newProduct);
+			if (!existingItem) {
+				state.products.push(newItem);
 				state.quantity += 1;
-				state.total += newProduct.price * newProduct.quantity;
+				state.total += newItem.price * newItem.quantity;
 			}
-
-			// state.products.push(newProduct);
-			// state.quantity += 1;
-			// state.total += newProduct.price * newProduct.quantity;
 		},
 		deleteProduct: (state, action) => {
 			state.quantity -= 1;
 			state.products = state.products.filter(
-				item => item.id !== action.payload.id
+				item => item.specificId !== action.payload.specificId
 			);
 			state.total -= action.payload.price * action.payload.quantity;
 		},
 		incrementQuantity: (state, action) => {
 			const existingProduct = state.products.find(
-				product => product.id === action.payload.id
+				product => product.specificId === action.payload.specificId
 			);
 
 			existingProduct.quantity += 1;
@@ -44,7 +38,7 @@ const cartSlice = createSlice({
 		},
 		decrementQuantity: (state, action) => {
 			const existingProduct = state.products.find(
-				product => product.id === action.payload.id
+				product => product.specificId === action.payload.specificId
 			);
 			existingProduct.quantity -= 1;
 			state.total -= existingProduct.price;
