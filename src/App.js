@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Character } from './pages/Character';
 import { Checkout } from './pages/Checkout';
@@ -18,7 +18,8 @@ function App() {
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={theme}>
-				<BrowserRouter>
+				<HashRouter>
+					{/* <BrowserRouter> */}
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/character' element={<Character />} />
@@ -31,7 +32,8 @@ function App() {
 						<Route path='/order-error' element={<OrderError />} />
 						<Route path='/failure' element={<Failure />} />
 					</Routes>
-				</BrowserRouter>
+				</HashRouter>
+				{/* </BrowserRouter> */}
 			</ThemeProvider>
 		</>
 	);
