@@ -27,7 +27,9 @@ function App() {
 						<Route path='/order' element={<Order />} />
 						<Route path='/checkout' element={<Checkout />} />
 						<Route path='/corporation' element={<Corporation />} />
-						<Route path='/terms' element={<Terms />} />
+						{/* <Route path='/terms-of-condition' element={<Terms />} /> */}
+						<Route path='/:item' element={<Terms />} />
+						{/* <Route path='/:item' element={<TermsOfConditions />} /> */}
 						<Route path='/order-granted' element={<OrderGranted />} />
 						<Route path='/order-error' element={<OrderError />} />
 						<Route path='/failure' element={<Failure />} />

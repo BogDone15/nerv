@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { linksTerms } from '../../data';
+import { Link, useLocation } from 'react-router-dom';
+import { TermsOfConditions } from '../../pages/TermsOfConditions';
 
-const Wrapper = styled(Tabs)`
+// const Wrapper = styled(Tabs)`
+const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -17,6 +20,8 @@ const Wrapper = styled(Tabs)`
 		background: ${props => props.theme.colorBorder};
 	}
 	& > div {
+		height: calc(100% - 24rem);
+
 		&.is-selected {
 			height: calc(100% - 24rem);
 		}
@@ -68,11 +73,12 @@ const WrapperNav = styled(TabList)`
 
 WrapperNav.tabsRole = 'TabList';
 
-const WrapperNavItem = styled(Tab)`
+const WrapperNavItem = styled(Link)`
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
 	cursor: pointer;
+	/* background: ${props => props.theme.colorMain}; */
 
 	& > div {
 		font-weight: 300;
@@ -149,7 +155,7 @@ const WrapperNavItem = styled(Tab)`
 	}
 `;
 
-WrapperNavItem.tabsRole = 'Tab';
+// WrapperNavItem.tabsRole = 'Tab';
 
 const WrapperText = styled.div`
 	padding-left: 6.2rem;
@@ -187,8 +193,8 @@ const WrapperText = styled.div`
 	}
 `;
 
-const WrapperGroup = styled(TabPanel)``;
-
+// const WrapperGroup = styled(TabPanel)``;
+// const WrapperGroup = styled.div``;
 WrapperText.tabsRole = 'TabPanel';
 
 const WrapperTitle = styled.div`
@@ -225,6 +231,21 @@ const WrapperDirectors = styled.div`
 
 export const TermsDetails = () => {
 	const [filteredLinks, setFilteredLinks] = useState([]);
+	// const [activeitem, setActiveitem] = useState();
+
+	const [currentItem, setCurrentItem] = useState();
+	const location = useLocation();
+	const pathName = location.pathname.split('/')[1].replace(/-/gi, ' ');
+	console.log(pathName);
+
+	useEffect(() => {
+		// setFilteredLinks(linksTerms);
+		const selectedLink = filteredLinks.find(
+			item => item.name.toLowerCase() === pathName
+		);
+		setCurrentItem(selectedLink);
+		console.log(selectedLink);
+	}, [filteredLinks, pathName]);
 
 	useEffect(() => {
 		setFilteredLinks(linksTerms);
@@ -237,13 +258,15 @@ export const TermsDetails = () => {
 		>
 			<WrapperNav>
 				{filteredLinks.map((item, index) => (
-					<WrapperNavItem key={item.name}>
+					<WrapperNavItem to={item.href} key={item.name}>
 						<div>[0{index + 1}]</div>
 						<div>{item.name}</div>
 					</WrapperNavItem>
 				))}
 			</WrapperNav>
-			{filteredLinks.map(item => (
+			<TermsOfConditions />
+
+			{/* {filteredLinks.map(item => (
 				<WrapperGroup key={item.id}>
 					<WrapperTitle>
 						<h2>{item.name}</h2>
@@ -257,7 +280,7 @@ export const TermsDetails = () => {
 						))}
 					</WrapperText>
 				</WrapperGroup>
-			))}
+			))} */}
 		</Wrapper>
 	);
 };
