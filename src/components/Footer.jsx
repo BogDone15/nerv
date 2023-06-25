@@ -70,7 +70,7 @@ const ArrowBlock = styled.div`
 	justify-content: center;
 	align-items: flex-end;
 	width: 100%;
-	background: ${props => (props.click ? 'transparent' : '#bfbfbf')};
+	background: ${props => (props.click ? 'transparent' : '#CECECE')};
 	height: 5.2rem;
 	transition: all 0.2s ease;
 	@media screen and (max-width: 567px) {
@@ -98,9 +98,9 @@ const ArrowWrapper = styled.div`
 const WrapperContent = styled.div`
 	position: relative;
 	width: 100%;
-	height: 36.9rem;
+	height: 38.9rem;
 	background: ${props => props.theme.colorMain};
-	padding: 4rem 4rem 4rem;
+	padding: 5.6rem 4rem 4rem;
 `;
 
 const WrapperCover = styled.div`
@@ -116,7 +116,7 @@ const WrapperTab = styled.div`
 		display: block;
 		position: fixed;
 		left: 0;
-		bottom: ${props => (props.click ? '-2px' : '-36.9rem')};
+		bottom: ${props => (props.click ? '-2px' : '-38.9rem')};
 		z-index: 10;
 		width: 100%;
 		transition: all 0.2s ease;

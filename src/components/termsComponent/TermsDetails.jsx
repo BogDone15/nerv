@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { linksTerms } from '../../data';
+import { linksTerms, contactTerms } from '../../data';
 import { Link, useLocation } from 'react-router-dom';
-import { TermsOfConditions } from '../../pages/TermsOfConditions';
+import { TermsCategory } from './TermsCategory';
 
-// const Wrapper = styled(Tabs)`
 const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
@@ -19,13 +17,7 @@ const Wrapper = styled.div`
 		height: 100%;
 		background: ${props => props.theme.colorBorder};
 	}
-	& > div {
-		height: calc(100% - 24rem);
 
-		&.is-selected {
-			height: calc(100% - 24rem);
-		}
-	}
 	@media screen and (max-width: 1100px) {
 		display: flex;
 		align-items: flex-start;
@@ -36,12 +28,6 @@ const Wrapper = styled.div`
 		& > div {
 			padding-right: 4rem;
 			padding-bottom: 2rem;
-			&:not(.is-selected) {
-				display: none;
-			}
-			&.is-selected {
-				height: 100%;
-			}
 		}
 		&:after {
 			display: none;
@@ -52,7 +38,7 @@ const Wrapper = styled.div`
 	}
 `;
 
-const WrapperNav = styled(TabList)`
+const WrapperNav = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
@@ -71,24 +57,27 @@ const WrapperNav = styled(TabList)`
 	}
 `;
 
-WrapperNav.tabsRole = 'TabList';
-
 const WrapperNavItem = styled(Link)`
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
 	cursor: pointer;
-	/* background: ${props => props.theme.colorMain}; */
 
 	& > div {
 		font-weight: 300;
 		font-size: 1.2rem;
 		line-height: 1.8rem;
-		color: ${props => props.theme.colorMain};
+		color: ${props => (props.activeitem ? '#b2b2b2' : props.theme.colorMain)};
 		border: 1px solid #898989;
-		padding: 0.3rem 8rem 0.2rem 1.3rem;
+		padding: ${props =>
+			props.activeitem
+				? '0.3rem 10rem 0.2rem 1.3rem'
+				: '0.3rem 8rem 0.2rem 1.3rem'};
 		text-transform: uppercase;
 		transition: all 0.2s ease;
+		background: ${props =>
+			props.activeitem ? props.theme.colorMain : 'transparent'};
+
 		&:first-child {
 			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
 		}
@@ -116,6 +105,7 @@ const WrapperNavItem = styled(Link)`
 		writing-mode: vertical-lr;
 		& > div {
 			padding: 0.5rem 0.4rem 4rem 0.4rem;
+
 			&:first-child {
 				padding: 0.5rem 0.4rem;
 			}
@@ -155,101 +145,27 @@ const WrapperNavItem = styled(Link)`
 	}
 `;
 
-// WrapperNavItem.tabsRole = 'Tab';
-
-const WrapperText = styled.div`
-	padding-left: 6.2rem;
-	padding-right: 7rem;
-	margin-right: 0.3rem;
-	height: 100%;
-	overflow-y: auto;
-	&::-webkit-scrollbar {
-		width: 0.4rem;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 12px;
-		background-color: ${props => props.theme.colorBlack};
-	}
-	& > p {
-		font-weight: 450;
-		font-size: 1.2rem;
-		line-height: 1.8rem;
-		color: ${props => props.theme.colorBlack};
-		margin-bottom: 1.2rem;
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	@media screen and (max-width: 1100px) {
-		overflow-y: visible;
-		padding-left: 0;
-		padding-right: 0;
-		margin-right: 0;
-		width: 100%;
-		& > p {
-			font-size: 1.8rem;
-			line-height: 2.2rem;
-		}
-	}
-`;
-
-// const WrapperGroup = styled(TabPanel)``;
-// const WrapperGroup = styled.div``;
-WrapperText.tabsRole = 'TabPanel';
-
-const WrapperTitle = styled.div`
-	padding-left: 6.4rem;
-
-	& > h2 {
-		font-weight: 600;
-		font-size: 3.1rem;
-		text-transform: uppercase;
-		color: ${props => props.theme.colorBlack};
-	}
-	@media screen and (max-width: 1100px) {
-		padding-left: 0;
-	}
-`;
-
-const WrapperDirectors = styled.div`
-	font-weight: 450;
-	font-size: 1.2rem;
-	color: ${props => props.theme.colorBlack};
-	border-bottom: 1px solid ${props => props.theme.colorBlack};
-	width: 55%;
-	margin: 1.2rem 0 3.4rem 4.4rem;
-	text-align: right;
-	padding-right: 1rem;
-	@media screen and (max-width: 1100px) {
-		width: 95%;
-		padding-right: 0;
-		padding-left: 1rem;
-		text-align: left;
-		font-size: ${props => props.theme.fontnm};
-	}
-`;
-
 export const TermsDetails = () => {
 	const [filteredLinks, setFilteredLinks] = useState([]);
-	// const [activeitem, setActiveitem] = useState();
-
-	const [currentItem, setCurrentItem] = useState();
+	const [activeitem, setActiveitem] = useState();
 	const location = useLocation();
 	const pathName = location.pathname.split('/')[1].replace(/-/gi, ' ');
-	console.log(pathName);
 
 	useEffect(() => {
-		// setFilteredLinks(linksTerms);
 		const selectedLink = filteredLinks.find(
 			item => item.name.toLowerCase() === pathName
 		);
-		setCurrentItem(selectedLink);
-		console.log(selectedLink);
+
+		setActiveitem(selectedLink?.id);
 	}, [filteredLinks, pathName]);
 
 	useEffect(() => {
-		setFilteredLinks(linksTerms);
-	}, []);
+		if (pathName === 'corporation' || pathName === 'contacts') {
+			setFilteredLinks(contactTerms);
+		} else {
+			setFilteredLinks(linksTerms);
+		}
+	}, [pathName]);
 
 	return (
 		<Wrapper
@@ -258,29 +174,17 @@ export const TermsDetails = () => {
 		>
 			<WrapperNav>
 				{filteredLinks.map((item, index) => (
-					<WrapperNavItem to={item.href} key={item.name}>
+					<WrapperNavItem
+						to={item.href}
+						key={item.id}
+						activeitem={item.id === activeitem ? 1 : 0}
+					>
 						<div>[0{index + 1}]</div>
 						<div>{item.name}</div>
 					</WrapperNavItem>
 				))}
 			</WrapperNav>
-			<TermsOfConditions />
-
-			{/* {filteredLinks.map(item => (
-				<WrapperGroup key={item.id}>
-					<WrapperTitle>
-						<h2>{item.name}</h2>
-					</WrapperTitle>
-					<WrapperDirectors>
-						[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA
-					</WrapperDirectors>
-					<WrapperText>
-						{item.text.split('\n').map(item => (
-							<p>{item}</p>
-						))}
-					</WrapperText>
-				</WrapperGroup>
-			))} */}
+			<TermsCategory />
 		</Wrapper>
 	);
 };

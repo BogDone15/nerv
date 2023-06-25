@@ -25,7 +25,7 @@ const Item = styled.div`
 `;
 
 const Top = styled.div`
-	background: ${props => props.theme.colorBlack};
+	background: ${props => props.theme.colorMain};
 	width: 100%;
 	height: 3.5rem;
 	display: flex;

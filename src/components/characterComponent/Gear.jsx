@@ -346,7 +346,9 @@ export const Gear = ({
 				<GearMainView>
 					<GearMainViewDesk>
 						<span>MODEL LINE</span>{' '}
-						<GearMainViewType>[ {itemType} ]</GearMainViewType>
+						<GearMainViewType>
+							[ {showAllGear ? 'ALL' : itemType} ]
+						</GearMainViewType>
 					</GearMainViewDesk>
 					<GearMainViewMob
 						onClick={() => viewAllGear()}
@@ -355,7 +357,10 @@ export const Gear = ({
 						VIEW ALL GEAR
 					</GearMainViewMob>{' '}
 					<GearMainViewApp>
-						MODEL LINE <GearMainViewType>[ {itemType} ]</GearMainViewType>{' '}
+						MODEL LINE{' '}
+						<GearMainViewType>
+							[ {showAllGear ? 'ALL' : itemType} ]
+						</GearMainViewType>{' '}
 					</GearMainViewApp>
 				</GearMainView>
 				<GearBlock>

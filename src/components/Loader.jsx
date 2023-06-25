@@ -48,7 +48,7 @@ const Bottom = styled.div`
 
 const BottomTop = styled.div`
 	background: ${props => props.theme.colorMain};
-	height: 10px;
+	height: 1rem;
 	width: 100%;
 `;
 

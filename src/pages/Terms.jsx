@@ -142,7 +142,7 @@ export const Terms = () => {
 	const divRef = useRef(null);
 
 	useEffect(() => {
-		divRef.current.scrollIntoView({ behavior: 'smooth' });
+		// divRef.current.scrollIntoView({ behavior: 'smooth' });
 
 		window.addEventListener('scroll', listenToScroll);
 		return () => window.removeEventListener('scroll', listenToScroll);

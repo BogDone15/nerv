@@ -37,6 +37,11 @@ const Info = styled.div`
 		& > span {
 			font-size: 2.1rem;
 		}
+		@media screen and (max-width: 567px) {
+			& > span {
+				font-size: 1.9rem;
+			}
+		}
 	}
 `;
 
@@ -63,6 +68,11 @@ const Item = styled.div`
 		& > span {
 			font-size: 2.1rem;
 			margin-bottom: 1rem;
+		}
+	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			font-size: 1.9rem;
 		}
 	}
 `;
@@ -117,6 +127,11 @@ const WrapperBlock = styled.div`
 		padding: 2.2rem 0 3.2rem;
 		max-width: 55.5rem;
 	}
+	@media screen and (max-width: 567px) {
+		& > span {
+			padding: 2rem 0 3rem;
+		}
+	}
 `;
 
 const Parameters = styled.div`
@@ -131,6 +146,12 @@ const Parameters = styled.div`
 	@media screen and (max-width: 1100px) {
 		& > span {
 			font-size: 2.3rem;
+		}
+	}
+	@media screen and (max-width: 567px) {
+		margin-bottom: 2.5rem;
+		& > span {
+			font-size: 2rem;
 		}
 	}
 `;

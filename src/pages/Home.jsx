@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
-		height: calc(100vh - 7rem);
+		height: calc(100vh - 22rem);
 		margin-bottom: 7rem;
 	}
 `;
@@ -168,7 +168,6 @@ const Group = styled.div`
 	}
 	@media screen and (max-width: 567px) {
 		height: calc(100% - 9.6rem);
-		/* height: 100%; */
 	}
 `;
 

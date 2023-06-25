@@ -2,7 +2,6 @@ import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Character } from './pages/Character';
 import { Checkout } from './pages/Checkout';
-import { Corporation } from './pages/Corporation';
 import { Failure } from './pages/Failure';
 import { Home } from './pages/Home';
 import { Order } from './pages/Order';
@@ -26,10 +25,7 @@ function App() {
 						<Route path='/character/:id' element={<Product />} />
 						<Route path='/order' element={<Order />} />
 						<Route path='/checkout' element={<Checkout />} />
-						<Route path='/corporation' element={<Corporation />} />
-						{/* <Route path='/terms-of-condition' element={<Terms />} /> */}
 						<Route path='/:item' element={<Terms />} />
-						{/* <Route path='/:item' element={<TermsOfConditions />} /> */}
 						<Route path='/order-granted' element={<OrderGranted />} />
 						<Route path='/order-error' element={<OrderError />} />
 						<Route path='/failure' element={<Failure />} />

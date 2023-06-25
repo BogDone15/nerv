@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import planet from '../../assets/planet.png';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { contactTerms } from '../../data';
+import { ContactsCategory } from './ContactsCategory';
 
-const Wrapper = styled(Tabs)`
+const Wrapper = styled.div`
 	padding: 0 1.5rem 1.9rem 2rem;
 	width: 100%;
 	height: 100%;
@@ -20,109 +19,6 @@ const Wrapper = styled(Tabs)`
 		margin-top: 6.3rem;
 	}
 `;
-
-const WrapperNav = styled(TabList)`
-	display: flex;
-	align-items: center;
-	gap: 1.5rem;
-	padding-left: 4.2rem;
-	padding-top: 4.8rem;
-	margin-bottom: 4.8rem;
-	@media screen and (max-width: 1100px) {
-		flex-direction: column;
-		align-items: flex-start;
-		padding-left: 3.5rem;
-		padding-top: 0;
-		margin-bottom: 0;
-	}
-	@media screen and (max-width: 567px) {
-		padding-left: 2.3rem;
-	}
-`;
-
-WrapperNav.tabsRole = 'TabList';
-
-const WrapperNavItem = styled(Tab)`
-	display: flex;
-	align-items: center;
-	gap: 1.5rem;
-	cursor: pointer;
-
-	& > div {
-		font-weight: 300;
-		font-size: 1.2rem;
-		line-height: 1.8rem;
-		color: ${props => props.theme.colorMain};
-		border: 1px solid #898989;
-		padding: 0.3rem 8rem 0.2rem 1.3rem;
-		text-transform: uppercase;
-		transition: all 0.2s ease;
-		&:first-child {
-			padding: 0.3rem 0.2rem 0.2rem 0.2rem;
-		}
-	}
-
-	&:hover {
-		& > div {
-			background: ${props => props.theme.colorMain};
-			color: #b2b2b2;
-		}
-	}
-
-	&.is-selected {
-		& > div {
-			background: ${props => props.theme.colorMain};
-			color: #b2b2b2;
-			&:last-child {
-				padding-right: 20rem;
-			}
-		}
-	}
-	@media screen and (max-width: 1100px) {
-		align-items: flex-start;
-		writing-mode: vertical-lr;
-		& > div {
-			padding: 0.5rem 0.4rem 4rem 0.4rem;
-			&:first-child {
-				padding: 0.5rem 0.4rem;
-			}
-			&:last-child {
-				padding-bottom: 1.8rem;
-			}
-		}
-		&.is-selected {
-			& > div {
-				&:last-child {
-					padding: 0.5rem 0.4rem 4rem 0.4rem;
-				}
-			}
-		}
-	}
-	@media screen and (max-width: 567px) {
-		& > div {
-			font-size: 1.7rem;
-			&:first-child {
-				padding: 0.6rem 0.7rem 0.5rem 0.4rem;
-			}
-			&:last-child {
-				padding: 0.6rem 0.7rem 4.1rem 0.4rem;
-			}
-		}
-		&.is-selected {
-			& > div {
-				border: 1px solid transparent;
-				&:first-child {
-					padding: 0.6rem 0.7rem 0.5rem 0.4rem;
-				}
-				&:last-child {
-					padding: 0.6rem 0.7rem 4.1rem 0.4rem;
-				}
-			}
-		}
-	}
-`;
-
-WrapperNavItem.tabsRole = 'Tab';
 
 const Main = styled.div`
 	display: flex;
@@ -202,110 +98,6 @@ const MainLeftBottomContent = styled.div`
 	}
 `;
 
-const MainMiddle = styled(TabPanel)`
-	display: none;
-	position: relative;
-	max-width: calc(100% - 39.3rem);
-	width: 100%;
-	height: 100%;
-	border: 1px solid ${props => props.theme.colorBorder};
-	padding-right: 0.3rem;
-	overflow: hidden;
-	&:after {
-		position: absolute;
-		content: '';
-		right: 1rem;
-		top: 0;
-		width: 1px;
-		height: 100%;
-		background: ${props => props.theme.colorBorder};
-	}
-
-	&.is-selected {
-		display: block;
-	}
-	@media screen and (max-width: 1100px) {
-		max-width: 100%;
-		border: none;
-		&:after {
-			display: none;
-		}
-	}
-`;
-
-MainMiddle.tabsRole = 'TabPanel';
-
-const MainMiddleLine = styled.div`
-	height: 1px;
-	width: 70%;
-	background: ${props => props.theme.colorBlack};
-	margin: 2rem 0 4.2rem;
-	@media screen and (max-width: 1100px) {
-		width: 90%;
-		margin-left: 4rem;
-	}
-`;
-
-const MainMiddleTitle = styled.div`
-	padding-top: 2.9rem;
-	padding-left: 4.2rem;
-	& > h2 {
-		font-weight: 600;
-		font-size: 3.2rem;
-		color: ${props => props.theme.colorBlack};
-		text-transform: uppercase;
-	}
-	@media screen and (max-width: 1100px) {
-		padding-left: 0;
-	}
-`;
-
-const MainMiddleText = styled.div`
-	padding: 0 4.2rem;
-	height: calc(100% - 13.5rem);
-	overflow-y: auto;
-	&::-webkit-scrollbar {
-		width: 0.4rem;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 12px;
-		background-color: ${props => props.theme.colorBlack};
-	}
-	& > p {
-		font-weight: 450;
-		font-size: 1.2rem;
-		line-height: 1.8rem;
-		color: ${props => props.theme.colorBlack};
-		margin-bottom: 2rem;
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	@media screen and (max-width: 1100px) {
-		overflow-y: visible;
-		padding: 0;
-		height: 100%;
-		& > p {
-			font-size: 1.8rem;
-			line-height: 2.4rem;
-		}
-	}
-`;
-
-const Directors = styled.div`
-	position: absolute;
-	right: 2.5rem;
-	top: 1rem;
-	font-weight: 450;
-	font-size: 1.2rem;
-	line-height: 1.7rem;
-	color: ${props => props.theme.colorBlack};
-	@media screen and (max-width: 1100px) {
-		right: 0;
-		top: 10rem;
-	}
-`;
-
 const MainRight = styled.div`
 	max-width: 10.3rem;
 	width: 100%;
@@ -340,25 +132,8 @@ const MainRightBottom = styled.div`
 `;
 
 export const CorporationDetail = () => {
-	const [filteredLinks, setFilteredLinks] = useState([]);
-
-	useEffect(() => {
-		setFilteredLinks(contactTerms);
-	}, []);
-
 	return (
-		<Wrapper
-			selectedTabClassName='is-selected'
-			selectedTabPanelClassName='is-selected'
-		>
-			<WrapperNav>
-				{filteredLinks.map((item, index) => (
-					<WrapperNavItem key={item.tab}>
-						<div>[0{index + 1}]</div>
-						<div>{item.tab}</div>
-					</WrapperNavItem>
-				))}
-			</WrapperNav>
+		<Wrapper>
 			<Main>
 				<MainLeft>
 					<MainLeftTop>
@@ -417,20 +192,7 @@ export const CorporationDetail = () => {
 						</MainLeftBottomContent>
 					</MainLeftBottom>
 				</MainLeft>
-				{filteredLinks.map(item => (
-					<MainMiddle key={item.title}>
-						<MainMiddleTitle>
-							<h2>{item.title}</h2>
-						</MainMiddleTitle>
-						<MainMiddleLine />
-						<MainMiddleText>
-							{item.text.split('\n').map(item => (
-								<p>{item}</p>
-							))}
-						</MainMiddleText>
-						<Directors>[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA</Directors>
-					</MainMiddle>
-				))}
+				<ContactsCategory />
 				<MainRight>
 					<MainRightTop />
 					<MainRightBottom>

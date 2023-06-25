@@ -62,7 +62,14 @@ const WrapperMain = styled.div`
 const Form = styled.form`
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 0.3rem;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 12px;
+		background-color: ${props => props.theme.colorBlack};
+	}
 `;
 
 const InputWrapper = styled.div`
@@ -354,7 +361,6 @@ const StyledSelect = styled(Select)`
 			border-color: unset;
 		}
 		@media screen and (max-width: 567px) {
-			/* font-size: 2.1rem; */
 			font-size: 16px;
 		}
 	}
@@ -404,7 +410,7 @@ const StyledSelect = styled(Select)`
 		background: #cecece;
 		padding: 0 0.8rem;
 		left: 0.6rem;
-		top: -1.4rem;
+		top: -1.5rem;
 		font-weight: 300;
 		font-size: 1.2rem;
 		line-height: 1.7rem;
@@ -445,6 +451,9 @@ export const ContactInfo = () => {
 	const [hidePaymentBlock, setHidePaymentBlock] = useState(false);
 	const [editContact, setEditContact] = useState(false);
 	const [editInfo, setEditInfo] = useState(false);
+	const [country, setCountry] = useState('');
+
+	console.log(country);
 
 	const navigate = useNavigate();
 
@@ -625,24 +634,29 @@ export const ContactInfo = () => {
 												options={options}
 												placeholder='Country'
 												value={getValue(value)}
-												onChange={newValue => onChange(newValue.value)}
+												onChange={newValue => {
+													onChange(newValue.value);
+													setCountry(newValue.value);
+												}}
 											/>
 											<p style={{ color: 'red' }}>{errors.country?.message}</p>
 										</StyledSelectWrapper>
 									)}
 								/>
-								<InputWrapper>
-									<Input
-										{...register('state', {
-											required: 'state is required field',
-										})}
-										type='text'
-									/>
-									<InputPlaceHolder error={errors.state?.message}>
-										State
-									</InputPlaceHolder>
-									<p style={{ color: 'red' }}>{errors.state?.message}</p>
-								</InputWrapper>
+								{country.toLowerCase() === 'usa' && (
+									<InputWrapper>
+										<Input
+											{...register('state', {
+												required: 'state is required field',
+											})}
+											type='text'
+										/>
+										<InputPlaceHolder error={errors.state?.message}>
+											State
+										</InputPlaceHolder>
+										<p style={{ color: 'red' }}>{errors.state?.message}</p>
+									</InputWrapper>
+								)}
 								<InputWrapper>
 									<Input
 										{...register('zipCode', {
