@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Checkbox from '../Checkbox';
 
 const Wrapper = styled.div`
 	width: 65%;
@@ -97,6 +98,12 @@ const Input = styled.input`
 	height: 4rem;
 	font-size: 1.8rem;
 	transition: all 0.2s linear;
+	&::placeholder {
+		color: #000;
+		font-size: 1.3rem;
+		font-weight: 400;
+		transform: translateX(1.7rem);
+	}
 	&:hover,
 	&:focus {
 		border: 1px solid #0f0f0f;
@@ -105,6 +112,9 @@ const Input = styled.input`
 	@media screen and (max-width: 1100px) {
 		height: 6.2rem;
 		font-size: 16px;
+		&::placeholder {
+			font-size: 16px;
+		}
 	}
 `;
 
@@ -445,6 +455,11 @@ const StyledSelect = styled(Select)`
 	}
 `;
 
+const CheckboxWrapper = styled.div`
+	background: ${props => props.theme.colorMain};
+	margin-bottom: 1.7rem;
+`;
+
 export const ContactInfo = () => {
 	const [hideContactBlock, setHideContactBlock] = useState(true);
 	const [hideInfoBlock, setHideInfoBlock] = useState(false);
@@ -452,8 +467,6 @@ export const ContactInfo = () => {
 	const [editContact, setEditContact] = useState(false);
 	const [editInfo, setEditInfo] = useState(false);
 	const [country, setCountry] = useState('');
-
-	console.log(country);
 
 	const navigate = useNavigate();
 
@@ -483,6 +496,7 @@ export const ContactInfo = () => {
 		Adress / Street / Building:	${data.adress} 
 		Appartment / Suite:	${data.appartment} 
 		Phone:	${data.phone} 
+		Delivery:	${data.delivery} 
 		`);
 
 		navigate('/order-granted');
@@ -530,16 +544,18 @@ export const ContactInfo = () => {
 	const getValue = value =>
 		value ? options.find(option => option.value === value) : '';
 
+	const [checkboxValue, setCheckboxValue] = useState(false);
+
 	return (
 		<Wrapper>
 			<WrapperTitle>
 				<h2>CONTACT INFORMATION</h2>
 			</WrapperTitle>
 			<WrapperTop>
-				ORDER / CONTACT{' '}
+				ORDER / CONTACT
 				{hideInfoBlock || (!hideInfoBlock && hidePaymentBlock) ? (
 					<>/ SHIPPING </>
-				) : null}{' '}
+				) : null}
 				{hidePaymentBlock && <>/ PAYMENT</>}
 			</WrapperTop>
 			<WrapperMainTitle>Checkout</WrapperMainTitle>
@@ -557,7 +573,7 @@ export const ContactInfo = () => {
 								<InputWrapper>
 									<Input
 										{...register('email', {
-											required: 'email address is required',
+											required: 'email adress is required',
 											pattern: {
 												value:
 													/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -716,6 +732,39 @@ export const ContactInfo = () => {
 									</InputPlaceHolder>
 									<p style={{ color: 'red' }}>{errors.phoneNumber?.message}</p>
 								</InputWrapper>
+								<InputWrapper>
+									<Input
+										placeholder={
+											country.toLowerCase() === 'ukraine'
+												? 'NOVA POSHTA REQUISITES e.t.c.'
+												: undefined
+										}
+										{...register('delivery')}
+										type='text'
+									/>
+									<InputPlaceHolder>ADITIONAL DELIVERY INFO</InputPlaceHolder>
+									<p style={{ color: 'red' }}>{errors.delivery?.message}</p>
+								</InputWrapper>
+								<Controller
+									control={control}
+									name='checkbox'
+									// rules={{ required: 'checkbox is required' }}
+									render={({ field: { value, onChange } }) => (
+										<CheckboxWrapper>
+											<Checkbox
+												label='In this paragraph, I confirm that I agree to the terms of
+											conditions, private, return and shipping policies.'
+												// value={checkboxValue}
+												checked={value}
+												setCheckboxValue
+												onChange={() => {
+													setCheckboxValue(!checkboxValue);
+												}}
+											/>
+											{/* <p style={{ color: 'red' }}>{errors.checkbox?.message}</p> */}
+										</CheckboxWrapper>
+									)}
+								/>
 								<Button
 									type='button'
 									onClick={async () => {

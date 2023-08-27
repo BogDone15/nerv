@@ -13,6 +13,7 @@ import { Options } from './Options';
 const MainWrapper = styled.div`
 	padding: 2rem;
 	width: calc(100% - 10rem);
+	/* width: 100%; */
 	height: 100%;
 	display: flex;
 	align-items: center;

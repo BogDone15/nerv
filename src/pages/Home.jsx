@@ -8,6 +8,7 @@ import { Main } from '../components/homeComponent/Main';
 import { Loader } from '../components/Loader';
 import { Nav } from '../components/Nav';
 import { Socials } from '../components/Socials';
+import { Road } from '../routes/Road';
 
 const Wrapper = styled.div`
 	height: calc(100vh - 4rem);
@@ -17,8 +18,13 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
-		height: calc(100vh - 22rem);
+		/* height: calc(100vh - 22rem); */
 		margin-bottom: 7rem;
+		height: auto;
+	}
+
+	@media screen and (max-width: 567px) {
+		overflow: hidden;
 	}
 `;
 
@@ -69,7 +75,8 @@ const Top = styled.div`
 const Right = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: calc(100% - 4.5rem);
+	/* width: calc(100% - 4.5rem); */
+	width: 100%;
 	height: 100%;
 	@media screen and (max-width: 1100px) {
 		width: 100%;
@@ -98,7 +105,7 @@ const ChooseBtn = styled.div`
 		width: 1.6rem;
 		transition: all 0.2s ease;
 		& > span {
-			font-weight: 500;
+			font-weight: 600;
 			font-size: 1.2rem;
 			color: ${props => props.theme.colorMain};
 			transform: rotate(-180deg) translateY(-4.4rem);
@@ -155,9 +162,10 @@ const Group = styled.div`
 	position: relative;
 	display: flex;
 	align-items: flex-start;
-	width: calc(100% - 5rem);
-	height: calc(100% - 9.6rem);
-	margin-left: 5rem;
+	/* width: calc(100% - 5rem); */
+	/* height: calc(100% - 9.6rem); */
+	height: calc(100% - 4.6rem);
+	/* margin-left: 5rem; */
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 		height: calc(100% - 9.2rem);
@@ -167,7 +175,7 @@ const Group = styled.div`
 		height: 100%;
 	}
 	@media screen and (max-width: 567px) {
-		height: calc(100% - 9.6rem);
+		height: calc(100% - 5.6rem);
 	}
 `;
 
@@ -185,7 +193,7 @@ export const Home = () => {
 			<AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
 			<Wrapper>
 				<Block>
-					<Aside>
+					{/* <Aside>
 						<Top />
 						<AsideText>
 							<span>FIRST EXPANSION</span>
@@ -205,13 +213,14 @@ export const Home = () => {
 								/>
 							</Line>
 						</CHooseBtnGroup>
-					</ChooseBtn>
+					</ChooseBtn> */}
 					<Right>
 						<Header />
-						<Nav />
+						{/* <Nav /> */}
 						<Group>
-							<Main />
-							<Socials />
+							<Road />
+							{/* <Main /> */}
+							{/* <Socials /> */}
 						</Group>
 					</Right>
 				</Block>

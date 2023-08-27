@@ -39,7 +39,7 @@ const MenuMain = styled.div`
 `;
 
 const MenuMainView = styled.div`
-	font-weight: ${props => (props.showAllGear ? '900' : '400')};
+	font-weight: ${props => (props.showAllGear ? '900' : '600')};
 	font-size: 1.2rem;
 	line-height: 1.8rem;
 	text-align: center;

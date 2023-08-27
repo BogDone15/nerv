@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.svg';
+import { nav } from '../data';
 
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	border-top-right-radius: 3rem;
+	/* padding-left: 4.5rem; */
 	@media screen and (max-width: 1100px) {
 		position: relative;
 		margin-top: 1.3rem;
+		padding-left: 0;
 	}
 `;
 
@@ -211,6 +214,10 @@ const RightLinks = styled.div`
 export const Nav = ({ children }) => {
 	const [paddingRight, setPaddingRight] = useState('4.2rem');
 	const cart = useSelector(state => state.cart);
+	// const location = useLocation();
+	// const path = location.pathname.split('/')[1];
+	// console.log(path);
+	// console.log(nav);
 
 	useEffect(() => {
 		cart.products.length > 0
@@ -222,7 +229,7 @@ export const Nav = ({ children }) => {
 		<Wrapper>
 			<Left>
 				<Link to='/'>
-					<Image src={logo} alt='MONACO' />
+					<Image src={logo} alt='Nerv' />
 				</Link>
 			</Left>
 			<Right paddingRight={paddingRight}>

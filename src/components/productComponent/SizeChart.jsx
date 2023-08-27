@@ -28,7 +28,7 @@ const Info = styled.div`
 
 	& > span {
 		font-weight: 400;
-		font-size: 1.8rem;
+		font-size: ${props => props.theme.fontsm};
 		line-height: 2.5rem;
 		color: #9b9b9b;
 	}
@@ -139,7 +139,7 @@ const Parameters = styled.div`
 
 	& > span {
 		font-weight: 300;
-		font-size: 1.7rem;
+		font-size: ${props => props.theme.fontsm};
 		line-height: 2.3rem;
 		color: #282828;
 	}

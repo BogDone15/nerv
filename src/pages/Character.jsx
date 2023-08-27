@@ -14,32 +14,38 @@ import { dataHero } from '../data';
 import { dataItems } from '../data';
 
 const Wrapper = styled.div`
-	height: calc(100vh - 4rem);
-	max-width: 192rem;
+	/* height: calc(100vh - 4rem); */
+	height: 100%;
+	/* max-width: calc(100% - 9.9rem); */
+	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	padding-top: 1rem;
+	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
-		height: auto;
+		/* height: auto; */
+		height: calc(100vh - 10rem);
 	}
 	@media screen and (max-width: 567px) {
 		position: relative;
-		min-height: 100vh;
+		/* min-height: 100vh; */
+		height: 100%;
 	}
 `;
 
 const Block = styled.div`
 	display: flex;
 	height: 100%;
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	@media screen and (max-width: 1100px) {
-		height: calc(100vh - 7rem);
+		/* height: calc(100vh - 7rem); */
+		height: 100%;
 	}
 	@media screen and (max-width: 567px) {
 		height: 100%;
-		min-height: calc(100vh - 7rem);
-		margin-bottom: 7rem;
+		min-height: calc(100vh - 9rem);
+		/* min-height: calc(100vh - 7rem); */
+		/* margin-bottom: 7rem; */
 	}
 `;
 
@@ -48,21 +54,22 @@ const Aside = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	margin-top: 0.9rem;
+	margin-top: -3.7rem;
+	/* margin-top: 0.9rem; */
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		position: absolute;
 		left: 0;
 		top: 0;
-		height: calc(100% - 22.3rem);
+		height: calc(100% - 13.5rem);
 		width: 4rem;
-		margin-top: 16.2rem;
+		margin-top: 13.5rem;
 		border-right: none;
 		border-right: 1px solid ${props => props.theme.colorBorder};
 	}
 	@media screen and (max-width: 567px) {
-		margin-top: 17.1rem;
-		height: calc(100% - 24.3rem);
+		margin-top: 14.1rem;
+		height: calc(100% - 14.1rem);
 	}
 `;
 
@@ -216,7 +223,7 @@ export const Character = () => {
 					</AsideBottom>
 				</Aside>
 				<Right>
-					<Header />
+					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
@@ -255,7 +262,7 @@ export const Character = () => {
 					</Group>
 				</Right>
 			</Block>
-			<Footer />
+			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

@@ -25,6 +25,9 @@ const Block = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
+	@media screen and (max-width: 567px) {
+		transform: translateY(-15rem);
+	}
 `;
 
 const Bottom = styled.div`
@@ -40,6 +43,9 @@ const Bottom = styled.div`
 		height: 11px;
 		width: 1px;
 		background: ${props => props.theme.colorMain};
+		@media screen and (max-width: 567px) {
+			height: 6px;
+		}
 	}
 	@media screen and (max-width: 1100px) {
 		width: 70%;
@@ -65,9 +71,9 @@ const BottomMain = styled(motion.div)`
 		color: ${props => props.theme.colorMain};
 	}
 	@media screen and (max-width: 567px) {
-		padding: 1px 0 0;
+		padding: 0;
 		& > span {
-			font-size: 8px;
+			font-size: 6px;
 		}
 	}
 `;
@@ -83,6 +89,9 @@ const Dot = styled(motion.span)`
 	text-transform: uppercase;
 	font-size: 11px;
 	color: ${props => props.theme.colorMain};
+	@media screen and (max-width: 567px) {
+		font-size: 8px;
+	}
 `;
 
 const ImageWrapper = styled(motion.div)`

@@ -11,12 +11,15 @@ import { Socials } from '../components/Socials';
 import { SizeChart } from '../components/productComponent/SizeChart';
 
 const Wrapper = styled.div`
-	height: calc(100vh - 4rem);
-	max-width: 192rem;
+	/* height: calc(100vh - 4rem); */
+	height: 100%;
+	/* max-width: 192rem; */
+	/* max-width: calc(100% - 9.9rem); */
+	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	padding-top: 1rem;
+	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
@@ -25,7 +28,7 @@ const Wrapper = styled.div`
 const Block = styled.div`
 	display: flex;
 	height: 100%;
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	@media screen and (max-width: 1100px) {
 		border-bottom: unset;
 	}
@@ -36,7 +39,7 @@ const Aside = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	margin-top: 0.9rem;
+	margin-top: -8.7rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -109,7 +112,7 @@ export const Product = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					<Header />
+					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
@@ -142,7 +145,7 @@ export const Product = () => {
 					</Group>
 				</Right>
 			</Block>
-			<Footer />
+			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

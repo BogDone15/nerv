@@ -90,6 +90,33 @@ const WrapperMainMiddle = styled.div`
 	padding: 4rem 1rem;
 `;
 
+const Scan = styled.p`
+	position: absolute;
+	top: 1.5rem;
+	right: 0.9rem;
+	font-weight: 700;
+	font-size: 1.3rem;
+	line-height: 1.6rem;
+	color: ${props => props.theme.colorMain};
+	text-transform: uppercase;
+`;
+
+const IconArrow = styled.svg`
+	position: absolute;
+	right: 1.3rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1.2rem;
+	height: 2.1rem;
+	fill: none;
+	transition: all 0.2s ease;
+
+	& > path {
+		fill: #adadad;
+		transition: all 0.2s ease;
+	}
+`;
+
 const WrapperMainBlock = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -105,12 +132,19 @@ const WrapperMainBlock = styled.div`
 		height: 4.6rem;
 		background: ${props => props.theme.colorMain};
 		cursor: pointer;
+		transition: all 0.2s ease;
+		overflow: hidden;
 		& > span {
 			font-weight: 450;
 			font-size: ${props => props.theme.fontsm};
 			line-height: 1.8rem;
 			color: #adadad;
 			text-transform: uppercase;
+		}
+		&:hover {
+			${IconArrow} {
+				transform: translate(5rem, -50%);
+			}
 		}
 	}
 `;
@@ -148,17 +182,6 @@ const Button = styled.button`
 	}
 `;
 
-const Scan = styled.p`
-	position: absolute;
-	top: 1.5rem;
-	right: 0.9rem;
-	font-weight: 700;
-	font-size: 1.3rem;
-	line-height: 1.6rem;
-	color: ${props => props.theme.colorMain};
-	text-transform: uppercase;
-`;
-
 const Image = styled.img`
 	/* max-height: 38vh;
 	width: auto; */
@@ -174,20 +197,6 @@ const WrapperMainRight = styled.div`
 	height: 100%;
 	border: 1px solid ${props => props.theme.colorMain};
 	border-bottom: none;
-`;
-
-const IconArrow = styled.svg`
-	position: absolute;
-	right: 1.3rem;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 1.2rem;
-	height: 2.1rem;
-	fill: none;
-	& > path {
-		fill: #adadad;
-		transition: all 0.2s ease;
-	}
 `;
 
 const Lock = styled.svg`

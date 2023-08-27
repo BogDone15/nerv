@@ -8,12 +8,13 @@ import { Socials } from '../components/Socials';
 import { TermsDetails } from '../components/termsComponent/TermsDetails';
 
 const Wrapper = styled.div`
-	height: calc(100vh - 4rem);
+	/* height: calc(100vh - 4rem); */
+	height: 100%;
 	max-width: 192rem;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	padding-top: 1rem;
+	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
@@ -23,8 +24,8 @@ const Block = styled.div`
 	position: relative;
 	display: flex;
 	height: 100%;
-	border-bottom: 1px solid ${props => props.theme.colorBorder};
-	margin-bottom: 7rem;
+	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
+	/* margin-bottom: 7rem; */
 `;
 
 const Aside = styled.div`
@@ -32,7 +33,7 @@ const Aside = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	margin-top: 0.9rem;
+	margin-top: -8.5rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -66,6 +67,7 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
+	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 	}
@@ -73,14 +75,14 @@ const Right = styled.div`
 
 const GearPreview = styled.div`
 	position: absolute;
-	left: 4.5rem;
+	left: 4.4rem;
 	top: 0;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	height: calc(100% - 0.9rem);
-	margin-top: 0.9rem;
+	height: calc(100% + 8.6rem);
+	margin-top: -8.6rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	${AsideTop} {
 		border-top: none;
@@ -177,7 +179,7 @@ export const Terms = () => {
 					<AsideTop />
 				</GearPreview>
 				<Right>
-					<Header />
+					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
@@ -202,7 +204,7 @@ export const Terms = () => {
 					</Group>
 				</Right>
 			</Block>
-			<Footer />
+			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

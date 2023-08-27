@@ -6,11 +6,14 @@ import charackterMob from '../../assets/charackter.svg';
 import styled from 'styled-components';
 import { Status } from '../Status';
 import { Modal } from './Modal';
+import { Link } from 'react-router-dom';
+import { Nav } from '../Nav';
+import { Socials } from '../Socials';
 
 const TopCorner = styled.div`
 	position: absolute;
-	top: 2.7rem;
-	left: 4.5rem;
+	top: 7.7rem;
+	left: 14rem;
 
 	& > div {
 		font-weight: 400;
@@ -20,6 +23,7 @@ const TopCorner = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		left: 6.5rem;
+		top: 9.8rem;
 	}
 	@media screen and (max-width: 567px) {
 		margin-bottom: 0.2rem;
@@ -86,6 +90,7 @@ const ImageMob = styled.img`
 	display: none;
 	@media screen and (max-width: 567px) {
 		display: block;
+		height: 85%;
 	}
 `;
 
@@ -129,7 +134,7 @@ const Corner = styled.div`
 
 const BottomCorner = styled.div`
 	position: absolute;
-	left: 3rem;
+	left: 12.5rem;
 	bottom: 0;
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -216,56 +221,217 @@ const BottomCornerMob = styled.div`
 	}
 `;
 
+const Aside = styled.div`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 4.5rem;
+	/* height: calc(100% - 1rem); */
+	/* transform: translateY(1rem); */
+	height: calc(100% + 3.7rem);
+	transform: translateY(-3.7rem);
+	border-right: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		display: none;
+	}
+`;
+
+const AsideText = styled.div`
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	width: 100%;
+	height: calc(100% - 8.9rem);
+	padding-bottom: 3rem;
+
+	& > span {
+		font-weight: 300;
+		font-size: 1.2rem;
+		color: #878787;
+		color: ${props => props.theme.colorGray};
+		transform: rotate(-180deg);
+		writing-mode: vertical-lr;
+	}
+`;
+
+const Top = styled.div`
+	height: 5rem;
+	width: 100%;
+	margin-top: 3.6rem;
+`;
+
+const ChooseBtn = styled.div`
+	position: absolute;
+	left: 5.5rem;
+	top: -4.7rem;
+	z-index: 5;
+	width: 5rem;
+	height: calc(100% + 4.7rem);
+	/* height: 100%; */
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	a {
+		position: relative;
+		z-index: 3;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		height: 100%;
+		width: 1.6rem;
+		transition: all 0.2s ease;
+		& > span {
+			font-weight: 500;
+			font-size: 1.2rem;
+			color: ${props => props.theme.colorMain};
+			transform: rotate(-180deg) translateY(-4.4rem);
+			writing-mode: vertical-lr;
+			width: 100%;
+		}
+		@media screen and (max-width: 1100px) {
+			& > span {
+				font-size: 1.2rem;
+				transform: rotate(-180deg) translate(-0.2rem, -4.1rem);
+			}
+		}
+	}
+	&:hover {
+		a {
+			opacity: 0.7;
+		}
+	}
+	@media screen and (max-width: 1100px) {
+		top: unset;
+		bottom: 0;
+		left: 0;
+		height: calc(100% + 1.6rem);
+	}
+	@media screen and (max-width: 567px) {
+		bottom: -3.4rem;
+		height: calc(100% + 5.6rem);
+	}
+`;
+
+const CHooseBtnGroup = styled.div`
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+`;
+
+const Line = styled.svg`
+	position: absolute;
+	right: -2rem;
+	bottom: 0;
+	z-index: 2;
+	pointer-events: none;
+	width: 100%;
+	height: calc(100% - 1rem);
+	fill: none;
+	@media screen and (max-width: 1100px) {
+		height: 100%;
+	}
+`;
+
+const Group = styled.div`
+	width: calc(100% - 4.5rem);
+	height: calc(100% - 5rem);
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
+	@media screen and (max-width: 567px) {
+		height: 82vh;
+	}
+`;
+
+const MainBlock = styled.div`
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
+	height: 100%;
+`;
+
 export const Main = () => {
 	const [closeModal, setCloseModal] = useState(false);
 	return (
 		<>
-			<TopCorner>
-				<div>/ dev</div>
-				<div>/ start</div>
-				<Desktop>
-					<Banner>/img [ BANNER ]</Banner>
-					<TopCornerMargin>/add</TopCornerMargin>
-					<TopCornerMargin>[transformation]</TopCornerMargin>
-					<TopCornerMargin>/ main hero </TopCornerMargin>
-					<div>UTRA BOOST</div>
-					<div>YOUR SYSTEM</div>
-					<div>IN COMPLETE</div>
-					<div>FULL SET</div>
-				</Desktop>
-				<Mob>
-					<div>/ text </div>
-					<div>LATEST EXSPANTION</div>
-					<div>[ VIGILANTE ]</div>
-				</Mob>
-			</TopCorner>
-			<BottomCornerMob>
-				<TopCornerMargin>/add</TopCornerMargin>
-				<TopCornerMargin>[transformation]</TopCornerMargin>
-				<TopCornerMargin>/ main hero </TopCornerMargin>
-				<div>UTRA BOOST</div>
-				<div>YOUR SYSTEM</div>
-				<div>IN COMPLETE</div>
-				<div>FULL SET</div>
-			</BottomCornerMob>
-			<BottomCorner>
-				<BottomCornerWrapper>
-					<Circle />
-					<BorderBlock />
-				</BottomCornerWrapper>
-			</BottomCorner>
-			<Block>
-				<Status status='online' color='#00c70a' />
-				<Image src={charackters} alt='Nerv' />
-				<ImageMob src={charackterMob} alt='Nerv' />
-				<Modal closeModal={closeModal} setCloseModal={setCloseModal} />
-			</Block>
-			<Expansion>
-				<Corner>
-					<span>LATEST EXSPANTION</span>
-				</Corner>
-				<Info>[ VIGILANTE ]</Info>
-			</Expansion>
+			<Aside>
+				<Top />
+				<AsideText>
+					<span>FIRST EXPANSION</span>
+				</AsideText>
+			</Aside>
+			<Group>
+				<Nav />
+				<MainBlock>
+					<ChooseBtn>
+						<CHooseBtnGroup>
+							<Link to='/character'>
+								<span>CHOOSE YOUR APPEARANCE</span>
+							</Link>
+							<Line viewBox='0 0 20 990'>
+								<path
+									opacity='0.2'
+									d='M0.920044 0.5V409.95L18.72 440.01V629.69L0.920044 655.67V989.5'
+									stroke='#191919'
+									strokeMiterlimit='10'
+								/>
+							</Line>
+						</CHooseBtnGroup>
+					</ChooseBtn>
+					<TopCorner>
+						<div>/ dev</div>
+						<div>/ start</div>
+						<Desktop>
+							<Banner>/img [ BANNER ]</Banner>
+							<TopCornerMargin>/add</TopCornerMargin>
+							<TopCornerMargin>[transformation]</TopCornerMargin>
+							<TopCornerMargin>/ main hero </TopCornerMargin>
+							<div>UTRA BOOST</div>
+							<div>YOUR SYSTEM</div>
+							<div>IN COMPLETE</div>
+							<div>FULL SET</div>
+						</Desktop>
+						<Mob>
+							<div>/ text </div>
+							<div>LATEST EXSPANTION</div>
+							<div>[ VIGILANTE ]</div>
+						</Mob>
+					</TopCorner>
+					<BottomCornerMob>
+						<TopCornerMargin>/add</TopCornerMargin>
+						<TopCornerMargin>[transformation]</TopCornerMargin>
+						<TopCornerMargin>/ main hero </TopCornerMargin>
+						<div>UTRA BOOST</div>
+						<div>YOUR SYSTEM</div>
+						<div>IN COMPLETE</div>
+						<div>FULL SET</div>
+					</BottomCornerMob>
+					<BottomCorner>
+						<BottomCornerWrapper>
+							<Circle />
+							<BorderBlock />
+						</BottomCornerWrapper>
+					</BottomCorner>
+					<Block>
+						<Status status='online' color='#00c70a' />
+						<Image src={charackters} alt='Nerv' />
+						<ImageMob src={charackterMob} alt='Nerv' />
+						<Modal closeModal={closeModal} setCloseModal={setCloseModal} />
+					</Block>
+					<Expansion>
+						<Corner>
+							<span>LATEST EXSPANTION</span>
+						</Corner>
+						<Info>[ VIGILANTE ]</Info>
+					</Expansion>
+					<Socials />
+				</MainBlock>
+			</Group>
 		</>
 	);
 };

@@ -55,7 +55,7 @@ const TabletViewGear = styled.div`
 		cursor: pointer;
 
 		& > span {
-			font-weight: ${props => (props.showAllGear ? '900' : '500')};
+			font-weight: ${props => (props.showAllGear ? '900' : '600')};
 			font-size: 1.3rem;
 			line-height: 1.7rem;
 			color: ${props => props.theme.colorMain};

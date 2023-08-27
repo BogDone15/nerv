@@ -21,7 +21,7 @@ import jacketPreviewCheckout from './assets/jacket-preview.svg';
 
 export const linksTerms = [
 	{
-		id: 113,
+		id: 1013,
 		name: 'TERMS OF CONDITION',
 		href: '/terms-of-condition',
 		text: `Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.
@@ -33,7 +33,7 @@ export const linksTerms = [
 		Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.`,
 	},
 	{
-		id: 2123,
+		id: 20123,
 		name: 'PRIVATE POLICY',
 		href: '/private-policy',
 		text: `Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.
@@ -46,7 +46,7 @@ export const linksTerms = [
 		`,
 	},
 	{
-		id: 311,
+		id: 3011,
 		name: 'SHIPPING',
 		href: '/shipping',
 		text: `Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.
@@ -59,7 +59,7 @@ export const linksTerms = [
 		`,
 	},
 	{
-		id: 423,
+		id: 4233,
 		name: 'return',
 		href: '/return',
 		text: `Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death. Delos marketing states that guests are guaranteed privacy in their interactions with hosts, although Season 2 Episode 1 revealed that at least some hosts are programmed to record the full extent of a guest's experiences with them, including the guest's DNA (likely obtained through the exchange of bodily fluids during sexual activity).Prior to the host uprising of Season 2, guests were allowed to use a host in any way they choose — including committing violent actions hat resulted in a host's injury or death.
@@ -75,8 +75,8 @@ export const linksTerms = [
 
 export const contactTerms = [
 	{
-		id: 312,
-		name: 'CORPORATION',
+		id: 3212,
+		name: 'corporation',
 		tab: 'NERV CORPORATION',
 		title: 'NERV COPRORATION - RWORLD',
 		href: '/corporation',
@@ -90,8 +90,8 @@ export const contactTerms = [
 		`,
 	},
 	{
-		id: 3312,
-		name: 'CONTACTS',
+		id: 331212,
+		name: 'contacts',
 		tab: 'CONTACTS',
 		title: 'contacts',
 		href: '/contacts',
@@ -1219,5 +1219,20 @@ export const contentTopItem = [
 	{
 		id: 96,
 		name: 'PRICE',
+	},
+];
+
+export const nav = [
+	{
+		character: [
+			{
+				link: '/',
+				name: 'Main',
+			},
+			{
+				link: '/character',
+				name: 'CHARACTER INTERFACE',
+			},
+		],
 	},
 ];

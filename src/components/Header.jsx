@@ -10,6 +10,10 @@ const Top = styled.div`
 	justify-content: space-between;
 	text-transform: uppercase;
 	color: ${props => props.theme.colorGray};
+	padding-left: 4.5rem;
+	@media screen and (max-width: 1100px) {
+		padding-left: 0;
+	}
 `;
 
 const TopLeft = styled.div`
@@ -101,7 +105,6 @@ const Item = styled.li`
 
 export const Header = () => {
 	const [links, setLinks] = useState([]);
-	// const [anim, setAnim] = useState(false);
 
 	useEffect(() => {
 		setLinks(linksTerms.concat(contactTerms));
@@ -119,24 +122,6 @@ export const Header = () => {
 				</TopRight>
 			</Top>
 			<Middle>
-				{/* {links.map(link => (
-					<Item
-						key={link.id}
-						onMouseEnter={() => setAnim(true)}
-						onMouseLeave={() => setAnim(false)}
-					>
-						<Link user={link.name} to={link.href}>
-							<RandomReveal
-								isPlaying={anim}
-								duration={2}
-								revealDuration={0.6}
-								characters={link.name}
-								onComplete={() => ({ shouldRepeat: true })}
-							/>
-						</Link>
-					</Item>
-				))} */}
-
 				{links.map(link => (
 					<Item key={link.id}>
 						<Link user={link.name} to={link.href}>

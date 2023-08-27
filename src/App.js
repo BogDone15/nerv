@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Character } from './pages/Character';
 import { Checkout } from './pages/Checkout';
@@ -17,9 +17,9 @@ function App() {
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={theme}>
-				<HashRouter>
-					{/* <BrowserRouter> */}
-					<Routes>
+				<BrowserRouter>
+					<Home />
+					{/* <Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/character' element={<Character />} />
 						<Route path='/character/:id' element={<Product />} />
@@ -29,9 +29,8 @@ function App() {
 						<Route path='/order-granted' element={<OrderGranted />} />
 						<Route path='/order-error' element={<OrderError />} />
 						<Route path='/failure' element={<Failure />} />
-					</Routes>
-				</HashRouter>
-				{/* </BrowserRouter> */}
+					</Routes> */}
+				</BrowserRouter>
 			</ThemeProvider>
 		</>
 	);

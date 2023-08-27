@@ -10,8 +10,9 @@ const Wrapper = styled.div`
 	left: 0;
 	top: 0;
 	z-index: 10;
-	width: calc(100% - 10rem - 1px);
-	height: calc(100%);
+	/* width: calc(100% - 10rem - 1px); */
+	width: 100%;
+	height: 100%;
 	background: #cecece;
 	opacity: ${props => (props.showZoomImage ? '1' : '0')};
 	pointer-events: ${props => (props.showZoomImage ? 'auto' : 'none')};

@@ -364,12 +364,34 @@ const ContentBottom = styled.div`
 		width: calc(50% - 0.4rem);
 		text-align: center;
 		font-weight: 450;
-		font-size: ${props => props.theme.fontnm};
+		font-size: ${props => props.theme.fontsm};
 		line-height: 1.8rem;
 		color: #adadad;
 		background: ${props => props.theme.colorMain};
-		padding: 0.2rem 0;
+		padding: 0.2rem 0 0;
 		height: 4.6rem;
+		position: relative;
+		transition: all 0.3s ease;
+
+		&::after {
+			position: absolute;
+			content: '';
+			width: 0;
+			height: 100%;
+			top: 0;
+			left: 0;
+			direction: rtl;
+			z-index: 1;
+			box-shadow: -0.7rem -0.7rem 2rem 0px #fff9,
+				-0.4rem -0.4rem 0.5rem 0px #fff9, 0.7rem 0.7rem 2rem 0px #0002,
+				0.4rem 0.4rem 0.5rem 0px #0001;
+			transition: all 0.3s ease;
+		}
+		&:hover:after {
+			left: auto;
+			right: 0;
+			width: 100%;
+		}
 	}
 `;
 
@@ -412,6 +434,7 @@ const TabletTop = styled.div`
 		background: ${props => props.theme.colorMain};
 		padding-top: 0.1rem;
 		height: 4.6rem;
+
 		& > span {
 			font-weight: 450;
 			font-size: 1.8rem;

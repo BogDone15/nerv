@@ -98,7 +98,7 @@ const GearMainViewMob = styled.span`
 	@media screen and (max-width: 567px) {
 		display: inline;
 		color: ${props => props.theme.colorBlack} !important;
-		font-weight: ${props => (props.showAllGear ? '900' : '400')};
+		font-weight: ${props => (props.showAllGear ? '900' : '600')};
 		text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
 		cursor: pointer;
 		&:hover {
