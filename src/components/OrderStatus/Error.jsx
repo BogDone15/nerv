@@ -1,4 +1,5 @@
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Status } from '../Status';
@@ -107,6 +108,10 @@ const Main = styled.div`
 	@media screen and (max-width: 567px) {
 		padding-left: 5rem;
 		padding-right: 5rem;
+		& > span {
+			font-size: 1.5rem !important;
+			line-height: 1.8rem !important;
+		}
 	}
 `;
 
@@ -127,7 +132,56 @@ export const Error = () => {
 					</Link>
 				</Top>
 				<Main>
-					<div>
+					<TypeAnimation
+						style={{
+							whiteSpace: 'pre-line',
+							display: 'block',
+							fontWeight: '400',
+							fontSize: '1.3rem',
+							lineHeight: '1.7rem',
+							color: '#000',
+						}}
+						sequence={[
+							`
+							using System;
+							using System.Data;
+
+							/failed
+`,
+							1000000,
+							'',
+						]}
+						speed={100}
+						cursor={false}
+						repeat={0}
+					/>
+
+					<TypeAnimation
+						style={{
+							whiteSpace: 'pre-line',
+							display: 'block',
+							fontWeight: '500',
+							fontSize: '1.4rem',
+							lineHeight: '1.8rem',
+							color: '#1e1e1e',
+						}}
+						sequence={[
+							400,
+							`
+							[ SOMETHING WENT WRONG ]
+
+							> YOUR PAYMENT FAIL <
+							
+							[ PLEASE CHECK THE PAYMENT DETAILS AND REPEAT PAYMENT ]
+`,
+							1000000,
+							'',
+						]}
+						speed={100}
+						cursor={false}
+						repeat={0}
+					/>
+					{/* <div>
 						<p>using System;</p>
 						<p>using System.Data;</p>
 					</div>
@@ -138,7 +192,7 @@ export const Error = () => {
 						<p>[ SOMETHING WENT WRONG ]</p>
 						<p>&gt; YOUR PAYMENT FAIL &lt;</p>
 						<p>[ PLEASE CHECK THE PAYMENT DETAILS AND REPEAT PAYMENT ] </p>
-					</div>
+					</div> */}
 				</Main>
 			</Item>
 		</Wrapper>

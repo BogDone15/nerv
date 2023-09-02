@@ -1,4 +1,5 @@
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import styled from 'styled-components';
 import planet from '../../assets/planet.png';
 import { ContactsCategory } from './ContactsCategory';
@@ -83,6 +84,7 @@ const Decoration = styled.div`
 
 const MainLeftBottomContent = styled.div`
 	padding: 2rem 1rem 0 2.7rem;
+	color: ${props => props.theme.colorBlack};
 
 	& > div {
 		margin-bottom: 0.6rem;
@@ -93,7 +95,6 @@ const MainLeftBottomContent = styled.div`
 			font-weight: 400;
 			font-size: 5.48px;
 			line-height: 7px;
-			color: ${props => props.theme.colorBlack};
 		}
 	}
 `;
@@ -142,53 +143,62 @@ export const CorporationDetail = () => {
 					<MainLeftBottom>
 						<Decoration />
 						<MainLeftBottomContent>
-							<div>
-								<p>using System;</p>
-								<p>using System.Collections.Generic;</p>
-								<p>using System.Data;</p>
-								<p>using System.Data.SqlClient;</p>
-								<p>using System.Linq;</p>
-								<p>using System.Text;</p>
-								<p>using Microsoft.SqlServer.Server;</p>
-							</div>
-							<div>
-								<p>namespace CodeGenerator</p>
-								<p> &#123;</p>
-								<p>// &lt;summary&gt;</p>
-								<p>// &lt;summary&gt;</p>
-								<p>// &lt;summary&gt;</p>
-								<p>// &lt;code&gt;</p>
-								<p>
-									// using (var connection = new
-									SqlConnection(ConnectionString))
-								</p>
-								<p>// &#123;</p>
-								<p>/// onnection.Open();</p>
-								<p>/// ar codeLength = GetCurrentCodeLength(connection);</p>
-								<p>
-									/// sing (var generator = new CodeGenerator(connection,
-									codeLength))
-								</p>
-								<p>/// </p>
-								<p>/// ar codes = generator.GenerateCodes(10000);</p>
-								<p>/// oreach(var code in codes)</p>
-								<p>/// onsole.WriteLine(code);</p>
-								<p>/// f (generator.CodeLength &gt; codeLength)</p>
-								<p>/// </p>
-								<p>/// aveNewCodeLength(generator.CodeLength);</p>
-								<p>/// otifyDeveloperOfApproachingCodePoolExhaustion(</p>
-								<p>/// enerator.CodeLength,</p>
-								<p>/// odeGenerator.MaxCodeLength);</p>
-								<p>/// </p>
-								<p>/// </p>
-								<p>// &#125;</p>
-								<p>example</p>
-								<p>ublic class CodeGenerator : IDisposable</p>
-								<p>ublic const int MaxCodeLength = 8;</p>
-								<p>rivate const string AvailableChars </p>
-								<p>= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijuvwxyz0123456789";</p>
-								<p>rivate const string Query = @"</p>
-							</div>
+							<TypeAnimation
+								style={{
+									whiteSpace: 'pre-line',
+									display: 'block',
+									fontWeight: 400,
+									fontSize: '5.48px',
+									lineHeight: '7px',
+								}}
+								sequence={[
+									`
+				using System;
+				using System.Collections.Generic;
+				using System.Data;
+				using System.Data.SqlClient;
+				using System.Linq;
+				using System.Text;
+				using Microsoft.SqlServer.Server;
+				
+				namespace CodeGenerator
+				{
+				// <summary>
+				// <summary>
+				// <summary>
+				// <code>
+				// using (var connection = new SqlConnection(ConnectionString))
+				// {
+				/// onnection.Open();
+				/// ar codeLength = GetCurrentCodeLength(connection);
+				/// sing (var generator = new CodeGenerator(connection, codeLength))
+				///
+				/// ar codes = generator.GenerateCodes(10000);
+				/// oreach(var code in codes)
+				/// onsole.WriteLine(code);
+				/// f (generator.CodeLength > codeLength)
+				///
+				/// aveNewCodeLength(generator.CodeLength);
+				/// otifyDeveloperOfApproachingCodePoolExhaustion(
+				/// enerator.CodeLength,
+				/// odeGenerator.MaxCodeLength);
+				///
+				///
+				// }
+				example
+				ublic class CodeGenerator : IDisposable
+				ublic const int MaxCodeLength = 8;
+				rivate const string AvailableChars
+				= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijuvwxyz0123456789";
+				rivate const string Query = @"
+`,
+									10000000,
+									'',
+								]}
+								speed={100}
+								cursor={false}
+								repeat={0}
+							/>
 						</MainLeftBottomContent>
 					</MainLeftBottom>
 				</MainLeft>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Status } from '../Status';
@@ -93,6 +94,10 @@ const Main = styled.div`
 	@media screen and (max-width: 567px) {
 		padding-left: 5rem;
 		padding-right: 5rem;
+		& > span {
+			font-size: 1.5rem !important;
+			line-height: 1.8rem !important;
+		}
 	}
 `;
 
@@ -113,24 +118,59 @@ export const Successfull = () => {
 					</Link>
 				</Top>
 				<Main>
-					<div>
-						<p>using System;</p>
-						<p>using System.Collections.Generic;</p>
-						<p>using System.Data;</p>
-						<p>using System.Data.SqlClient;</p>
-						<p>using System.Linq;</p>
-						<p>using System.Text;</p>
-						<p>using Microsoft.SqlServer.Server;</p>
-					</div>
-					<div>
-						<p>namespace</p>
-						<p> &#123;</p>
-						<p>// &lt;summary&gt;</p>
-					</div>
-					<div>
-						<p>[ YOUR ORDER HAS BEEN SUCCESSFULLY PLACED ]</p>
-						<p>[ CHECK YOUR EMAIL FOR CONFIRMATION ] </p>
-					</div>
+					<TypeAnimation
+						style={{
+							whiteSpace: 'pre-line',
+							display: 'block',
+							fontWeight: '400',
+							fontSize: '1.3rem',
+							lineHeight: '1.7rem',
+							color: '#000',
+						}}
+						sequence={[
+							`
+				using System;
+				using System.Collections.Generic;
+				using System.Data;
+				using System.Data.SqlClient;
+				using System.Linq;
+				using System.Text;
+				using Microsoft.SqlServer.Server;
+
+				namespace
+				{
+				// <summary>
+`,
+							1000000,
+							'',
+						]}
+						speed={100}
+						cursor={false}
+						repeat={0}
+					/>
+
+					<TypeAnimation
+						style={{
+							whiteSpace: 'pre-line',
+							display: 'block',
+							fontWeight: '500',
+							fontSize: '1.4rem',
+							lineHeight: '1.8rem',
+							color: '#1e1e1e',
+						}}
+						sequence={[
+							1300,
+							`
+							[ YOUR ORDER HAS BEEN SUCCESSFULLY PLACED ]
+							[ CHECK YOUR EMAIL FOR CONFIRMATION ]
+`,
+							1000000,
+							'',
+						]}
+						speed={100}
+						cursor={false}
+						repeat={0}
+					/>
 				</Main>
 			</Item>
 		</Wrapper>

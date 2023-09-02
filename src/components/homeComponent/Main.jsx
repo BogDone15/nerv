@@ -4,6 +4,7 @@ import bgImgMob from '../../assets/main-bg-mob.png';
 import charackters from '../../assets/charackters.png';
 import charackterMob from '../../assets/charackter.svg';
 import styled from 'styled-components';
+import { TypeAnimation } from 'react-type-animation';
 import { Status } from '../Status';
 import { Modal } from './Modal';
 import { Link } from 'react-router-dom';
@@ -90,7 +91,7 @@ const ImageMob = styled.img`
 	display: none;
 	@media screen and (max-width: 567px) {
 		display: block;
-		height: 85%;
+		height: 100%;
 	}
 `;
 
@@ -109,7 +110,7 @@ const Expansion = styled.div`
 
 const Info = styled.div`
 	transform: rotate(-180deg);
-	font-weight: 300;
+	font-weight: 700;
 	font-size: 1.2rem;
 	line-height: 1.8rem;
 	color: ${props => props.theme.colorMain};
@@ -283,7 +284,7 @@ const ChooseBtn = styled.div`
 		width: 1.6rem;
 		transition: all 0.2s ease;
 		& > span {
-			font-weight: 500;
+			font-weight: 700;
 			font-size: 1.2rem;
 			color: ${props => props.theme.colorMain};
 			transform: rotate(-180deg) translateY(-4.4rem);
@@ -342,9 +343,9 @@ const Group = styled.div`
 	height: calc(100% - 5rem);
 	@media screen and (max-width: 1100px) {
 		width: 100%;
+		height: calc(100svh - 7rem);
 	}
 	@media screen and (max-width: 567px) {
-		height: 82vh;
 	}
 `;
 
@@ -353,6 +354,9 @@ const MainBlock = styled.div`
 	align-items: flex-start;
 	width: 100%;
 	height: 100%;
+	@media screen and (max-width: 567px) {
+		height: calc(100svh - 14rem);
+	}
 `;
 
 export const Main = () => {
@@ -384,7 +388,66 @@ export const Main = () => {
 						</CHooseBtnGroup>
 					</ChooseBtn>
 					<TopCorner>
-						<div>/ dev</div>
+						<Desktop>
+							<TypeAnimation
+								style={{
+									whiteSpace: 'pre-line',
+									display: 'block',
+									fontWeight: '400',
+									fontSize: '1.2rem',
+									lineHeight: '1.5rem',
+									color: '#adadad',
+								}}
+								sequence={[
+									`/ dev\n/ start
+								
+								/img [ BANNER ]
+								
+								/add
+								
+								[transformation]
+								
+								/ main hero
+								
+								UTRA BOOST\nYOUR SYSTEM\nIN COMPLETE\nFULL SET
+    `,
+									1000000,
+									'',
+								]}
+								speed={100}
+								cursor={false}
+								repeat={0}
+							/>
+						</Desktop>
+
+						<Mob>
+							<TypeAnimation
+								style={{
+									whiteSpace: 'pre-line',
+									display: 'block',
+									fontWeight: '400',
+									fontSize: '1.2rem',
+									lineHeight: '1.5rem',
+									color: '#adadad',
+								}}
+								sequence={[
+									`/ dev\n/ start
+								
+
+
+								/ text
+								LATEST EXSPANTION
+								[ VIGILANTE ]
+    `,
+									1000000,
+									'',
+								]}
+								speed={100}
+								cursor={false}
+								repeat={0}
+							/>
+						</Mob>
+						{/* <div>/ dev</div>
 						<div>/ start</div>
 						<Desktop>
 							<Banner>/img [ BANNER ]</Banner>
@@ -400,16 +463,44 @@ export const Main = () => {
 							<div>/ text </div>
 							<div>LATEST EXSPANTION</div>
 							<div>[ VIGILANTE ]</div>
-						</Mob>
+						</Mob> */}
 					</TopCorner>
 					<BottomCornerMob>
-						<TopCornerMargin>/add</TopCornerMargin>
+						<TypeAnimation
+							style={{
+								whiteSpace: 'pre-line',
+								display: 'block',
+								fontWeight: '400',
+								fontSize: '1.2rem',
+								lineHeight: '1.5rem',
+								color: '#adadad',
+							}}
+							sequence={[
+								`/add
+
+									[transformation]
+
+									/ main hero
+
+									UTRA BOOST
+									YOUR SYSTEM
+									IN COMPLETE
+									FULL SET
+    `,
+								1000000,
+								'',
+							]}
+							speed={100}
+							cursor={false}
+							repeat={0}
+						/>
+						{/* <TopCornerMargin>/add</TopCornerMargin>
 						<TopCornerMargin>[transformation]</TopCornerMargin>
 						<TopCornerMargin>/ main hero </TopCornerMargin>
 						<div>UTRA BOOST</div>
 						<div>YOUR SYSTEM</div>
 						<div>IN COMPLETE</div>
-						<div>FULL SET</div>
+						<div>FULL SET</div> */}
 					</BottomCornerMob>
 					<BottomCorner>
 						<BottomCornerWrapper>

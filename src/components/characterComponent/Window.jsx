@@ -117,6 +117,23 @@ const IconArrow = styled.svg`
 	}
 `;
 
+const IconArrowHide = styled.svg`
+	position: absolute;
+	right: 5.3rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1.2rem;
+	height: 2.1rem;
+	fill: none;
+	opacity: 0;
+	transition: all 0.2s ease;
+
+	& > path {
+		fill: #adadad;
+		transition: all 0.2s ease;
+	}
+`;
+
 const WrapperMainBlock = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -142,6 +159,10 @@ const WrapperMainBlock = styled.div`
 			text-transform: uppercase;
 		}
 		&:hover {
+			${IconArrowHide} {
+				transform: translate(4.2rem, -50%);
+				opacity: 1;
+			}
 			${IconArrow} {
 				transform: translate(5rem, -50%);
 			}
@@ -383,7 +404,15 @@ export const Window = ({ activeitem }) => {
 							<Link to={`/character/${path}`}>
 								<span>{currentItem.name}</span>
 								<span>{currentItem.price}.00 EUR</span>
-
+								<IconArrowHide viewBox='0 0 12 21'>
+									<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+									<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+									<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+									<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+									<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+									<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+									<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+								</IconArrowHide>
 								<IconArrow viewBox='0 0 12 21'>
 									<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
 									<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />

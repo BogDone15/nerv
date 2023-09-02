@@ -28,7 +28,9 @@ const TopLeft = styled.div`
 		width: 46%;
 	}
 	@media screen and (max-width: 567px) {
-		font-size: 9px;
+		& > span {
+			font-size: 9px;
+		}
 	}
 `;
 
@@ -47,6 +49,7 @@ const TopRight = styled.div`
 		width: 54%;
 	}
 	@media screen and (max-width: 567px) {
+		width: 52%;
 		& > span {
 			font-size: 9px;
 		}

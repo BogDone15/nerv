@@ -31,6 +31,7 @@ const Circle = styled.div`
 			opacity: 1;
 		}
 	}
+
 	@media screen and (max-width: 567px) {
 		width: 10px;
 		height: 10px;
@@ -39,10 +40,15 @@ const Circle = styled.div`
 
 const StatusText = styled.p`
 	font-weight: 300;
-	text-transform: uppercase;
 	font-size: 1.2rem;
 	color: ${props => props.theme.colorGray};
 	text-transform: uppercase;
+	@media screen and (max-width: 1100px) {
+		font-size: 14px;
+	}
+	@media screen and (max-width: 567px) {
+		font-size: 10px;
+	}
 `;
 
 export const Status = ({ status, color }) => {

@@ -19,11 +19,9 @@ const Wrapper = styled.div`
 	padding-top: 1rem;
 	@media screen and (max-width: 1100px) {
 		/* height: calc(100vh - 22rem); */
-		margin-bottom: 7rem;
+		/* margin-bottom: 7rem; */
+		margin-bottom: 4rem;
 		height: auto;
-	}
-
-	@media screen and (max-width: 567px) {
 		overflow: hidden;
 	}
 `;
@@ -33,6 +31,9 @@ const Block = styled.div`
 	display: flex;
 	height: 100%;
 	border-bottom: 1px solid ${props => props.theme.colorBorder};
+	@media screen and (max-width: 1100px) {
+		border-bottom: unset;
+	}
 `;
 
 const Aside = styled.div`
@@ -175,7 +176,7 @@ const Group = styled.div`
 		height: 100%;
 	}
 	@media screen and (max-width: 567px) {
-		height: calc(100% - 5.6rem);
+		/* height: calc(100% - 5.6rem); */
 	}
 `;
 
@@ -190,7 +191,7 @@ export const Home = () => {
 
 	return (
 		<>
-			<AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
+			{/* <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence> */}
 			<Wrapper>
 				<Block>
 					{/* <Aside>

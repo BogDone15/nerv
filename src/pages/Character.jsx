@@ -24,7 +24,8 @@ const Wrapper = styled.div`
 	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		/* height: auto; */
-		height: calc(100vh - 10rem);
+		/* height: calc(100vh - 10rem); */
+		height: calc(100vh - 7rem);
 	}
 	@media screen and (max-width: 567px) {
 		position: relative;
@@ -43,8 +44,7 @@ const Block = styled.div`
 	}
 	@media screen and (max-width: 567px) {
 		height: 100%;
-		min-height: calc(100vh - 9rem);
-		/* min-height: calc(100vh - 7rem); */
+		min-height: calc(100vh - 7rem);
 		/* margin-bottom: 7rem; */
 	}
 `;
