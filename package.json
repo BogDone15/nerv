@@ -21,6 +21,7 @@
 		"react-scripts": "5.0.1",
 		"react-select": "^5.7.2",
 		"react-tabs": "^6.0.0",
+		"react-type-animation": "^3.1.0",
 		"redux-persist": "^6.0.0",
 		"shortid": "^2.2.16",
 		"styled-components": "^5.3.6",
