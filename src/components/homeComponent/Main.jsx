@@ -341,11 +341,9 @@ const Line = styled.svg`
 const Group = styled.div`
 	width: calc(100% - 4.5rem);
 	height: calc(100% - 5rem);
-	@media screen and (max-width: 1100px) {
+	@media screen and (max-width: 1100px) and (orientation: portrait) {
 		width: 100%;
 		height: calc(100svh - 7rem);
-	}
-	@media screen and (max-width: 567px) {
 	}
 `;
 
@@ -354,7 +352,7 @@ const MainBlock = styled.div`
 	align-items: flex-start;
 	width: 100%;
 	height: 100%;
-	@media screen and (max-width: 567px) {
+	@media screen and (max-width: 567px) and (orientation: portrait) {
 		height: calc(100svh - 14rem);
 	}
 `;

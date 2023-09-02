@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	/* padding-top: 1rem; */
-	@media screen and (max-width: 1100px) {
+	@media screen and (max-width: 1100px) and (orientation: portrait) {
 		/* height: auto; */
 		/* height: calc(100vh - 10rem); */
 		height: calc(100vh - 7rem);
