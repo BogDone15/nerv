@@ -39,7 +39,8 @@ const Aside = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	margin-top: -8.7rem;
+	/* margin-top: -8.7rem; */
+	margin-top: -3.7rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -53,7 +54,7 @@ const AsideTop = styled.div`
 `;
 
 const AsideMiddle = styled.div`
-	height: calc(100% - 10.3rem);
+	height: calc(100% - 8.3rem);
 	width: 100%;
 	display: flex;
 	justify-content: center;

@@ -108,8 +108,8 @@ export const TermsCategory = () => {
 							[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA
 						</WrapperDirectors>
 						<WrapperText>
-							{currentItem?.text.split('\n').map(item => (
-								<p>{item}</p>
+							{currentItem?.text?.split('\n').map((item, index) => (
+								<p key={index + item}>{item}</p>
 							))}
 						</WrapperText>
 					</WrapperGroup>

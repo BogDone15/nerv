@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { dataItems } from '../../data';
 import { addProduct } from '../../redux/cartRedux';
 import { ZoomImage } from '../productComponent/ZoomImage';
-import { Mousewheel } from 'swiper';
 import 'swiper/css/mousewheel';
 import { Options } from './Options';
+import { Slider } from '../../interface/Slider';
 
 const MainWrapper = styled.div`
 	padding: 2rem;
@@ -374,13 +373,6 @@ const Position = styled.div`
 	}
 `;
 
-const Image = styled.img`
-	max-width: 100%;
-	height: 100%;
-	object-position: center;
-	object-fit: contain;
-`;
-
 const Corner = styled.div`
 	position: absolute;
 	z-index: 5;
@@ -430,47 +422,36 @@ const Plus = styled.svg`
 	}
 `;
 
-const ArrowPrev = styled.svg`
-	position: absolute;
-	left: 2.5rem;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 2;
-	cursor: pointer;
-	width: 9px;
-	height: 16px;
-	fill: none;
-	pointer-events: ${props => (props.firstSlide ? 'none' : 'auto')};
-	& > path {
-		fill: #a0a0a0;
-		transition: all 0.2s ease;
-	}
-	&:hover {
-		& > path {
-			fill: ${props => props.theme.colorMain};
-		}
+const SpecWrapper = styled.ul`
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	list-style: disc;
+	@media screen and (max-width: 567px) {
+		gap: 2rem;
+		transform: translateX(0.3rem);
 	}
 `;
 
-const ArrowNext = styled.svg`
-	position: absolute;
-	right: 2.5rem;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 2;
-	cursor: pointer;
-	width: 9px;
-	height: 16px;
-	fill: none;
-	pointer-events: ${props => (props.lastSlide ? 'none' : 'auto')};
-	& > path {
-		fill: #a0a0a0;
-		transition: all 0.2s ease;
+const SpecItem = styled.li`
+	position: relative;
+	list-style: disc;
+	width: calc(33.33333333% - 2rem);
+	margin-right: 2rem;
+	font-weight: 400;
+	font-size: 1.1rem;
+	line-height: 1.5rem;
+	color: ${props => props.theme.colorBlack};
+	&:nth-of-type(3n) {
+		margin-right: 0;
 	}
-	&:hover {
-		& > path {
-			fill: ${props => props.theme.colorMain};
-		}
+	@media screen and (max-width: 1100px) {
+		font-size: 1.7rem;
+		line-height: 2.2rem;
+	}
+	@media screen and (max-width: 567px) {
+		width: calc(50% - 1rem);
+		margin-right: unset;
 	}
 `;
 
@@ -489,8 +470,6 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 	const location = useLocation();
 	const productName = location.pathname.split('/')[2].replace(/-/gi, ' ');
 	const cart = useSelector(state => state.cart);
-
-	const time = new Date().getTime();
 
 	useEffect(() => {
 		const result = dataItems.find(
@@ -534,57 +513,10 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 		setShowZoomImage(true);
 	};
 
-	const SwiperButtonPrev = () => {
-		const swiper = useSwiper();
-		const handleClickPrev = () => {
-			swiper.slidePrev();
-		};
-
-		return (
-			<ArrowPrev
-				viewBox='0 0 9 16'
-				onClick={() => handleClickPrev()}
-				firstSlide={firstSlide}
-			>
-				<path d='M8.95001 13.09H6.84003V15.2H8.95001V13.09Z' />
-				<path d='M6.84003 10.98H4.72998V13.09H6.84003V10.98Z' />
-				<path d='M4.71997 8.85999H2.60999V10.97H4.71997V8.85999Z' />
-				<path d='M2.60999 6.75H0.5V8.85999H2.60999V6.75Z' />
-				<path d='M4.71997 4.64001H2.60999V6.75H4.71997V4.64001Z' />
-				<path d='M6.84003 2.52002H4.72998V4.63H6.84003V2.52002Z' />
-				<path d='M8.95001 0.409973H6.84003V2.52002H8.95001V0.409973Z' />
-			</ArrowPrev>
-		);
-	};
-
-	const SwiperButtonNext = () => {
-		const swiper = useSwiper();
-
-		const handleClickNext = () => {
-			swiper.slideNext();
-		};
-
-		return (
-			<ArrowNext
-				viewBox='0 0 9 16'
-				onClick={() => handleClickNext()}
-				lastSlide={lastSlide}
-			>
-				<path d='M2.53003 0.619995H0.420044V2.72998H2.53003V0.619995Z' />
-				<path d='M4.64001 2.73999H2.53003V4.84998H4.64001V2.73999Z' />
-				<path d='M6.75 4.84998H4.64001V6.96002H6.75V4.84998Z' />
-				<path d='M8.85999 6.96002H6.75V9.07001H8.85999V6.96002Z' />
-				<path d='M6.75 9.07001H4.64001V11.18H6.75V9.07001Z' />
-				<path d='M4.64001 11.19H2.53003V13.3H4.64001V11.19Z' />
-				<path d='M2.53003 13.3H0.420044V15.41H2.53003V13.3Z' />
-			</ArrowNext>
-		);
-	};
-
 	return (
 		<>
 			<ZoomImage
-				curProd={curProd}
+				curProd={curProd.imgSliderZoom}
 				showZoomImage={showZoomImage}
 				setShowZoomImage={setShowZoomImage}
 			/>
@@ -605,48 +537,33 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 						<Content>
 							<Item>
 								<Title>TECHNICAL INFORMATION</Title>
-								<Text>3L GORE-TEX® PRO [Most breathable technology]</Text>
-								<Text>_(72% PA, 28% ePTFE)</Text>
-								<Text>
-									_With solution-dyed Micro Grid™ backer for improved
-									environmental footprint
-								</Text>
-								<Text>_GUARANTEED TO KEEP YOU DRY™</Text>
+								{curProd?.technicalInformation?.split('\n').map(item => (
+									<Text key={item}>{item}</Text>
+								))}
 							</Item>
 							<Item>
 								<Title>SPECIFICATION</Title>
-								<Text>
-									Korean exclusive .................................... most
-									celebr ated wide-spectrum jacket. Outside of the J1E, they are
-									the first J1A equipped with a TensionZipǽ flak pocket and 3
-									layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be
-									identified by its high-gloss WR zippers, unique dual tone flak
-									pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř
-									logo tape.
-								</Text>
-								<Text>
-									*J1A was the first ever jacket designed by ǍCROŇYMř.
-									Originally conceived in the years between 1999 and 2001, it is
-									the progenitor of the Type 2371**, and of every other ǍCROŇYMř
-									jacket that has followed.
-								</Text>
-								<Text>
-									J1A-GT is the culmination of everything we have learned about
-									building apparel since that time.{' '}
-								</Text>
+								{curProd?.specificationIndividual ? (
+									<SpecWrapper>
+										{curProd?.specificationIndividual
+											?.split('\n')
+											.map((item, index) => (
+												<SpecItem key={item + index}>{item}</SpecItem>
+											))}
+									</SpecWrapper>
+								) : (
+									<>
+										{curProd?.specification?.split('\n').map(item => (
+											<Text key={item}>{item}</Text>
+										))}
+									</>
+								)}
 							</Item>
 							<Item>
 								<Title>CARE SPECIFICATION</Title>
-								<Text>
-									Should be ironed at a temperature between 180°C - 210°C
-								</Text>
-								<Text>
-									Can be dry cleaned / Use solvent of perchloroethylene or of
-									petroleum based solvent
-								</Text>
-								<Text>
-									Hang dry / Tumble dry possible / Normal drying cycle
-								</Text>
+								{curProd?.careSpecification?.split('\n').map(item => (
+									<Text key={item}>{item}</Text>
+								))}
 							</Item>
 						</Content>
 					</MainLeftTop>
@@ -688,40 +605,14 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 						<Position>
 							{currentSlide}/{slides}
 						</Position>
-						<Swiper
-							modules={[Mousewheel]}
-							mousewheel={{ releaseOnEdges: true }}
-							direction={'horizontal'}
-							spaceBetween={50}
-							slidesPerView={1}
-							scrollbar={{ draggable: true }}
-							onSlideChange={swiper => {
-								swiper.activeIndex === swiper.slides.length - 1
-									? setLastSlide(true)
-									: setLastSlide(false);
-								swiper.activeIndex === 0
-									? setFirstSlide(true)
-									: setFirstSlide(false);
-							}}
-							onSlidePrevTransitionStart={() => {
-								setCurrentSlide(prev =>
-									prev <= 10 ? '0' + (Number(prev) - 1) : Number(prev) - 1
-								);
-							}}
-							onSlideNextTransitionStart={() => {
-								setCurrentSlide(prev =>
-									prev < 9 ? '0' + (Number(prev) + 1) : Number(prev) + 1
-								);
-							}}
-						>
-							{curProd.imgSlider?.map(item => (
-								<SwiperSlide>
-									<Image key={`${curProd.id}${time}`} src={item} alt='Nerv' />
-								</SwiperSlide>
-							))}
-							<SwiperButtonPrev />
-							<SwiperButtonNext />
-						</Swiper>
+						<Slider
+							curProd={curProd.imgSlider}
+							firstSlide={firstSlide}
+							lastSlide={lastSlide}
+							setLastSlide={setLastSlide}
+							setFirstSlide={setFirstSlide}
+							setCurrentSlide={setCurrentSlide}
+						/>
 						<Corner>
 							<CornerTop>
 								<p>MODEL M SIZE</p>

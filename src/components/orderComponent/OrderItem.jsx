@@ -9,7 +9,7 @@ import {
 	incrementQuantity,
 	decrementQuantity,
 } from '../../redux/cartRedux';
-import { useIsOverflow } from '../hooks/IfOverflow';
+import { useIsOverflow } from '../../hooks/IfOverflow';
 import { contentTopItem } from '../../data';
 
 const WrapperTop = styled.div`
@@ -720,7 +720,7 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 				</TabletTop>
 				<TabletBottom>
 					{cart.products?.map(item => (
-						<TabletBottomItem>
+						<TabletBottomItem key={item.specificId}>
 							<ContentMainItemRemove
 								onClick={() =>
 									handleDelete(item.specificId, item.quantity, item.price)
@@ -768,7 +768,7 @@ export const OrderItem = ({ setActiveImage, setShowFirstItem }) => {
 				</WrapperTop>
 				<ContentTop>
 					{contentTopItem.map(item => (
-						<ContentTopItem key={item.specificId}>{item.name}</ContentTopItem>
+						<ContentTopItem key={item.name}>{item.name}</ContentTopItem>
 					))}
 				</ContentTop>
 				<ContentMain scroll={scroll} ref={ref}>

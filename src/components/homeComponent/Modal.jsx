@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
 
 const Wrapper = styled.div`
 	position: absolute;
@@ -7,6 +8,7 @@ const Wrapper = styled.div`
 	bottom: 0;
 	max-width: 33.9rem;
 	width: 100%;
+	height: 10.8rem;
 	opacity: ${props => (props.closeModal ? '0' : '1')};
 	pointer-events: ${props => (props.closeModal ? 'none' : 'auto')};
 	background: ${props => props.theme.colorMain};
@@ -15,6 +17,11 @@ const Wrapper = styled.div`
 	@media screen and (max-width: 1100px) {
 		display: none;
 	}
+`;
+
+const Form = styled.form`
+	width: 100%;
+	height: 100%;
 `;
 
 const WrapperTop = styled.div`
@@ -75,12 +82,17 @@ const Button = styled.button`
 	outline: none;
 	padding: 0.2rem 0;
 	cursor: pointer;
+	transition: all 0.2s ease;
 	& > span {
 		font-weight: 450;
 		font-size: 1.2rem;
 		line-height: 1.6rem;
 		color: ${props => props.theme.colorMain};
 		text-transform: uppercase;
+	}
+
+	&:hover {
+		background: #b7b5b5;
 	}
 
 	@media screen and (max-width: 567px) {
@@ -132,25 +144,71 @@ const InputPlaceHolder = styled.span`
 	}
 `;
 
+const ErrorBlock = styled.div`
+	font-weight: 450;
+	font-size: ${props => props.theme.fontsm};
+	line-height: 1.7rem;
+	color: #9b9b9b;
+`;
+
+const SuccessBlock = styled.div`
+	font-weight: 450;
+	font-size: ${props => props.theme.fontsm};
+	line-height: 1.7rem;
+	color: #9b9b9b;
+`;
+
 export const Modal = ({ closeModal, setCloseModal }) => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset,
+	} = useForm({
+		mode: 'onChange',
+	});
+
+	const onSubmit = data => {
+		console.log(data);
+		reset();
+	};
+
 	return (
 		<Wrapper closeModal={closeModal}>
-			<WrapperTop>
-				<div>/enter community </div>
-				<Close onClick={() => setCloseModal(true)}>
-					<span></span>
-					<span></span>
-				</Close>
-			</WrapperTop>
-			<Content>
-				<InputWrapper>
-					<Input type='email' name='email' />
-					<InputPlaceHolder>Email</InputPlaceHolder>
-				</InputWrapper>
-				<Button>
-					<span>SUBSCRIBE</span>
-				</Button>
-			</Content>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+				<WrapperTop>
+					<div>/enter community </div>
+					<Close onClick={() => setCloseModal(true)}>
+						<span></span>
+						<span></span>
+					</Close>
+				</WrapperTop>
+				{/* <ErrorBlock>Something went wrong. Try again.</ErrorBlock> */}
+				{/* <SuccessBlock>You subscribed.</SuccessBlock> */}
+				<Content>
+					<InputWrapper>
+						<Input
+							type='email'
+							name='email'
+							{...register('email', {
+								required: 'enter valid email adress',
+								pattern: {
+									value:
+										/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+									message: 'Entered value does not match email format',
+								},
+							})}
+						/>
+						<InputPlaceHolder error={errors.email?.message}>
+							Email
+						</InputPlaceHolder>
+						<p style={{ color: 'red' }}>{errors.email?.message}</p>
+					</InputWrapper>
+					<Button type='submit'>
+						<span>SUBSCRIBE</span>
+					</Button>
+				</Content>
+			</Form>
 		</Wrapper>
 	);
 };

@@ -109,7 +109,7 @@ export const ContactsCategory = () => {
 	const [currentItem, setCurrentItem] = useState();
 	const location = useLocation();
 	const pathName = location.pathname.split('/')[1].replace(/-/gi, ' ');
-	console.log(currentItem);
+
 	useEffect(() => {
 		setFilteredLinks(contactTerms);
 
@@ -127,8 +127,8 @@ export const ContactsCategory = () => {
 					</MainMiddleTitle>
 					<MainMiddleLine />
 					<MainMiddleText>
-						{currentItem?.text.split('\n').map(item => (
-							<p>{item}</p>
+						{currentItem?.text.split('\n').map((item, index) => (
+							<p key={index + item}>{item}</p>
 						))}
 					</MainMiddleText>
 					<Directors>[ DIRECTORS ] ENGER OLEG & DYSHLEVAYA OLGA</Directors>

@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useIsOverflow } from '../hooks/IfOverflow';
+import { useIsOverflow } from '../../hooks/IfOverflow';
 
 const Wrapper = styled.div`
 	position: relative;

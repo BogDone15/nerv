@@ -217,9 +217,9 @@ export const Appearance = ({
 								: setFirstSlide(false);
 						}}
 					>
-						{productSlides.imgAppearance?.map(item => (
-							<SwiperSlide>
-								<Image key={shortid.generate()} src={item} alt='Nerv' />
+						{productSlides.imgAppearance?.map((item, index) => (
+							<SwiperSlide key={index + item}>
+								<Image src={item} alt='Nerv' />
 							</SwiperSlide>
 						))}
 						<SwiperButtonPrev />

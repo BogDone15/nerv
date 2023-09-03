@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Checkbox from '../Interface/Checkbox';
-import { SelectCountry } from '../Interface/SelectCountry';
+import Checkbox from '../../interface/Checkbox';
+import { SelectCountry } from '../../interface/SelectCountry';
 
 const Wrapper = styled.div`
 	width: 65%;

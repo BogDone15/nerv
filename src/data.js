@@ -248,9 +248,37 @@ export const dataItems = [
 		price: 300,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: `SPECIFICSDWR /
+Shape memory fabricFront pleated
+construction
+Front knee articulated seamZip-fastened
+expandable transform cargo pocketExpanded
+reinforcement gusset
+SPECIFICSDWR /
+Shape memory fabricFront pleated
+Shape memory fabricFront pleated
+Front knee articulated seamZip-fastened
+expandable transform cargo pocketExpanded
+reinforcement gusset
+SPECIFICSDWR /
+Shape memory fabricFront pleated
+Shape memory fabricFront pleated
+Front knee articulated seamZip-fastened
+expandable transform cargo pocketExpanded
+reinforcement gusset
+`,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -348,9 +376,19 @@ export const dataItems = [
 		price: 300,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: '01/02/23',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: '2/100',
 	},
 	{
@@ -432,9 +470,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: '',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -516,9 +564,19 @@ export const dataItems = [
 		price: '100',
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -600,9 +658,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: '2/100',
 	},
 	{
@@ -684,9 +752,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -768,9 +846,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -852,9 +940,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -936,9 +1034,19 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -1020,9 +1128,19 @@ export const dataItems = [
 		price: 300,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'soon',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -1104,9 +1222,19 @@ export const dataItems = [
 		price: 300,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 	{
@@ -1188,51 +1316,55 @@ export const dataItems = [
 		price: 200,
 		ifNoSize: 'ONLY ONE SIZE - AVAILABLE ADITIONAL TEXT',
 		availability: 'new',
-		technicalInformation: '',
-		specification: '',
-		careSpecification: '',
+		technicalInformation: `3L GORE-TEX® PRO [Most breathable technology]
+		_(72% PA, 28% ePTFE)
+		_With solution-dyed Micro Grid™ backer for improved environmental footprint
+_GUARANTEED TO KEEP YOU DRY™
+		`,
+		specification: `Korean exclusive .................................... most celebr ated wide-spectrum jacket. Outside of the J1E, they are the first J1A equipped with a TensionZipǽ flak pocket and 3 layer Gore-Tex® Pro fabric technology. J1A-GTKR-BKS can be identified by its high-gloss WR zippers, unique dual tone flak pocket TensionZipǽ, and its limited release Hangul ǍCROŇYMř logo tape.
+*J1A was the first ever jacket designed by ǍCROŇYMř. Originally conceived in the years between 1999 and 2001, it is the progenitor of the Type 2371**, and of every other ǍCROŇYMř jacket that has followed.
+J1A-GT is the culmination of everything we have learned about building apparel since that time.`,
+		specificationIndividual: ``,
+		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
+		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
+		Hang dry / Tumble dry possible / Normal drying cycle
+`,
 		limitedEdition: 'LIMITED EDITION - 1/100',
 	},
 ];
 
 export const contentTopItem = [
 	{
-		id: 99,
 		name: 'TYPE',
 	},
 	{
-		id: 98,
 		name: 'INFO',
 	},
 	{
-		id: 97,
 		name: 'COLOR',
 	},
 	{
-		id: 94,
 		name: 'SIZE',
 	},
 	{
-		id: 59,
 		name: 'AMT',
 	},
 	{
-		id: 96,
 		name: 'PRICE',
 	},
 ];
 
-export const nav = [
-	{
-		character: [
-			{
-				link: '/',
-				name: 'Main',
-			},
-			{
-				link: '/character',
-				name: 'CHARACTER INTERFACE',
-			},
-		],
-	},
-];
+// export const nav = [
+// 	{
+// 		character: [
+// 			{
+// 				link: '/',
+// 				name: 'Main',
+// 			},
+// 			{
+// 				link: '/character',
+// 				name: 'CHARACTER INTERFACE',
+// 			},
+// 		],
+// 	},
+// ];

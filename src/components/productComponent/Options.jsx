@@ -376,7 +376,7 @@ export const Options = ({
 						) : (
 							curProd.options?.map((item, index) => (
 								<CoverItem
-									key={item.id}
+									key={item + index}
 									activeitem={index + 1 === activeitem ? true : false}
 									onClick={() => handleSize(item, index + 1)}
 								>
@@ -396,7 +396,7 @@ export const Options = ({
 					<ColorBlock>
 						{filterProd.color?.map((item, index) => (
 							<ColorItem
-								key={item.id}
+								key={item + index}
 								color={item.hex}
 								activeitemcolor={index + 1 === activeitemcolor ? true : false}
 								onClick={() => handleColor(item, index + 1)}
