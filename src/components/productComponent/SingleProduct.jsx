@@ -509,10 +509,6 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 		}
 	};
 
-	const handleShowImage = () => {
-		setShowZoomImage(true);
-	};
-
 	return (
 		<>
 			<ZoomImage
@@ -621,7 +617,10 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 							</CornerTop>
 							<CornerBottom>
 								<span>OPTICAL ZOOM</span>
-								<Plus viewBox='0 0 38 38' onClick={() => handleShowImage()}>
+								<Plus
+									viewBox='0 0 38 38'
+									onClick={() => setShowZoomImage(true)}
+								>
 									<path d='M37.88 37.6899H31.63V37.09H37.28V31.4399H37.88V37.6899Z' />
 									<path d='M23.5 37.0901H15.37V37.6901H23.5V37.0901Z' />
 									<path d='M7.22998 37.6899H0.98999V31.4399H1.57996V37.09H7.22998V37.6899Z' />

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import bgImg from '../../assets/main-bg.png';
 import bgImgMob from '../../assets/main-bg-mob.png';
 import charackters from '../../assets/charackters.png';
 import charackterMob from '../../assets/charackter.svg';
 import styled from 'styled-components';
-import { TypeAnimation } from 'react-type-animation';
 import { Status } from '../Status';
 import { Modal } from './Modal';
 import { Link } from 'react-router-dom';
 import { Nav } from '../Nav';
 import { Socials } from '../Socials';
+import { TypeAnimationDesktop } from '../../interface/TypeAnimationDesktop';
+import { TypeAnimationMob } from '../../interface/TypeAnimationMob';
+import { TypeAnimationMobSecond } from '../../interface/TypeAnimationMobSecond';
+import apiCallsService from '../../services/apiCalls.service';
 
 const TopCorner = styled.div`
 	position: absolute;
@@ -181,47 +184,6 @@ const BorderBlock = styled.div`
 	}
 `;
 
-const Desktop = styled.div`
-	@media screen and (max-width: 567px) {
-		display: none;
-	}
-`;
-
-const Mob = styled.div`
-	display: none;
-	@media screen and (max-width: 567px) {
-		display: block;
-		margin-top: 4rem;
-		& > div {
-			font-weight: 400;
-			font-size: 1.2rem;
-			line-height: 1.5rem;
-			color: #adadad;
-			margin-bottom: 0.2rem;
-			&:last-child {
-				color: ${props => props.theme.colorMain} !important;
-				margin-bottom: 0;
-			}
-		}
-	}
-`;
-
-const BottomCornerMob = styled.div`
-	display: none;
-	@media screen and (max-width: 567px) {
-		display: block;
-		position: absolute;
-		right: 2rem;
-		bottom: 7rem;
-		& > div {
-			font-weight: 400;
-			font-size: 1.2rem;
-			line-height: 1.5rem;
-			color: #adadad;
-		}
-	}
-`;
-
 const Aside = styled.div`
 	display: flex;
 	align-items: center;
@@ -356,9 +318,17 @@ const MainBlock = styled.div`
 		height: calc(100svh - 14rem);
 	}
 `;
-
 export const Main = () => {
 	const [closeModal, setCloseModal] = useState(false);
+
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		const response = await apiCallsService.getProductsRequest();
+	// 		console.log(response);
+	// 	};
+
+	// 	fetchData();
+	// }, []);
 	return (
 		<>
 			<Aside>
@@ -386,120 +356,10 @@ export const Main = () => {
 						</CHooseBtnGroup>
 					</ChooseBtn>
 					<TopCorner>
-						<Desktop>
-							<TypeAnimation
-								style={{
-									whiteSpace: 'pre-line',
-									display: 'block',
-									fontWeight: '400',
-									fontSize: '1.2rem',
-									lineHeight: '1.5rem',
-									color: '#adadad',
-								}}
-								sequence={[
-									`/ dev\n/ start
-								
-								/img [ BANNER ]
-								
-								/add
-								
-								[transformation]
-								
-								/ main hero
-								
-								UTRA BOOST\nYOUR SYSTEM\nIN COMPLETE\nFULL SET
-    `,
-									1000000,
-									'',
-								]}
-								speed={100}
-								cursor={false}
-								repeat={0}
-							/>
-						</Desktop>
-
-						<Mob>
-							<TypeAnimation
-								style={{
-									whiteSpace: 'pre-line',
-									display: 'block',
-									fontWeight: '400',
-									fontSize: '1.2rem',
-									lineHeight: '1.5rem',
-									color: '#adadad',
-								}}
-								sequence={[
-									`/ dev\n/ start
-								
-
-
-								/ text
-								LATEST EXSPANTION
-								[ VIGILANTE ]
-    `,
-									1000000,
-									'',
-								]}
-								speed={100}
-								cursor={false}
-								repeat={0}
-							/>
-						</Mob>
-						{/* <div>/ dev</div>
-						<div>/ start</div>
-						<Desktop>
-							<Banner>/img [ BANNER ]</Banner>
-							<TopCornerMargin>/add</TopCornerMargin>
-							<TopCornerMargin>[transformation]</TopCornerMargin>
-							<TopCornerMargin>/ main hero </TopCornerMargin>
-							<div>UTRA BOOST</div>
-							<div>YOUR SYSTEM</div>
-							<div>IN COMPLETE</div>
-							<div>FULL SET</div>
-						</Desktop>
-						<Mob>
-							<div>/ text </div>
-							<div>LATEST EXSPANTION</div>
-							<div>[ VIGILANTE ]</div>
-						</Mob> */}
+						<TypeAnimationDesktop />
+						<TypeAnimationMob />
 					</TopCorner>
-					<BottomCornerMob>
-						<TypeAnimation
-							style={{
-								whiteSpace: 'pre-line',
-								display: 'block',
-								fontWeight: '400',
-								fontSize: '1.2rem',
-								lineHeight: '1.5rem',
-								color: '#adadad',
-							}}
-							sequence={[
-								`/add
-
-									[transformation]
-
-									/ main hero
-
-									UTRA BOOST
-									YOUR SYSTEM
-									IN COMPLETE
-									FULL SET
-    `,
-								1000000,
-								'',
-							]}
-							speed={100}
-							cursor={false}
-							repeat={0}
-						/>
-						{/* <TopCornerMargin>/add</TopCornerMargin>
-						<TopCornerMargin>[transformation]</TopCornerMargin>
-						<TopCornerMargin>/ main hero </TopCornerMargin>
-						<div>UTRA BOOST</div>
-						<div>YOUR SYSTEM</div>
-						<div>IN COMPLETE</div>
-						<div>FULL SET</div> */}
-					</BottomCornerMob>
+					<TypeAnimationMobSecond />
 					<BottomCorner>
 						<BottomCornerWrapper>
 							<Circle />

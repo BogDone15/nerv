@@ -191,37 +191,13 @@ export const Home = () => {
 
 	return (
 		<>
-			{/* <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence> */}
+			<AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
 			<Wrapper>
 				<Block>
-					{/* <Aside>
-						<Top />
-						<AsideText>
-							<span>FIRST EXPANSION</span>
-						</AsideText>
-					</Aside>
-					<ChooseBtn>
-						<CHooseBtnGroup>
-							<Link to='/character'>
-								<span>CHOOSE YOUR APPEARANCE</span>
-							</Link>
-							<Line viewBox='0 0 20 990'>
-								<path
-									opacity='0.2'
-									d='M0.920044 0.5V409.95L18.72 440.01V629.69L0.920044 655.67V989.5'
-									stroke='#191919'
-									strokeMiterlimit='10'
-								/>
-							</Line>
-						</CHooseBtnGroup>
-					</ChooseBtn> */}
 					<Right>
 						<Header />
-						{/* <Nav /> */}
 						<Group>
 							<Road />
-							{/* <Main /> */}
-							{/* <Socials /> */}
 						</Group>
 					</Right>
 				</Block>

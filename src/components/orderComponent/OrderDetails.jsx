@@ -6,7 +6,6 @@ import { OrderItem } from './OrderItem';
 
 const Wrapper = styled.div`
 	display: flex;
-	/* width: calc(100% - 10rem); */
 	width: 100%;
 	height: 100%;
 	@media screen and (max-width: 1100px) {
@@ -111,8 +110,6 @@ export const OrderDetails = ({
 }) => {
 	const cart = useSelector(state => state.cart);
 	const [currentItem, setCurrentItem] = useState({});
-
-	console.log(showFirstItem);
 
 	useEffect(() => {
 		const result = cart.products.find(item => item.id === activeImage);
