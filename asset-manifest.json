@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/nerv/static/css/main.e1c30d5b.css",
-    "main.js": "/nerv/static/js/main.5713e5a9.js",
+    "main.css": "/nerv/static/css/main.17e6dcf7.css",
+    "main.js": "/nerv/static/js/main.9afd04d0.js",
     "static/media/charackter.svg": "/nerv/static/media/charackter.bd97342b5eb61b8e610e9397069ad0b7.svg",
-    "static/media/man.png": "/nerv/static/media/man.610d23c13f6e4bc6ead0.png",
     "static/media/jacket-preview.svg": "/nerv/static/media/jacket-preview.582ae0c38a373abb4723d8d3f7ceff6a.svg",
     "static/media/jacket.svg": "/nerv/static/media/jacket.ada936807569f60393599d3c578b1476.svg",
-    "static/media/charackters.png": "/nerv/static/media/charackters.788cc8ccba561909de1a.png",
+    "static/media/charackters.png": "/nerv/static/media/charackters.281c885c7fa010dd80f7.png",
     "static/media/jacket2.svg": "/nerv/static/media/jacket2.ada3a111efc3837750d05e7a1b6149a4.svg",
     "static/media/man-zoom.png": "/nerv/static/media/man-zoom.991706ab7bbc2602022e.png",
-    "static/media/error-bg.png": "/nerv/static/media/error-bg.0b5ba0d24f57557b1223.png",
     "static/media/belt-zoom.png": "/nerv/static/media/belt-zoom.9cff390093dd7df92eee.png",
+    "static/media/man.png": "/nerv/static/media/man.db58811996c17b83420c.png",
     "static/media/belt.png": "/nerv/static/media/belt.cbef7086147dbd4bf4a7.png",
     "static/media/fira-code-all-400-normal.woff": "/nerv/static/media/fira-code-all-400-normal.c050f0ce726c76d279c8.woff",
-    "static/media/error-bg-tab.png": "/nerv/static/media/error-bg-tab.e858aef1f229cd344ca2.png",
+    "static/media/error-bg.png": "/nerv/static/media/error-bg.e3059f5f9481fa5e20dd.png",
     "static/media/preview-order-bg-tab.svg": "/nerv/static/media/preview-order-bg-tab.0aa661a75d3ae2406cee2c1e6805c820.svg",
     "static/media/preview-order-bg.svg": "/nerv/static/media/preview-order-bg.7e6648199b1e720c5b2eb88e869857e6.svg",
+    "static/media/error-bg-tab.png": "/nerv/static/media/error-bg-tab.5d37efaaf684e6dce724.png",
     "static/media/error-bg-mob.png": "/nerv/static/media/error-bg-mob.07a48cb5df2915269389.png",
     "static/media/fira-code-latin-400-normal.woff2": "/nerv/static/media/fira-code-latin-400-normal.e662d57ce51fba1f46e3.woff2",
     "static/media/planet.png": "/nerv/static/media/planet.3cf81d80a7db2d2e86d3.png",
@@ -45,11 +45,11 @@
     "static/media/hero-bg-tab.svg": "/nerv/static/media/hero-bg-tab.0340752cd65219019f394a59da97ebab.svg",
     "static/media/augmen-bg2.svg": "/nerv/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
     "static/media/hero-bg.svg": "/nerv/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
-    "main.e1c30d5b.css.map": "/nerv/static/css/main.e1c30d5b.css.map",
-    "main.5713e5a9.js.map": "/nerv/static/js/main.5713e5a9.js.map"
+    "main.17e6dcf7.css.map": "/nerv/static/css/main.17e6dcf7.css.map",
+    "main.9afd04d0.js.map": "/nerv/static/js/main.9afd04d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1c30d5b.css",
-    "static/js/main.5713e5a9.js"
+    "static/css/main.17e6dcf7.css",
+    "static/js/main.9afd04d0.js"
   ]
 }
