@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import 'swiper/css/mousewheel';
 import { Slider } from '../../interface/Slider';
 
 const Wrapper = styled.div`
@@ -23,56 +22,6 @@ const Wrapper = styled.div`
 			overflow: hidden;
 		}
 	}
-`;
-const ArrowPrev = styled.svg`
-	position: absolute;
-	left: 3.5rem;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 2;
-	cursor: pointer;
-	width: 18px;
-	height: 32px;
-	fill: none;
-	pointer-events: ${props => (props.firstSlide ? 'none' : 'auto')};
-	& > path {
-		fill: #a0a0a0;
-		transition: all 0.2s ease;
-	}
-	&:hover {
-		& > path {
-			fill: ${props => props.theme.colorMain};
-		}
-	}
-`;
-
-const ArrowNext = styled.svg`
-	position: absolute;
-	right: 2.5rem;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 2;
-	cursor: pointer;
-	width: 18px;
-	height: 32px;
-	fill: none;
-	pointer-events: ${props => (props.lastSlide ? 'none' : 'auto')};
-	& > path {
-		fill: #a0a0a0;
-		transition: all 0.2s ease;
-	}
-	&:hover {
-		& > path {
-			fill: ${props => props.theme.colorMain};
-		}
-	}
-`;
-
-const Image = styled.img`
-	max-width: 100%;
-	height: 100%;
-	object-fit: contain;
-	object-position: center;
 `;
 
 const Position = styled.div`
@@ -172,6 +121,8 @@ export const ZoomImage = ({ showZoomImage, setShowZoomImage, curProd }) => {
 				</GroupBlock>
 			</Group>
 			<Slider
+				arrowWidth='20px'
+				arrowHeight='27px'
 				curProd={curProd}
 				firstSlide={firstSlide}
 				lastSlide={lastSlide}

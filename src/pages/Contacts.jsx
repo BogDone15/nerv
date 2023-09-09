@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CorporationDetail } from '../components/corporationComponent/CorporationDetail';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
+import { useListenToScroll } from '../hooks/ListenToScroll';
 
 const Wrapper = styled.div`
 	height: calc(100vh - 4rem);
@@ -139,33 +140,16 @@ const ScrollArrow = styled.div`
 
 export const Contacts = () => {
 	const [isVisible, setIsVisible] = useState(false);
-	const divRef = useRef(null);
+	const ref = useRef(null);
 
-	useEffect(() => {
-		divRef.current.scrollIntoView({ behavior: 'smooth' });
-
-		window.addEventListener('scroll', listenToScroll);
-		return () => window.removeEventListener('scroll', listenToScroll);
-	});
-
-	const listenToScroll = () => {
-		let heightToHideFrom = 100;
-		const winScroll =
-			document.body.scrollTop || document.documentElement.scrollTop;
-
-		if (winScroll > heightToHideFrom) {
-			!isVisible && setIsVisible(true);
-		} else {
-			setIsVisible(false);
-		}
-	};
+	useListenToScroll(ref, setIsVisible, isVisible);
 
 	const handleClick = () => {
-		divRef.current.scrollIntoView({ behavior: 'smooth' });
+		ref.current.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	return (
-		<Wrapper ref={divRef}>
+		<Wrapper ref={ref}>
 			<Block>
 				<Aside>
 					<AsideTop />

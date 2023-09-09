@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ContactInfo } from '../components/checkoutComponent/ContactInfo';
 import { Summary } from '../components/checkoutComponent/Summary';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
 
 const Wrapper = styled.div`
 	/* height: calc(100vh - 4rem); */
@@ -39,7 +39,7 @@ const Aside = styled.div`
 	flex-direction: column;
 	width: 4.5rem;
 	/* margin-top: 0.9rem; */
-	margin-top: -8.7rem;
+	margin-top: -3.7rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		display: none;
@@ -86,8 +86,8 @@ const GearPreview = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	height: calc(100% + 8.6rem);
-	margin-top: -8.7rem;
+	height: calc(100% + 3.7rem);
+	margin-top: -3.7rem;
 	/* height: calc(100% - 0.9rem);
 	margin-top: 0.9rem; */
 	border-right: 1px solid ${props => props.theme.colorBorder};
@@ -132,7 +132,6 @@ export const Checkout = () => {
 				</Aside>
 				<GearPreview />
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

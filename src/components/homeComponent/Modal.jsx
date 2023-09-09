@@ -118,6 +118,7 @@ const Input = styled.input`
 	color: #9b9b9b;
 	height: 100%;
 	transition: all 0.2s ease;
+
 	&:hover,
 	&:focus {
 		border: 1px solid #bcbbbb;

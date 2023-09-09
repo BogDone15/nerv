@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from '../../interface/Checkbox';
 import { SelectCountry } from '../../interface/SelectCountry';
+import { FetchingLoader } from '../FetchingLoader';
 
 const Wrapper = styled.div`
 	width: 65%;
@@ -57,6 +58,7 @@ const WrapperMain = styled.div`
 	padding: 2rem 0 2rem 2.5rem;
 	@media screen and (max-width: 1100px) {
 		border: none;
+		height: auto;
 	}
 `;
 
@@ -70,6 +72,9 @@ const Form = styled.form`
 	&::-webkit-scrollbar-thumb {
 		border-radius: 12px;
 		background-color: ${props => props.theme.colorBlack};
+	}
+	@media screen and (max-width: 1100px) {
+		overflow-y: unset;
 	}
 `;
 
@@ -98,6 +103,12 @@ const Input = styled.input`
 	height: 4rem;
 	font-size: ${props => props.theme.fontsm};
 	transition: all 0.2s linear;
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus {
+		box-shadow: inset 0 0 0 1000px #cecece;
+	}
+
 	&::placeholder {
 		color: #000;
 		font-size: 1.3rem;
@@ -105,6 +116,7 @@ const Input = styled.input`
 		transform: translateX(1.7rem);
 	}
 	&:hover,
+	&:active,
 	&:focus {
 		border: 1px solid #0f0f0f;
 	}
@@ -223,14 +235,24 @@ const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	height: 4.6rem;
-
 	cursor: pointer;
+	border: 1px solid transparent;
+	transition: all 0.2s ease;
+
 	& > span {
 		font-weight: 450;
 		font-size: ${props => props.theme.fontsm};
 		line-height: 1.8rem;
 		color: #adadad;
+	transition: all 0.2s ease;
+
 	}
+	&:hover {
+		background: transparent;
+		border: 1px solid ${props => props.theme.colorMain};
+		& > span {
+			color: ${props => props.theme.colorMain};
+		}
 	@media screen and (max-width: 1100px) {
 		height: 6rem;
 		& > span {
@@ -341,6 +363,14 @@ const CheckboxWrapper = styled.div`
 	margin-bottom: 1.7rem;
 `;
 
+const Loader = styled.div`
+	display: flex;
+	height: calc(100% - 34rem);
+	@media screen and (max-width: 1100px) {
+		margin-right: 2.5rem;
+	}
+`;
+
 export const ContactInfo = () => {
 	const [hideContactBlock, setHideContactBlock] = useState(true);
 	const [hideInfoBlock, setHideInfoBlock] = useState(false);
@@ -348,6 +378,7 @@ export const ContactInfo = () => {
 	const [editContact, setEditContact] = useState(false);
 	const [editInfo, setEditInfo] = useState(false);
 	const [country, setCountry] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -658,6 +689,11 @@ export const ContactInfo = () => {
 								<span>PAY WIA FONDY </span>
 							</Button>
 						</PaymentGroup>
+					)}
+					{loading && (
+						<Loader>
+							<FetchingLoader />
+						</Loader>
 					)}
 				</Form>
 			</WrapperMain>

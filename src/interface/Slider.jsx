@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/mousewheel';
 import { Mousewheel } from 'swiper';
 import styled from 'styled-components';
 
@@ -17,8 +19,8 @@ const ArrowPrev = styled.svg`
 	transform: translateY(-50%);
 	z-index: 2;
 	cursor: pointer;
-	width: 9px;
-	height: 16px;
+	width: ${props => props.arrowWidth};
+	height: ${props => props.arrowHeight};
 	fill: none;
 	pointer-events: ${props => (props.firstSlide ? 'none' : 'auto')};
 	& > path {
@@ -39,8 +41,8 @@ const ArrowNext = styled.svg`
 	transform: translateY(-50%);
 	z-index: 2;
 	cursor: pointer;
-	width: 9px;
-	height: 16px;
+	width: ${props => props.arrowWidth};
+	height: ${props => props.arrowHeight};
 	fill: none;
 	pointer-events: ${props => (props.lastSlide ? 'none' : 'auto')};
 	& > path {
@@ -61,6 +63,8 @@ export const Slider = ({
 	setFirstSlide,
 	setCurrentSlide,
 	curProd,
+	arrowWidth,
+	arrowHeight,
 }) => {
 	const SwiperButtonPrev = () => {
 		const swiper = useSwiper();
@@ -73,6 +77,8 @@ export const Slider = ({
 				viewBox='0 0 9 16'
 				onClick={() => handleClickPrev()}
 				firstSlide={firstSlide}
+				arrowWidth={arrowWidth}
+				arrowHeight={arrowHeight}
 			>
 				<path d='M8.95001 13.09H6.84003V15.2H8.95001V13.09Z' />
 				<path d='M6.84003 10.98H4.72998V13.09H6.84003V10.98Z' />
@@ -97,6 +103,8 @@ export const Slider = ({
 				viewBox='0 0 9 16'
 				onClick={() => handleClickNext()}
 				lastSlide={lastSlide}
+				arrowWidth={arrowWidth}
+				arrowHeight={arrowHeight}
 			>
 				<path d='M2.53003 0.619995H0.420044V2.72998H2.53003V0.619995Z' />
 				<path d='M4.64001 2.73999H2.53003V4.84998H4.64001V2.73999Z' />

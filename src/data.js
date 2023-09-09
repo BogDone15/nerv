@@ -273,8 +273,7 @@ Shape memory fabricFront pleated
 Shape memory fabricFront pleated
 Front knee articulated seamZip-fastened
 expandable transform cargo pocketExpanded
-reinforcement gusset
-`,
+reinforcement gusset`,
 		careSpecification: `Should be ironed at a temperature between 180°C - 210°C
 		Can be dry cleaned / Use solvent of perchloroethylene or of petroleum based solvent
 		Hang dry / Tumble dry possible / Normal drying cycle
@@ -1354,17 +1353,14 @@ export const contentTopItem = [
 	},
 ];
 
-// export const nav = [
-// 	{
-// 		character: [
-// 			{
-// 				link: '/',
-// 				name: 'Main',
-// 			},
-// 			{
-// 				link: '/character',
-// 				name: 'CHARACTER INTERFACE',
-// 			},
-// 		],
-// 	},
-// ];
+export const asideText = [
+	{
+		name: 'TXT',
+	},
+	{
+		name: 'FILTER / MENU',
+	},
+	{
+		name: 'FIRST EXPANSION',
+	},
+];

@@ -9,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
  outline: none;
 }
 
+
+
 html {
   font-size: 14px;
   width: 100%;

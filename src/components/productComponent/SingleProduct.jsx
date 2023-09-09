@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { addProduct } from '../../redux/cartRedux';
 import { ZoomImage } from '../productComponent/ZoomImage';
-import 'swiper/css/mousewheel';
 import { Options } from './Options';
-import { Slider } from '../../interface/Slider';
+import { ProductCharacteristic } from './ProductCharacteristic';
+import { ProductPhotos } from './ProductPhotos';
 
 const MainWrapper = styled.div`
-	padding: 2rem;
+	/* padding: 2rem; */
+	padding: 2rem 2rem 1.5rem;
 	width: calc(100% - 10rem);
-	/* width: 100%; */
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -32,6 +32,7 @@ const MainLeft = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	overflow-y: auto;
+	padding-bottom: 0.3rem;
 
 	&::-webkit-scrollbar {
 		width: 0.4rem;
@@ -42,6 +43,7 @@ const MainLeft = styled.div`
 	}
 	@media screen and (max-width: 1100px) {
 		width: 100%;
+		padding-bottom: 0;
 	}
 `;
 
@@ -141,61 +143,6 @@ const ModelPrice = styled.div`
 	}
 `;
 
-const Item = styled.div`
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	position: relative;
-	padding: 1.5rem 3.5rem;
-	border-bottom: 1px solid ${props => props.theme.colorBlack};
-
-	&:last-child {
-		border-bottom: 0;
-	}
-	@media screen and (max-width: 1100px) {
-		padding: 2rem 3.5rem;
-	}
-`;
-const Title = styled.h2`
-	position: absolute;
-	left: 2.5rem;
-	top: -0.9rem;
-	background: #cecece;
-	padding: 0 1.3rem;
-	font-weight: 700;
-	font-size: ${props => props.theme.fontsm};
-	line-height: 1.8rem;
-	color: ${props => props.theme.colorBlack};
-	text-transform: uppercase;
-	@media screen and (max-width: 1100px) {
-		font-size: 1.7rem;
-		line-height: 2.2rem;
-		top: -1.2rem;
-	}
-`;
-
-const Content = styled.div`
-	height: calc(100% - 9.7rem);
-	display: flex;
-	flex-direction: column;
-	@media screen and (max-width: 1100px) {
-		height: 100%;
-	}
-`;
-
-const Text = styled.p`
-	font-weight: 400;
-	font-size: 1.1rem;
-	line-height: 1.5rem;
-	color: ${props => props.theme.colorBlack};
-	margin-bottom: 0.1rem;
-	@media screen and (max-width: 1100px) {
-		font-size: 1.7rem;
-		line-height: 2.2rem;
-	}
-`;
-
 const Decoration = styled.div`
 	position: relative;
 	border: 1px solid ${props => props.theme.colorBlack};
@@ -276,9 +223,12 @@ const Button = styled.div`
 	height: 4.6rem;
 	width: calc(100% - 0.6rem);
 	background: ${props => props.theme.colorMain};
+	border: 1px solid transparent;
 	margin: 0.9rem 0;
 	text-align: center;
 	cursor: pointer;
+	transition: all 0.2s ease;
+
 	& > span {
 		font-weight: 450;
 		font-size: ${props => props.theme.fontsm};
@@ -286,6 +236,14 @@ const Button = styled.div`
 		color: #adadad;
 		text-align: center;
 		text-transform: uppercase;
+		transition: all 0.2s ease;
+	}
+	&:hover {
+		background: transparent;
+		border: 1px solid ${props => props.theme.colorMain};
+		& > span {
+			color: ${props => props.theme.colorMain};
+		}
 	}
 	@media screen and (max-width: 1100px) {
 		height: 6.2rem;
@@ -307,10 +265,12 @@ const MainRight = styled.div`
 	height: 100%;
 	width: 58%;
 	border: 1px solid ${props => props.theme.colorBlack};
+	margin-bottom: 0.6rem;
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 		height: 70vh;
 		border: unset;
+		margin-bottom: 0;
 	}
 	@media screen and (max-width: 567px) {
 		height: 63vh;
@@ -338,127 +298,8 @@ const MainRightAside = styled.div`
 		display: none;
 	}
 `;
-const MainRightContent = styled.div`
-	position: relative;
-	height: 100%;
-	width: calc(100% - 4.1rem);
-	& > div {
-		&:nth-child(2) {
-			height: 100%;
-			& > div {
-				& > div {
-					display: flex;
-					align-items: flex-end;
-					height: 100%;
-				}
-			}
-		}
-	}
-	@media screen and (max-width: 1100px) {
-		width: 100%;
-	}
-`;
-
-const Position = styled.div`
-	position: absolute;
-	right: 4rem;
-	top: 2.6rem;
-	font-weight: 400;
-	font-size: 1.2rem;
-	line-height: 1.7rem;
-	color: ${props => props.theme.colorBlack};
-	@media screen and (max-width: 567px) {
-		font-size: 1.5rem;
-		line-height: 2rem;
-	}
-`;
-
-const Corner = styled.div`
-	position: absolute;
-	z-index: 5;
-	right: 3.6rem;
-	bottom: 3.6rem;
-`;
-
-const CornerTop = styled.div`
-	margin-bottom: 2rem;
-	text-align: right;
-	& > p {
-		font-weight: 400;
-		font-size: 1.3rem;
-		line-height: 1.7rem;
-		color: ${props => props.theme.colorBlack};
-		text-transform: uppercase;
-	}
-	@media screen and (max-width: 1100px) {
-		margin-bottom: 0;
-	}
-`;
-
-const CornerBottom = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 1.8rem;
-	& > span {
-		font-weight: 300;
-		font-size: 1.3rem;
-		line-height: 1.7rem;
-		color: ${props => props.theme.colorBlack};
-		text-transform: uppercase;
-	}
-	@media screen and (max-width: 1100px) {
-		display: none;
-	}
-`;
-
-const Plus = styled.svg`
-	width: 3.8rem;
-	height: 3.8rem;
-	fill: none;
-	cursor: pointer;
-	& > path {
-		fill: black;
-		transition: all 0.2s ease;
-	}
-`;
-
-const SpecWrapper = styled.ul`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	list-style: disc;
-	@media screen and (max-width: 567px) {
-		gap: 2rem;
-		transform: translateX(0.3rem);
-	}
-`;
-
-const SpecItem = styled.li`
-	position: relative;
-	list-style: disc;
-	width: calc(33.33333333% - 2rem);
-	margin-right: 2rem;
-	font-weight: 400;
-	font-size: 1.1rem;
-	line-height: 1.5rem;
-	color: ${props => props.theme.colorBlack};
-	&:nth-of-type(3n) {
-		margin-right: 0;
-	}
-	@media screen and (max-width: 1100px) {
-		font-size: 1.7rem;
-		line-height: 2.2rem;
-	}
-	@media screen and (max-width: 567px) {
-		width: calc(50% - 1rem);
-		margin-right: unset;
-	}
-`;
 
 export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
-	const [slides, setSlides] = useState([]);
-	const [lastSlide, setLastSlide] = useState(false);
-	const [firstSlide, setFirstSlide] = useState(true);
 	const [showZoomImage, setShowZoomImage] = useState(false);
 	const dispatch = useDispatch();
 	const [curProd, setCurProd] = useState({});
@@ -466,12 +307,14 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 	const [inStock, setInStock] = useState();
 	const [color, setColor] = useState('');
 	const [size, setSize] = useState({});
-	const [currentSlide, setCurrentSlide] = useState('01');
 	const location = useLocation();
 	const productName = location.pathname.split('/')[2].replace(/-/gi, ' ');
 	const cart = useSelector(state => state.cart);
+	const ref = useRef(null);
 
 	useEffect(() => {
+		ref.current.scrollIntoView({ behavior: 'smooth' });
+
 		const result = dataItems.find(
 			item => item.name.toLowerCase() === productName
 		);
@@ -481,11 +324,7 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 			sizeShort: result.options[0].sizeShort,
 			sizeFull: result.options[0].sizeFull,
 		});
-
-		curProd.imgSlider?.length <= 9
-			? setSlides('0' + curProd.imgSlider.length)
-			: setSlides(curProd.imgSlider?.length);
-	}, [productName, curProd.imgSlider?.length]);
+	}, [productName]);
 
 	const handleClickBtn = id => {
 		setShowmodalSize(false);
@@ -516,7 +355,7 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 				showZoomImage={showZoomImage}
 				setShowZoomImage={setShowZoomImage}
 			/>
-			<MainWrapper>
+			<MainWrapper ref={ref}>
 				<MainLeft>
 					<MainLeftTop>
 						<Angle>
@@ -530,38 +369,7 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 							</ModelBlock>
 							<ModelPrice>{curProd.price}.00 USD</ModelPrice>
 						</Model>
-						<Content>
-							<Item>
-								<Title>TECHNICAL INFORMATION</Title>
-								{curProd?.technicalInformation?.split('\n').map(item => (
-									<Text key={item}>{item}</Text>
-								))}
-							</Item>
-							<Item>
-								<Title>SPECIFICATION</Title>
-								{curProd?.specificationIndividual ? (
-									<SpecWrapper>
-										{curProd?.specificationIndividual
-											?.split('\n')
-											.map((item, index) => (
-												<SpecItem key={item + index}>{item}</SpecItem>
-											))}
-									</SpecWrapper>
-								) : (
-									<>
-										{curProd?.specification?.split('\n').map(item => (
-											<Text key={item}>{item}</Text>
-										))}
-									</>
-								)}
-							</Item>
-							<Item>
-								<Title>CARE SPECIFICATION</Title>
-								{curProd?.careSpecification?.split('\n').map(item => (
-									<Text key={item}>{item}</Text>
-								))}
-							</Item>
-						</Content>
+						<ProductCharacteristic curProd={curProd} />
 					</MainLeftTop>
 					<Options
 						setShowmodal={setShowmodalProduct}
@@ -597,44 +405,10 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 						<span>VISUAL ASSISTANT</span>
 						<span>IMAGE QUANTITY</span>
 					</MainRightAside>
-					<MainRightContent>
-						<Position>
-							{currentSlide}/{slides}
-						</Position>
-						<Slider
-							curProd={curProd.imgSlider}
-							firstSlide={firstSlide}
-							lastSlide={lastSlide}
-							setLastSlide={setLastSlide}
-							setFirstSlide={setFirstSlide}
-							setCurrentSlide={setCurrentSlide}
-						/>
-						<Corner>
-							<CornerTop>
-								<p>MODEL M SIZE</p>
-								<p>180 CM TALL</p>
-								<p>360* AVAILIBLE</p>
-							</CornerTop>
-							<CornerBottom>
-								<span>OPTICAL ZOOM</span>
-								<Plus
-									viewBox='0 0 38 38'
-									onClick={() => setShowZoomImage(true)}
-								>
-									<path d='M37.88 37.6899H31.63V37.09H37.28V31.4399H37.88V37.6899Z' />
-									<path d='M23.5 37.0901H15.37V37.6901H23.5V37.0901Z' />
-									<path d='M7.22998 37.6899H0.98999V31.4399H1.57996V37.09H7.22998V37.6899Z' />
-									<path d='M1.58997 15.1699H0.98999V23.2999H1.58997V15.1699Z' />
-									<path d='M1.57996 7.04004H0.98999V0.790039H7.22998V1.39008H1.57996V7.04004Z' />
-									<path d='M23.5 0.790039H15.37V1.39008H23.5V0.790039Z' />
-									<path d='M37.88 7.04004H37.28V1.39008H31.63V0.790039H37.88V7.04004Z' />
-									<path d='M37.88 15.1799H37.28V23.3099H37.88V15.1799Z' />
-									<path d='M19.76 10.4399H19.3101V26.84H19.76V10.4399Z' />
-									<path d='M27.9301 18.3301H11.53V18.7801H27.9301V18.3301Z' />
-								</Plus>
-							</CornerBottom>
-						</Corner>
-					</MainRightContent>
+					<ProductPhotos
+						curProd={curProd}
+						setShowZoomImage={setShowZoomImage}
+					/>
 				</MainRight>
 			</MainWrapper>
 		</>

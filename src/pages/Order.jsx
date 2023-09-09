@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
 import { OrderDetails } from '../components/orderComponent/OrderDetails';
-import { Socials } from '../components/Socials';
+import { Socials } from '../interface/Socials';
 
 const Wrapper = styled.div`
 	/* height: calc(100vh - 4rem); */
@@ -205,7 +205,6 @@ export const Order = () => {
 					<AsideBottom />
 				</GearPreview>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

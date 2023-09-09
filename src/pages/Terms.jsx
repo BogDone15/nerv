@@ -1,20 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
 import { TermsDetails } from '../components/termsComponent/TermsDetails';
+import { useListenToScroll } from '../hooks/ListenToScroll';
 
 const Wrapper = styled.div`
-	/* height: calc(100vh - 4rem); */
 	height: 100%;
 	max-width: 192rem;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
@@ -24,8 +21,6 @@ const Block = styled.div`
 	position: relative;
 	display: flex;
 	height: 100%;
-	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
-	/* margin-bottom: 7rem; */
 `;
 
 const Aside = styled.div`
@@ -67,7 +62,6 @@ const Right = styled.div`
 	flex-direction: column;
 	width: calc(100% - 4.5rem);
 	height: 100%;
-	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		width: 100%;
 	}
@@ -141,33 +135,16 @@ const ScrollArrow = styled.div`
 
 export const Terms = () => {
 	const [isVisible, setIsVisible] = useState(false);
-	const divRef = useRef(null);
+	const ref = useRef(null);
 
-	useEffect(() => {
-		// divRef.current.scrollIntoView({ behavior: 'smooth' });
-
-		window.addEventListener('scroll', listenToScroll);
-		return () => window.removeEventListener('scroll', listenToScroll);
-	});
-
-	const listenToScroll = () => {
-		let heightToHideFrom = 100;
-		const winScroll =
-			document.body.scrollTop || document.documentElement.scrollTop;
-
-		if (winScroll > heightToHideFrom) {
-			!isVisible && setIsVisible(true);
-		} else {
-			setIsVisible(false);
-		}
-	};
+	useListenToScroll(ref, setIsVisible, isVisible);
 
 	const handleClick = () => {
-		divRef.current.scrollIntoView({ behavior: 'smooth' });
+		ref.current.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	return (
-		<Wrapper ref={divRef}>
+		<Wrapper ref={ref}>
 			<Block>
 				<Aside>
 					<AsideTop />
@@ -179,7 +156,6 @@ export const Terms = () => {
 					<AsideTop />
 				</GearPreview>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

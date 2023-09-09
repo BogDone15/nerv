@@ -23,7 +23,7 @@ const StyledSelectWrapper = styled.div`
 	@media screen and (max-width: 567px) {
 		margin-bottom: 2.6rem;
 		& > p {
-			font-size: 1.4rem;
+			font-size: ${props => props.theme.fontsm};
 		}
 	}
 `;
@@ -39,8 +39,11 @@ const StyledSelect = styled(Select)`
 		font-size: 1.8rem;
 		border-radius: 0;
 		cursor: pointer;
-		&:hover {
-			border-color: unset;
+		transition: all 0.2s linear;
+		&:hover,
+		&:focus,
+		&:focus-within {
+			border: 1px solid #0f0f0f !important;
 		}
 		@media screen and (max-width: 567px) {
 			font-size: 16px;
@@ -60,6 +63,11 @@ const StyledSelect = styled(Select)`
 
 	.Select__single-value {
 		margin-left: 0;
+		font-size: ${props => props.theme.fontsm};
+		color: ${props => props.theme.colorBlack};
+		@media screen and (max-width: 567px) {
+			font-size: 16px;
+		}
 	}
 
 	.Select__control:hover {

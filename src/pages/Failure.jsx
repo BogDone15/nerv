@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FailureDetails } from '../components/failureComponent/FailureDetails';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
 
 const Wrapper = styled.div`
 	/* height: calc(100vh - 4rem); */
@@ -109,7 +109,6 @@ export const Failure = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

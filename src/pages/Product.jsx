@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ModalProdAdd } from '../components/productComponent/ModalProdAdd';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
 import { SingleProduct } from '../components/productComponent/SingleProduct';
-import { Socials } from '../components/Socials';
+import { Socials } from '../interface/Socials';
 import { SizeChart } from '../components/productComponent/SizeChart';
 
 const Wrapper = styled.div`
@@ -113,7 +113,6 @@ export const Product = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

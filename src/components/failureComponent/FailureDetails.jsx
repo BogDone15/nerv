@@ -6,7 +6,7 @@ import failureBg from '../../assets/error-bg.png';
 import failureBgTab from '../../assets/error-bg-tab.png';
 import failureBgMob from '../../assets/error-bg-mob.png';
 import loaderText from '../../assets/loader-text.svg';
-import { Status } from '../Status';
+import { Status } from '../../interface/Status';
 
 const Wrapper = styled.div`
 	position: relative;

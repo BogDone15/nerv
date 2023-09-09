@@ -8,6 +8,7 @@ import augmenBgThird from '../../assets/augmen-bg3.png';
 import itemFirst from '../../assets/items/item1.svg';
 
 import { dataHero } from '../../data';
+import ShuffleLetters from '../../interface/ShuffleLetters';
 
 const Menu = styled.div`
 	display: flex;
@@ -45,10 +46,9 @@ const MenuMainView = styled.div`
 	text-align: center;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
-	text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
+	/* text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')}; */
 	cursor: pointer;
 	&:hover {
-		text-decoration: underline;
 		font-weight: 900;
 	}
 `;
@@ -243,7 +243,8 @@ export const AugmentationsMenu = ({
 			</MenuTop>
 			<MenuMain>
 				<MenuMainView onClick={() => viewAllGear()} showAllGear={showAllGear}>
-					VIEW ALL GEAR
+					{/* VIEW ALL GEAR */}
+					<ShuffleLetters text='VIEW ALL GEAR' />
 				</MenuMainView>
 				<MenuGroup lock='true'>
 					<Lock viewBox='0 0 8.56 12.11'>

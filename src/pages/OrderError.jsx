@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
+import { Nav } from '../interface/Nav';
 import { Error } from '../components/OrderStatus/Error';
-import { Socials } from '../components/Socials';
+import { Socials } from '../interface/Socials';
 
 const Wrapper = styled.div`
 	/* height: calc(100vh - 4rem); */
@@ -101,8 +101,14 @@ const Group = styled.div`
 `;
 
 export const OrderError = () => {
+	const ref = useRef(null);
+
+	useEffect(() => {
+		ref.current.scrollIntoView({ scroll: 'smooth' });
+	}, []);
+
 	return (
-		<Wrapper>
+		<Wrapper ref={ref}>
 			<Block>
 				<Aside>
 					<AsideTop />
@@ -111,7 +117,6 @@ export const OrderError = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>

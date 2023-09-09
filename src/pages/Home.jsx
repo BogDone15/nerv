@@ -1,13 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { Footer } from '../interface/Footer';
+import { Header } from '../interface/Header';
 import { Main } from '../components/homeComponent/Main';
-import { Loader } from '../components/Loader';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
+import { Loader } from '../interface/Loader';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
 import { Road } from '../routes/Road';
 
 const Wrapper = styled.div`

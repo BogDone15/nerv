@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { Link } from 'react-router-dom';
 import { FetchingLoader } from '../FetchingLoader';
+import ShuffleLetters from '../../interface/ShuffleLetters';
 
 const GearWrapper = styled.div`
 	position: relative;
@@ -99,10 +100,10 @@ const GearMainViewMob = styled.span`
 		display: inline;
 		color: ${props => props.theme.colorBlack} !important;
 		font-weight: ${props => (props.showAllGear ? '900' : '600')};
-		text-decoration: ${props => (props.showAllGear ? 'underline' : 'none')};
+		/* text-decoration: ${props =>
+			props.showAllGear ? 'underline' : 'none'}; */
 		cursor: pointer;
 		&:hover {
-			text-decoration: underline;
 			font-weight: 900;
 		}
 	}
@@ -354,7 +355,8 @@ export const Gear = ({
 						onClick={() => viewAllGear()}
 						showAllGear={showAllGear}
 					>
-						VIEW ALL GEAR
+						{/* VIEW ALL GEAR */}
+						<ShuffleLetters text='VIEW ALL GEAR' />
 					</GearMainViewMob>{' '}
 					<GearMainViewApp>
 						MODEL LINE{' '}

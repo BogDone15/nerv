@@ -148,6 +148,7 @@ const WrapperMainBlock = styled.div`
 		padding: 1.5rem 5.7rem 1.3rem 1.6rem;
 		height: 4.6rem;
 		background: ${props => props.theme.colorMain};
+		border: 1px solid transparent;
 		cursor: pointer;
 		transition: all 0.2s ease;
 		overflow: hidden;
@@ -157,14 +158,29 @@ const WrapperMainBlock = styled.div`
 			line-height: 1.8rem;
 			color: #adadad;
 			text-transform: uppercase;
+		transition: all 0.2s ease;
+
 		}
 		&:hover {
+			background: transparent;
+			border: 1px solid ${props => props.theme.colorMain};
+			& > span {
+				color: ${props => props.theme.colorMain};
+			}
 			${IconArrowHide} {
 				transform: translate(4.2rem, -50%);
 				opacity: 1;
+				fill: ${props => props.theme.colorMain};
+				&>path {
+					fill: ${props => props.theme.colorMain};
+				}
 			}
 			${IconArrow} {
 				transform: translate(5rem, -50%);
+				fill: ${props => props.theme.colorMain};
+				&>path {
+					fil${props => props.theme.colorMain}l
+				}
 			}
 		}
 	}

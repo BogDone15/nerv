@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
+import { Nav } from '../interface/Nav';
 import { Successfull } from '../components/OrderStatus/Successfull';
-import { Socials } from '../components/Socials';
+import { Socials } from '../interface/Socials';
 
 const Wrapper = styled.div`
-	/* height: calc(100vh - 4rem); */
 	height: 100%;
 	max-width: 192rem;
 	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		height: calc(100vh - 10rem);
 	}
@@ -28,7 +24,6 @@ const Wrapper = styled.div`
 const Block = styled.div`
 	display: flex;
 	height: 100%;
-	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 `;
 
 const Aside = styled.div`
@@ -36,7 +31,6 @@ const Aside = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 4.5rem;
-	/* margin-top: 0.9rem; */
 	margin-top: -3.7rem;
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
@@ -101,8 +95,14 @@ const Group = styled.div`
 `;
 
 export const OrderGranted = () => {
+	const ref = useRef(null);
+
+	useEffect(() => {
+		ref.current.scrollIntoView({ scroll: 'smooth' });
+	}, []);
+
 	return (
-		<Wrapper>
+		<Wrapper ref={ref}>
 			<Block>
 				<Aside>
 					<AsideTop />
@@ -111,7 +111,6 @@ export const OrderGranted = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
@@ -123,7 +122,6 @@ export const OrderGranted = () => {
 					</Group>
 				</Right>
 			</Block>
-			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

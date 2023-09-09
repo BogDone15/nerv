@@ -6,30 +6,22 @@ import { AugmentationsMenu } from '../components/characterComponent/Augmentation
 import { Gear } from '../components/characterComponent/Gear';
 import { Hero } from '../components/characterComponent/Hero';
 import { Window } from '../components/characterComponent/Window';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Nav } from '../components/Nav';
-import { Socials } from '../components/Socials';
-import { dataHero } from '../data';
+import { Nav } from '../interface/Nav';
+import { Socials } from '../interface/Socials';
+import { asideText, dataHero } from '../data';
 import { dataItems } from '../data';
 
 const Wrapper = styled.div`
-	/* height: calc(100vh - 4rem); */
 	height: 100%;
-	/* max-width: calc(100% - 9.9rem); */
 	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) and (orientation: portrait) {
-		/* height: auto; */
-		/* height: calc(100vh - 10rem); */
 		height: calc(100vh - 7rem);
 	}
 	@media screen and (max-width: 567px) {
 		position: relative;
-		/* min-height: 100vh; */
 		height: 100%;
 	}
 `;
@@ -37,15 +29,12 @@ const Wrapper = styled.div`
 const Block = styled.div`
 	display: flex;
 	height: 100%;
-	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	@media screen and (max-width: 1100px) {
-		/* height: calc(100vh - 7rem); */
 		height: 100%;
 	}
 	@media screen and (max-width: 567px) {
 		height: 100%;
 		min-height: calc(100vh - 7rem);
-		/* margin-bottom: 7rem; */
 	}
 `;
 
@@ -55,7 +44,6 @@ const Aside = styled.div`
 	flex-direction: column;
 	width: 4.5rem;
 	margin-top: -3.7rem;
-	/* margin-top: 0.9rem; */
 	border-right: 1px solid ${props => props.theme.colorBorder};
 	@media screen and (max-width: 1100px) {
 		position: absolute;
@@ -211,19 +199,14 @@ export const Character = () => {
 						<span>HEAD</span>
 					</AsideMiddle>
 					<AsideBottom>
-						<AsideText>
-							<span>TXT</span>
-						</AsideText>
-						<AsideText>
-							<span>FILTER / MENU</span>
-						</AsideText>
-						<AsideText>
-							<span>FIRST EXPANSION</span>
-						</AsideText>
+						{asideText.map((item, index) => (
+							<AsideText key={index + item}>
+								<span>{item.name}</span>
+							</AsideText>
+						))}
 					</AsideBottom>
 				</Aside>
 				<Right>
-					{/* <Header /> */}
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
@@ -262,7 +245,6 @@ export const Character = () => {
 					</Group>
 				</Right>
 			</Block>
-			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

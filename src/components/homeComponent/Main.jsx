@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import bgImg from '../../assets/main-bg.png';
 import bgImgMob from '../../assets/main-bg-mob.png';
 import charackters from '../../assets/charackters.png';
 import charackterMob from '../../assets/charackter.svg';
 import styled from 'styled-components';
-import { Status } from '../Status';
+import { Status } from '../../interface/Status';
 import { Modal } from './Modal';
 import { Link } from 'react-router-dom';
-import { Nav } from '../Nav';
-import { Socials } from '../Socials';
+
+import { Socials } from '../../interface/Socials';
 import { TypeAnimationDesktop } from '../../interface/TypeAnimationDesktop';
 import { TypeAnimationMob } from '../../interface/TypeAnimationMob';
 import { TypeAnimationMobSecond } from '../../interface/TypeAnimationMobSecond';
 import apiCallsService from '../../services/apiCalls.service';
+import { Nav } from '../../interface/Nav';
+import ShuffleLetters from '../../interface/ShuffleLetters';
 
 const TopCorner = styled.div`
 	position: absolute;
@@ -244,10 +246,10 @@ const ChooseBtn = styled.div`
 		text-align: center;
 		height: 100%;
 		width: 1.6rem;
+		font-size: 1.2rem;
+		font-weight: 700;
 		transition: all 0.2s ease;
 		& > span {
-			font-weight: 700;
-			font-size: 1.2rem;
 			color: ${props => props.theme.colorMain};
 			transform: rotate(-180deg) translateY(-4.4rem);
 			writing-mode: vertical-lr;
@@ -343,7 +345,10 @@ export const Main = () => {
 					<ChooseBtn>
 						<CHooseBtnGroup>
 							<Link to='/character'>
-								<span>CHOOSE YOUR APPEARANCE</span>
+								{/* <span>CHOOSE YOUR APPEARANCE</span> */}
+								<span>
+									<ShuffleLetters text='CHOOSE YOUR APPEARANCE' />
+								</span>
 							</Link>
 							<Line viewBox='0 0 20 990'>
 								<path

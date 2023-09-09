@@ -262,28 +262,13 @@ const ContentBottom = styled.div`
 		background: ${props => props.theme.colorMain};
 		padding: 0.2rem 0 0;
 		height: 4.6rem;
-		position: relative;
-		transition: all 0.3s ease;
+		border: 1px solid transparent;
+		transition: all 0.2s ease;
 
-		&::after {
-			position: absolute;
-			content: '';
-			width: 0;
-			height: 100%;
-			top: 0;
-			left: 0;
-			direction: rtl;
-			z-index: 1;
-			box-shadow: -0.7rem -0.7rem 2rem 0px #fff9,
-				-0.4rem -0.4rem 0.5rem 0px #fff9, 0.7rem 0.7rem 2rem 0px #0002,
-				0.4rem 0.4rem 0.5rem 0px #0001;
-			transition: all 0.3s ease;
-		}
-		&:hover:after {
-			left: auto;
-			right: 0;
-			width: 100%;
-		}
+		&:hover {
+		background: transparent;
+		border: 1px solid ${props => props.theme.colorMain};
+		color: ${props => props.theme.colorMain};
 	}
 `;
 
