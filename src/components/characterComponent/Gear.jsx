@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { Link } from 'react-router-dom';
-import { FetchingLoader } from '../FetchingLoader';
-import ShuffleLetters from '../../interface/ShuffleLetters';
+import { FetchingLoader } from '../../interface/FetchingLoader';
+import { ShuffleLetters } from '../../interface/ShuffleLetters';
 
 const GearWrapper = styled.div`
 	position: relative;

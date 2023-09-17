@@ -310,10 +310,10 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 	const location = useLocation();
 	const productName = location.pathname.split('/')[2].replace(/-/gi, ' ');
 	const cart = useSelector(state => state.cart);
-	const ref = useRef(null);
+	// const ref = useRef(null);
 
 	useEffect(() => {
-		ref.current.scrollIntoView({ behavior: 'smooth' });
+		// ref.current.scrollIntoView({ behavior: 'smooth' });
 
 		const result = dataItems.find(
 			item => item.name.toLowerCase() === productName
@@ -355,7 +355,8 @@ export const SingleProduct = ({ setShowmodalProduct, setShowmodalSize }) => {
 				showZoomImage={showZoomImage}
 				setShowZoomImage={setShowZoomImage}
 			/>
-			<MainWrapper ref={ref}>
+			{/* <MainWrapper ref={ref}> */}
+			<MainWrapper>
 				<MainLeft>
 					<MainLeftTop>
 						<Angle>

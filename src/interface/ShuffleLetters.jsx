@@ -1,38 +1,66 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
-const ShuffleReverseLetters = styled.div`
-	display: inline-block;
-	transition: transform 1s ease;
-`;
-
-const ShuffleReverseLettersContainer = styled.div`
-	position: relative;
-	display: inline-block;
-	transition: transform 1s ease;
-`;
-
-const ShuffleLetters = ({ text }) => {
+export const ShuffleLetters = ({ text }) => {
 	const [shuffledText, setShuffledText] = useState(text);
 
-	const shuffleText = () => {
-		setShuffledText(text.split('').reverse().join(''));
-	};
+	const allowedCharacters = shuffledText.replace(/ /g, '').split('');
 
-	const resetText = () => {
-		setShuffledText(text);
-	};
+	function getRandomCharacter() {
+		const randomIndex = Math.floor(Math.random() * allowedCharacters.length);
+		return allowedCharacters[randomIndex];
+	}
 
-	return (
-		<ShuffleReverseLettersContainer>
-			<ShuffleReverseLetters
-				onMouseEnter={shuffleText}
-				onMouseLeave={resetText}
-			>
-				{shuffledText}
-			</ShuffleReverseLetters>
-		</ShuffleReverseLettersContainer>
-	);
+	function createEventHandler() {
+		let isInProgress = false;
+
+		let BASE_DELAY;
+
+		return function handleHoverEvent(e) {
+			if (isInProgress) {
+				return;
+			}
+			const text = e.target.innerHTML;
+			const randomizedText = text.split('').map(getRandomCharacter).join('');
+
+			if (text.length <= 5) {
+				BASE_DELAY = 28;
+			}
+
+			if (text.length > 5) {
+				BASE_DELAY = 20;
+			}
+
+			if (text.length >= 11) {
+				BASE_DELAY = 10;
+			}
+
+			if (text.length > 17) {
+				BASE_DELAY = 7;
+			}
+
+			for (let i = 0; i < text.length; i++) {
+				isInProgress = true;
+
+				setTimeout(
+					() => {
+						const nextIndex = i + 1;
+						e.target.innerHTML = `${text.substring(
+							0,
+							nextIndex
+						)}${randomizedText.substring(nextIndex)}`;
+
+						if (nextIndex === text.length) {
+							isInProgress = false;
+						}
+					},
+					// i * (text.length > 11 ? 10 : BASE_DELAY)
+					i * BASE_DELAY
+				);
+			}
+		};
+	}
+
+	const eventHandler = createEventHandler();
+
+	return <div onMouseEnter={eventHandler}> {shuffledText}</div>;
 };
-
-export default ShuffleLetters;

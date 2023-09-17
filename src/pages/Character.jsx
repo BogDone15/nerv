@@ -190,6 +190,10 @@ export const Character = () => {
 		prodcutModelArmor && setActiveitem(prodcutModelArmor.id);
 	}, []);
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<Wrapper>
 			<Block>

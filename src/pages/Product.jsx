@@ -1,25 +1,19 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ModalProdAdd } from '../components/productComponent/ModalProdAdd';
-import { Footer } from '../interface/Footer';
-import { Header } from '../interface/Header';
 import { Nav } from '../interface/Nav';
 import { SingleProduct } from '../components/productComponent/SingleProduct';
 import { Socials } from '../interface/Socials';
 import { SizeChart } from '../components/productComponent/SizeChart';
 
 const Wrapper = styled.div`
-	/* height: calc(100vh - 4rem); */
 	height: 100%;
-	/* max-width: 192rem; */
-	/* max-width: calc(100% - 9.9rem); */
 	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	/* padding-top: 1rem; */
 	@media screen and (max-width: 1100px) {
 		height: auto;
 	}
@@ -28,7 +22,6 @@ const Wrapper = styled.div`
 const Block = styled.div`
 	display: flex;
 	height: 100%;
-	/* border-bottom: 1px solid ${props => props.theme.colorBorder}; */
 	@media screen and (max-width: 1100px) {
 		border-bottom: unset;
 	}
@@ -102,6 +95,10 @@ export const Product = () => {
 	const location = useLocation();
 	const path = location.pathname;
 	const productName = path.split('/')[2].replace(/-/gi, ' ');
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<Wrapper>

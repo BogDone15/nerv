@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 
-export const useListenToScroll = (ref, setIsVisible, isVisible) => {
+export const useListenToScroll = (setIsVisible, isVisible) => {
 	useEffect(() => {
-		ref.current.scrollIntoView({ behavior: 'smooth' });
-
 		window.addEventListener('scroll', listenToScroll);
 		return () => window.removeEventListener('scroll', listenToScroll);
 	});

@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav } from '../interface/Nav';
 import { Socials } from '../interface/Socials';
@@ -135,16 +135,17 @@ const ScrollArrow = styled.div`
 
 export const Terms = () => {
 	const [isVisible, setIsVisible] = useState(false);
-	const ref = useRef(null);
+	const location = useLocation();
+	const pathName = location.pathname.split('/')[1].replace(/-/gi, ' ');
 
-	useListenToScroll(ref, setIsVisible, isVisible);
+	useListenToScroll(setIsVisible, isVisible);
 
 	const handleClick = () => {
-		ref.current.scrollIntoView({ behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 	};
 
 	return (
-		<Wrapper ref={ref}>
+		<Wrapper>
 			<Block>
 				<Aside>
 					<AsideTop />
@@ -159,7 +160,11 @@ export const Terms = () => {
 					<Nav>
 						<Link to='/'>Main</Link>
 						<span>&gt;</span>
-						<Link to='/terms'>PROTOCOLS</Link>
+						{pathName === 'corporation' || pathName === 'contacts' ? (
+							<Link to='/corporation'>CORPORATION</Link>
+						) : (
+							<Link to='/terms-of-condition'>PROTOCOLS</Link>
+						)}
 					</Nav>
 					<Group>
 						{isVisible && (
@@ -180,7 +185,6 @@ export const Terms = () => {
 					</Group>
 				</Right>
 			</Block>
-			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

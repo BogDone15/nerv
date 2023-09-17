@@ -266,9 +266,10 @@ const ContentBottom = styled.div`
 		transition: all 0.2s ease;
 
 		&:hover {
-		background: transparent;
-		border: 1px solid ${props => props.theme.colorMain};
-		color: ${props => props.theme.colorMain};
+			background: transparent;
+			border: 1px solid ${props => props.theme.colorMain};
+			color: ${props => props.theme.colorMain};
+		}
 	}
 `;
 

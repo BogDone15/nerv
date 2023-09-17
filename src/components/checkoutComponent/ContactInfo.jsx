@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from '../../interface/Checkbox';
 import { SelectCountry } from '../../interface/SelectCountry';
-import { FetchingLoader } from '../FetchingLoader';
+import { FetchingLoader } from '../../interface/FetchingLoader';
 
 const Wrapper = styled.div`
 	width: 65%;
@@ -244,8 +244,7 @@ const Button = styled.button`
 		font-size: ${props => props.theme.fontsm};
 		line-height: 1.8rem;
 		color: #adadad;
-	transition: all 0.2s ease;
-
+		transition: all 0.2s ease;
 	}
 	&:hover {
 		background: transparent;
@@ -253,6 +252,7 @@ const Button = styled.button`
 		& > span {
 			color: ${props => props.theme.colorMain};
 		}
+	}
 	@media screen and (max-width: 1100px) {
 		height: 6rem;
 		& > span {

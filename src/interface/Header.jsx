@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { linksTerms, contactTerms } from '../data';
-import ShuffleLetters from './ShuffleLetters';
+import { ShuffleLetters } from './ShuffleLetters';
 
 const Top = styled.div`
 	display: flex;
@@ -105,7 +105,9 @@ export const Header = () => {
 					<Item key={link.id}>
 						<Link user={link.name} to={link.href}>
 							{/* {link.name} */}
+							{/* <ShuffleLetters text={link.name} /> */}
 							<ShuffleLetters text={link.name} />
+							{/* <ShuffleAndPrintOnHover text={link.name} /> */}
 						</Link>
 					</Item>
 				))}

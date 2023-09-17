@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import augmenBgFirst from '../../assets/augmen-bg1.svg';
 import augmenBgSecond from '../../assets/augmen-bg2.svg';
 import augmenBgThird from '../../assets/augmen-bg3.png';
 import itemFirst from '../../assets/items/item1.svg';
-
 import { dataHero } from '../../data';
-import ShuffleLetters from '../../interface/ShuffleLetters';
+import { ShuffleLetters } from '../../interface/ShuffleLetters';
 
 const Menu = styled.div`
 	display: flex;

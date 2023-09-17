@@ -14,7 +14,7 @@ import { TypeAnimationMob } from '../../interface/TypeAnimationMob';
 import { TypeAnimationMobSecond } from '../../interface/TypeAnimationMobSecond';
 import apiCallsService from '../../services/apiCalls.service';
 import { Nav } from '../../interface/Nav';
-import ShuffleLetters from '../../interface/ShuffleLetters';
+import { ShuffleLetters } from '../../interface/ShuffleLetters';
 
 const TopCorner = styled.div`
 	position: absolute;
@@ -262,11 +262,7 @@ const ChooseBtn = styled.div`
 			}
 		}
 	}
-	&:hover {
-		a {
-			opacity: 0.7;
-		}
-	}
+
 	@media screen and (max-width: 1100px) {
 		top: unset;
 		bottom: 0;

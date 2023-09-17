@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.svg';
-import ShuffleLetters from './ShuffleLetters';
+import { ShuffleLetters } from './ShuffleLetters';
 
 const Wrapper = styled.div`
 	display: flex;

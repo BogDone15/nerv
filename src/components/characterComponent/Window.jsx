@@ -158,9 +158,9 @@ const WrapperMainBlock = styled.div`
 			line-height: 1.8rem;
 			color: #adadad;
 			text-transform: uppercase;
-		transition: all 0.2s ease;
-
+			transition: all 0.2s ease;
 		}
+
 		&:hover {
 			background: transparent;
 			border: 1px solid ${props => props.theme.colorMain};
@@ -171,15 +171,15 @@ const WrapperMainBlock = styled.div`
 				transform: translate(4.2rem, -50%);
 				opacity: 1;
 				fill: ${props => props.theme.colorMain};
-				&>path {
+				& > path {
 					fill: ${props => props.theme.colorMain};
 				}
 			}
 			${IconArrow} {
 				transform: translate(5rem, -50%);
 				fill: ${props => props.theme.colorMain};
-				&>path {
-					fil${props => props.theme.colorMain}l
+				& > path {
+					fill: ${props => props.theme.colorMain};
 				}
 			}
 		}
@@ -210,12 +210,21 @@ const Button = styled.button`
 	height: 4.6rem;
 	cursor: pointer;
 	user-select: none;
+	transition: all 0.2s ease;
 	& > span {
 		font-weight: 450;
 		font-size: 1.4rem;
 		line-height: 1.8rem;
 		color: #adadad;
 		text-transform: uppercase;
+		transition: all 0.2s ease;
+	}
+	&:hover {
+		background: transparent;
+		border: 1px solid ${props => props.theme.colorMain};
+		& > span {
+			color: ${props => props.theme.colorMain};
+		}
 	}
 `;
 

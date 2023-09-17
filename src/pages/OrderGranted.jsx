@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav } from '../interface/Nav';
@@ -95,14 +95,12 @@ const Group = styled.div`
 `;
 
 export const OrderGranted = () => {
-	const ref = useRef(null);
-
 	useEffect(() => {
-		ref.current.scrollIntoView({ scroll: 'smooth' });
+		window.scrollTo(0, 0);
 	}, []);
 
 	return (
-		<Wrapper ref={ref}>
+		<Wrapper>
 			<Block>
 				<Aside>
 					<AsideTop />

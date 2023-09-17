@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../interface/Footer';
-import { Header } from '../interface/Header';
 import { Nav } from '../interface/Nav';
 import { OrderDetails } from '../components/orderComponent/OrderDetails';
 import { Socials } from '../interface/Socials';
@@ -170,7 +168,9 @@ export const Order = () => {
 	const [currentItemName, setCurrentItemName] = useState(defaultItemName);
 	const [currentItemPath, setCurrentItemPath] = useState(defaultItemPath);
 
-	const divRef = useRef(null);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	useEffect(() => {
 		let result;
@@ -184,12 +184,10 @@ export const Order = () => {
 			setCurrentItemName(result.name);
 			setCurrentItemPath(currentItemName.replace(/ /gi, '-').toLowerCase());
 		}
-
-		divRef.current.scrollIntoView({ behavior: 'smooth' });
 	}, [activeImage, cart.products, currentItemName, showFirstItem]);
 
 	return (
-		<Wrapper ref={divRef}>
+		<Wrapper>
 			<Block>
 				<Aside>
 					<AsideTop />

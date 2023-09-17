@@ -93,12 +93,21 @@ const TabletTop = styled.div`
 		background: ${props => props.theme.colorMain};
 		padding-top: 0.1rem;
 		height: 4.6rem;
+		transition: all 0.2s ease;
 
 		& > span {
 			font-weight: 450;
 			font-size: 1.8rem;
 			line-height: 2.2rem;
 			color: #adadad;
+			transition: all 0.2s ease;
+		}
+		&:hover {
+			background: transparent;
+			border: 1px solid ${props => props.theme.colorMain};
+			& > span {
+				color: ${props => props.theme.colorMain};
+			}
 		}
 		@media screen and (max-width: 1100px) {
 			height: 6rem;

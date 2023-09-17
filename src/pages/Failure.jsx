@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FailureDetails } from '../components/failureComponent/FailureDetails';
@@ -99,6 +99,10 @@ const Group = styled.div`
 `;
 
 export const Failure = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<Wrapper>
 			<Block>

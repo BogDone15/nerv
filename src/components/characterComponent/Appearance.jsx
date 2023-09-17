@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { dataItems } from '../../data';
 import { Status } from '../../interface/Status';
 import { Slider } from '../../interface/Slider';
-import ShuffleLetters from '../../interface/ShuffleLetters';
+import { ShuffleLetters } from '../../interface/ShuffleLetters';
 
 const Wrapper = styled.div`
 	position: relative;
@@ -114,7 +114,6 @@ export const Appearance = ({
 				<TabletViewGear onClick={() => viewAllGear()} showAllGear={showAllGear}>
 					{/* <span>VIEW ALL GEAR</span> */}
 					<span>
-						{' '}
 						<ShuffleLetters text='VIEW ALL GEAR' />
 					</span>
 				</TabletViewGear>
