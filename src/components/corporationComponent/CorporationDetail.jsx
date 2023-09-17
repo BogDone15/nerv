@@ -12,12 +12,8 @@ const Wrapper = styled.div`
 		display: flex;
 		align-items: flex-start;
 		gap: 4.1rem;
-		border-top: 1px solid ${props => props.theme.colorBorder};
-		margin-top: rem;
-		padding-top: 4.6rem;
 		padding-left: 0;
 		padding-right: 4.3rem;
-		margin-top: 6.3rem;
 	}
 `;
 

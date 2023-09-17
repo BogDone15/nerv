@@ -241,7 +241,6 @@ export const AugmentationsMenu = ({
 			</MenuTop>
 			<MenuMain>
 				<MenuMainView onClick={() => viewAllGear()} showAllGear={showAllGear}>
-					{/* VIEW ALL GEAR */}
 					<ShuffleLetters text='VIEW ALL GEAR' />
 				</MenuMainView>
 				<MenuGroup lock='true'>

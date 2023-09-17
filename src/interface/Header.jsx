@@ -78,7 +78,7 @@ const Item = styled.li`
 		color: ${props => props.theme.colorMain};
 		text-transform: uppercase;
 		transition: all 0.2s ease;
-		overflow: hidden;
+		cursor: pointer;
 	}
 `;
 

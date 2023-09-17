@@ -31,10 +31,14 @@ export const ShuffleLetters = ({ text }) => {
 			}
 
 			if (text.length >= 11) {
-				BASE_DELAY = 10;
+				BASE_DELAY = 12;
 			}
 
-			if (text.length > 17) {
+			if (text.length > 15) {
+				BASE_DELAY = 9;
+			}
+
+			if (text.length > 20) {
 				BASE_DELAY = 7;
 			}
 
@@ -62,5 +66,5 @@ export const ShuffleLetters = ({ text }) => {
 
 	const eventHandler = createEventHandler();
 
-	return <div onMouseEnter={eventHandler}> {shuffledText}</div>;
+	return <span onMouseEnter={eventHandler}> {shuffledText}</span>;
 };
