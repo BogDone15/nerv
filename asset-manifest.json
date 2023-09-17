@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nerv/static/css/main.17e6dcf7.css",
-    "main.js": "/nerv/static/js/main.0bd1dcc3.js",
+    "main.js": "/nerv/static/js/main.ed18e535.js",
     "static/media/charackter.svg": "/nerv/static/media/charackter.bd97342b5eb61b8e610e9397069ad0b7.svg",
     "static/media/jacket-preview.svg": "/nerv/static/media/jacket-preview.582ae0c38a373abb4723d8d3f7ceff6a.svg",
     "static/media/jacket.svg": "/nerv/static/media/jacket.ada936807569f60393599d3c578b1476.svg",
@@ -46,10 +46,10 @@
     "static/media/augmen-bg2.svg": "/nerv/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
     "static/media/hero-bg.svg": "/nerv/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
     "main.17e6dcf7.css.map": "/nerv/static/css/main.17e6dcf7.css.map",
-    "main.0bd1dcc3.js.map": "/nerv/static/js/main.0bd1dcc3.js.map"
+    "main.ed18e535.js.map": "/nerv/static/js/main.ed18e535.js.map"
   },
   "entrypoints": [
     "static/css/main.17e6dcf7.css",
-    "static/js/main.0bd1dcc3.js"
+    "static/js/main.ed18e535.js"
   ]
 }
