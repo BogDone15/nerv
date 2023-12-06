@@ -21,11 +21,11 @@ const Wrapper = styled.div`
 const WrapperMain = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
 	width: 100%;
 	height: 100%;
 	gap: 1.6rem;
 	padding: 2rem 1.5rem 2rem 4.3rem;
+	overflow-y: auto;
 `;
 
 const WrapperContent = styled.div`
