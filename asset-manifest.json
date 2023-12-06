@@ -1,24 +1,7 @@
 {
   "files": {
     "main.css": "/nerv/static/css/main.17e6dcf7.css",
-    "main.js": "/nerv/static/js/main.39e4901f.js",
-    "static/media/photocheck-12.png": "/nerv/static/media/photocheck-12.97f1b15d1f205b04d705.png",
-    "static/media/photocheck-18.png": "/nerv/static/media/photocheck-18.f0f88eecd67364d850f6.png",
-    "static/media/photocheck-07.png": "/nerv/static/media/photocheck-07.ff8a808ada6be0658b3a.png",
-    "static/media/photocheck-17.png": "/nerv/static/media/photocheck-17.20cc880060e7da0d8b15.png",
-    "static/media/photocheck-04.png": "/nerv/static/media/photocheck-04.4121bef246fb894b6400.png",
-    "static/media/photocheck-09.png": "/nerv/static/media/photocheck-09.9fc456b72b367d2f8cfc.png",
-    "static/media/photocheck-06.png": "/nerv/static/media/photocheck-06.559bf42558ec619d0f8b.png",
-    "static/media/photocheck-14.png": "/nerv/static/media/photocheck-14.b179f96209405cac0166.png",
-    "static/media/photocheck-13.png": "/nerv/static/media/photocheck-13.dd00039e0298a75d4e44.png",
-    "static/media/photocheck-10.png": "/nerv/static/media/photocheck-10.7a1abc4c099f9cc453f2.png",
-    "static/media/photocheck-08.png": "/nerv/static/media/photocheck-08.612c27dcfea670c8f5aa.png",
-    "static/media/photocheck-19.png": "/nerv/static/media/photocheck-19.60c1add0b489fccba093.png",
-    "static/media/photocheck-03.png": "/nerv/static/media/photocheck-03.7f70c3f7af21439e3792.png",
-    "static/media/photocheck-02.png": "/nerv/static/media/photocheck-02.b44a1c199585d3761cdc.png",
-    "static/media/charackter.png": "/nerv/static/media/charackter.e571188a638f599f060a.png",
-    "static/media/photocheck-20.png": "/nerv/static/media/photocheck-20.439ce324d42c10bba928.png",
-    "static/media/photocheck-21.png": "/nerv/static/media/photocheck-21.b4152b7cf54f085921bf.png",
+    "main.js": "/nerv/static/js/main.71ac9489.js",
     "static/media/charackter.svg": "/nerv/static/media/charackter.bd97342b5eb61b8e610e9397069ad0b7.svg",
     "static/media/jacket-preview.svg": "/nerv/static/media/jacket-preview.582ae0c38a373abb4723d8d3f7ceff6a.svg",
     "static/media/jacket.svg": "/nerv/static/media/jacket.ada936807569f60393599d3c578b1476.svg",
@@ -63,10 +46,10 @@
     "static/media/augmen-bg2.svg": "/nerv/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
     "static/media/hero-bg.svg": "/nerv/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
     "main.17e6dcf7.css.map": "/nerv/static/css/main.17e6dcf7.css.map",
-    "main.39e4901f.js.map": "/nerv/static/js/main.39e4901f.js.map"
+    "main.71ac9489.js.map": "/nerv/static/js/main.71ac9489.js.map"
   },
   "entrypoints": [
     "static/css/main.17e6dcf7.css",
-    "static/js/main.39e4901f.js"
+    "static/js/main.71ac9489.js"
   ]
 }
