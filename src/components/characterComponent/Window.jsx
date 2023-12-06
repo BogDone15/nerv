@@ -229,9 +229,10 @@ const Button = styled.button`
 `;
 
 const Image = styled.img`
-	/* max-height: 38vh;
-	width: auto; */
 	max-width: 100%;
+	object-fit: contain;
+	object-position: center;
+	height: 100%;
 `;
 
 const WrapperMainRight = styled.div`
@@ -398,7 +399,7 @@ export const Window = ({ activeitem }) => {
 								<WrapperMainMiddle>
 									<Scan>Scn</Scan>
 									<RotatePhoto />
-									{/* <Image src={currentItem.imgMain} alt='Nerv' /> */}
+									<Image src={currentItem.imgMain} alt='Nerv' />
 									{/* <Video
                     autoPlay
                     muted
