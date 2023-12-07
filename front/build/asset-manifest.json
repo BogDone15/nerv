@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.36c6b3d6.css",
+    "main.js": "/static/js/main.2ab51401.js",
+    "static/media/fira-code-all-400-normal.woff": "/static/media/fira-code-all-400-normal.c050f0ce726c76d279c8.woff",
+    "static/media/error-bg.png": "/static/media/error-bg.e3059f5f9481fa5e20dd.png",
+    "static/media/preview-order-bg-tab.svg": "/static/media/preview-order-bg-tab.0aa661a75d3ae2406cee2c1e6805c820.svg",
+    "static/media/preview-order-bg.svg": "/static/media/preview-order-bg.7e6648199b1e720c5b2eb88e869857e6.svg",
+    "static/media/error-bg-tab.png": "/static/media/error-bg-tab.5d37efaaf684e6dce724.png",
+    "static/media/error-bg-mob.png": "/static/media/error-bg-mob.07a48cb5df2915269389.png",
+    "static/media/fira-code-latin-400-normal.woff2": "/static/media/fira-code-latin-400-normal.e662d57ce51fba1f46e3.woff2",
+    "static/media/planet.png": "/static/media/planet.3cf81d80a7db2d2e86d3.png",
+    "static/media/fira-code-cyrillic-ext-400-normal.woff2": "/static/media/fira-code-cyrillic-ext-400-normal.8ae7ba46c49a0347ea65.woff2",
+    "static/media/preview-bg.svg": "/static/media/preview-bg.dc513b99c26c479765e39b0ae2b9e5b5.svg",
+    "static/media/fira-code-greek-400-normal.woff2": "/static/media/fira-code-greek-400-normal.fdf1c77f42d62a5dc722.woff2",
+    "static/media/loader-text.svg": "/static/media/loader-text.35e84fa10beac20428c5281b4c685b5f.svg",
+    "static/media/fira-code-latin-ext-400-normal.woff2": "/static/media/fira-code-latin-ext-400-normal.f688c1c39f363f86fd4a.woff2",
+    "static/media/fira-code-cyrillic-400-normal.woff2": "/static/media/fira-code-cyrillic-400-normal.3b12523542a36f074eff.woff2",
+    "static/media/corp.svg": "/static/media/corp.a2f9a0fb4cbe38afa337aac7bbb7514b.svg",
+    "static/media/fira-code-greek-ext-400-normal.woff2": "/static/media/fira-code-greek-ext-400-normal.0e81dfaccdc5adb60d7c.woff2",
+    "static/media/item1-mob.svg": "/static/media/item1-mob.144cc487cc8234124fe6c117c095938c.svg",
+    "static/media/item1.svg": "/static/media/item1.669269f12264223874550aac3245552e.svg",
+    "static/media/logo.svg": "/static/media/logo.14c913c8a7ab7429434587f5591d12d3.svg",
+    "static/media/loader.svg": "/static/media/loader.4a4184fa722634710da61f11544f3573.svg",
+    "static/media/arrow-mob.svg": "/static/media/arrow-mob.f6b26fd158eb09903d9225a9e83af3d0.svg",
+    "index.html": "/index.html",
+    "static/media/augmen-bg1.svg": "/static/media/augmen-bg1.5d6834deed06be63cf194b4db7463a28.svg",
+    "static/media/hero-bg-tab.svg": "/static/media/hero-bg-tab.0340752cd65219019f394a59da97ebab.svg",
+    "static/media/augmen-bg2.svg": "/static/media/augmen-bg2.a7c9290f2c3aa89c5eccdfe7e7eface3.svg",
+    "static/media/hero-bg.svg": "/static/media/hero-bg.42cf7ae2d5f5bf47c8e1b57497da92b5.svg",
+    "main.36c6b3d6.css.map": "/static/css/main.36c6b3d6.css.map",
+    "main.2ab51401.js.map": "/static/js/main.2ab51401.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36c6b3d6.css",
+    "static/js/main.2ab51401.js"
+  ]
+}
