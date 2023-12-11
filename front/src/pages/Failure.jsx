@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FailureDetails } from '../components/failureComponent/FailureDetails';
 import { Nav } from '../interface/Nav';
@@ -107,11 +106,7 @@ export const Failure = () => {
 					</AsideMiddle>
 				</Aside>
 				<Right>
-					<Nav>
-						<Link to='/'>Main</Link>
-						<span>&gt;</span>
-						<Link to='/terms'>ORDER ERROR</Link>
-					</Nav>
+					<Nav></Nav>
 					<Group>
 						<FailureDetails />
 						<Socials />

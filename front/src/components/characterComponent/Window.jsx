@@ -445,7 +445,7 @@ export const Window = ({ activeitem }) => {
 							<WrapperMainCover>
 								<WrapperMainMiddle>
 									<Scan>Scn</Scan>
-									<Image src={currentItem.imgMain} alt='Nerv' />
+									<Image src={currentItem.imgMain?.replace('http:', 'https:')} alt='Nerv' />
 								</WrapperMainMiddle>
 								<WrapperMainRight>
 									{currentItem.availability?.toLowerCase() === 'new' ||

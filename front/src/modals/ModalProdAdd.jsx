@@ -205,7 +205,7 @@ export const ModalProdAdd = ({ showmodalProduct, setShowmodalProduct }) => {
 					</WrapperTop>
 					<WrapperMain>
 						<WrapperLeft>
-							<Image src={currentProduct?.imgMain} alt={currentProduct.name} />
+							<Image src={currentProduct?.imgMain?.replace('http:', 'https:')} alt={currentProduct.name} />
 						</WrapperLeft>
 						<WrapperRight>
 							<Group>

@@ -7,6 +7,7 @@ import apiCallsService from '../services/apiCalls.service';
 import { ErrorAlert } from '../alerts/ErrorAlert';
 import { SuccessAlert } from '../alerts/SuccessAlert';
 import { DialogPopupOrders } from '../dialogs/DialogPopupOrders';
+import { Link } from 'react-router-dom';
 
 const gatewayLabelById = {
 	paypal: 'PayPal',
@@ -66,7 +67,8 @@ export const Orders = () => {
 				return (
 					<>
 						<Button
-							href={'/orders/' + params.row.id}
+							component={Link}
+							to={'/orders/' + params.row.id}
 							type='button'
 							variant='contained'
 						>

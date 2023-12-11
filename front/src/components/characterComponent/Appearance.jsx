@@ -69,6 +69,7 @@ const Text = styled.p`
 	position: absolute;
 	left: 3.4rem;
 	top: 2.8rem;
+	z-index: 3;
 	font-weight: 400;
 	font-size: 1.2rem;
 	line-height: 18px;

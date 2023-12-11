@@ -10,9 +10,10 @@ import { useSelector } from 'react-redux';
 
 const HeroWrapper = styled.div`
 	border-left: 1px solid ${props => props.theme.colorBorder};
-	max-width: 8.5rem;
+	max-width: 11.8rem;
 	width: 100%;
 	height: 100%;
+
 	@media screen and (max-width: 1100px) {
 		margin-left: 4rem;
 		max-width: 100%;
@@ -20,7 +21,7 @@ const HeroWrapper = styled.div`
 		border-left: unset;
 	}
 	@media screen and (max-width: 567px) {
-		width: 25%;
+		width: 28%;
 		border-right: 1px solid ${props => props.theme.colorBorder};
 		height: auto;
 	}
@@ -70,8 +71,7 @@ const HeroBlock = styled.div`
 	justify-content: center;
 	overflow-y: auto;
 	padding: 2.1rem 0 0;
-	gap: 0.6rem;
-	margin: 0 0.2rem;
+	gap: 1.3rem;
 	&::-webkit-scrollbar {
 		width: 0.3rem;
 	}
@@ -342,7 +342,7 @@ export const Hero = ({
 										item.id === activeelement ? activeelement : null
 									}
 								/>
-								<Image src={item.img} alt='nerv' />
+								<Image src={item.img?.replace('http:', 'https:')} alt='nerv' />
 							</HeroItemsContent>
 						</HeroItems>
 					</HeroGroup>
@@ -404,7 +404,7 @@ export const Hero = ({
 									}
 								/>
 								<Image
-									src={item.type === 'items' ? itemImgMob : item.img}
+									src={item.type === 'items' ? itemImgMob?.replace('http:', 'https:') : item.img.replace('http:', 'https:')}
 									alt='nerv'
 								/>
 							</HeroItemsContent>

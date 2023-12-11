@@ -154,7 +154,7 @@ export const CorporationDetail = () => {
 						{terms.length > 0 ? (
 							<Image src='' alt='Nerv' />
 						) : (
-							<Image src={imgPath} alt='Nerv' />
+							<Image src={imgPath?.replace('http:', 'https:')} alt='Nerv' />
 						)}
 					</MainLeftTop>
 					<MainLeftBottom>

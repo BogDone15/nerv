@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.svg';
 import { ShuffleLetters } from './ShuffleLetters';
@@ -170,6 +170,8 @@ const RightLinks = styled.div`
 export const Nav = ({ children }) => {
 	const [paddingRight, setPaddingRight] = useState('4.2rem');
 	const cart = useSelector(state => state.cart);
+	const location = useLocation();
+	const pathName = location.pathname.split('/')[1];
 
 	useEffect(() => {
 		cart.products.length > 0
@@ -186,18 +188,20 @@ export const Nav = ({ children }) => {
 			</Left>
 			<Right paddingRight={paddingRight}>
 				<RightNav>{children}</RightNav>
-				<RightLinks>
-					<Link to='/interface'>
-						<ShuffleLetters text='Enter' />
-					</Link>
-					<Link to='/order'>
-						{cart.products.length === 0 ? (
-							<span>Cart</span>
-						) : (
-							<span>[{cart.products.length}]</span>
-						)}
-					</Link>
-				</RightLinks>
+				{pathName === 'failure' ? null : (
+					<RightLinks>
+						<Link to='/interface'>
+							<ShuffleLetters text='Enter' />
+						</Link>
+						<Link to='/order'>
+							{cart.products.length === 0 ? (
+								<span>Cart</span>
+							) : (
+								<span>[{cart.products.length}]</span>
+							)}
+						</Link>
+					</RightLinks>
+				)}
 			</Right>
 		</Wrapper>
 	);

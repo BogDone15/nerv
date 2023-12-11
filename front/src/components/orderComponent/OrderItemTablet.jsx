@@ -354,7 +354,7 @@ export const OrderItemTablet = ({ setShowFirstItem }) => {
 							</svg>
 						</ContentMainItemRemove>
 						<TabletBottomLeft>
-							<ImageProduct src={item.imgMain} alt={item.name} />
+							<ImageProduct src={item.imgMain?.replace('http:', 'https:')} alt={item.name} />
 						</TabletBottomLeft>
 						<TabletBottomRight>
 							<TabletName>{item.name}</TabletName>

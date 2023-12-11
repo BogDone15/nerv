@@ -80,7 +80,7 @@ const getMainInfoRequest = async () => {
 
 const subscribeRequest = async email => {
 	try {
-		const response = await axios.post(BASE_URL + '/subscribe', email);
+		const response = await axios.post(BASE_URL + '/api/subscribe', email);
 
 		return response.data;
 	} catch (error) {

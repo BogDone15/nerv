@@ -128,7 +128,7 @@ export const OrderDetails = ({
 						{cart.products.length >= 1 ? (
 							<Image
 								src={
-									currentItem ? currentItem?.imgMain : cart.products[0]?.imgMain
+									currentItem ? currentItem?.imgMain?.replace('http:', 'https:') : cart.products[0]?.imgMain?.replace('http:', 'https:')
 								}
 								alt='nerv'
 							/>

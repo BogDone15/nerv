@@ -6,6 +6,7 @@ import apiCallsService from '../services/apiCalls.service';
 import { ErrorAlert } from '../alerts/ErrorAlert';
 import { SuccessAlert } from '../alerts/SuccessAlert';
 import { DialogPopup } from '../dialogs/DialogPopup';
+import { Link } from 'react-router-dom';
 
 export const Heroes = () => {
 	const columns = [
@@ -29,7 +30,8 @@ export const Heroes = () => {
 				return (
 					<>
 						<Button
-							href={'/admin/hero/' + params.id}
+							component={Link}
+							to={'/hero/' + params.row.id}
 							type='button'
 							variant='contained'
 						>
@@ -48,24 +50,7 @@ export const Heroes = () => {
 			renderCell: params => {
 				return (
 					<>
-						<DeleteIcon
-							sx={{
-								cursor: 'pointer',
-								pointerEvents:
-									params.row.type === 'spec armr'
-										? 'none'
-										: 'auto' && params.row.type === 'items'
-										? 'none'
-										: 'auto',
-								fill:
-									params.row.type === 'spec armr'
-										? 'gray'
-										: 'currentColor' && params.row.type === 'items'
-										? 'gray'
-										: 'currentColor',
-							}}
-							onClick={() => handleDelete(params.id)}
-						/>
+						<DeleteIcon onClick={() => handleDelete(params.id)} />
 					</>
 				);
 			},
@@ -128,7 +113,8 @@ export const Heroes = () => {
 					<Divider />
 
 					<Button
-						href='/admin/hero'
+						component={Link}
+						to='/hero'
 						type='button'
 						variant='contained'
 						sx={{ marginBottom: '50px', marginLeft: '50px', marginTop: '23px' }}

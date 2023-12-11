@@ -18,11 +18,11 @@ export const Road = () => {
 			<Route path='/interface/:id' element={<Product />} />
 			<Route path='/order' element={<Order />} />
 			<Route path='/checkout' element={<Checkout />} />
-			<Route path='/:item' element={<Terms />} />
 			<Route path='/order-granted' element={<OrderGranted />} />
+			<Route path='/:item' element={<Terms />} />
 			<Route path='/order-error' element={<OrderError />} />
+			<Route path='*' element={<Navigate replace to='/failure' />} />
 			<Route path='/failure' element={<Failure />} />
-			<Route path='*' element={<Navigate to='/' />} />
 		</Routes>
 	);
 };

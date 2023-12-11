@@ -336,7 +336,7 @@ export const Summary = () => {
 				<WrapperBottomItem>
 					<div>SUBTOTAL</div>
 					<div>SHIPPING</div>
-					<div>TAX INCLUDED</div>
+					<div>TAX NOT INCLUDED</div>
 					<div>TOTAL</div>
 				</WrapperBottomItem>
 				<WrapperBottomItem>

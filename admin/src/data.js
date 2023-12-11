@@ -9,7 +9,7 @@ export const terms = [
 		name: 'TERMS OF SERVICE',
 	},
 	{
-		name: 'PRIVATE POLICY',
+		name: 'PRIVACY POLICY',
 	},
 	{
 		name: 'SHIPPING',
@@ -160,11 +160,11 @@ export const typeData = [
 		title: '',
 	},
 	{
-		type: 'PRIVATE POLICY',
+		type: 'PRIVACY POLICY',
 		signature: '',
 		mainText: '',
 		image: '',
-		href: '/private-policy',
+		href: '/privacy-policy',
 		tab: '',
 		title: '',
 	},

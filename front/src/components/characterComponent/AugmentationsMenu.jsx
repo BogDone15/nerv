@@ -285,7 +285,7 @@ export const AugmentationsMenu = ({
 								}
 							/>
 							<GearLine />
-							<Image src={product[1]?.img} alt='nerv' />
+							<Image src={product[1]?.img?.replace('http:', 'https:')} alt='nerv' />
 						</MenuItemsContent>
 					</MenuItem>
 				</MenuGroup>
@@ -330,7 +330,7 @@ export const AugmentationsMenu = ({
 											product[0]?.id === activeelement ? activeelement : null
 										}
 									/>
-									<Image src={product[0]?.img} alt='nerv' />
+									<Image src={product[0]?.img?.replace('http:', 'https:')} alt='nerv' />
 								</MenuItemsContentSecond>
 							</MenuItem>
 						</MenuGroup>

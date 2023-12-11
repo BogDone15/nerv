@@ -358,7 +358,7 @@ export const Footer = () => {
 				<Right>
 					<span>
 						NERV CORPORATION <br />
-						ALL RIGHTS RESERVER ©
+						ALL RIGHTS RESERVED ©
 					</span>
 					<Image src={corp} />
 				</Right>

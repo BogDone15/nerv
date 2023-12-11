@@ -7,6 +7,7 @@ import apiCallsService from '../services/apiCalls.service';
 import { ErrorAlert } from '../alerts/ErrorAlert';
 import { SuccessAlert } from '../alerts/SuccessAlert';
 import { DialogPopupProducts } from '../dialogs/DialogPopupProducts';
+import { Link } from 'react-router-dom';
 
 export const Products = () => {
 	const columns = [
@@ -34,7 +35,8 @@ export const Products = () => {
 				return (
 					<>
 						<Button
-							href={'/admin/products/' + params.row._id}
+							component={Link}
+							to={'/products/' + params.row._id}
 							type='button'
 							variant='contained'
 						>
@@ -112,7 +114,8 @@ export const Products = () => {
 			</Typography>
 			<Divider />
 			<Button
-				href='/admin/newproduct'
+				component={Link}
+				to='/newproduct'
 				type='button'
 				variant='contained'
 				sx={{ marginBottom: '50px', marginLeft: '50px', marginTop: '23px' }}

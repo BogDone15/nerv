@@ -18,6 +18,7 @@ const TopCorner = styled.div`
 	position: absolute;
 	top: 7.7rem;
 	left: 14rem;
+	z-index: 3;
 
 	& > div {
 		font-weight: 400;
@@ -53,9 +54,7 @@ const Video = styled.video`
 	width: 100%;
 	object-fit: cover;
 	pointer-events: none;
-	@media screen and (max-width: 1100px) {
-		transform: translateX(2rem);
-	}
+
 	@media screen and (max-width: 567px) {
 		display: none;
 	}
@@ -78,9 +77,7 @@ const Image = styled.img`
 	max-width: 100%;
 	height: 100%;
 	object-position: center;
-	@media screen and (max-width: 1100px) {
-		transform: translateX(2rem);
-	}
+
 	@media screen and (max-width: 567px) {
 		display: none;
 	}
@@ -377,25 +374,31 @@ export const Main = () => {
 					<Block>
 						<Status status='online' color='#00c70a' />
 						{mainData?.background?.type === 'image' ? (
-							<Image src={mainData.background?.src} alt='Nerv' />
+							<Image
+								src={mainData.background?.src?.replace('http:', 'https:')}
+								alt='Nerv'
+							/>
 						) : (
 							<Video
 								autoPlay
 								muted
 								loop
 								playsInline
-								src={mainData?.background?.src}
+								src={mainData?.background?.src?.replace('http:', 'https:')}
 							></Video>
 						)}
 						{mainData?.mobileBackground?.type === 'image' ? (
-							<ImageMob src={mainData.mobileBackground?.src} alt='Nerv' />
+							<ImageMob
+								src={mainData.mobileBackground?.src?.replace('http:', 'https:')}
+								alt='Nerv'
+							/>
 						) : (
 							<VideoMob
 								autoPlay
 								muted
 								loop
 								playsInline
-								src={mainData.mobileBackground?.src}
+								src={mainData.mobileBackground?.src?.replace('http:', 'https:')}
 							></VideoMob>
 						)}
 						<ModalMain closeModal={closeModal} setCloseModal={setCloseModal} />

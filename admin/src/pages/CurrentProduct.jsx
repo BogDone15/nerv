@@ -131,19 +131,35 @@ export const CurrentProduct = () => {
 	};
 
 	const handleRemoveItem = (id, type) => {
+		console.log(appearanceImageSlider);
 		if (type === 'appearanceImage') {
 			const filteredImg = appearanceImageSlider.filter(item => item !== id);
 			setAppearanceImageSlider(filteredImg);
+
+			setProdctInfo(prev => ({
+				...prev,
+				imgSliderAppearance: filteredImg,
+			}));
 		}
 
 		if (type === 'productImage') {
 			const filteredImg = productImageSlider.filter(item => item !== id);
 			setProductImageSlider(filteredImg);
+
+			setProdctInfo(prev => ({
+				...prev,
+				imgSlider: filteredImg,
+			}));
 		}
 
 		if (type === 'productImageZoom') {
 			const filteredImg = productImageSliderZoom.filter(item => item !== id);
 			setProductImageSliderZoom(filteredImg);
+
+			setProdctInfo(prev => ({
+				...prev,
+				imgSliderZoom: filteredImg,
+			}));
 		}
 	};
 
@@ -207,13 +223,11 @@ export const CurrentProduct = () => {
 		if (type === 'appearanceImage') {
 			const newImage = [...appearanceImageSlider];
 			newImage.push(response.url);
-			setAppearanceImageSlider(newImage);
-
-			const newImageUrlOnly = newImage.map(item => item.url);
+			setAppearanceImageSlider([...appearanceImageSlider, response.url]);
 
 			setProdctInfo(prev => ({
 				...prev,
-				imgSliderAppearance: newImageUrlOnly,
+				imgSliderAppearance: [...appearanceImageSlider, response.url],
 			}));
 			setAppearanceImageLoading(false);
 		}
@@ -221,13 +235,11 @@ export const CurrentProduct = () => {
 		if (type === 'productImage') {
 			const newImage = [...productImageSlider];
 			newImage.push(response.url);
-			setProductImageSlider(newImage);
-
-			const newImageUrlOnly = newImage.map(item => item.url);
+			setProductImageSlider([...productImageSlider, response.url]);
 
 			setProdctInfo(prev => ({
 				...prev,
-				imgSlider: newImageUrlOnly,
+				imgSlider: [...productImageSlider, response.url],
 			}));
 			setProductImageLoading(false);
 		}
@@ -235,13 +247,11 @@ export const CurrentProduct = () => {
 		if (type === 'productImageZoom') {
 			const newImage = [...productImageSliderZoom];
 			newImage.push(response.url);
-			setProductImageSliderZoom(newImage);
-
-			const newImageUrlOnly = newImage.map(item => item.url);
+			setProductImageSliderZoom([...productImageSliderZoom, response.url]);
 
 			setProdctInfo(prev => ({
 				...prev,
-				imgSliderZoom: newImageUrlOnly,
+				imgSliderZoom: [...productImageSliderZoom, response.url],
 			}));
 			setZoomProductImageLoading(false);
 		}

@@ -81,8 +81,6 @@ export const Terms = () => {
 		setTermsData(updatedTypes);
 	};
 
-	console.log(termsData);
-
 	const handleClick = async e => {
 		e.preventDefault();
 		setShowErrorAlert(false);

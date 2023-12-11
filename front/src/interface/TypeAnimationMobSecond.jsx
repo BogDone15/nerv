@@ -9,6 +9,7 @@ const BottomCornerMob = styled.div`
 		position: absolute;
 		right: 2rem;
 		bottom: 7rem;
+		z-index: 3;
 		& > div {
 			font-weight: 400;
 			font-size: 1.2rem;

@@ -48,7 +48,6 @@ export const Hero = () => {
 			}
 
 			const currentCategory = response.find(item => item.id === pathName);
-
 			setHeroImageLoading(false);
 			setHeroImageUrl(currentCategory.img);
 			setCurrentCategoryId(currentCategory.id);

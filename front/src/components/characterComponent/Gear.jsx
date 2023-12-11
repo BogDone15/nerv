@@ -157,15 +157,12 @@ const GearCover = styled.div`
 	height: 100%;
 	transition: all 0.2s ease;
 	@media screen and (max-width: 1100px) {
-		max-width: 17.9rem;
 		width: 100%;
-		height: 20.7rem;
 		margin: auto;
+		padding: 0.5rem;
 	}
 	@media screen and (max-width: 567px) {
-		height: 46rem;
-		max-width: 42rem;
-		padding: 2.5rem 0.5rem 1.7rem;
+		padding: 2rem;
 	}
 `;
 
@@ -311,6 +308,43 @@ const IconArrow = styled.svg`
 	}
 `;
 
+const EmptyButton = styled.div`
+	display: none;
+
+	@media (max-width: 1100px) {
+		display: block;
+		position: relative;
+		padding: 1.2rem 0;
+		height: 3.6rem;
+		background: ${props => props.theme.colorMain};
+		text-align: center;
+		& > span {
+			font-weight: 450;
+			font-size: 1.1rem;
+			line-height: 1.4rem;
+			color: #adadad;
+			text-transform: uppercase;
+			pointer-events: none;
+		}
+	}
+
+	@media (max-width: 567px) {
+		position: relative;
+		padding: 2rem;
+		height: 6rem;
+		background: ${props => props.theme.colorMain};
+		text-align: center;
+		& > span {
+			font-weight: 450;
+			font-size: 2rem;
+			line-height: 2.2rem;
+			color: #adadad;
+			text-transform: uppercase;
+			pointer-events: none;
+		}
+	}
+`;
+
 export const Gear = ({
 	itemType,
 	activeitem,
@@ -386,25 +420,39 @@ export const Gear = ({
 										<GearAside
 											activeitem={item._id === activeitem ? true : false}
 										/>
-										<Image src={item.imgGear} alt='Nerv' />
+										<Image
+											src={item.imgGear?.replace('http:', 'https:')}
+											alt='Nerv'
+										/>
 									</GearCover>
-									<Link
-										to={`/interface/${item.name
-											.replace(/ /gi, '-')
-											.toLowerCase()}`}
-									>
-										<span>{item.name}</span>
-										<span>{item.price}.00 EUR</span>
-										<IconArrow viewBox='0 0 12 21'>
-											<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
-											<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
-											<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
-											<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
-											<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
-											<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
-											<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
-										</IconArrow>
-									</Link>
+									{item.availability?.toLowerCase() === 'new' ||
+									item.availability === '' ? (
+										<Link
+											to={`/interface/${item.name
+												.replace(/ /gi, '-')
+												.toLowerCase()}`}
+										>
+											<span>{item.name}</span>
+											<span>{item.price}.00 EUR</span>
+											<IconArrow viewBox='0 0 12 21'>
+												<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+												<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+												<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+												<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+												<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+												<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+												<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+											</IconArrow>
+										</Link>
+									) : (
+										<EmptyButton>
+											<span>
+												{item.availability === ''
+													? item.name
+													: item.availability}
+											</span>
+										</EmptyButton>
+									)}
 								</GearItem>
 						  ))
 						: filterProducts.map(item => (
@@ -422,25 +470,39 @@ export const Gear = ({
 										<GearAside
 											activeitem={item._id === activeitem ? true : false}
 										/>
-										<Image src={item.imgGear} alt='Nerv' />
+										<Image
+											src={item.imgGear?.replace('http:', 'https:')}
+											alt='Nerv'
+										/>
 									</GearCover>
-									<Link
-										to={`/interface/${item.name
-											.replace(/ /gi, '-')
-											.toLowerCase()}`}
-									>
-										<span>{item.name}</span>
-										<span>{item.price}.00 EUR</span>
-										<IconArrow viewBox='0 0 12 21'>
-											<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
-											<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
-											<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
-											<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
-											<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
-											<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
-											<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
-										</IconArrow>
-									</Link>
+									{item.availability.toLowerCase() === 'new' ||
+									item.availability === '' ? (
+										<Link
+											to={`/interface/${item.name
+												.replace(/ /gi, '-')
+												.toLowerCase()}`}
+										>
+											<span>{item.name}</span>
+											<span>{item.price}.00 EUR</span>
+											<IconArrow viewBox='0 0 12 21'>
+												<path d='M3.5 0.75H0.689941V3.56H3.5V0.75Z' />
+												<path d='M6.31006 3.56006H3.5V6.37006H6.31006V3.56006Z' />
+												<path d='M9.12988 6.38H6.31982V9.19H9.12988V6.38Z' />
+												<path d='M11.9398 9.18994H9.12988V11.9999H11.9398V9.18994Z' />
+												<path d='M9.12988 12H6.31982V14.81H9.12988V12Z' />
+												<path d='M6.31006 14.8101H3.5V17.6201H6.31006V14.8101Z' />
+												<path d='M3.5 17.63H0.689941V20.44H3.5V17.63Z' />
+											</IconArrow>
+										</Link>
+									) : (
+										<EmptyButton>
+											<span>
+												{item.availability === ''
+													? item.name
+													: item.availability}
+											</span>
+										</EmptyButton>
+									)}
 								</GearItem>
 						  ))}
 				</GearBlock>

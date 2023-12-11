@@ -5,6 +5,7 @@ const Wrapper = styled.div`
 	position: absolute;
 	right: 3.4rem;
 	top: 2.8rem;
+	z-index: 3;
 	display: flex;
 	align-items: center;
 	gap: 1.2rem;

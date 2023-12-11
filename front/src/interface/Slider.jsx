@@ -144,11 +144,15 @@ export const Slider = ({
 		>
 			{curProd?.map((item, index) => (
 				<SwiperSlide key={item + index}>
-					<Image src={item} alt='Nerv' />
+					<Image src={item.replace('http:', 'https:')} alt='Nerv' />
 				</SwiperSlide>
 			))}
-			<SwiperButtonPrev />
-			<SwiperButtonNext />
+			{curProd?.length > 1 ? (
+				<>
+					<SwiperButtonPrev />
+					<SwiperButtonNext />
+				</>
+			) : null}
 		</Swiper>
 	);
 };

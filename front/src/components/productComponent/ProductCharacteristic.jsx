@@ -71,7 +71,6 @@ const SpecItem = styled.li`
 	position: relative;
 	list-style: disc;
 	width: calc(33.33333333% - 2rem);
-	margin-right: 2rem;
 	font-weight: 400;
 	font-size: 1.1rem;
 	line-height: 1.5rem;

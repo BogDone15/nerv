@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { linksTerms, contactTerms } from '../data';
 import { ShuffleLetters } from './ShuffleLetters';
@@ -82,8 +82,14 @@ const Item = styled.li`
 	}
 `;
 
+const EmptyDiv = styled.div`
+	height: 1.8rem;
+`;
+
 export const Header = () => {
 	const [links, setLinks] = useState([]);
+	const location = useLocation();
+	const pathName = location.pathname.split('/')[1];
 
 	useEffect(() => {
 		setLinks(linksTerms.concat(contactTerms));
@@ -101,13 +107,17 @@ export const Header = () => {
 				</TopRight>
 			</Top>
 			<Middle>
-				{links.map(link => (
-					<Item key={link.id}>
-						<Link user={link.name} to={link.href}>
-							<ShuffleLetters text={link.name} />
-						</Link>
-					</Item>
-				))}
+				{pathName === 'failure' ? (
+					<EmptyDiv />
+				) : (
+					links.map(link => (
+						<Item key={link.id}>
+							<Link user={link.name} to={link.href}>
+								<ShuffleLetters text={link.name} />
+							</Link>
+						</Item>
+					))
+				)}
 			</Middle>
 		</>
 	);

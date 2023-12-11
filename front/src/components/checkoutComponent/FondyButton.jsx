@@ -107,7 +107,7 @@ function FondyPaymentButton({ cartData }) {
 			script.onload = () => {
 				// Initialize the Fondy button when the script is loaded
 				const loadedButton = window.$ipsp.get('button');
-				loadedButton.setMerchantId(1534494);
+				loadedButton.setMerchantId(1538219);
 				loadedButton.setAmount(cartData.cart.total, 'USD', true);
 				loadedButton.addField({
 					label: 'Order #',

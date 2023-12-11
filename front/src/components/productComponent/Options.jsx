@@ -23,7 +23,7 @@ const Cover = styled.div`
 	position: relative;
 	width: 50%;
 	height: 100%;
-	padding: 1.6rem 2.8rem 0.8rem 3rem;
+	padding: 1.6rem 2.8rem 1.4rem 3rem;
 
 	&:first-child {
 		border-right: 1px solid ${props => props.theme.colorBlack};
@@ -177,6 +177,10 @@ const CoverContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	transform: translateY(-0.2rem);
+	@media screen and (max-width: 1100px) {
+		transform: unset;
+	}
 `;
 
 const CoverInStock = styled.div`
@@ -232,7 +236,6 @@ const CoverChart = styled.div`
 
 const CoverGroup = styled.div`
 	display: flex;
-	align-items: center;
 	gap: 1.5rem;
 `;
 
@@ -240,7 +243,6 @@ const CoverSign = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0.1rem;
-	transform: translateY(0.2rem);
 	& > span {
 		color: ${props => props.theme.colorBlack};
 		font-size: ${props => props.theme.fontmd};
